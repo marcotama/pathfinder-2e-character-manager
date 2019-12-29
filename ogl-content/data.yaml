@@ -1,0 +1,186 @@
+---
+classes:
+  - code: dwarf
+    name: Dwarf
+    hit-points: 10
+    size: medium
+    speed: 20
+    ability-boosts:
+      - constitution
+      - wisdom
+      - free
+    ability-flaw: [charisma]
+    languages:
+      - common
+      - dwarven
+    additional-languages:
+      as-many-as: intelligence-modifier
+      choices:
+        - gnomish
+        - goblin
+        - jotun
+        - orcish
+        - terran
+        - undercommon
+      more: Any other languages to which you have access (such as the languages prevalent in your region)
+    traits:
+      - dwarf
+      - humanoid
+    vision: darkvision
+    heritages:
+      - code: ancient-blooded-dwarf
+        name: Ancient-Blooded Dwarf
+        description: |
+          Dwarven heroes of old could shrug off their enemies’ magic, and some of that resistance manifests in you. You gain the Call on Ancient Blood reaction.
+        benefits:
+          - add-reaction: call-on-ancient-blood
+
+      - code: death-warden-dwarf
+        name: Death Warden Dwarf
+        description: |
+          Your ancestors have been tomb guardians for generations, and the power they cultivated to ward off necromancy has passed on to you. If you roll a success on a saving throw against a necromancy effect, you get a critical success instead.
+
+      - code: forge-dwarf
+        name: Forge Dwarf
+        description: |
+          You have a remarkable adaptation to hot environments from ancestors who inhabited blazing deserts or volcanic chambers beneath the earth. This grants you fire resistance equal to half your level (minimum 1), and you treat environmental heat effects as if they were one step less extreme (incredible heat becomes extreme, extreme heat becomes severe, and so on).
+
+      - code: rock-dwarf
+        name: Rock Dwarf
+        description: |
+          Your ancestors lived and worked among the great ancient stones of the mountains or the depths of the earth. This makes you solid as a rock when you plant your feet. You gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to Shove or Trip you. This bonus also applies to saving throws against spells or effects that attempt to knock you prone.
+          In addition, if any effect would force you to move 10 feet or more, you are moved only half the distance.
+
+      - code: strong-blooded-dwarf
+        name: Strong-Blooded Dwarf
+        description: |
+          Your blood runs hearty and strong, and you can shake off toxins. You gain poison resistance equal to half your level (minimum 1), and each of your successful saving throws against a poison affliction reduces its stage by 2, or by 1 for a virulent poison. Each critical success against an ongoing poison reduces its stage by 3, or by 2 for a virulent poison.
+
+    feats:
+      - code: dwarven-lore
+        name: Dwarven Lore
+        traits: [dwarf]
+        level: 1
+        description: |
+          You eagerly absorbed the old stories and traditions of your ancestors, your gods, and your people, studying in subjects and techniques passed down for generation upon generation. You gain the trained proficiency rank in Crafting and Religion. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in Dwarven Lore.
+        benefits:
+          - gain-proficiency:
+              level: trained
+              skill: crafting
+              replaceable-if-already: true
+          - gain-proficiency:
+              level: trained
+              skill: religion
+              replaceable-if-already: true
+          - gain-proficiency:
+              level: trained
+              lore: dwarven
+              replaceable-if-already: false
+
+      - code: dwarven-weapon-familiarity
+        name: Dwarven Weapon Familiarity
+        traits: [dwarf]
+        level: 1
+        description: |
+          Your kin have instilled in you an affinity for hard-hitting weapons, and you prefer these to more elegant arms. You are trained with the battle axe, pick, and warhammer.
+          You also gain access to all uncommon dwarf weapons. For the purpose of determining your proficiency, martial dwarf weapons are simple weapons and advanced dwarf weapons are martial weapons.
+        benefits:
+          - gain-proficiency:
+              level: trained
+              weapon: battle-axe
+              replaceable-if-already: false
+          - gain-proficiency:
+              level: trained
+              weapon: pick
+              replaceable-if-already: false
+          - gain-proficiency:
+              level: trained
+              weapon: warhammer
+              replaceable-if-already: false
+          - gain-access:
+              category: weapon
+              rarity: uncommon
+              attribute: dwarf
+
+      - code: rock-runner
+        name: Rock Runner
+        traits: [dwarf]
+        level: 1
+        description: |
+          Your innate connection to stone makes you adept at moving across uneven surfaces. You can ignore difficult terrain caused by rubble and uneven ground made of stone and earth. In addition, when you use the Acrobatics skill to Balance on narrow surfaces or uneven ground made of stone or earth, you aren’t flat-footed, and when you roll a success at one of these Acrobatics checks, you get a critical success instead.
+
+      - code: stonecutting
+        name: Stonecutting
+        traits: [dwarf]
+        level: 1
+        description: |
+          You have a knack for noticing even small inconsistencies and craftsmanship techniques in the stonework around you. You gain a +2 circumstance bonus to Perception checks to notice unusual stonework. This bonus applies to checks to discover mechanical traps made of stone or hidden within stone.
+          If you aren’t using the Seek action or searching, the GM automatically rolls a secret check for you to notice unusual stonework anyway. This check doesn’t gain the circumstance bonus, and it takes a –2 circumstance penalty.
+
+      - code: unburdened-iron
+        name: Unburdened Iron
+        traits: [dwarf]
+        level: 1
+        description: |
+          You’ve learned techniques first devised by your ancestors during their ancient wars, allowing you to comfortably wear massive suits of armor. Ignore the reduction to your Speed from any armor you wear.
+          In addition, any time you’re taking a penalty to your Speed from some other reason (such as from the encumbered condition or from a spell), deduct 5 feet from the penalty. For example, the encumbered condition normally gives a –10-foot penalty to Speed, but it gives you only a –5-foot penalty. If your Speed is taking multiple penalties, pick only one penalty to reduce.
+        benefits:
+          - ignore-penalty:
+              on: speed
+              caused-by: armor
+
+      - code: vengeful-hatred
+        name: Vengeful Hatred
+        traits: [dwarf]
+        level: 1
+        description: |
+          You heart aches for vengeance against those who have wronged your people. Choose one of the following dwarven ancestral foes when you gain Vengeful Hatred: drow, duergar, giant, or orc. You gain a +1 circumstance bonus to damage with weapons and unarmed attacks against creatures with that trait. If your attack would deal more than one weapon die of damage (as is common at higher levels than 1st), the bonus is equal to the number of weapon dice or unarmed attack dice.
+          In addition, if a creature critically succeeds at an attack against you and deals damage to you, you gain your bonus to damage against that creature for 1 minute regardless of whether it has the chosen trait.
+          *Special*: Your GM can add appropriate creature traits to the ancestral foes list if your character is from a community that commonly fights other types of enemies.
+
+      - code: builder-roll
+        name: Builder Roll
+        traits: [dwarf]
+        level: 5
+        prerequisites: [rock-runner]
+        description: |
+          Your dwarven build allows you to push foes around, just like a mighty boulder tumbles through a subterranean cavern. Take a Step into the square of a foe that is your size or smaller, and the foe must move into the empty space directly behind it. The foe must move even if doing so places it in harm’s way. The foe can attempt a Fortitude saving throw against your Athletics DC to block your Step. If the foe attempts this saving throw, unless it critically succeeds, it takes bludgeoning damage equal to your level plus your Strength modifier.
+          If the foe can’t move into an empty space (if it is surrounded by solid objects or other creatures, for example), your Boulder Roll has no effect.
+
+      - code: dwarven-weapon-cunning
+        name: Dwarven Weapon Cunning
+        traits: [dwarf]
+        level: 5
+        prerequisites: [dwarven-weapon-familiarity]
+        description: |
+          You’ve learned cunning techniques to get the best effects out of your dwarven weapons. Whenever you critically hit using a battle axe, pick, warhammer, or a dwarf weapon, you apply the weapon’s critical specialization effect.
+
+      - code: mountain-stoutness
+        name: Mountain Stoutness
+        traits: [dwarf]
+        level: 9
+        description: |
+          Your hardiness lets you withstand more punishment than most before going down. Increase your maximum Hit Points by your level. You also decrease the DC of recovery checks when you have the dying condition by 1.
+          If you also have the Toughness feat, the Hit Points gained from it and this feat are cumulative, and you decrease the DC of recovery checks by 4.
+
+      - code: stonewalker
+        name: Stonewalker
+        traits: [dwarf]
+        level: 9
+        description: |
+          You have a deep reverence for and connection to stone. You gain meld into stone as a 3rd-level divine innate spell that you can cast once per day.
+          If you have the Stonecunning dwarf ancestry feat, you can attempt to find unusual stonework and stonework traps that require legendary proficiency in Perception. If you have both Stonecunning and legendary proficiency in Perception, when you’re not Seeking and the GM rolls a secret check for you to notice unusual stonework, you keep the bonus from Stonecunning and don’t take the –2 circumstance penalty.
+
+      - code: dwarven-weapon-expertise
+        name: Dwarven Weapon Expertise
+        traits: [dwarf]
+        level: 13
+        prerequisites: [dwarven-weapon-familiarity]
+        description: |
+          Your dwarven affinity blends with your training, granting you great skill with dwarven weapons. Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency for battle axes, picks, warhammers, and all dwarven weapons in which you are trained.
+
+reactions:
+  - code: call-on-ancient-blood
+    name: Call on Ancient Blood
+    trigger: Trigger You attempt a saving throw against a magical effect, but you haven't rolled yet.
+    effect: Your ancestors’ innate resistance to magic surges, before slowly ebbing down. You gain a +1 circumstance bonus to the triggering saving throw and until the end of this turn.
