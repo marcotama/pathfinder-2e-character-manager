@@ -35,6 +35,12 @@ class SkillEnum(Enum):
     LORE = 'lore'
 
 
+class SavingThrowEnum(Enum):
+    FORTITUDE = 'fortitude'
+    REFLEX = 'reflex'
+    WILL = 'will'
+
+
 class ItemCategory(Enum):
     LIGHT = 'light'
     MEDIUM = 'medium'
@@ -64,10 +70,24 @@ class Die(Enum):
     D100 = 100
 
 
-class DamageType(Enum):
+class PhysicalDamageType(Enum):
     BLUDGEONING = 'bludgeoning'
     PIERCING = 'piercing'
     SLASHING = 'slashing'
+
+
+class MagicDamageType(Enum):
+    ACID = 'acid'
+    AIR = 'air'
+    COLD = 'cold'
+    EARTH = 'earth'
+    ELECTRICITY = 'electricity'
+    FIRE = 'fire'
+    WATER = 'water'
+
+
+class DamageType(Enum, PhysicalDamageType, MagicDamageType):
+    pass
     
 
 class Currency(IntEnum):
@@ -107,6 +127,7 @@ class MeleeWeaponGroupEnum(Enum):
     AXE = 'axe'
     PICK = 'pick'
     SHIELD = 'shield'
+    WHIP = 'whip'
 
 
 class RangedWeaponGroupEnum(Enum):
@@ -120,9 +141,9 @@ class ThrownWeaponTraitEnum(Enum):
     
 
 class VersatileWeaponTraitEnum(Enum):
-    VERSATILE_S = DamageType.SLASHING
-    VERSATILE_P = DamageType.PIERCING
-    VERSATILE_B = DamageType.BLUDGEONING
+    VERSATILE_S = PhysicalDamageType.SLASHING
+    VERSATILE_P = PhysicalDamageType.PIERCING
+    VERSATILE_B = PhysicalDamageType.BLUDGEONING
     
 
 class TwoHandWeaponTraitEnum(Enum):
@@ -186,6 +207,19 @@ class WeaponTraitEnum(
     TWIN = 'twin'
 
 
+class DefenseProficiencyEnum(Enum):
+    UNARMORED_DEFENSE = 'unarmored_defense'
+    LIGHT_ARMOR = 'light_armor'
+    MEDIUM_ARMOR = 'medium_armor'
+    HEAVY_ARMOR = 'heavy_armor'
+
+
+class AttackProficiencyEnum(Enum, MeleeWeaponGroupEnum, RangedWeaponGroupEnum):
+    UNARMED_ATTACKS = 'unarmed_attacks'
+    SIMPLE_WEAPONS = 'simple_weapons'
+    MARTIAL_WEAPONS = 'martial_weapons'
+    ALCHEMICAL_BOMBS = 'alchemical_bombs'
+
 
 # ----- Classes ----
 
@@ -232,7 +266,7 @@ class Shield(Thing):
 
 
 class Damage:
-    amount: Dict[Die, Tuple[int, DamageType]]
+    amount: Dict[Die, Tuple[int, PhysicalDamageType]]
 
 
 class Weapon(Thing):
@@ -292,7 +326,7 @@ class Proficiency(Component):
         return self.value.get_modifier() if self.value is not None else 0
 
 
-class Skill(Component):
+class ProficiencyBasedRoll(Component):
     proficiency: Proficiency
     ref_ability_score: AbilityScoreEnum
     character: Character
@@ -310,6 +344,24 @@ class Skill(Component):
         self.character = character
         self.proficiency = Proficiency(code="proficiency", name="Proficiency")
 
+    def get_item_modifier(self):
+        return 0 # TODO
+
+    def get_modifier(self) -> int:
+        return self.proficiency.get_modifier() +\
+               self.character.ability_scores[self.ref_ability_score].get_modifier() +\
+               self.get_item_modifier()
+
+
+class SavingThrow(ProficiencyBasedRoll):
+    pass
+
+
+class Perception(ProficiencyBasedRoll):
+    pass
+
+
+class Skill(ProficiencyBasedRoll):
     def get_armor_modifier(self):
         if self.ref_ability_score.code in [AbilityScoreEnum.DEX, AbilityScoreEnum.STR]:
             if self.character.ability_scores[AbilityScoreEnum.STR].value >= self.character.armor.strength:
@@ -319,25 +371,39 @@ class Skill(Component):
         else:
             return 0
 
-    def get_item_modifier(self):
-        return 0 # TODO
-
     def get_modifier(self) -> int:
-        return self.proficiency.get_modifier() +\
-               self.character.ability_scores[self.ref_ability_score].get_modifier() +\
-               self.get_armor_modifier() +\
-               self.get_item_modifier()
+        return super().get_modifier() + self.get_armor_modifier()
 
 
 class Character(Hero):
     ability_scores: Dict[AbilityScoreEnum, AbilityScore]
     skills: Dict[SkillEnum, Skill]
+    saving_throws: Dict[SavingThrowEnum, SavingThrow]
+    perception: Perception
     equipment: List[Union[Armor, Shield, Weapon]]
-    
+    max_hit_points: int
+    current_hit_points: int
+    temporary_hit_points: int
+    speed :int
+    resistances: List[DamageType]
+    immunities: List[DamageType]
+    conditions: List[DamageType]
+    attack_proficiencies: Dict[AttackProficiencyEnum, Proficiency]
+    defense_proficiencies: Dict[DefenseProficiencyEnum, Proficiency]
     
     def __init__(self, code: str, name: str):
         self.code = code
         self.name = name
+        self.armor = None
+        self.shields = []
+        self.weapons = []
+        self.max_hit_points = 0
+        self.current_hit_points = 0
+        self.temporary_hit_points = 0
+        self.speed = 0
+        self.resistances = []
+        self.immunities = []
+        self.conditions = []
         self.ability_scores = {
             AbilityScoreEnum.STR: AbilityScore(code=str(AbilityScoreEnum.STR), name="Strength"),
             AbilityScoreEnum.DEX: AbilityScore(code=str(AbilityScoreEnum.DEX), name="Dexterity"),
@@ -346,9 +412,6 @@ class Character(Hero):
             AbilityScoreEnum.WIS: AbilityScore(code=str(AbilityScoreEnum.WIS), name="Wisdom"),
             AbilityScoreEnum.CHA: AbilityScore(code=str(AbilityScoreEnum.CHA), name="Charisma")
         }
-        self.armor = None
-        self.shields = []
-        self.weapons = []
         self.skills = {
             SkillEnum.ACROBATICS: Skill(code=str(SkillEnum.ACROBATICS), name="Acrobatics", ref_ability_score=AbilityScoreEnum.DEX, character=self),
             SkillEnum.ARCANA: Skill(code=str(SkillEnum.ARCANA), name="Arcana", ref_ability_score=AbilityScoreEnum.INT, character=self),
@@ -367,7 +430,37 @@ class Character(Hero):
             SkillEnum.SURVIVAL: Skill(code=str(SkillEnum.SURVIVAL), name="Survival", ref_ability_score=AbilityScoreEnum.WIS, character=self),
             SkillEnum.THIEVERY: Skill(code=str(SkillEnum.THIEVERY), name="Thievery", ref_ability_score=AbilityScoreEnum.DEX, character=self),
         }
-        self.components = {**self.ability_scores, **self.skills}
+        self.saving_throws = {
+            SavingThrowEnum.FORTITUDE: SavingThrow(code=str(SavingThrowEnum.FORTITUDE), name="Fortitude", ref_ability_score=AbilityScoreEnum.CON, character=self),
+            SavingThrowEnum.REFLEX: SavingThrow(code=str(SavingThrowEnum.REFLEX), name="Reflex", ref_ability_score=AbilityScoreEnum.DEX, character=self),
+            SavingThrowEnum.WILL: SavingThrow(code=str(SavingThrowEnum.WILL), name="Will", ref_ability_score=AbilityScoreEnum.WIS, character=self),
+        }
+        self.attack_proficiencies = {
+            AttackProficiencyEnum.UNARMED_ATTACKS: Proficiency(code=str(AttackProficiencyEnum.UNARMED_ATTACKS), name="unarmed_attacks"),
+            AttackProficiencyEnum.SIMPLE_WEAPONS: Proficiency(code=str(AttackProficiencyEnum.SIMPLE_WEAPONS), name="simple_weapons"),
+            AttackProficiencyEnum.MARTIAL_WEAPONS: Proficiency(code=str(AttackProficiencyEnum.MARTIAL_WEAPONS), name="martial_weapons"),
+            AttackProficiencyEnum.ALCHEMICAL_BOMBS: Proficiency(code=str(AttackProficiencyEnum.ALCHEMICAL_BOMBS), name="alchemical_bombs"),
+            
+            AttackProficiencyEnum.SWORD: Proficiency(code=str(AttackProficiencyEnum.SWORD), name="sword"),
+            AttackProficiencyEnum.SPEAR: Proficiency(code=str(AttackProficiencyEnum.SPEAR), name="spear"),
+            AttackProficiencyEnum.HAMMER: Proficiency(code=str(AttackProficiencyEnum.HAMMER), name="hammer"),
+            AttackProficiencyEnum.POLEARM: Proficiency(code=str(AttackProficiencyEnum.POLEARM), name="polearm"),
+            AttackProficiencyEnum.KNIFE: Proficiency(code=str(AttackProficiencyEnum.KNIFE), name="knife"),
+            AttackProficiencyEnum.CLUB: Proficiency(code=str(AttackProficiencyEnum.CLUB), name="club"),
+            AttackProficiencyEnum.FLAIL: Proficiency(code=str(AttackProficiencyEnum.FLAIL), name="flail"),
+            AttackProficiencyEnum.BRAWLING: Proficiency(code=str(AttackProficiencyEnum.BRAWLING), name="brawling"),
+            AttackProficiencyEnum.AXE: Proficiency(code=str(AttackProficiencyEnum.AXE), name="axe"),
+            AttackProficiencyEnum.PICK: Proficiency(code=str(AttackProficiencyEnum.PICK), name="pick"),
+            AttackProficiencyEnum.SHIELD: Proficiency(code=str(AttackProficiencyEnum.SHIELD), name="shield"),
+            AttackProficiencyEnum.WHIP: Proficiency(code=str(AttackProficiencyEnum.WHIP), name="whip"),
+        }
+        self.defense_proficiencies = {
+            DefenseProficiencyEnum.UNARMORED_DEFENSE: Proficiency(code=str(DefenseProficiencyEnum.UNARMORED_DEFENSE), name="unarmored_defense"),
+            DefenseProficiencyEnum.LIGHT_ARMO: Proficiency(code=str(DefenseProficiencyEnum.LIGHT_ARMO), name="light_armo"),
+            DefenseProficiencyEnum.MEDIUM_ARMOR: Proficiency(code=str(DefenseProficiencyEnum.MEDIUM_ARMOR), name="medium_armor"),
+            DefenseProficiencyEnum.HEAVY_ARMOR: Proficiency(code=str(DefenseProficiencyEnum.HEAVY_ARMOR), name="heavy_armor"),
+        }
+        self.components = {**self.ability_scores, **self.skills, **self.saving_throws, **self.attack_proficiencies, **self.defense_proficiencies}
         self.value = None
 
 
@@ -375,9 +468,26 @@ class Character(Hero):
         return {
             **{f"{ability_score}-modifier": self.ability_scores[ability_score].get_modifier() for ability_score in AbilityScoreEnum},
             **{f"{ability_score}-score": self.ability_scores[ability_score].value for ability_score in AbilityScoreEnum},
+
             **{f"{skill}-modifier": self.skills[skill].get_modifier() for skill in SkillEnum},
             **{f"{skill}-proficiency": str(self.skills[skill].proficiency.value) for skill in SkillEnum},
             **{f"{skill}-proficiency-modifier": self.skills[skill].proficiency.get_modifier() for skill in SkillEnum},
             **{f"{skill}-item-modifier": self.skills[skill].get_item_modifier() for skill in SkillEnum},
-            **{f"{skill}-armor-modifier": self.skills[skill].get_armor_modifier() for skill in SkillEnum if self.skills[skill].ref_ability_score in [AbilityScoreEnum.DEX, AbilityScoreEnum.STR]}
+            **{f"{skill}-armor-modifier": self.skills[skill].get_armor_modifier() for skill in SkillEnum if self.skills[skill].ref_ability_score in [AbilityScoreEnum.DEX, AbilityScoreEnum.STR]},
+
+            **{f"{saving_throw}-modifier": self.saving_throws[saving_throw].get_modifier() for saving_throw in SavingThrowEnum},
+            **{f"{saving_throw}-proficiency": str(self.saving_throws[saving_throw].proficiency.value) for saving_throw in SavingThrowEnum},
+            **{f"{saving_throw}-proficiency-modifier": self.saving_throws[saving_throw].proficiency.get_modifier() for saving_throw in SavingThrowEnum},
+            **{f"{saving_throw}-item-modifier": self.saving_throws[saving_throw].get_item_modifier() for saving_throw in SavingThrowEnum},
+
+            **{
+                "perception-modifier": self.perception.get_modifier(),
+                "perception-proficiency": str(self.perception.proficiency.value),
+                "perception-proficiency-modifier": self.perception.proficiency.get_modifier(),
+                "perception-item-modifier": self.perception.get_item_modifier()
+            },
+
+            **{f"{defense_proficiency}-proficiency": str(self.defense_proficiencies[defense_proficiency].value) for defense_proficiency in DefenseProficiencyEnum},
+            **{f"{attack_proficiency}-proficiency": str(self.attack_proficiencies[attack_proficiency].value) for attack_proficiency in AttackProficiencyEnum},
+
         }
