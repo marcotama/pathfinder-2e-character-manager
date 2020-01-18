@@ -5,7 +5,7 @@ from abc import abstractmethod
 from base import *
 from pf2.enums import SkillEnum, SavingThrowEnum, ItemCategory, ArmorGroup, Die, PhysicalDamageType, DamageType, \
     Currency, ProficiencyLevelEnum, ArmorTraitEnum, MeleeWeaponGroupEnum, RangedWeaponGroupEnum, WeaponTraitEnum, \
-    DefenseProficiencyEnum, AttackProficiencyEnum, AbilityScoreEnum
+    DefenseProficiencyEnum, AttackProficiencyEnum, AbilityScoreEnum, InventoryItem
 
 
 class Amount:
@@ -73,7 +73,8 @@ class RangedWeapon(Weapon):
 
 
 class AbilityScore(Component):
-    value: Optional[int]
+    base_value: Optional[int]
+    modifiers: List[Tuple[str, int]] # (reason, delta)
 
     def __init__(self, code: str, name: str):
         self.code = code
@@ -81,19 +82,20 @@ class AbilityScore(Component):
         self.fields = {
             "score": Field(code="score", name="Score", type=int, value=None)
         }
-        self.value = None
+        self.base_value = None
 
     def set_value(self, new_value: int):
         if new_value < 1 or new_value > 20:
             raise Exception(f"Value {new_value} is out of range [1, 20].")
-        self.value = new_value
+        self.base_value = new_value
 
-    def get_modifier(self) -> int:
-        return (self.value - 10) // 2
+    def get_value(self) -> int:
+        return (self.base_value - 10) // 2
 
 
 class Proficiency(Component):
-    value: Optional[ProficiencyLevelEnum]
+    base_value: Optional[ProficiencyLevelEnum]
+    modifiers: List[Tuple[str, str, ProficiencyLevelEnum, int]] # (identifier, reason, value, priority (higher takes priority))
 
     def __init__(self, code: str, name: str):
         self.code = code
@@ -101,13 +103,20 @@ class Proficiency(Component):
         self.fields = {
             "proficiency": Field(code="proficiency", name="Proficiency", type=int, value=None)
         }
-        self.value = None
+        self.base_value = None
 
     def set_value(self, new_value: ProficiencyLevelEnum):
-        self.value = new_value
+        self.base_value = new_value
+
+    def get_value(self):
+        if len(self.modifiers) == 0:
+            return self.base_value
+        else:
+            max_priority = max(priority for identifier, reason, value, priority in self.modifiers)
+            return max(value for identifier, reason, value, priority in self.modifiers if priority == max_priority)
 
     def get_modifier(self) -> int:
-        return self.value.get_modifier() if self.value is not None else 0
+        return self.base_value.get_modifier() if self.base_value is not None else 0
 
 
 class ProficiencyBasedRoll(Component):
@@ -132,9 +141,9 @@ class ProficiencyBasedRoll(Component):
         return 0 # TODO
 
     def get_attribute_modifier(self):
-        return self.character.ability_scores[self.ref_ability_score].get_modifier()
+        return self.character.ability_scores[self.ref_ability_score].get_value()
 
-    def get_modifier(self) -> int:
+    def get_value(self) -> int:
         return self.proficiency.get_modifier() + self.get_attribute_modifier() + self.get_item_modifier()
 
 
@@ -166,9 +175,9 @@ class ProficiencyAndKeyAttributeBasedRoll(Component):
 
     def get_attribute_modifier(self):
         key_ability_score = self.character.clazz.key_ability_score
-        return self.character.ability_scores[key_ability_score].get_modifier()
+        return self.character.ability_scores[key_ability_score].get_value()
 
-    def get_modifier(self) -> int:
+    def get_value(self) -> int:
         return self.proficiency.get_modifier() + self.get_attribute_modifier() + self.get_item_modifier()
 
 
@@ -187,15 +196,15 @@ class SpellDC(ProficiencyAndKeyAttributeBasedRoll):
 class Skill(ProficiencyBasedRoll):
     def get_armor_modifier(self):
         if self.ref_ability_score.code in [AbilityScoreEnum.DEX, AbilityScoreEnum.STR]:
-            if self.character.ability_scores[AbilityScoreEnum.STR].value >= self.character.armor.strength:
+            if self.character.ability_scores[AbilityScoreEnum.STR].base_value >= self.character.armor.strength:
                 return 0
             else:
                 return -self.character.armor.check_penalty
         else:
             return 0
 
-    def get_modifier(self) -> int:
-        return super().get_modifier() + self.get_armor_modifier()
+    def get_value(self) -> int:
+        return super().get_value() + self.get_armor_modifier()
 
 
 class Clazz:
@@ -233,6 +242,7 @@ class Character(Hero):
     conditions: List[DamageType]
     attack_proficiencies: Dict[AttackProficiencyEnum, Proficiency]
     defense_proficiencies: Dict[DefenseProficiencyEnum, Proficiency]
+    inventory: Dict[InventoryItem, Optional[Tuple[str, str]]] # why each item is present (identifier, description)
     
     def __init__(self, code: str, name: str):
         self.code = code
@@ -313,51 +323,63 @@ class Character(Hero):
 
     def get_all_sheet_fields(self):
         return {
-            **{f"{ability_score}-modifier": self.ability_scores[ability_score].get_modifier() for ability_score in AbilityScoreEnum},
-            **{f"{ability_score}-score": self.ability_scores[ability_score].value for ability_score in AbilityScoreEnum},
+            **{f"{ability_score}-modifier": self.ability_scores[ability_score].get_value() for ability_score in AbilityScoreEnum},
+            **{f"{ability_score}-score": self.ability_scores[ability_score].base_value for ability_score in AbilityScoreEnum},
 
-            **{f"{skill}-modifier": self.skills[skill].get_modifier() for skill in SkillEnum},
+            **{f"{skill}-value": self.skills[skill].get_value() for skill in SkillEnum},
             **{f"{skill}-attribute-modifier": self.skills[skill].get_attribute_modifier() for skill in SkillEnum},
-            **{f"{skill}-proficiency": str(self.skills[skill].proficiency.value) for skill in SkillEnum},
+            **{f"{skill}-proficiency": str(self.skills[skill].proficiency.base_value) for skill in SkillEnum},
             **{f"{skill}-proficiency-modifier": self.skills[skill].proficiency.get_modifier() for skill in SkillEnum},
             **{f"{skill}-item-modifier": self.skills[skill].get_item_modifier() for skill in SkillEnum},
             **{f"{skill}-armor-modifier": self.skills[skill].get_armor_modifier() for skill in SkillEnum if self.skills[skill].ref_ability_score in [AbilityScoreEnum.DEX, AbilityScoreEnum.STR]},
 
-            **{f"{saving_throw}-modifier": self.saving_throws[saving_throw].get_modifier() for saving_throw in SavingThrowEnum},
+            **{f"{saving_throw}-value": self.saving_throws[saving_throw].get_value() for saving_throw in SavingThrowEnum},
             **{f"{saving_throw}-attribute-modifier": self.saving_throws[saving_throw].get_attribute_modifier() for saving_throw in SavingThrowEnum},
-            **{f"{saving_throw}-proficiency": str(self.saving_throws[saving_throw].proficiency.value) for saving_throw in SavingThrowEnum},
+            **{f"{saving_throw}-proficiency": str(self.saving_throws[saving_throw].proficiency.base_value) for saving_throw in SavingThrowEnum},
             **{f"{saving_throw}-proficiency-modifier": self.saving_throws[saving_throw].proficiency.get_modifier() for saving_throw in SavingThrowEnum},
             **{f"{saving_throw}-item-modifier": self.saving_throws[saving_throw].get_item_modifier() for saving_throw in SavingThrowEnum},
 
-            **{f"{defense_proficiency}-proficiency": str(self.defense_proficiencies[defense_proficiency].value) for defense_proficiency in DefenseProficiencyEnum},
-            **{f"{attack_proficiency}-proficiency": str(self.attack_proficiencies[attack_proficiency].value) for attack_proficiency in AttackProficiencyEnum},
+            **{f"{defense_proficiency}-proficiency": str(self.defense_proficiencies[defense_proficiency].base_value) for defense_proficiency in DefenseProficiencyEnum},
+            **{f"{attack_proficiency}-proficiency": str(self.attack_proficiencies[attack_proficiency].base_value) for attack_proficiency in AttackProficiencyEnum},
 
             **{
-                "perception": self.perception.get_modifier(),
+                "perception-value": self.perception.get_value(),
                 "perception-attribute-modifier": self.perception.get_attribute_modifier(),
-                "perception-proficiency": str(self.perception.proficiency.value),
+                "perception-proficiency": str(self.perception.proficiency.base_value),
                 "perception-proficiency-modifier": self.perception.proficiency.get_modifier(),
                 "perception-item-modifier": self.perception.get_item_modifier(),
 
-                "class-dc": self.class_dc.get_modifier(),
+                "class-dc-value": self.class_dc.get_value(),
                 "class-dc-attribute-modifier": self.class_dc.get_attribute_modifier(),
-                "class-dc-proficiency": str(self.class_dc.proficiency.value),
+                "class-dc-proficiency": str(self.class_dc.proficiency.base_value),
                 "class-dc-proficiency-modifier": self.class_dc.proficiency.get_modifier(),
                 "class-dc-item-modifier": self.class_dc.get_item_modifier(),
 
-                "spell-attack-roll-modifier": self.spell_attack_roll.get_modifier(),
+                "spell-attack-roll-value": self.spell_attack_roll.get_value(),
                 "spell-attack-roll-attribute-modifier": self.spell_attack_roll.get_attribute_modifier(),
-                "spell-attack-roll-proficiency": str(self.spell_attack_roll.proficiency.value),
+                "spell-attack-roll-proficiency": str(self.spell_attack_roll.proficiency.base_value),
                 "spell-attack-roll-proficiency-modifier": self.spell_attack_roll.proficiency.get_modifier(),
                 "spell-attack-roll-item-modifier": self.spell_attack_roll.get_item_modifier(),
 
-                "spell-dc-modifier": self.spell_dc.get_modifier(),
+                "spell-dc-value": self.spell_dc.get_value(),
                 "spell-dc-attribute-modifier": self.spell_dc.get_attribute_modifier(),
-                "spell-dc-proficiency": str(self.spell_dc.proficiency.value),
+                "spell-dc-proficiency": str(self.spell_dc.proficiency.base_value),
                 "spell-dc-proficiency-modifier": self.spell_dc.proficiency.get_modifier(),
                 "spell-dc-item-modifier": self.spell_dc.get_item_modifier()
             },
         }
+
+    def clear_items_granted_by(self, identifier: str):
+        for item, granted_by in self.inventory:
+            if granted_by == identifier:
+                del self.inventory[item]
+
+    def clear_skills_modifiers_granted_by(self, identifier: str):
+        for skill in self.skills.values():
+            for modifier in skill.proficiency.modifiers:
+                granted_by, reason, value, priority = modifier
+                if granted_by == identifier:
+                    skill.proficiency.modifiers.remove(modifier)
 
 
 class Choice:
