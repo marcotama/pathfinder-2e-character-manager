@@ -9,7 +9,6 @@ from pf2.enums import SkillEnum, SavingThrowEnum, ItemCategory, ArmorGroup, Die,
 
 
 class Amount:
-    value_in_cp: int
 
     def __init__(self, amount: List[Tuple[int, Currency]]):
         self.value_in_cp = sum(am * curr.value for am, curr in amount)
@@ -26,55 +25,61 @@ class Amount:
 
 
 class Armor(Thing):
-    category: ItemCategory
-    price: Amount
-    ac_bonus: int
-    dex_cap: int
-    check_penalty: int
-    speed_penalty: int
-    strength: int
-    bulk: int
-    group: ArmorGroup
-    traits: List[ArmorTraitEnum]
+    pass
+#     category: ItemCategory
+#     price: Amount
+#     ac_bonus: int
+#     dex_cap: int
+#     check_penalty: int
+#     speed_penalty: int
+#     strength: int
+#     bulk: int
+#     group: ArmorGroup
+#     traits: List[ArmorTraitEnum]
 
 
 class Shield(Thing):
-    category: ItemCategory
-    price: Amount
-    ac_bonus: int
-    speed_penalty: int
-    bulk: int
-    hardness: int
-    hit_points: int
-    broken_threshold: int
+    pass
+#     category: ItemCategory
+#     price: Amount
+#     ac_bonus: int
+#     speed_penalty: int
+#     bulk: int
+#     hardness: int
+#     hit_points: int
+#     broken_threshold: int
 
 
 class Damage:
-    amount: Dict[Die, Tuple[int, PhysicalDamageType]]
+    pass
+#     amount: Dict[Die, Tuple[int, PhysicalDamageType]]
 
 
 class Weapon(Thing):
-    category: ItemCategory
-    price: Amount
-    damage: Damage
-    bulk: int
-    hands: int
-    traits: List[WeaponTraitEnum]
+    pass
+#     category: ItemCategory
+#     price: Amount
+#     damage: Damage
+#     bulk: int
+#     hands: int
+#     traits: List[WeaponTraitEnum]
 
 
 class MeleeWeapon(Weapon):
-    group: MeleeWeaponGroupEnum
+    pass
+#     group: MeleeWeaponGroupEnum
 
 
 class RangedWeapon(Weapon):
-    range: int
-    reload: int
-    group: RangedWeaponGroupEnum
+    pass
+#     range: int
+#     reload: int
+#     group: RangedWeaponGroupEnum
 
 
 class AbilityScore(Component):
-    base_value: Optional[int]
-    modifiers: List[Tuple[str, int]] # (reason, delta)
+#     base_value: Optional[int]
+#     modifiers: List[Tuple[str, int]] # (reason, delta)
 
     def __init__(self, code: str, name: str):
         self.code = code
@@ -120,9 +125,9 @@ class Proficiency(Component):
 
 
 class ProficiencyBasedRoll(Component):
-    proficiency: Proficiency
-    ref_ability_score: AbilityScoreEnum
-    character: Character
+#     proficiency: Proficiency
+#     ref_ability_score: AbilityScoreEnum
+#     character: Character
 
     def __init__(
             self,
@@ -208,14 +213,14 @@ class Skill(ProficiencyBasedRoll):
 
 
 class Clazz:
-    key_ability_score: AbilityScoreEnum
-    hit_points: int
-    initial_proficiencies: Dict[str, ProficiencyLevelEnum] # FIXME str?
-    perception: ProficiencyLevelEnum
-    saving_throws: Dict[SavingThrowEnum, ProficiencyLevelEnum]
-    skills: Dict[SkillEnum, ProficiencyLevelEnum]
-    attacks: Dict[AttackProficiencyEnum, ProficiencyLevelEnum]
-    defenses: Dict[DefenseProficiencyEnum, ProficiencyLevelEnum]
+#     key_ability_score: AbilityScoreEnum
+#     hit_points: int
+#     initial_proficiencies: Dict[str, ProficiencyLevelEnum] # FIXME str?
+#     perception: ProficiencyLevelEnum
+#     saving_throws: Dict[SavingThrowEnum, ProficiencyLevelEnum]
+#     skills: Dict[SkillEnum, ProficiencyLevelEnum]
+#     attacks: Dict[AttackProficiencyEnum, ProficiencyLevelEnum]
+#     defenses: Dict[DefenseProficiencyEnum, ProficiencyLevelEnum]
 
     @abstractmethod
     def calc_hit_points_increase(self, character: Character):
@@ -225,24 +230,24 @@ class Clazz:
 
 class Character(Hero):
     clazz: Clazz
-    ability_scores: Dict[AbilityScoreEnum, AbilityScore]
-    skills: Dict[SkillEnum, Skill]
-    saving_throws: Dict[SavingThrowEnum, SavingThrow]
-    perception: Perception
-    class_dc: ClassDC
-    spell_attack_roll: SpellAttackRoll
-    spell_dc: SpellDC
-    equipment: List[Union[Armor, Shield, Weapon]]
-    max_hit_points: int
-    current_hit_points: int
-    temporary_hit_points: int
-    speed :int
-    resistances: List[DamageType]
-    immunities: List[DamageType]
-    conditions: List[DamageType]
-    attack_proficiencies: Dict[AttackProficiencyEnum, Proficiency]
-    defense_proficiencies: Dict[DefenseProficiencyEnum, Proficiency]
-    inventory: Dict[InventoryItem, Optional[Tuple[str, str]]] # why each item is present (identifier, description)
+#     ability_scores: Dict[AbilityScoreEnum, AbilityScore]
+#     skills: Dict[SkillEnum, Skill]
+#     saving_throws: Dict[SavingThrowEnum, SavingThrow]
+#     perception: Perception
+#     class_dc: ClassDC
+#     spell_attack_roll: SpellAttackRoll
+#     spell_dc: SpellDC
+#     equipment: List[Union[Armor, Shield, Weapon]]
+#     max_hit_points: int
+#     current_hit_points: int
+#     temporary_hit_points: int
+#     speed :int
+#     resistances: List[DamageType]
+#     immunities: List[DamageType]
+#     conditions: List[DamageType]
+#     attack_proficiencies: Dict[AttackProficiencyEnum, Proficiency]
+#     defense_proficiencies: Dict[DefenseProficiencyEnum, Proficiency]
+#     inventory: Dict[InventoryItem, Optional[Tuple[str, str]]] # why each item is present (identifier, description)
     
     def __init__(self, code: str, name: str):
         self.code = code
@@ -383,10 +388,10 @@ class Character(Hero):
 
 
 class Choice:
-    description: str
-    options: List[str]
-    num_choices: int
-    callback: Callable
+#     description: str
+#     options: List[str]
+#     num_choices: int
+#     callback: Callable
 
     def __init__(self, description: str, options: List[str], num_choices: int, callback: Callable):
         self.description = description
