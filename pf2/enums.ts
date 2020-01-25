@@ -73,11 +73,21 @@ export enum MagicDamageType {
 export type DamageType = PhysicalDamageType | MagicDamageType;
 
 export enum Currency {
-    PP = 1000,
-    GP = 100,
-    SP = 10,
-    CP = 1,
+    PP = 'pp',
+    GP = 'gp',
+    SP = 'sp',
+    CP = 'cp'
 }
+
+export function getCurrencyValue(currency: Currency): number {
+    switch (currency) {
+        case Currency.PP: return 1000;
+        case Currency.GP: return 100;
+        case Currency.SP: return 10;
+        case Currency.CP: return 1;
+    }
+}
+
 
 export enum ProficiencyLevelEnum {
     UNTRAINED = 0,

@@ -1,48 +1,49 @@
-import {Thing} from "../base"
+import {Component, Field, Hero, Thing} from "../base"
+
 import {
-    SkillEnum,
-    SavingThrowEnum,
-    ItemCategory,
-    ArmorGroup,
-    Die,
-    PhysicalDamageType,
-    DamageType,
-    Currency,
-    ProficiencyLevelEnum,
-    ArmorTraitEnum,
-    MeleeWeaponGroupEnum,
-    RangedWeaponGroupEnum,
-    WeaponTraitEnum,
-    DefenseProficiencyEnum,
-    AttackProficiencyEnum,
     AbilityScoreEnum,
-    InventoryItem,
+    ArmorGroup,
+    ArmorTraitEnum,
+    AttackProficiencyEnum,
+    Currency,
+    DamageType,
+    DefenseProficiencyEnum,
+    Die,
+    getCurrencyValue,
     getProficiencyModifier,
-    OtherAttackProficiencyEnum
+    InventoryItem,
+    ItemCategory,
+    MeleeWeaponGroupEnum,
+    OtherAttackProficiencyEnum,
+    PhysicalDamageType,
+    ProficiencyLevelEnum,
+    RangedWeaponGroupEnum,
+    SavingThrowEnum,
+    SkillEnum,
+    WeaponTraitEnum
 } from "./enums";
 
 
-
 class Amount {
-    readonly valueIn_cp: number;
+    readonly valueInCp: number;
 
     constructor(amount: Array<[number, Currency]>) {
-        this.valueIn_cp = 0;
+        this.valueInCp = 0;
         for (let entry of amount) {
             let [am, curr] = entry;
-            this.valueIn_cp += am * curr;
+            this.valueInCp += am * getCurrencyValue(curr);
         }
     }
 
-    public get_normalised = () => {
-        let v = this.valueIn_cp;
+    public getNormalised = () => {
+        let v = this.valueInCp;
         let amount = [];
-        for (let curr of Object.keys(Currency).reverse()) {
+        for (let curr of [Currency.CP, Currency.SP, Currency.GP, Currency.PP]) {
             let am = v; // curr.value
             if (am > 0) {
                 amount.push([am, curr]);
             }
-            v %= Currency[curr];
+            v %= getCurrencyValue(curr);
         }
     }
 }
@@ -51,10 +52,10 @@ class Amount {
 class Armor extends Thing {
     category: ItemCategory;
     price: Amount;
-    ac_bonus: number;
-    dex_cap: number;
-    check_penalty: number;
-    speed_penalty: number;
+    acBonus: number;
+    dexCap: number;
+    checkPenalty: number;
+    speedPenalty: number;
     strength: number;
     bulk: number;
     group: ArmorGroup;
@@ -64,12 +65,12 @@ class Armor extends Thing {
 class Shield extends Thing {
     category: ItemCategory;
     price: Amount;
-    ac_bonus: number;
-    speed_penalty: number;
+    acBonus: number;
+    speedPenalty: number;
     bulk: number;
     hardness: number;
-    hit_points: number;
-    broken_threshold: number;
+    hitPoints: number;
+    brokenThreshold: number;
 }
 
 class Damage {
@@ -180,7 +181,7 @@ class ProficiencyBasedRoll extends Component {
     };
 
     public getAttributeModifier = () => {
-        return this.character.abilityScores[this.refAbilityScore].getValue();
+        return this.character.abilityScores.get(this.refAbilityScore).getValue();
     };
 
     public getValue = () => {
@@ -210,10 +211,10 @@ class ProficiencyAndKeyAttributeBasedRoll extends Component {
 
     public getAttributeModifier = () => {
         let keyAbilityScore = this.character.clazz.keyAbilityScore;
-        return this.character.abilityScores[keyAbilityScore].getValue();
+        return this.character.abilityScores.get(keyAbilityScore).getValue();
     };
 
-    public get_value = () => {
+    public getValue = () => {
         return this.proficiency.getModifier() + this.getAttributeModifier() + this.getItemModifier();
     };
 }
@@ -229,11 +230,11 @@ class SpellDC extends ProficiencyAndKeyAttributeBasedRoll {}
 
 class Skill extends ProficiencyBasedRoll {
     public getArmorModifier = () => {
-        if (this.refAbilityScore.code in [AbilityScoreEnum.DEX, AbilityScoreEnum.STR]) {
-            if (this.character.abilityScores[AbilityScoreEnum.string].baseValue >= this.character.armor.strength) {
+        if (this.refAbilityScore in [AbilityScoreEnum.DEX, AbilityScoreEnum.STR]) {
+            if (this.character.abilityScores.get(AbilityScoreEnum.STR).baseValue >= this.character.armor.strength) {
                 return 0;
             } else {
-                return -this.character.armor.check_penalty;
+                return -this.character.armor.checkPenalty;
             }
         } else {
             return 0;
@@ -245,17 +246,17 @@ class Skill extends ProficiencyBasedRoll {
     }
 }
 
-class Clazz {
+abstract class Clazz {
     keyAbilityScore: AbilityScoreEnum;
-    hit_points: number;
-    initial_proficiencies: Map<string, ProficiencyLevelEnum>; // FIXME string?
+    hitPoints: number;
+    initialProficiencies: Map<string, ProficiencyLevelEnum>; // FIXME string?
     perception: ProficiencyLevelEnum;
-    saving_throws: Map<SavingThrowEnum, ProficiencyLevelEnum>;
+    savingThrows: Map<SavingThrowEnum, ProficiencyLevelEnum>;
     skills: Map<SkillEnum, ProficiencyLevelEnum>;
     attacks: Map<AttackProficiencyEnum, ProficiencyLevelEnum>;
     defenses: Map<DefenseProficiencyEnum, ProficiencyLevelEnum>;
 
-    public abstract calc_hit_pointsIncrease = (character: Character) => {};
+    public abstract calcHitPointsIncrease = (character: Character) => {};
 }
 
 
@@ -267,39 +268,39 @@ class Character extends Hero {
     weapons: Array<Weapon>;
     abilityScores: Map<AbilityScoreEnum, AbilityScore>;
     skills: Map<SkillEnum, Skill>;
-    saving_throws: Map<SavingThrowEnum, SavingThrow>;
+    savingThrows: Map<SavingThrowEnum, SavingThrow>;
     perception: Perception;
-    class_dc: ClassDC;
-    spellAttack_roll: SpellAttackRoll;
-    spell_dc: SpellDC;
+    classDC: ClassDC;
+    spellAttackRoll: SpellAttackRoll;
+    spellDC: SpellDC;
     equipment: Array<Armor | Shield | Weapon>;
-    max_hit_points: number;
-    current_hit_points: number;
-    temporary_hit_points: number;
-    speed :number;
+    maxHitPoints: number;
+    currentHitPoints: number;
+    temporaryHitPoints: number;
+    speed: number;
     resistances: Array<DamageType>;
     immunities: Array<DamageType>;
     conditions: Array<DamageType>;
-    attack_proficiencies: Map<AttackProficiencyEnum, Proficiency>;
-    defense_proficiencies: Map<DefenseProficiencyEnum, Proficiency>;
+    attackProficiencies: Map<AttackProficiencyEnum, Proficiency>;
+    defenseProficiencies: Map<DefenseProficiencyEnum, Proficiency>;
     inventory: Map<InventoryItem, [string, string] | null>; // why each item is present (identifier, description)
-    
+
     constructor(code: string, name: string) {
         super(code, name);
         this.armor = null;
         this.shields = [];
         this.weapons = [];
-        this.max_hit_points = 0;
-        this.current_hit_points = 0;
-        this.temporary_hit_points = 0;
+        this.maxHitPoints = 0;
+        this.currentHitPoints = 0;
+        this.temporaryHitPoints = 0;
         this.speed = 0;
         this.resistances = [];
         this.immunities = [];
         this.conditions = [];
         this.perception = new Perception("perception", "Perception", AbilityScoreEnum.WIS, this);
-        this.class_dc = new ClassDC(code = "class-dc", name = "Class DC", this);
-        this.spellAttack_roll = new SpellAttackRoll("spell-attack-roll", "Spell Attack Roll", this);
-        this.spell_dc = new SpellDC("spell-dc", "Spell DC", this);
+        this.classDC = new ClassDC(code = "class-dc", name = "Class DC", this);
+        this.spellAttackRoll = new SpellAttackRoll("spell-attack-roll", "Spell Attack Roll", this);
+        this.spellDC = new SpellDC("spell-dc", "Spell DC", this);
 
         this.abilityScores.set(AbilityScoreEnum.STR, new AbilityScore(AbilityScoreEnum.STR, "Strength"));
         this.abilityScores.set(AbilityScoreEnum.DEX, new AbilityScore(AbilityScoreEnum.DEX, "Dexterity"));
@@ -326,117 +327,137 @@ class Character extends Hero {
         this.skills.set(SkillEnum.SURVIVAL, new Skill(SkillEnum.SURVIVAL, "Survival", AbilityScoreEnum.WIS, this));
         this.skills.set(SkillEnum.THIEVERY, new Skill(SkillEnum.THIEVERY, "Thievery", AbilityScoreEnum.DEX, this));
 
-        this.saving_throws.set(SavingThrowEnum.FORTITUDE, new SavingThrow(SavingThrowEnum.FORTITUDE, "Fortitude", AbilityScoreEnum.CON, this));
-        this.saving_throws.set(SavingThrowEnum.REFLEX, new SavingThrow(SavingThrowEnum.REFLEX, "Reflex", AbilityScoreEnum.DEX, this));
-        this.saving_throws.set(SavingThrowEnum.WILL, new SavingThrow(SavingThrowEnum.WILL, "Will", AbilityScoreEnum.WIS, this));
+        this.savingThrows.set(SavingThrowEnum.FORTITUDE, new SavingThrow(SavingThrowEnum.FORTITUDE, "Fortitude", AbilityScoreEnum.CON, this));
+        this.savingThrows.set(SavingThrowEnum.REFLEX, new SavingThrow(SavingThrowEnum.REFLEX, "Reflex", AbilityScoreEnum.DEX, this));
+        this.savingThrows.set(SavingThrowEnum.WILL, new SavingThrow(SavingThrowEnum.WILL, "Will", AbilityScoreEnum.WIS, this));
 
-        this.attack_proficiencies.set(OtherAttackProficiencyEnum.UNARMED_ATTACKS, new Proficiency(OtherAttackProficiencyEnum.UNARMED_ATTACKS, "Unarmed Attacks"));
-        this.attack_proficiencies.set(OtherAttackProficiencyEnum.SIMPLE_WEAPONS, new Proficiency(OtherAttackProficiencyEnum.SIMPLE_WEAPONS, "Simple Weapons"));
-        this.attack_proficiencies.set(OtherAttackProficiencyEnum.MARTIAL_WEAPONS, new Proficiency(OtherAttackProficiencyEnum.MARTIAL_WEAPONS, "Martial Weapons"));
-        this.attack_proficiencies.set(OtherAttackProficiencyEnum.ALCHEMICAL_BOMBS, new Proficiency(OtherAttackProficiencyEnum.ALCHEMICAL_BOMBS, "Alchemical Bombs"));
+        this.attackProficiencies.set(OtherAttackProficiencyEnum.UNARMED_ATTACKS, new Proficiency(OtherAttackProficiencyEnum.UNARMED_ATTACKS, "Unarmed Attacks"));
+        this.attackProficiencies.set(OtherAttackProficiencyEnum.SIMPLE_WEAPONS, new Proficiency(OtherAttackProficiencyEnum.SIMPLE_WEAPONS, "Simple Weapons"));
+        this.attackProficiencies.set(OtherAttackProficiencyEnum.MARTIAL_WEAPONS, new Proficiency(OtherAttackProficiencyEnum.MARTIAL_WEAPONS, "Martial Weapons"));
+        this.attackProficiencies.set(OtherAttackProficiencyEnum.ALCHEMICAL_BOMBS, new Proficiency(OtherAttackProficiencyEnum.ALCHEMICAL_BOMBS, "Alchemical Bombs"));
 
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.SWORD, new Proficiency(MeleeWeaponGroupEnum.SWORD, "Sword"));
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.SPEAR, new Proficiency(MeleeWeaponGroupEnum.SPEAR, "Spear"));
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.HAMMER, new Proficiency(MeleeWeaponGroupEnum.HAMMER, "Hammer"));
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.POLEARM, new Proficiency(MeleeWeaponGroupEnum.POLEARM, "Polearm"));
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.KNIFE, new Proficiency(MeleeWeaponGroupEnum.KNIFE, "Knife"));
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.CLUB, new Proficiency(MeleeWeaponGroupEnum.CLUB, "Club"));
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.FLAIL, new Proficiency(MeleeWeaponGroupEnum.FLAIL, "Flail"));
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.BRAWLING, new Proficiency(MeleeWeaponGroupEnum.BRAWLING, "Brawling"));
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.AXE, new Proficiency(MeleeWeaponGroupEnum.AXE, "Axe"));
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.PICK, new Proficiency(MeleeWeaponGroupEnum.PICK, "Pick"));
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.SHIELD, new Proficiency(MeleeWeaponGroupEnum.SHIELD, "Shield"));
-        this.attack_proficiencies.set(MeleeWeaponGroupEnum.WHIP, new Proficiency(MeleeWeaponGroupEnum.WHIP, "Whip"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.SWORD, new Proficiency(MeleeWeaponGroupEnum.SWORD, "Sword"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.SPEAR, new Proficiency(MeleeWeaponGroupEnum.SPEAR, "Spear"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.HAMMER, new Proficiency(MeleeWeaponGroupEnum.HAMMER, "Hammer"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.POLEARM, new Proficiency(MeleeWeaponGroupEnum.POLEARM, "Polearm"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.KNIFE, new Proficiency(MeleeWeaponGroupEnum.KNIFE, "Knife"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.CLUB, new Proficiency(MeleeWeaponGroupEnum.CLUB, "Club"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.FLAIL, new Proficiency(MeleeWeaponGroupEnum.FLAIL, "Flail"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.BRAWLING, new Proficiency(MeleeWeaponGroupEnum.BRAWLING, "Brawling"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.AXE, new Proficiency(MeleeWeaponGroupEnum.AXE, "Axe"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.PICK, new Proficiency(MeleeWeaponGroupEnum.PICK, "Pick"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.SHIELD, new Proficiency(MeleeWeaponGroupEnum.SHIELD, "Shield"));
+        this.attackProficiencies.set(MeleeWeaponGroupEnum.WHIP, new Proficiency(MeleeWeaponGroupEnum.WHIP, "Whip"));
 
-        this.attack_proficiencies.set(RangedWeaponGroupEnum.DART, new Proficiency(RangedWeaponGroupEnum.DART, "Dart"));
-        this.attack_proficiencies.set(RangedWeaponGroupEnum.BOW, new Proficiency(RangedWeaponGroupEnum.BOW, "Bow"));
+        this.attackProficiencies.set(RangedWeaponGroupEnum.DART, new Proficiency(RangedWeaponGroupEnum.DART, "Dart"));
+        this.attackProficiencies.set(RangedWeaponGroupEnum.BOW, new Proficiency(RangedWeaponGroupEnum.BOW, "Bow"));
 
-        this.defense_proficiencies.set(DefenseProficiencyEnum.UNARMORED_DEFENSE, new Proficiency(DefenseProficiencyEnum.UNARMORED_DEFENSE, "Unarmored Defense"));
-        this.defense_proficiencies.set(DefenseProficiencyEnum.LIGHT_ARMOR, new Proficiency(DefenseProficiencyEnum.LIGHT_ARMOR, "Light Armor"));
-        this.defense_proficiencies.set(DefenseProficiencyEnum.MEDIUM_ARMOR, new Proficiency(DefenseProficiencyEnum.MEDIUM_ARMOR, "Medium Armor"));
-        this.defense_proficiencies.set(DefenseProficiencyEnum.HEAVY_ARMOR, new Proficiency(DefenseProficiencyEnum.HEAVY_ARMOR, "Heavy Armor"));
+        this.defenseProficiencies.set(DefenseProficiencyEnum.UNARMORED_DEFENSE, new Proficiency(DefenseProficiencyEnum.UNARMORED_DEFENSE, "Unarmored Defense"));
+        this.defenseProficiencies.set(DefenseProficiencyEnum.LIGHT_ARMOR, new Proficiency(DefenseProficiencyEnum.LIGHT_ARMOR, "Light Armor"));
+        this.defenseProficiencies.set(DefenseProficiencyEnum.MEDIUM_ARMOR, new Proficiency(DefenseProficiencyEnum.MEDIUM_ARMOR, "Medium Armor"));
+        this.defenseProficiencies.set(DefenseProficiencyEnum.HEAVY_ARMOR, new Proficiency(DefenseProficiencyEnum.HEAVY_ARMOR, "Heavy Armor"));
 
         this.components = new Map<string, Component>([
             ...Array.from(this.abilityScores.entries()),
             ...Array.from(this.skills.entries()),
-            ...Array.from(this.saving_throws.entries()),
-            ...Array.from(this.attack_proficiencies.entries()),
-            ...Array.from(this.defense_proficiencies.entries())
+            ...Array.from(this.savingThrows.entries()),
+            ...Array.from(this.attackProficiencies.entries()),
+            ...Array.from(this.defenseProficiencies.entries())
         ]);
     }
 
 
     public getAllSheetFields = () => {
-        return new Map<string, any>([
-            ...Array.from([...this.abilityScores.keys()].map((abilityScore) => [`{abilityScore}-modifier`, this.abilityScores.get(abilityScore)]),
-            ...Array.from(this.abilityScores.keys().map(abilityScore => [`{abilityScore}-modifier`, this.abilityScores.get(abilityScore)])
-            **{f"{abilityScore}-score": this.abilityScores[abilityScore].baseValue for abilityScore in AbilityScoreEnum},
-
-            **{f"{skill}-value": this.skills[skill].getValue() for skill in SkillEnum},
-            **{f"{skill}-attribute-modifier": this.skills[skill].getAttributeModifier() for skill in SkillEnum},
-            **{f"{skill}-proficiency": string(this.skills[skill].proficiency.baseValue) for skill in SkillEnum},
-            **{f"{skill}-proficiency-modifier": this.skills[skill].proficiency.getModifier() for skill in SkillEnum},
-            **{f"{skill}-item-modifier": this.skills[skill].getItemModifier() for skill in SkillEnum},
-            **{f"{skill}-armor-modifier": this.skills[skill].getArmorModifier() for skill in SkillEnum if this.skills[skill].refAbilityScore in [AbilityScoreEnum.DEX, AbilityScoreEnum.string]},
-
-            **{f"{saving_throw}-value": this.saving_throws[saving_throw].getValue() for saving_throw in SavingThrowEnum},
-            **{f"{saving_throw}-attribute-modifier": this.saving_throws[saving_throw].getAttributeModifier() for saving_throw in SavingThrowEnum},
-            **{f"{saving_throw}-proficiency": string(this.saving_throws[saving_throw].proficiency.baseValue) for saving_throw in SavingThrowEnum},
-            **{f"{saving_throw}-proficiency-modifier": this.saving_throws[saving_throw].proficiency.getModifier() for saving_throw in SavingThrowEnum},
-            **{f"{saving_throw}-item-modifier": this.saving_throws[saving_throw].getItemModifier() for saving_throw in SavingThrowEnum},
-
-            **{f"{defense_proficiency}-proficiency": string(this.defense_proficiencies[defense_proficiency].baseValue) for defense_proficiency in DefenseProficiencyEnum},
-            **{f"{attack_proficiency}-proficiency": string(this.attack_proficiencies[attack_proficiency].baseValue) for attack_proficiency in AttackProficiencyEnum},
-
-            **{
-                "perception-value": this.perception.getValue(),
-                "perception-attribute-modifier": this.perception.getAttributeModifier(),
-                "perception-proficiency": string(this.perception.proficiency.baseValue),
-                "perception-proficiency-modifier": this.perception.proficiency.getModifier(),
-                "perception-item-modifier": this.perception.getItemModifier(),
-
-                "class-dc-value": this.class_dc.getValue(),
-                "class-dc-attribute-modifier": this.class_dc.getAttributeModifier(),
-                "class-dc-proficiency": string(this.class_dc.proficiency.baseValue),
-                "class-dc-proficiency-modifier": this.class_dc.proficiency.getModifier(),
-                "class-dc-item-modifier": this.class_dc.getItemModifier(),
-
-                "spell-attack-roll-value": this.spellAttack_roll.getValue(),
-                "spell-attack-roll-attribute-modifier": this.spellAttack_roll.getAttributeModifier(),
-                "spell-attack-roll-proficiency": string(this.spellAttack_roll.proficiency.baseValue),
-                "spell-attack-roll-proficiency-modifier": this.spellAttack_roll.proficiency.getModifier(),
-                "spell-attack-roll-item-modifier": this.spellAttack_roll.getItemModifier(),
-
-                "spell-dc-value": this.spell_dc.getValue(),
-                "spell-dc-attribute-modifier": this.spell_dc.getAttributeModifier(),
-                "spell-dc-proficiency": string(this.spell_dc.proficiency.baseValue),
-                "spell-dc-proficiency-modifier": this.spell_dc.proficiency.getModifier(),
-                "spell-dc-item-modifier": this.spell_dc.getItemModifier()
-            ]};
-        }
+        let out = new Map<string, any>();
+        for (let abilityScoreEnum of this.abilityScores.keys()) {
+            let abilityScore: AbilityScore = this.abilityScores.get(abilityScoreEnum);
+            out.set(`{abilityScore}-modifier`, abilityScore.getValue());
+            out.set(`{abilityScore}-score`, abilityScore.baseValue);
         }
 
-    def clearItems_granted_by(this, identifier: string):
-        for item, granted_by in this.inventory:
-            if granted_by == identifier:
-                del this.inventory[item]
+        for (let skillEnum of this.skills.keys()) {
+            let skill: Skill = this.skills.get(skillEnum);
+            out.set(`{skill}-value`, skill.getValue());
+            out.set(`{skill}-attribute-modifier`, skill.getAttributeModifier());
+            out.set(`{skill}-proficiency`, skill.proficiency.baseValue);
+            out.set(`{skill}-proficiency-modifier`, skill.proficiency.getModifier());
+            out.set(`{skill}-item-modifier`, skill.getItemModifier());
+            if (skill.refAbilityScore in [AbilityScoreEnum.DEX, AbilityScoreEnum.STR]) {
+                out.set(`{skill}-armor-modifier`, skill.getArmorModifier());
+            }
+        }
 
-    def clearSkillsModifiers_granted_by(this, identifier: string):
-        for skill in this.skills.values():
-            for modifier in skill.proficiency.modifiers:
-                granted_by, reason, value, priority = modifier
-                if granted_by == identifier:
-                    skill.proficiency.modifiers.remove(modifier)
+        for (let savingThrowEnum of this.savingThrows.keys()) {
+            let savingThrow: SavingThrow = this.savingThrows.get(savingThrowEnum);
+            out.set(`{savingThrow}-value`, savingThrow.getValue());
+            out.set(`{savingThrow}-attribute-modifier`, savingThrow.getAttributeModifier());
+            out.set(`{savingThrow}-proficiency`, savingThrow.proficiency.baseValue);
+            out.set(`{savingThrow}-proficiency-modifier`, savingThrow.proficiency.getModifier());
+            out.set(`{savingThrow}-item-modifier`, savingThrow.getItemModifier());
+        }
 
+        for (let defenseProficiencyEnum of this.defenseProficiencies.keys()) {
+            let defenseProficiency: Proficiency = this.defenseProficiencies.get(defenseProficiencyEnum);
+            out.set(`{defenseProficiency}-proficiency`, defenseProficiency.baseValue);
+        }
 
-class Choice:
-    description: string
-    options: Array[string]
-    num_choices: number
-    callback: Callable
+        for (let attackProficiencyEnum of this.attackProficiencies.keys()) {
+            let attackProficiency: Proficiency = this.attackProficiencies.get(attackProficiencyEnum);
+            out.set(`{attackProficiency}-proficiency`, attackProficiency.baseValue);
+        }
 
-    def _Init__(this, description: string, options: Array[string], num_choices: number, callback: Callable):
-        this.description = description
-        this.options = options
-        this.num_choices = num_choices
-        this.callback = callback
+        out.set("perception-value", this.perception.getValue());
+        out.set("perception-attribute-modifier", this.perception.getAttributeModifier());
+        out.set("perception-proficiency", this.perception.proficiency.baseValue);
+        out.set("perception-proficiency-modifier", this.perception.proficiency.getModifier());
+        out.set("perception-item-modifier", this.perception.getItemModifier());
+
+        out.set("class-dc-value", this.classDC.getValue());
+        out.set("class-dc-attribute-modifier", this.classDC.getAttributeModifier());
+        out.set("class-dc-proficiency", this.classDC.proficiency.baseValue);
+        out.set("class-dc-proficiency-modifier", this.classDC.proficiency.getModifier());
+        out.set("class-dc-item-modifier", this.classDC.getItemModifier());
+
+        out.set("spell-attack-roll-value", this.spellAttackRoll.getValue());
+        out.set("spell-attack-roll-attribute-modifier", this.spellAttackRoll.getAttributeModifier());
+        out.set("spell-attack-roll-proficiency", this.spellAttackRoll.proficiency.baseValue);
+        out.set("spell-attack-roll-proficiency-modifier", this.spellAttackRoll.proficiency.getModifier());
+        out.set("spell-attack-roll-item-modifier", this.spellAttackRoll.getItemModifier());
+
+        out.set("spell-dc-value", this.spellDC.getValue());
+        out.set("spell-dc-attribute-modifier", this.spellDC.getAttributeModifier());
+        out.set("spell-dc-proficiency", this.spellDC.proficiency.baseValue);
+        out.set("spell-dc-proficiency-modifier", this.spellDC.proficiency.getModifier());
+        out.set("spell-dc-item-modifier", this.spellDC.getItemModifier());
+
+    };
+
+    public clearItemsGrantedBy = (identifier: string) => {
+        for (let [key, [item, grantedBy]] of this.inventory.entries()) {
+            if (grantedBy == identifier) {
+                this.inventory.delete(key);
+            }
+        }
+    };
+
+    public clearSkillsModifiersGrantedBy = (identifier: string) => {
+        for (let skill of this.skills.values()) {
+            skill.proficiency.modifiers = skill.proficiency.modifiers
+                .filter(([grantedBy, reason, value, priority]) => grantedBy != identifier);
+        }
+    };
+}
+
+class Choice {
+    description: string;
+    options: Array<string>;
+    numChoices: number;
+    callback: (...args: any[]) => any;
+
+    constructor(description: string, options: Array<string>, numChoices: number, callback: (...args: any[]) => any) {
+        this.description = description;
+        this.options = options;
+        this.numChoices = numChoices;
+        this.callback = callback;
+    }
+}

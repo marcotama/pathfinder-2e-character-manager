@@ -1,7 +1,7 @@
 /**
  * The simplest type of user choice, where a value is chosen for a certain property.
  */
-class Field {
+export class Field {
     code: string;
     name: string;
     value: any;
@@ -17,7 +17,7 @@ class Field {
  * This can be used to group common structures in data, such as a stat having a score and a corresponding modifier, or
  * proficiency having a level that is one of untrained, trained, expert, master, or legendary.
  */
-class Component {
+export class Component {
     code: string;
     name: string;
     fields: Map<string, Field>;
@@ -32,7 +32,7 @@ class Component {
  * An item that has a set of characteristics.
  * This can be used to represent classes, races, weapons, etc.
  */
-class Thing {
+export class Thing {
     code: string;
     name: string;
     components: Map<string, Component>;
@@ -46,7 +46,7 @@ class Thing {
 /**
  * A more complex item, which has `Thing`s nested inside itself.
  */
-class Entity {
+export class Entity {
     code: string;
     name: string;
     components: Map<string, Component>;
@@ -61,7 +61,7 @@ class Entity {
 /**
  * A character to model.
  */
-class Hero {
+export class Hero {
     code: string;
     name: string;
     components: Map<string, Component>;
