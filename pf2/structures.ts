@@ -246,7 +246,7 @@ class Skill extends ProficiencyBasedRoll {
     }
 }
 
-abstract class Clazz {
+export abstract class Clazz extends Thing {
     keyAbilityScore: AbilityScoreEnum;
     hitPoints: number;
     initialProficiencies: Map<string, ProficiencyLevelEnum>; // FIXME string?
@@ -261,7 +261,7 @@ abstract class Clazz {
 
 
 
-class Character extends Hero {
+export class Character extends Hero {
     clazz: Clazz;
     armor: Armor;
     shields: Array<Shield>;
@@ -366,7 +366,6 @@ class Character extends Hero {
         ]);
     }
 
-
     public getAllSheetFields = () => {
         let out = new Map<string, any>();
         for (let abilityScoreEnum of this.abilityScores.keys()) {
@@ -448,7 +447,7 @@ class Character extends Hero {
     };
 }
 
-class Choice {
+export class Choice {
     description: string;
     options: Array<string>;
     numChoices: number;
