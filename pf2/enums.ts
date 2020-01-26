@@ -234,6 +234,7 @@ export enum AlchemicalItemCategoryEnum {
 }
 
 export enum AlchemicalBombEnum {
+    // Level 1
     ACID_FLASK_LESSER = "acid_flask_lesser",
     ALCHEMIST_S_FIRE_LESSER = "alchemist_s_fire_lesser",
     BOTTLED_LIGHTNING_LESSER = "bottled_lightning_lesser",
@@ -241,6 +242,7 @@ export enum AlchemicalBombEnum {
     TANGLEFOOT_BAG_LESSER = "tanglefoot_bag_lesser",
     THUNDERSTONE_LESSER = "thunderstone_lesser",
 
+    // Level 3
     ACID_FLASK_MODERATE = "acid_flask_moderate",
     ALCHEMIST_S_FIRE_MODERATE = "alchemist_s_fire_moderate",
     BOTTLED_LIGHTNING_MODERATE = "bottled_lightning_moderate",
@@ -248,6 +250,7 @@ export enum AlchemicalBombEnum {
     TANGLEFOOT_BAG_MODERATE = "tanglefoot_bag_moderate",
     THUNDERSTONE_MODERATE = "thunderstone_moderate",
 
+    // Level 11
     ACID_FLASK_GREATER = "acid_flask_greater",
     ALCHEMIST_S_FIRE_GREATER = "alchemist_s_fire_greater",
     BOTTLED_LIGHTNING_GREATER = "bottled_lightning_greater",
@@ -255,6 +258,7 @@ export enum AlchemicalBombEnum {
     TANGLEFOOT_BAG_GREATER = "tanglefoot_bag_greater",
     THUNDERSTONE_GREATER = "thunderstone_greater",
 
+    // Level 17
     ACID_FLASK_MAJOR = "acid_flask_major",
     ALCHEMIST_S_FIRE_MAJOR = "alchemist_s_fire_major",
     BOTTLED_LIGHTNING_MAJOR = "bottled_lightning_major",
@@ -264,44 +268,201 @@ export enum AlchemicalBombEnum {
 }
 
 export enum AlchemicalElixirEnum {
+    // Level 1
+    ANTIDOTE_LESSER = "antidote_lesser",
+    ANTIPLAGUE_LESSER = "antiplague_lesser",
+    BESTIAL_MUTAGEN_LESSER = "bestial_mutagen_lesser",
+    CHEETAH_S_ELIXIR_LESSER = "cheetah_s_elixir_lesser",
+    COGNITIVE_MUTAGEN_LESSER = "cognitive_mutagen_lesser",
+    EAGLE_EYE_ELIXIR_LESSER = "eagle-eye_elixir_lesser",
+    ELIXIR_OF_LIFE_MINOR = "elixir_of_life_minor",
+    JUGGERNAUT_MUTAGEN_LESSER = "juggernaut_mutagen_lesser",
+    LEAPER_S_ELIXIR_LESSER = "leaper_s_elixir_lesser",
+    QUICKSILVER_MUTAGEN_LESSER = "quicksilver_mutagen_lesser",
+    SERENE_MUTAGEN_LESSER = "serene_mutagen_lesser",
+    SILVERTONGUE_MUTAGEN_LESSER = "silvertongue_mutagen_lesser",
 
-    ANTIDOTE_ITEM_1 = "antidote_item_1",
-    ANTIPLAGUE_ITEM_1 = "antiplague_item_1",
-    BESTIAL_MUTAGEN_ITEM_9 = "bestial_mutagen_item_9",
-    CHEETAH_S_ELIXIR_ITEM_1 = "cheetah_s_elixir_item_1",
-    COGNITIVE_MUTAGEN_ITEM_9 = "cognitive_mutagen_item_9",
-    EAGLE_EYE_ELIXIR_ITEM_1 = "eagle-eye_elixir_item_1",
-    ELIXIR_OF_LIFE_ITEM_8 = "elixir_of_life_item_8",
-    JUGGERNAUT_MUTAGEN_ITEM_9 = "juggernaut_mutagen_item_9",
-    LEAPER_S_ELIXIR_ITEM_1 = "leaper_s_elixir_item_1",
-    QUICKSILVER_MUTAGEN_ITEM_9 = "quicksilver_mutagen_item_9",
-    SILVERTONGUE_MUTAGEN_ITEM_9 = "silvertongue_mutagen_item_9",
-    BRAVO_S_BREW_ITEM_3 = "bravo_s_brew_item_3",
-    CAT_S_EYE_ELIXIR_ITEM_3 = "cat_s_eye_elixir_item_3",
-    COMPREHENSION_ELIXIR_ITEM_2 = "comprehension_elixir_item_2",
-    DARKVISION_ELIXIR_ITEM_1 = "darkvision_elixir_item_1",
-    INFILTRATOR_S_ELIXIR_ITEM_2 = "infiltrator_s_elixir_item_2",
+    // Level 2
+    BRAVO_S_BREW_LESSER = "bravo_s_brew_lesser",
+    CAT_S_EYE_ELIXIR_LESSER = "cat_s_eye_elixir_lesser",
+    COMPREHENSION_ELIXIR_LESSER = "comprehension_elixir_lesser",
+    DARKVISION_ELIXIR_LESSER = "darkvision_elixir_lesser",
+    INFILTRATOR_S_ELIXIR_LESSER = "infiltrator_s_elixir_lesser",
 
-    BESTIAL_MUTAGEN_LESSER_ITEM_5 = "bestial_mutagen_lesser_item_5",
-    COGNITIVE_MUTAGEN_LESSER_ITEM_5 = "cognitive_mutagen_lesser_item_5",
-    JUGGERNAUT_MUTAGEN_LESSER_ITEM_5 = "juggernaut_mutagen_lesser_item_5",
-    QUICKSILVER_MUTAGEN_LESSER_ITEM_5 = "quicksilver_mutagen_lesser_item_5",
-    SILVERTONGUE_MUTAGEN_LESSER_ITEM_5 = "silvertongue_mutagen_lesser_item_5",
+    // Level 3
+    BESTIAL_MUTAGEN_MODERATE = "bestial_mutagen_moderate",
+    COGNITIVE_MUTAGEN_MODERATE = "cognitive_mutagen_moderate",
+    JUGGERNAUT_MUTAGEN_MODERATE = "juggernaut_mutagen_moderate",
+    QUICKSILVER_MUTAGEN_MODERATE = "quicksilver_mutagen_moderate",
+    SERENE_MUTAGEN_MODERATE = "serene_mutagen_moderate",
+    SILVERTONGUE_MUTAGEN_MODERATE = "silvertongue_mutagen_moderate",
 
-    BESTIAL_MUTAGEN_GREATER_ITEM_13 = "bestial_mutagen_greater_item_13",
-    BESTIAL_MUTAGEN_TRUE_ITEM_17 = "bestial_mutagen_true_item_17",
-    COGNITIVE_MUTAGEN_GREATER_ITEM_13 = "cognitive_mutagen_greater_item_13",
-    COGNITIVE_MUTAGEN_TRUE_ITEM_17 = "cognitive_mutagen_true_item_17",
-    ELIXIR_OF_LIFE_GREATER_ITEM_12 = "elixir_of_life_greater_item_12",
-    ELIXIR_OF_LIFE_LESSER_ITEM_4 = "elixir_of_life_lesser_item_4",
-    ELIXIR_OF_LIFE_MINOR_ITEM_1 = "elixir_of_life_minor_item_1",
-    ELIXIR_OF_LIFE_TRUE_ITEM_16 = "elixir_of_life_true_item_16",
-    JUGGERNAUT_MUTAGEN_GREATER_ITEM_13 = "juggernaut_mutagen_greater_item_13",
-    JUGGERNAUT_MUTAGEN_TRUE_ITEM_17 = "juggernaut_mutagen_true_item_17",
-    QUICKSILVER_MUTAGEN_GREATER_ITEM_13 = "quicksilver_mutagen_greater_item_13",
-    QUICKSILVER_MUTAGEN_TRUE_ITEM_17 = "quicksilver_mutagen_true_item_17",
-    SILVERTONGUE_MUTAGEN_GREATER_ITEM_13 = "silvertongue_mutagen_greater_item_13",
-    SILVERTONGUE_MUTAGEN_TRUE_ITEM_17 = "silvertongue_mutagen_true_item_17",
+    // Level 4
+    BOMBER_S_EYE_ELIXIR_LESSER = "bomber_s_eye_elixir_lesser",
+    DARKVISION_ELIXIR_MODERATE = "darkvision_elixir_moderate",
+    MISTFORM_ELIXIR_LESSER = "mistform_elixir_lesser",
+    SALAMANDER_ELIXIR_LESSER = "salamander_elixir_lesser",
+    STONE_FIST_ELIXIR = "stone_fist_elixir",
+    WINTER_WOLF_ELIXIR_LESSER = "winter_wolf_elixir_lesser",
+
+    // Level 5
+    CHEETAH_S_ELIXIR_MODERATE = "cheetah_s_elixir_moderate",
+    EAGLE_EYE_ELIXIR_MODERATE = "eagle_eye_elixir_moderate",
+    ELIXIR_OF_LIFE_LESSER = "elixir_of_life_lesser",
+    SEA_TOUCH_ELIXIR_LESSER = "sea_touch_elixir_lesser",
+
+    // Level 6
+    ANTIDOTE_MODERATE = "antidote_moderate",
+    ANTIPLAGUE_MODERATE = "antiplague_moderate",
+    MISTFORM_ELIXIR_MODERATE = "mistform_elixir_moderate",
+    GIANT_SCORPION_VENOM = "giant_scorpion_venom",
+
+    // Level 7
+    COMPREHENSION_ELIXIR_GREATER = "comprehension_elixir_greater",
+    LEAPER_S_ELIXIR_GREATER = "leaper_s_elixir_greater",
+
+    // Level 8
+    DARKVISION_ELIXIR_GREATER = "darkvision_elixir_greater",
+
+    // Level 9
+    CHEETAH_S_ELIXIR_GREATER = "cheetah_s_elixir_greater",
+    ELIXIR_OF_LIFE_MODERATE = "elixir_of_life_moderate",
+
+    // Level 10
+    ANTIDOTE_GREATER = "antidote_greater",
+    ANTIPLAGUE_GREATER = "antiplague_greater",
+    BRAVO_S_BREW_MODERATE = "bravo_s_brew_moderate",
+    EAGLE_EYE_ELIXIR_GREATER = "eagle_eye_elixir_greater",
+    MISTFORM_ELIXIR_GREATER = "mistform_elixir_greater",
+
+    // Level 11
+    BESTIAL_MUTAGEN_GREATER = "bestial_mutagen_greater",
+    COGNITIVE_MUTAGEN_GREATER = "cognitive_mutagen_greater",
+    JUGGERNAUT_MUTAGEN_GREATER = "juggernaut_mutagen_greater",
+    QUICKSILVER_MUTAGEN_GREATER = "quicksilver_mutagen_greater",
+    SERENE_MUTAGEN_GREATER = "serene_mutagen_greater",
+    SILVERTONGUE_MUTAGEN_GREATER = "silvertongue_mutagen_greater",
+
+    // Level 12
+    SALAMANDER_ELIXIR_MODERATE = "salamander_elixir_moderate",
+    SEA_TOUCH_ELIXIR_MODERATE = "sea_touch_elixir_moderate",
+    WINTER_WOLF_ELIXIR_MODERATE = "winter_wolf_elixir_moderate",
+
+    // Level 13
+    ELIXIR_OF_LIFE_GREATER = "elixir_of_life_greater",
+
+    // Level 14
+    ANTIDOTE_MAJOR = "antidote_major",
+    ANTIPLAGUE_MAJOR = "antiplague_major",
+    BOMBER_S_EYE_ELIXIR_GREATER = "bomber_s_eye_elixir_greater",
+
+    // Level 15
+    BRAVO_S_BREW_GREATER = "bravo_s_brew_greater",
+    ELIXIR_OF_LIFE_MAJOR = "elixir_of_life_major",
+    SEA_TOUCH_ELIXIR_GREATER = "sea_touch_elixir_greater",
+
+    // Level 16
+    EAGLE_EYE_ELIXIR_MAJOR = "eagle_eye_elixir_major",
+    SALAMANDER_ELIXIR_GREATER = "salamander_elixir_greater",
+    WINTER_WOLF_ELIXIR_GREATER = "winter_wolf_elixir_greater",
+
+    // Level 17
+    BESTIAL_MUTAGEN_MAJOR = "bestial_mutagen_major",
+    COGNITIVE_MUTAGEN_MAJOR = "cognitive_mutagen_major",
+    JUGGERNAUT_MUTAGEN_MAJOR = "juggernaut_mutagen_major",
+    QUICKSILVER_MUTAGEN_MAJOR = "quicksilver_mutagen_major",
+    SERENE_MUTAGEN_MAJOR = "serene_mutagen_major",
+    SILVERTONGUE_MUTAGEN_MAJOR = "silvertongue_mutagen_major",
+
+    // Level 19
+    ELIXIR_OF_LIFE_TRUE = "elixir_of_life_true",
+
+    // Level 20
+    ELIXIR_OF_REJUVENATION = "elixir_of_rejuvenation",
+}
+
+export enum AlchemicalPoisonEnum {
+    // Level 1
+    ARSENIC = "arsenic",
+    GIANT_CENTIPEDE_VENOM = "giant_centipede_venom",
+
+    // Level 2
+    BELLADONNA = "belladonna",
+    BLACK_ADDER_VENOM = "black_adder_venom",
+    LETHARGY_POISON = "lethargy_poison",
+
+    // Level 3
+    CYTILLESH_OIL = "cytillesh_oil",
+    GRAVEROOT = "graveroot",
+
+    // Level 5
+    HUNTING_SPIDER_VENOM = "hunting_spider_venom",
+
+    // Level 6
+    GIANT_SCORPION_VENOM = "giant_scorpion_venom",
+
+    // Level 7
+    GIANT_WASP_VENOM = "giant_wasp_venom",
+    MALYASS_ROOT_PASTE = "malyass_root_paste",
+
+    // Level 8
+    NETTLEWEED_RESIDUE = "nettleweed_residue",
+    WYVERN_POISON = "wyvern_poison",
+
+    // Level 9
+    LICH_DUST = "lich_dust",
+    SPIDER_ROOT = "spider_root",
+
+    // Level 10
+    SHADOW_ESSENCE = "shadow_essence",
+    WOLFSBANE = "wolfsbane",
+
+    // Level 11
+    BLIGHTBURN_RESIN = "blightburn_resin",
+
+    // Level 12
+    SLUMBER_WINE = "slumber_wine",
+
+    // Level 13
+    DEATHCAP_POWDER = "deathcap_powder",
+    PURPLE_WORM_VENOM = "purple_worm_venom",
+
+    // Level 15
+    DRAGON_BILE = "dragon_bile",
+    MINDFOG_MIST = "mindfog_mist",
+
+    // Level 16
+    BRIMSTONE_FUMES = "brimstone_fumes",
+    NIGHTMARE_VAPOR = "nightmare_vapor",
+
+    // Level 17
+    HEMLOCK = "hemlock",
+
+    // Level 18
+    KING_S_SLEEP = "king_s_sleep",
+    // Level 19
+    BLACK_LOTUS_EXTRACT = "black_lotus_extract",
+
+    // Level 20
+    TEARS_OF_DEATH = "tears_of_death",
+}
+
+export enum AlchemicalToolEnum {
+    // Level 1
+    SMOKESTICK_LESSER = "smokestick_lesser",
+    SNAKE_OIL = "snake_oil",
+    SUNROD = "sunrod",
+    TINDERTWIG = "tindertwig",
+
+    // Level 2
+    SILVERSHEEN = "silversheen",
+
+    // Level 7
+    SMOKESTICK_GREATER = "smokestick_greater",
+
+    // Level 20
+    PHILOSOPHER_S_STONE = "philosopher_s_stone",
+
 }
 
 export enum AlchemicalItemEnumzzz {
@@ -310,7 +471,6 @@ export enum AlchemicalItemEnumzzz {
     BLACK_ADDER_VENOM_ITEM_2 = "black_adder_venom_item_2",
     BLACK_LOTUS_EXTRACT_ITEM_19 = "black_lotus_extract_item_19",
     BLIGHTBURN_RESIN_ITEM_11 = "blightburn_resin_item_11",
-    BOMBER_S_EYE_ELIXIR_ITEM_3 = "bomber_s_eye_elixir_item_3",
     BRIMSTONE_FUMES_ITEM_16 = "brimstone_fumes_item_16",
     BULLHEADED_MUTAGEN_ITEM_9 = "bullheaded_mutagen_item_9",
     BULLHEADED_MUTAGEN_GREATER_ITEM_13 = "bullheaded_mutagen_greater_item_13",
@@ -331,12 +491,10 @@ export enum AlchemicalItemEnumzzz {
     LICH_DUST_ITEM_9 = "lich_dust_item_9",
     LIQUID_ICE_ITEM_1 = "liquid_ice_item_1",
     MALYASS_ROOT_PASTE_ITEM_7 = "malyass_root_paste_item_7",
-    MISTFORM_ELIXIR_ITEM_3 = "mistform_elixir_item_3",
     NETTLEWEED_RESIDUE_ITEM_8 = "nettleweed_residue_item_8",
     NIGHTMARE_VAPOR_ITEM_16 = "nightmare_vapor_item_16",
     PHILOSOPHER_S_STONE_ITEM_20 = "philosopher_s_stone_item_20",
     PURPLE_WORM_VENOM_ITEM_13 = "purple_worm_venom_item_13",
-    SALAMANDER_ELIXIR_ITEM_2 = "salamander_elixir_item_2",
     SEA_TOUCH_ELIXIR_ITEM_4 = "sea_touch_elixir_item_4",
     SHADOW_ESSENCE_ITEM_10 = "shadow_essence_item_10",
     SILVERSHEEN_ITEM_1 = "silversheen_item_1",
@@ -344,17 +502,15 @@ export enum AlchemicalItemEnumzzz {
     SLUMBER_WINE_ITEM_12 = "slumber_wine_item_12",
     SMOKESTICK_ITEM_1 = "smokestick_item_1",
     SPIDER_ROOT_ITEM_9 = "spider_root_item_9",
-    STONE_FIST_ELIXIR_ITEM_2 = "stone_fist_elixir_item_2",
     SUNROD_ITEM_1 = "sunrod_item_1",
     TANGLEFOOT_BAG_ITEM_1 = "tanglefoot_bag_item_1",
     TEARS_OF_DEATH_ITEM_20 = "tears_of_death_item_20",
     THUNDERSTONE_ITEM_1 = "thunderstone_item_1",
     TINDERTWIG_ITEM_1 = "tindertwig_item_1",
-    WINTER_WOLF_ELIXIR_ITEM_2 = "winter_wolf_elixir_item_2",
     WOLFSBANE_ITEM_10 = "wolfsbane_item_10",
     WYVERN_POISON_ITEM_8 = "wyvern_poison_item_8",
 }
 
-export type AlchemicalItemCategory = AlchemicalBombEnum | AlchemicalElixirEnum; // TODO add all other items
+export type AlchemicalItemCategory = AlchemicalBombEnum | AlchemicalElixirEnum | AlchemicalPoisonEnum | AlchemicalToolEnum;
 export type InventoryItemCategory = AlchemicalItemCategoryEnum; // TODO add all other items
-export type InventoryItem = InventoryItemCategory; // TODO add all other items
+export type InventoryItem = AlchemicalItemCategory; // TODO add all other items

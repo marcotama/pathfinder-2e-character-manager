@@ -6,7 +6,11 @@ import {
     AttackProficiencyEnum,
     SkillEnum,
     AlchemicalItemCategoryEnum,
-    AlchemicalItemEnum, OtherAttackProficiencyEnum
+    OtherAttackProficiencyEnum,
+    AlchemicalBombEnum,
+    AlchemicalElixirEnum,
+    AlchemicalPoisonEnum,
+    AlchemicalToolEnum
 } from "../enums"
 import {
     Clazz,
@@ -95,7 +99,7 @@ class Alchemist extends Clazz {
             if (choice == AlchemistResearchFieldEnum.BOMBER) {
                 newChoices.push(new Choice(
                     "Choose two 1st-level alchemical bombs to add to your formula book",
-                    [item for item in AlchemicalItemEnum if item.category == AlchemicalItemCategoryEnum.BOMB],
+                    Array.from(Object.values(AlchemicalBombEnum)),
                     1,
                     callback
                 ));
@@ -103,9 +107,9 @@ class Alchemist extends Clazz {
             return newChoices;
         };
 
-        return Choice(
-            description="Choose a field of research",
-            alchemist_research_field for alchemist_research_field in AlchemistResearchFieldEnum],
+        return new Choice(
+            "Choose a field of research",
+            Array.from(Object.values(AlchemistResearchFieldEnum)),
             1,
             callback
         );
