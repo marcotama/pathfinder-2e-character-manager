@@ -1,270 +1,1917 @@
 [
   {
-    "code": "acid_flask",
-    "name": "Acid Flask",
+    "code": "acid flask",
+    "name": "Acid flask",
+    "tags": [
+      "ACID",
+      "ALCHEMICAL",
+      "BOMB",
+      "CONSUMABLE",
+      "SPLASH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Strike",
+    "num_actions": "one-action",
+    "description": "This flask filled with corrosive acid deals 1 acid damage, the listed persistent acid damage, and the listed acid splash damage. Many types grant an item bonus to attack rolls.",
     "types": [
       {
-        "code": "acid_flask_lesser",
-        "name": "Acid Flask, Lesser",
         "type": "lesser",
         "level": 1,
-        "price": {"gp": 3},
+        "price": {
+          "gp": 3
+        },
         "description": "It deals 1d6 persistent acid damage and 1 acid splash damage."
       },
       {
-        "code": "acid_flask_moderate",
-        "name": "Acid Flask, Moderate",
         "type": "moderate",
         "level": 3,
-        "price": {"gp": 10},
+        "price": {
+          "gp": 10
+        },
         "description": "You gain a +1 item bonus to attack rolls. The bomb deals 2d6 persistent acid damage and 2 acid splash damage."
       },
       {
-        "code": "acid_flask_greater",
-        "name": "Acid Flask, Greater",
         "type": "greater",
         "level": 11,
-        "price": {"gp": 250},
+        "price": {
+          "gp": 250
+        },
         "description": "You gain a +2 item bonus to attack rolls. The bomb deals 3d6 persistent acid damage and 3 acid splash damage."
       },
       {
-        "code": "acid_flask_major",
-        "name": "Acid Flask, Major",
         "type": "major",
         "level": 17,
-        "price": {"gp": 2500},
+        "price": {
+          "gp": 2500
+        },
         "description": "You gain a +3 item bonus to attack rolls. The bomb deals 4d6 persistent acid damage and 4 acid splash damage."
       }
-    ],
-    "usage": ["held", "1 hand"],
-    "activate": "strike",
-    "bulk": "L",
-    "tags": ["acid", "alchemical", "bomb", "consumable", "splash"],
-    "description": "This flask filled with corrosive acid deals 1 acid damage, the listed persistent acid damage, and the listed acid splash damage. Many types grant an item bonus to attack rolls."
+    ]
   },
-
-
   {
-    "code": "bottled_lightning",
-    "name": "Alchemist's fire",
+    "code": "alchemist's fire item 1+",
+    "tags": [
+      "ALCHEMICAL",
+      "BOMB",
+      "CONSUMABLE",
+      "FIRE",
+      "SPLASH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Strike",
+    "num_actions": "one-action",
+    "description": "Alchemist's fire is a combination of volatile liquids that ignite when exposed to air. Alchemist's fire deals the listed fire damage, persistent fire damage, and splash damage. Many types grant an item bonus to attack rolls.",
     "types": [
       {
-        "code": "alchemist_s_fire_lesser",
-        "name": "Alchemist's fire, Lesser",
         "type": "lesser",
         "level": 1,
-        "price": {"gp": 3},
+        "price": {
+          "gp": 3
+        },
         "description": "The bomb deals 1d8 fire damage, 1 persistent fire damage, and 1 fire splash damage."
       },
       {
-        "code": "alchemist_s_fire_moderate",
-        "name": "Alchemist's fire, Moderate",
         "type": "moderate",
         "level": 3,
-        "price": {"gp": 10},
+        "price": {
+          "gp": 10
+        },
         "description": "You gain a +1 item bonus to attack rolls. The bomb deals 2d8 fire damage, 2 persistent fire damage, and 2 fire splash damage."
       },
       {
-        "code": "alchemist_s_fire_greater",
-        "name": "Alchemist's fire, Greater",
         "type": "greater",
         "level": 11,
-        "price": {"gp": 250},
+        "price": {
+          "gp": 250
+        },
         "description": "You gain a +2 item bonus to attack rolls. The bomb deals 3d8 fire damage, 3 persistent fire damage, and 3 fire splash damage."
       },
       {
-        "code": "alchemist_s_fire_major",
-        "name": "Alchemist's fire, Major",
         "type": "major",
         "level": 17,
-        "price": {"gp": 2500},
+        "price": {
+          "gp": 2500
+        },
         "description": "You gain a +3 item bonus to attack rolls. The bomb deals 4d8 fire damage, 4 persistent fire damage, and 4 fire splash damage."
       }
-    ],
-    "usage": ["held", "1 hand"],
-    "activate": "strike",
-    "bulk": "L",
-    "tags": ["alchemical", "bomb", "consumable", "fire", "splash"],
-    "description": "Alchemist’s fire is a combination of volatile liquids that ignite when exposed to air. Alchemist’s fire deals the listed fire damage, persistent fire damage, and splash damage. Many types grant an item bonus to attack rolls."
+    ]
   },
-
-
   {
-    "code": "bottled_lightning",
-    "name": "Bottled Lightning",
+    "code": "bottled lightning",
+    "name": "Bottled lightning",
+    "tags": [
+      "ALCHEMICAL",
+      "BOMB",
+      "CONSUMABLE",
+      "ELECTRICITY",
+      "SPLASH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Strike",
+    "num_actions": "one-action",
+    "description": "Bottled lightning is packed with volatile reagents that create a blast of electricity when they are exposed to air. Bottled lightning deals the listed electricity damage and electricity splash damage. On a hit, the target become flat-footed until the start of your next turn. Many types grant an item bonus to attack rolls.",
     "types": [
       {
-        "code": "bottled_lightning_lesser",
-        "name": "Bottled Lightning, Lesser",
         "type": "lesser",
         "level": 1,
-        "price": {"gp": 3},
+        "price": {
+          "gp": 3
+        },
         "description": "It deals 1d6 electricity damage and 1 electricity splash damage."
       },
       {
-        "code": "bottled_lightning_moderate",
-        "name": "Bottled Lightning, Moderate",
         "type": "moderate",
         "level": 3,
-        "price": {"gp": 10},
+        "price": {
+          "gp": 10
+        },
         "description": "You gain a +1 item bonus to attack rolls. The bomb deals 2d6 electricity damage and 2 electricity splash damage."
       },
       {
-        "code": "bottled_lightning_greater",
-        "name": "Bottled Lightning, Greater",
         "type": "greater",
         "level": 11,
-        "price": {"gp": 250},
+        "price": {
+          "gp": 250
+        },
         "description": "You gain a +2 item bonus to attack rolls. The bomb deals 3d6 electricity damage and 3 electricity splash damage."
       },
       {
-        "code": "bottled_lightning_major",
-        "name": "Bottled Lightning, Major",
         "type": "major",
         "level": 17,
-        "price": {"gp": 2500},
+        "price": {
+          "gp": 2500
+        },
         "description": "You gain a +3 item bonus to attack rolls. The bomb deals 4d6 electricity damage and 4 electricity splash damage."
       }
-    ],
-    "usage": ["held", "1 hand"],
-    "activate": "strike",
-    "bulk": "L",
-    "tags": ["alchemical", "bomb", "consumable", "electricity", "splash"],
-    "description": "Bottled lightning is packed with volatile reagents that create a blast of electricity when they are exposed to air. Bottled lightning deals the listed electricity damage and electricity splash damage. On a hit, the target becomes flat-footed until the start of your next turn. Many types grant an item bonus to attack rolls."
+    ]
   },
-
-
   {
-    "code": "frost_vial",
-    "name": "Frost Vial",
+    "code": "frost vial",
+    "name": "Frost vial",
+    "tags": [
+      "ALCHEMICAL",
+      "BOMB",
+      "COLD",
+      "CONSUMABLE",
+      "SPLASH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Strike",
+    "num_actions": "one-action",
+    "description": "The liquid reagents in this vial rapidly absorb heat when exposed to air. A frost vial deals the listed cold damage and cold splash damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls.",
     "types": [
       {
-        "code": "frost_vial_lesser",
-        "name": "Frost Vial, Lesser",
         "type": "lesser",
         "level": 1,
-        "price": {"gp": 3},
+        "price": {
+          "gp": 3
+        },
         "description": "The bomb deals 1d6 cold damage and 1 cold splash damage, and the target takes a –5-foot penalty."
       },
       {
-        "code": "frost_vial_moderate",
-        "name": "Frost Vial, Moderate",
         "type": "moderate",
         "level": 3,
-        "price": {"gp": 10},
+        "price": {
+          "gp": 10
+        },
         "description": "You gain a +1 item bonus to attack rolls, the bomb deals 2d6 cold damage and 2 cold splash damage, and the target takes a –10-foot penalty."
       },
       {
-        "code": "frost_vial_greater",
-        "name": "Frost Vial, Greater",
         "type": "greater",
         "level": 11,
-        "price": {"gp": 250},
+        "price": {
+          "gp": 250
+        },
         "description": "You gain a +2 item bonus to attack rolls, the bomb deals 3d6 cold damage and 3 cold splash damage, and the target takes a –10-foot penalty."
       },
       {
-        "code": "frost_vial_major",
-        "name": "Frost Vial, Major",
         "type": "major",
         "level": 17,
-        "price": {"gp": 2500},
+        "price": {
+          "gp": 2500
+        },
         "description": "You gain a +3 item bonus to attack rolls, the bomb deals 4d6 cold damage and 4 cold splash damage, and the target takes a –15-foot penalty."
       }
-    ],
-    "usage": ["held", "1 hand"],
-    "activate": "strike",
-    "bulk": "L",
-    "tags": ["alchemical", "bomb", "cold", "consumable", "splash"],
-    "description": "The liquid reagents in this vial rapidly absorb heat when exposed to air. A frost vial deals the listed cold damage and cold splash damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls."
+    ]
   },
-
-
   {
-    "code": "tanglefoot_bag",
-    "name": "Tanglefoot Bag",
+    "code": "tanglefoot bag",
+    "name": "Tanglefoot bag",
+    "tags": [
+      "ALCHEMICAL",
+      "BOMB",
+      "CONSUMABLE"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Strike",
+    "num_actions": "one-action",
+    "description": "A tanglefoot bag is filled with sticky substances. When you hit a creature with a tanglefoot bag, that creature takes a status penalty to its Speeds for 1 minute. Many types of tanglefoot bag also grant an item bonus on attack rolls. On a critical hit, a creature in contact with a solid surface becomes stuck to the surface and immobilized for 1 round, and a creature flying via wings has its wings tangled, causing it to fall safely to the ground and become unable to Fly again for 1 round. Tanglefoot bags are not effective when used on a creature that is in water. The target can end any effects by Escaping or spending a total of 3 Interact actions to carefully remove the sticky substances. These Interact actions don't have to be consecutive, and other creatures can provide the actions as well.",
     "types": [
       {
-        "code": "tanglefoot_bag_lesser",
-        "name": "Tanglefoot Bag, Lesser",
         "type": "lesser",
         "level": 1,
-        "price": {"gp": 3},
+        "price": {
+          "gp": 3
+        },
         "description": "The target takes a –10-foot penalty, and the Escape DC is 17."
       },
       {
-        "code": "tanglefoot_bag_moderate",
-        "name": "Tanglefoot Bag, Moderate",
         "type": "moderate",
         "level": 3,
-        "price": {"gp": 10},
+        "price": {
+          "gp": 10
+        },
         "description": "You gain a +1 item bonus to attack rolls, the target takes a –15-foot penalty, and the Escape DC is 19."
       },
       {
-        "code": "tanglefoot_bag_greater",
-        "name": "Tanglefoot Bag, Greater",
         "type": "greater",
         "level": 11,
-        "price": {"gp": 250},
-        "description": "You gain a +2 item bonus to attack rolls, the target takes a –15-foot penalty, and the Escape DC is 28."
+        "price": {
+          "gp": 250
+        },
+        "description": "Introduction Ancestries & Backgrounds Classes Skills Feats Equipment Spells The Age of Lost OMENS Playing the Game Game mastering Crafting & Treasure Appendix You gain a +2 item bonus to attack rolls, the target takes a –15-foot penalty, and the Escape DC is 28."
       },
       {
-        "code": "tanglefoot_bag_major",
-        "name": "Tanglefoot Bag, Major",
         "type": "major",
         "level": 17,
-        "price": {"gp": 2500},
+        "price": {
+          "gp": 2500
+        },
         "description": "You gain a +3 item bonus to attack rolls, the target takes a –20-foot penalty, and the Escape DC is 37."
       }
-    ],
-    "usage": ["held", "1 hand"],
-    "activate": "strike",
-    "bulk": "L",
-    "tags": ["alchemical", "bomb", "consumable"],
-    "description": "A tanglefoot bag is filled with sticky substances. When you hit a creature with a tanglefoot bag, that creature takes a status penalty to its Speeds for 1 minute. Many types of tanglefoot bag also grant an item bonus on attack rolls.\nOn a critical hit, a creature in contact with a solid surface becomes stuck to the surface and immobilized for 1 round, and a creature flying via wings has its wings tangled, causing it to fall safely to the ground and become unable to Fly again for 1 round. Tanglefoot bags are not effective when used on a creature that is in water.\nThe target can end any effects by Escaping or spending a total of 3 Interact actions to carefully remove the sticky substances. These Interact actions don’t have to be consecutive, and other creatures can provide the actions as well."
+    ]
   },
-
-
   {
     "code": "thunderstone",
     "name": "Thunderstone",
+    "tags": [
+      "ALCHEMICAL",
+      "BOMB",
+      "CONSUMABLE",
+      "SONIC",
+      "SPLASH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Strike",
+    "num_actions": "one-action",
+    "description": "When this stone hits a creature or a hard surface, it explodes with a deafening bang. A thunderstone deals the listed sonic damage and sonic splash damage, and each creature within 10 feet of the space in which the stone exploded must succeed at a Fortitude saving throw with the listed DC or be deafened until the end of its next turn. Many types of thunderstone grant an item bonus to attack rolls.",
     "types": [
       {
-        "code": "thunderstone_lesser",
-        "name": "Thunderstone, Lesser",
         "type": "lesser",
         "level": 1,
-        "price": {"gp": 3},
-        "description": "The target takes a –10-foot penalty, and the Escape DC is 17."
+        "price": {
+          "gp": 3
+        },
+        "description": "The bomb deals 1d4 sonic damage and 1 sonic splash damage, and the DC is 17."
       },
       {
-        "code": "thunderstone_moderate",
-        "name": "Thunderstone, Moderate",
         "type": "moderate",
         "level": 3,
-        "price": {"gp": 10},
-        "description": "You gain a +1 item bonus to attack rolls, the target takes a –15-foot penalty, and the Escape DC is 19."
+        "price": {
+          "gp": 10
+        },
+        "description": "You gain a +1 item bonus to attack rolls. The bomb deals 2d4 sonic damage and 2 sonic splash damage, and the DC is 20."
       },
       {
-        "code": "thunderstone_greater",
-        "name": "Thunderstone, Greater",
         "type": "greater",
         "level": 11,
-        "price": {"gp": 250},
-        "description": "You gain a +2 item bonus to attack rolls, the target takes a –15-foot penalty, and the Escape DC is 28."
+        "price": {
+          "gp": 250
+        },
+        "description": "You gain a +2 item bonus to attack rolls. The bomb deals 3d4 sonic damage and 3 sonic splash damage, and the DC is 28."
       },
       {
-        "code": "thunderstone_major",
-        "name": "Thunderstone, Major",
         "type": "major",
         "level": 17,
-        "price": {"gp": 2500},
-        "description": "You gain a +3 item bonus to attack rolls, the target takes a –20-foot penalty, and the Escape DC is 37."
+        "price": {
+          "gp": 2500
+        },
+        "description": "You gain a +3 item bonus to attack rolls. The bomb deals 4d4 sonic damage and 4 sonic splash damage, and the DC is 36."
       }
+    ]
+  },
+  {
+    "code": "antidote",
+    "name": "Antidote",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR"
     ],
-    "usage": ["held", "1 hand"],
-    "activate": "strike",
+    "usage": "held in 1 hand",
     "bulk": "L",
-    "tags": ["alchemical", "bomb", "consumable"],
-    "description": "When this stone hits a creature or a hard surface, it explodes with a deafening bang. A thunderstone deals the listed sonic damage and sonic splash damage, and each creature within 10 feet of the space in which the stone exploded must succeed at a Fortitude saving throw with the listed DC or be deafened until the end of its next turn. Many types of thunderstone grant an item bonus to attack rolls."
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "An antidote protects you against toxins. Upon drinking an antidote, you gain an item bonus to Fortitude saving throws against poisons for 6 hours.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 3
+        },
+        "description": "You gain a +2 item bonus."
+      },
+      {
+        "type": "moderate",
+        "level": 6,
+        "price": {
+          "gp": 35
+        },
+        "description": "You gain a +3 item bonus."
+      },
+      {
+        "type": "greater",
+        "level": 10,
+        "price": {
+          "gp": 160
+        },
+        "description": "You gain a +4 item bonus."
+      },
+      {
+        "type": "major",
+        "level": 14,
+        "price": {
+          "gp": 675
+        },
+        "description": "You gain a +4 item bonus, and when you drink the antidote, you can immediately attempt a saving throw against one poison of 14th level or lower affecting you. If you succeed, the poison is neutralized."
+      }
+    ]
+  },
+  {
+    "code": " antiplague item 1+",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activation": "[one-action] Interact",
+    "description": "Antiplague can fortify the body's defenses against diseases. Upon drinking an antiplague, you gain an item bonus to Fortitude saving throws against diseases for 24 hours; this applies to your daily save against a disease's progression.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 3
+        },
+        "description": "You gain a +2 item bonus."
+      },
+      {
+        "type": "moderate",
+        "level": 6,
+        "price": {
+          "gp": 35
+        },
+        "description": "You gain a +3 item bonus."
+      },
+      {
+        "type": "greater",
+        "level": 10,
+        "price": {
+          "gp": 160
+        },
+        "description": "You gain a +4 item bonus."
+      },
+      {
+        "type": "major",
+        "level": 14,
+        "price": {
+          "gp": 675
+        },
+        "description": "You gain a +4 item bonus, and when you drink the antiplague, you can immediately attempt a saving throw against one disease of 14th level or lower affecting you. If you succeed, you are cured of the disease."
+      }
+    ]
+  },
+  {
+    "code": "bestial mutagen",
+    "name": "Bestial mutagen",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "MUTAGEN",
+      "POLYMORPH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Your features transform into something bestial and you take on muscle mass, but your lumbering form is clumsy.\n*Benefit*: You gain an item bonus to Athletics checks and unarmed attack rolls. You gain a claw unarmed attack with the agile trait and a jaws unarmed attack.\n*Drawback*: You take a –1 penalty to AC and a –2 penalty to Reflex saves.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 4
+        },
+        "description": "You gain a +1 item bonus, your claw deals 1d4 slashing damage, your jaws deal 1d6 piercing damage, and the duration is 1 minute."
+      },
+      {
+        "type": "moderate",
+        "level": 3,
+        "price": {
+          "gp": 12
+        },
+        "description": "You gain a +2 item bonus, your claw deals 1d6 slashing damage, your jaws deal 1d8 piercing damage, and the duration is 10 minutes."
+      },
+      {
+        "type": "greater",
+        "level": 11,
+        "price": {
+          "gp": 300
+        },
+        "description": "You gain a +3 item bonus, your claw deals 1d8 slashing damage, your jaws deal 1d10 piercing damage, and the duration is 1 hour."
+      },
+      {
+        "type": "major",
+        "level": 17,
+        "price": {
+          "gp": 3000
+        },
+        "description": "You gain a +4 item bonus, your claw deals 1d8 slashing damage, your jaws deal 1d10 piercing damage, and the duration is 1 hour. You gain weapon specialization with the claws and jaws, or greater weapon specialization, if you already have weapon specialization with these unarmed attacks."
+      }
+    ]
+  },
+  {
+    "code": "bomber's eye elixir item 4+",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "This tincture lets you pinpoint your foes. For the next 5 minutes, your alchemical bomb Strikes reduce the circumstance bonus to AC your targets gain from cover.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 4,
+        "price": {
+          "gp": 14
+        },
+        "description": "Reduce your targets' circumstance bonus by 1."
+      },
+      {
+        "type": "greater",
+        "level": 14,
+        "price": {
+          "gp": 700
+        },
+        "description": "Reduce your targets' circumstance bonus by 2."
+      }
+    ]
+  },
+  {
+    "code": "bravo's brew item 2+",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "MENTAL"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "This flask of foaming beer grants courage. For the next hour after drinking this elixir, you gain an item bonus to Will saves, which is greater when attempting Will saves against fear.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 2,
+        "price": {
+          "gp": 7
+        },
+        "description": "The bonus on Will saves is +1, or +2 against fear."
+      },
+      {
+        "type": "moderate",
+        "level": 10,
+        "price": {
+          "gp": 150
+        },
+        "description": "The bonus on Will saves is +2, or +3 against fear."
+      },
+      {
+        "type": "greater",
+        "level": 15,
+        "price": {
+          "gp": 700
+        },
+        "description": "The bonus on Will saves is +3, or +4 against fear. If you roll a success on a save against fear, you get a critical success instead."
+      }
+    ]
+  },
+  {
+    "code": "cat's eye elixir item 2",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR"
+    ],
+    "price": {
+      "gp": 7
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "After you consume this elixir, your vision sharpens and you become sensitive to even the most minute movements. For the next minute, you reduce the flat check to target hidden creatures to 5, and you don't need to attempt a flat check to target concealed creatures. These benefits apply only against creatures within 30 feet of you."
+  },
+  {
+    "code": "cheetah's elixir item 1+",
+    "tags": [
+      "],ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Enzymatic compounds in this elixir strengthen and excite the muscles in your legs. You gain a status bonus to your Speed for the listed duration.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 3
+        },
+        "description": "The bonus is +5 feet, and the duration is 1 minute."
+      },
+      {
+        "type": "moderate",
+        "level": 5,
+        "price": {
+          "gp": 25
+        },
+        "description": "The bonus is +10 feet, and the duration is 10 minutes."
+      },
+      {
+        "type": "greater",
+        "level": 9,
+        "price": {
+          "gp": 110
+        },
+        "description": "The bonus is +10 feet, and the duration is 1 hour."
+      }
+    ]
+  },
+  {
+    "code": "cognitive mutagen",
+    "name": "Cognitive mutagen",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "MUTAGEN",
+      "POLYMORPH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Your mind becomes clear and cognition flows freely, but physical matters seem ephemeral.\n*Benefit*: You gain an item bonus to Arcana, Crafting, Lore, Occultism, and Society checks and all checks to Recall Knowledge. Your critical failures on Recall Knowledge checks become failures instead.\n*Drawback*: You take a –2 penalty to weapon and unarmed attack rolls, Athletics checks, and Acrobatics checks. You can carry 2 less Bulk than normal before becoming encumbered, and the maximum Bulk you can carry is reduced by 4.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 4
+        },
+        "description": "The bonus is +1, and the duration is 1 minute."
+      },
+      {
+        "type": "moderate",
+        "level": 3,
+        "price": {
+          "gp": 12
+        },
+        "description": "The bonus is +2, and the duration is 10 minutes."
+      },
+      {
+        "type": "greater",
+        "level": 11,
+        "price": {
+          "gp": 300
+        },
+        "description": "The bonus is +3, and the duration is 1 hour. You become trained in one Intelligence-based skill, chosen at creation."
+      },
+      {
+        "type": "major",
+        "level": 17,
+        "price": {
+          "gp": 3000
+        },
+        "description": "The bonus is +4, and the duration is 1 hour. You become trained in one skill, chosen at creation."
+      }
+    ]
+  },
+  {
+    "code": "comprehension elixir",
+    "name": "Comprehension elixir",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "MENTAL"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "This bitter draught opens your mind to the potential of the written word. For the listed duration after drinking this elixir, you can understand any words you read, so long as they are written in a common language. This elixir doesn't automatically allow you to understand codes or extremely esoteric passages—you still need to attempt a skill check to Decipher Writing.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 2,
+        "price": {
+          "gp": 7
+        },
+        "description": "The duration is 1 minute."
+      },
+      {
+        "type": "greater",
+        "level": 7,
+        "price": {
+          "gp": 54
+        },
+        "description": "The duration is 10 minutes."
+      }
+    ]
+  },
+  {
+    "code": "darkvision elixir",
+    "name": "Darkvision elixir",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "After you drink this elixir, your sight becomes sharper in darkness. You gain darkvision for the listed duration.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 2,
+        "price": {
+          "gp": 6
+        },
+        "description": "The duration is 10 minutes."
+      },
+      {
+        "type": "moderate",
+        "level": 4,
+        "price": {
+          "gp": 11
+        },
+        "description": "The duration is 1 hour."
+      },
+      {
+        "type": "greater",
+        "level": 8,
+        "price": {
+          "gp": 90
+        },
+        "description": "The duration is 24 hours."
+      }
+    ]
+  },
+  {
+    "code": "eagle-eye elixir item 1+",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "After you drink this elixir, you notice subtle visual details. For the next hour, you gain an item bonus to Perception checks that is greater when attempting to find secret doors and traps.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 4
+        },
+        "description": "The bonus is +1, or +2 to find secret doors and traps."
+      },
+      {
+        "type": "moderate",
+        "level": 5,
+        "price": {
+          "gp": 27
+        },
+        "description": "The bonus is +2, or +3 to find secret doors and traps."
+      },
+      {
+        "type": "greater",
+        "level": 10,
+        "price": {
+          "gp": 200
+        },
+        "description": "The bonus is +3, or +4 to find secret doors and traps."
+      },
+      {
+        "type": "major",
+        "level": 16,
+        "price": {
+          "gp": 2000
+        },
+        "description": "The bonus is +3, or +4 to find secret doors and traps. Each time you pass within 10 feet of a secret door or trap, the GM automatically rolls a secret check for you to find it."
+      }
+    ]
+  },
+  {
+    "code": "elixir of life",
+    "name": "Elixir of life",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "HEALING"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Elixirs of life accelerate the body's natural healing processes and immune system. Upon drinking this elixir, you regain the listed number of Hit Points and gain an item bonus to saving throws against diseases and poisons for 10 minutes.",
+    "types": [
+      {
+        "type": "minor",
+        "level": 1,
+        "price": {
+          "gp": 3
+        },
+        "description": "The elixir restores 1d6 Hit Points, and the bonus is +1."
+      },
+      {
+        "type": "lesser",
+        "level": 5,
+        "price": {
+          "gp": 30
+        },
+        "description": "The elixir restores 3d6+6 Hit Points and the bonus is +1."
+      },
+      {
+        "type": "moderate",
+        "level": 9,
+        "price": {
+          "gp": 150
+        },
+        "description": "The elixir restores 5d6+12 Hit Points, and the bonus is +2."
+      },
+      {
+        "type": "greater",
+        "level": 13,
+        "price": {
+          "gp": 600
+        },
+        "description": "The elixir restores 7d6+18 Hit Points, and the bonus is +2."
+      },
+      {
+        "type": "major",
+        "level": 15,
+        "price": {
+          "gp": 1300
+        },
+        "description": "The elixir restores 8d6+21 Hit Points, and the bonus is +3."
+      },
+      {
+        "type": "true",
+        "level": 19,
+        "price": {
+          "gp": 3000
+        },
+        "description": "The elixir restores 10d6+27 Hit Points, and the bonus is +4."
+      }
+    ]
+  },
+  {
+    "code": "elixir_of_rejuvenation",
+    "name": "Elixir of rejuvenation",
+    "level": 20,
+    "tags": [
+      "UNCOMMON",
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "The elixir of rejuvenation restores a creature to full health and eradicates toxins affecting it. When you drink this elixir, you're restored to your maximum Hit Points, and all afflictions of 20th level or lower affecting you are removed. You can instead administer this elixir to a creature that has been dead for a week or less. When you do, that creature is instantly brought back to life with 1 Hit Point and no spell slots, Focus Points, or other daily resources.",
+    "craft_requirements": "philosopher's stone, true elixir of life"
+  },
+  {
+    "code": "infiltrator's elixir item 2",
+    "tags": [
+      "],ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "POLYMORPH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Favored by spies and tricksters, an infiltrator's elixir is used to alter your appearance. When imbibed, you take the shape of a humanoid creature of your size, but different enough so you might be unrecognizable. If you aren't a humanoid, you might take on a form more similar to your own, at the GM's discretion. The creator of the elixir decides the basics of the appearance you transform into when you imbibe the elixir, including eye color, skin tone, and hair color. The elixir can't change your form into that of a specific person. After the form takes hold, you retain it for the next 10 minutes. Drinking this elixir counts as setting up a disguise to Impersonate. You gain a +4 status bonus to your Deception DC to avoid others seeing through your disguise, and you add your level to this DC even if untrained."
+  },
+  {
+    "code": "juggernaut mutagen",
+    "name": "Juggernaut mutagen",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "MUTAGEN",
+      "POLYMORPH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "After you drink this mutagen, your body becomes thick and sturdy. You exhibit a healthy glow, though you tend to be ponderous and unobservant.\n*Benefit*: You gain an item bonus to Fortitude saves and the listed number of temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the temporary Hit Points.\n*Drawback*: You take a –2 penalty to Will saves, Perception checks, and initiative rolls.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 4
+        },
+        "description": "The bonus is +1, you gain 5 temporary Hit Points, and the duration is 1 minute."
+      },
+      {
+        "type": "moderate",
+        "level": 3,
+        "price": {
+          "gp": 12
+        },
+        "description": "The bonus is +2, you gain 10 temporary Hit Points, and the duration is 10 minutes."
+      },
+      {
+        "type": "greater",
+        "level": 11,
+        "price": {
+          "gp": 300
+        },
+        "description": "The bonus is +3, you gain 30 temporary Hit Points, and the duration is 1 hour. When you roll a success on a Fortitude save, you get a critical success instead."
+      },
+      {
+        "type": "major",
+        "level": 17,
+        "price": {
+          "gp": 3000
+        },
+        "description": "The bonus is +4, you gain 45 temporary Hit Points, and the duration is 1 hour. When you roll a success on a Fortitude save, you get a critical success instead, and your critical failures on Fortitude saves become failures instead."
+      }
+    ]
+  },
+  {
+    "code": "leaper's elixir",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "This tingly solution increases the elasticity and contraction of your leg muscles. For 1 minute after drinking this elixir, you can High Jump or Long Jump as a single action instead of 2 actions. If you do, you don't perform the initial Stride (nor do you fail if you don't Stride 10 feet).",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 3
+        },
+        "description": "The maximum vertical distance you can jump with a High Jump is the same as you can jump horizontally with a Long Jump."
+      },
+      {
+        "type": "greater",
+        "level": 7,
+        "price": {
+          "gp": 55
+        },
+        "description": "The maximum vertical distance you can jump with a High Jump is the same as you can jump horizontally with a Long Jump."
+      }
+    ]
+  },
+  {
+    "code": "mistform elixir",
+    "name": "Mistform elixir",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "ILLUSION",
+      "VISUAL"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "A faint mist emanates from your skin, making you concealed for the listed duration. As usual being concealed when your position is still obvious, you can't use this concealment to Hide or Sneak.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 4,
+        "price": {
+          "gp": 18
+        },
+        "description": "The duration is 3 rounds."
+      },
+      {
+        "type": "moderate",
+        "level": 6,
+        "price": {
+          "gp": 56
+        },
+        "description": "The duration is 1 minute."
+      },
+      {
+        "type": "greater",
+        "level": 10,
+        "price": {
+          "gp": 180
+        },
+        "description": "The duration is 5 minutes."
+      }
+    ]
+  },
+  {
+    "code": "quicksilver mutagen",
+    "name": "Quicksilver mutagen",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "MUTAGEN",
+      "POLYMORPH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Your features become thin and angular. You become swifter and nimbler, but your body also becomes fragile.\n*Benefit*: You gain an item bonus to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and ranged attack rolls, and you gain the listed status bonus to your Speed.\n*Drawback*: You take damage equal to twice your level; you can't recover Hit Points lost in this way by any means while the mutagen lasts. You take a –2 penalty to Fortitude saves.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 4
+        },
+        "description": "The bonus to rolls is +1, the bonus to Speed is +5 feet, and the duration is 1 minute."
+      },
+      {
+        "type": "moderate",
+        "level": 3,
+        "price": {
+          "gp": 12
+        },
+        "description": "The bonus to rolls is +2, the bonus to Speed is +10 feet, and the duration is 10 minutes."
+      },
+      {
+        "type": "greater",
+        "level": 11,
+        "price": {
+          "gp": 300
+        },
+        "description": "The bonus to rolls is +3, the bonus to Speed is +15 feet, and the duration is 1 hour."
+      },
+      {
+        "type": "major",
+        "level": 17,
+        "price": {
+          "gp": 3000
+        },
+        "description": "The bonus to rolls is +4, the bonus to Speed is +20 feet, and the duration is 1 hour."
+      }
+    ]
+  },
+  {
+    "code": "salamander elixir",
+    "name": "Salamander elixir",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "This elixir is made from salamander scales to withstand fire. For 24 hours, you are protected from the effects of severe heat.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 4,
+        "price": {
+          "gp": 15
+        },
+        "description": ""
+      },
+      {
+        "type": "moderate",
+        "level": 12,
+        "price": {
+          "gp": 320
+        },
+        "description": "You're also protected from extreme heat."
+      },
+      {
+        "type": "greater",
+        "level": 16,
+        "price": {
+          "gp": 1400
+        },
+        "description": "You're also protected from extreme and incredible heat."
+      }
+    ]
+  },
+  {
+    "code": " sea touch elixir item 5+",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "POLYMORPH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "This briny concoction alters the skin on your hands and feet. The spaces between your fingers and toes become webbed, granting you a swim Speed of 20 feet for the listed duration.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 5,
+        "price": {
+          "gp": 22
+        },
+        "description": "The duration is 10 minutes."
+      },
+      {
+        "type": "moderate",
+        "level": 12,
+        "price": {
+          "gp": 300
+        },
+        "description": "The duration is 1 hour, and you can breathe underwater."
+      },
+      {
+        "type": "greater",
+        "level": 15,
+        "price": {
+          "gp": 920
+        },
+        "description": "The duration is 24 hours, and you can breathe underwater."
+      }
+    ]
+  },
+  {
+    "code": "serene mutagen",
+    "name": "Serene mutagen",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "MUTAGEN",
+      "POLYMORPH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "You gain inner serenity, focused on fine details and steeled against mental assaults, but you find violence off-putting.\n*Benefit*: You gain an item bonus to Will saves and Perception, Medicine, Nature, Religion, and Survival checks. This bonus improves when you attempt Will saves against mental effects.\n*Drawback*: You take a –1 penalty to attack rolls and save DCs of offensive spells, and a –1 penalty per damage die to all weapon, unarmed attack, and spell damage.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 4
+        },
+        "description": "The bonus is +1, or +2 vs. mental, and the duration is 1 minute."
+      },
+      {
+        "type": "moderate",
+        "level": 3,
+        "price": {
+          "gp": 12
+        },
+        "description": "The bonus is +2, or +3 vs. mental, and the duration is 10 minutes."
+      },
+      {
+        "type": "greater",
+        "level": 11,
+        "price": {
+          "gp": 300
+        },
+        "description": "The bonus is +3, or +4 vs. mental, and the duration is 1 hour. When you roll a success on a Will save against a mental effect, you get a critical success instead."
+      },
+      {
+        "type": "major",
+        "level": 17,
+        "price": {
+          "gp": 3000
+        },
+        "description": "The bonus is +4, and the duration is 1 hour. When you roll a success on a Will save against a mental effect, you get a critical success instead, and your critical failures on Will saves against mental effects become failures instead."
+      }
+    ]
+  },
+  {
+    "code": "silvertongue mutagen",
+    "name": "Silvertongue mutagen",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "MUTAGEN",
+      "POLYMORPH"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Your features become striking and your voice becomes musical and commanding, though facts and figures become hazy for you and emotion clouds your ability to reason.\n*Benefit*: You gain an item bonus to Deception, Diplomacy, Intimidation, and Performance checks. Your critical failures with any of these skill become failures instead.\n*Drawback*: You take a –2 item penalty to Arcana, Crafting, Lore, Occultism, and Society checks. Choose one skill in which you are trained; for the duration, you become untrained in that skill. All your failures on checks to Recall Knowledge become critical failures.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 4
+        },
+        "description": "The bonus is +1, and the duration is 1 minute."
+      },
+      {
+        "type": "moderate",
+        "level": 3,
+        "price": {
+          "gp": 12
+        },
+        "description": "The bonus is +2, and the duration is 10 minutes."
+      },
+      {
+        "type": "greater",
+        "level": 11,
+        "price": {
+          "gp": 300
+        },
+        "description": "The bonus is +3, and the duration is 1 hour."
+      },
+      {
+        "type": "major",
+        "level": 17,
+        "price": {
+          "gp": 3000
+        },
+        "description": "The bonus is +4, and the duration is 1 hour."
+      }
+    ]
+  },
+  {
+    "code": "stone_fist_elixir",
+    "name": "Stone fist elixir",
+    "level": 4,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR",
+      "MORPH"
+    ],
+    "price": {
+      "gp": 13
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Your fists become hard as stone. For 1 hour, your fists deal 1d6 bludgeoning damage and lose the nonlethal trait."
+  },
+  {
+    "code": "winter wolf elixir",
+    "name": "Winter wolf elixir",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "ELIXIR"
+    ],
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "This elixir warms your core and improves your circulation. For 24 hours, you are protected from the effects of severe cold.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 4,
+        "price": {
+          "gp": 15
+        },
+        "description": ""
+      },
+      {
+        "type": "moderate",
+        "level": 12,
+        "price": {
+          "gp": 320
+        },
+        "description": "You're also protected from extreme cold."
+      },
+      {
+        "type": "greater",
+        "level": 16,
+        "price": {
+          "gp": 1400
+        },
+        "description": "You're also protected from extreme and incredible cold."
+      }
+    ]
+  },
+  {
+    "code": "arsenic",
+    "name": "Arsenic",
+    "level": 1,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INGESTED",
+      "POISON"
+    ],
+    "price": {
+      "gp": 3
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "This toxin is a compound of arsenic and other substances. You can't reduce your sickened condition while affected. *Saving Throw*: DC 18 Fortitude; *Onset*: 10 minutes; *Maximum Duration*: 5 minutes; *Stage 1*: 1d4 poison damage and sickened 1 (1 minute); *Stage 2*: 1d6 poison damage and sickened 2 (1 minute); *Stage 3*: 2d6 poison damage and sickened 3 (1 minute)"
+  },
+  {
+    "code": "belladonna",
+    "name": "Belladonna",
+    "level": 2,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INGESTED",
+      "POISON"
+    ],
+    "price": {
+      "gp": 5
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Sometimes called \"deadly nightshade,\" belladonna is a widely available toxin produced from a plant similar to a tomato. *Saving Throw*: DC 19 Fortitude; *Onset*: 10 minutes; *Maximum Duration*: 30 minutes; *Stage 1*: dazzled (10 minutes); *Stage 2*: 1d6 poison damage and sickened 1 (10 minutes); *Stage 3*: 1d6 poison damage, confused, and sickened 1 (1 minute)"
+  },
+  {
+    "code": "black_adder_venom",
+    "name": "Black adder venom",
+    "level": 2,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INJURY",
+      "POISON"
+    ],
+    "price": {
+      "gp": 6
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "three-actions",
+    "description": "Adder venom is a simple but effective way to enhance a weapon. *Saving Throw*: DC 18 Fortitude; *Maximum Duration*: 3 rounds; *Stage 1*: 1d8 poison damage (1 round); *Stage 2*: 1d10 poison damage (1 round); *Stage 3*: 2d6 poison damage (1 round)"
+  },
+  {
+    "code": "black_lotus_extract",
+    "name": "Black lotus extract",
+    "level": 19,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "CONTACT",
+      "POISON",
+      "VIRULENT"
+    ],
+    "price": {
+      "gp": 6500
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Black lotus extract causes severe internal bleeding. *Saving Throw*: DC 42 Fortitude; *Onset*: 1 minute; *Maximum Duration*: 6 rounds; *Stage 1*: 15d6 poison damage and drained 1 (1 round); *Stage 2*: 17d6 poison damage and drained 1 (1 round); *Stage 3*: 20d6 poison damage and drained 2 (1 round)"
+  },
+  {
+    "code": "blightburn_resin",
+    "name": "Blightburn resin",
+    "level": 11,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "CONTACT",
+      "POISON"
+    ],
+    "price": {
+      "gp": 225
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "This tacky, hardened sap is harvested from trees infected by fungal blights and exposed to open flames. *Saving Throw*: DC 31 Fortitude; *Onset*: 1 minute; *Maximum Duration*: 6 rounds; *Stage 1*: 8d6 poison damage (1 round); *Stage 2*: 10d6 poison damage (1 round); *Stage 3*: 15d6 poison damage (1 round)"
+  },
+  {
+    "code": "brimstone_fumes",
+    "name": "Brimstone fumes",
+    "level": 16,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "EVIL",
+      "INHALED",
+      "POISON"
+    ],
+    "price": {
+      "gp": 1500
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Fumes from the forges of Hell drain health and strength alike. *Saving Throw*: DC 36 Fortitude; *Onset*: 1 round; *Maximum Duration*: 6 rounds; *Stage 1*: 7d6 poison damage and enfeebled 1 (1 round); *Stage 2*: 8d6 poison damage and enfeebled 2 (1 round); *Stage 3*: 10d6 poison damage and enfeebled 3 (1 round)"
+  },
+  {
+    "code": "cytillesh_oil",
+    "name": "Cytillesh oil",
+    "level": 3,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INJURY",
+      "POISON"
+    ],
+    "price": {
+      "gp": 10
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "This thick substance is distilled from the mind-robbing cytillesh fungus, though it lacks memory-altering capabilities. *Saving Throw*: DC 19 Fortitude; *Maximum Duration*: 4 rounds; *Stage 1*: 1d10 poison damage (1 round); *Stage 2*: 1d12 poison damage (1 round); *Stage 3*: 2d10 poison damage (1 round)"
+  },
+  {
+    "code": "deathcap_powder",
+    "name": "Deathcap powder",
+    "level": 13,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INGESTED",
+      "POISON"
+    ],
+    "price": {
+      "gp": 450
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "The toxic deathcap mushroom can be dried, ground, and treated to form a flavorless powder with accelerated effects. *Saving Throw*: DC 33 Fortitude; *Onset*: 10 minutes; *Maximum Duration*: 6 minutes; *Stage 1*: 13d6 poison damage (1 minute); *Stage 2*: 17d6 poison damage and sickened 2 (1 minute); *Stage 3*: 20d6 poison damage and sickened 3 (1 minute)"
+  },
+  {
+    "code": "dragon_bile",
+    "name": "Dragon bile",
+    "level": 15,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "CONTACT",
+      "POISON"
+    ],
+    "price": {
+      "gp": 925
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "A mix of digestive juices and green dragon poison glands nauseates the victim as its flesh is digested from within. *Saving Throw*: DC 37 Fortitude; *Onset*: 1 minute; *Maximum Duration*: 6 rounds; *Stage 1*: 6d6 poison damage and sickened 2 (1 round); *Stage 2*: 7d6 poison damage and sickened 3 (1 round); *Stage 3*: 9d6 poison damage and sickened 4 (1 round)"
+  },
+  {
+    "code": "giant_centipede_venom",
+    "name": "Giant centipede venom",
+    "level": 1,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INJURY",
+      "POISON"
+    ],
+    "price": {
+      "gp": 4
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "three-actions",
+    "description": "Giant centipede venom causes severe muscle stiffness. *Saving Throw*: DC 17 Fortitude; *Maximum Duration*: 6 rounds; *Stage 1*: 1d6 poison damage (1 round); *Stage 2*: 1d8 poison damage and flat-footed (1 round); *Stage 3*: 1d12 poison damage, clumsy 1, and flat-footed (1 round)"
+  },
+  {
+    "code": "giant_scorpion_venom",
+    "name": "Giant scorpion venom",
+    "level": 6,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INJURY",
+      "POISON"
+    ],
+    "price": {
+      "gp": 40
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "three-actions",
+    "description": "Scorpion venom is excruciating and its effects are somewhat debilitating. *Saving Throw*: DC 22 Fortitude; *Maximum Duration*: 6 rounds; *Stage 1*: 1d10 poison damage and enfeebled 1 (1 round); *Stage 2*: 2d10 poison damage and enfeebled 1 (1 round); *Stage 3*: 2d10 poison damage and enfeebled 2 (1 round)"
+  },
+  {
+    "code": "giant_wasp_venom",
+    "name": "Giant wasp venom",
+    "level": 7,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INJURY",
+      "POISON"
+    ],
+    "price": {
+      "gp": 55
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "three-actions",
+    "description": "Giant wasp venom interferes with a victim's movement. *Saving Throw*: DC 25 Fortitude; *Maximum Duration*: 6 rounds; *Stage 1*: 2d6 poison damage and clumsy 1 (1 round); *Stage 2*: 3d6 poison damage and clumsy 2 (1 round); *Stage 3*: 4d6 poison and clumsy 2 (1 round)"
+  },
+  {
+    "code": "graveroot",
+    "name": "Graveroot",
+    "level": 3,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INJURY",
+      "POISON"
+    ],
+    "price": {
+      "gp": 10
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "three-actions",
+    "description": "The opaque white sap from the graveroot shrub clouds the mind. *Saving Throw*: DC 19 Fortitude; *Maximum Duration*: 4 rounds; *Stage 1*: 1d10 poison damage (1 round); *Stage 2*: 1d12 poison damage and stupefied 1 (1 round); *Stage 3*: 2d6 poison damage and stupefied 2 (1 round)"
+  },
+  {
+    "code": "hemlock",
+    "name": "Hemlock",
+    "level": 17,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INGESTED",
+      "POISON"
+    ],
+    "price": {
+      "gp": 2250
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Concentrated hemlock is a particularly deadly toxin that halts muscle action—including that of the victim's heart. *Saving Throw*: DC 40 Fortitude; *Onset*: 30 minutes; *Maximum Duration*: 60 minutes; *Stage 1*: 17d6 poison damage and enfeebled 2 (10 minutes); *Stage 2*: 21d6 poison damage and enfeebled 3 (10 minutes); *Stage 3*: 26d6 poison damage and enfeebled 4 (10 minutes)"
+  },
+  {
+    "code": "hunting_spider_venom",
+    "name": "Hunting spider venom",
+    "level": 5,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INJURY",
+      "POISON"
+    ],
+    "price": {
+      "gp": 25
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "three-actions",
+    "description": "This venom erodes its target's defenses, aiding the spider in securing prey. *Saving Throw*: DC 21 Fortitude; *Maximum Duration*: 6 rounds; *Stage 1*: 1d10 poison damage and flat-footed (1 round); *Stage 2*: 1d12 poison damage, clumsy 1, and flat-footed (1 round); *Stage 3*: 2d6 poison damage, clumsy 2, and flat-footed (1 round)"
+  },
+  {
+    "code": "king's sleep item 18",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INGESTED",
+      "POISON",
+      "VIRULENT"
+    ],
+    "price": {
+      "gp": 4000
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "King's sleep is an insidious long-term poison that can seem like a disease or even death from natural causes on a venerable target. The drained condition from king's sleep is cumulative with each failed save and can't be removed while the poison lasts. *Saving Throw*: DC 41 Fortitude; *Onset*: 1 day; *Stage 1*: drained 1 (1 day); *Stage 2*: drained 1 (1 day); *Stage 3*: drained 2 (1 day)"
+  },
+  {
+    "code": "lethargy_poison",
+    "name": "Lethargy poison",
+    "level": 2,
+    "tags": [
+      "UNCOMMON",
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INCAPACITATION",
+      "INJURY",
+      "POISON",
+      "SLEEP"
+    ],
+    "price": {
+      "gp": 7
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "three-actions",
+    "description": "Lethargy poison is commonly used in hit-and-run tactics by drow and others who want their victims alive; the ambusher retreats until the poison sets in and the victim falls unconscious. Further exposure to lethargy poison does not require the target to attempt additional saving throws; only failing an saving throw against an ongoing exposure can progress its stage. *Saving Throw*: DC 18 Fortitude; *Maximum Duration*: 4 hours; *Stage 1*: slowed 1 (1 round); *Stage 2*: slowed 1 (1 minute); *Stage 3*: unconscious with no Perception check to wake up (1 round) *Stage 4*: unconscious with no Perception check to wake up (1d4 hours)."
+  },
+  {
+    "code": "lich_dust",
+    "name": "Lich dust",
+    "level": 9,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INGESTED",
+      "POISON"
+    ],
+    "price": {
+      "gp": 110
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Dust salvaged from the remains of a destroyed lich has paralytic properties that make it a valuable poison. *Saving Throw*: DC 28 Fortitude; *Onset*: 10 minutes; *Maximum Duration*: 6 minutes; *Stage 1*: fatigued (1 minute); *Stage 2*: 5d6 poison damage and fatigued (1 minute); *Stage 3*: 5d6 poison damage, fatigued, and paralyzed (1 minute)"
+  },
+  {
+    "code": "malyass_root_paste",
+    "name": "Malyass root paste",
+    "level": 7,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "CONTACT",
+      "POISON"
+    ],
+    "price": {
+      "gp": 55
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "three-actions",
+    "description": "Malyass root paste sees use to impede opponents in athletic competitions, in addition to espionage and tracking. *Saving Throw*: DC 26 Fortitude; *Onset*: 1 minute; *Maximum Duration*: 6 minutes; *Stage 1*: clumsy 1 and –10-foot status penalty to all Speeds (1 minute); *Stage 2*: clumsy 2 and –20-foot status penalty to all Speeds (1 minute); *Stage 3*: clumsy 3, flat-footed, and –30-foot status penalty to all Speeds"
+  },
+  {
+    "code": "mindfog_mist",
+    "name": "Mindfog mist",
+    "level": 15,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INHALED",
+      "POISON"
+    ],
+    "price": {
+      "gp": 1000
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Mindfog mist can be used to undermine spellcasters, as its effect on a victim's mental faculties are swift and powerful. *Saving Throw*: DC 35 Fortitude; *Onset*: 1 round; *Maximum Duration*: 6 rounds; *Stage 1*: stupefied 2 (1 round); *Stage 2*: confused and stupefied 3 (1 round); *Stage 3*: confused and stupefied 4 (1 round)"
+  },
+  {
+    "code": "nettleweed_residue",
+    "name": "Nettleweed residue",
+    "level": 8,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "CONTACT",
+      "POISON"
+    ],
+    "price": {
+      "gp": 75
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Concentrated sap of stinging weeds makes an effective toxin. *Saving Throw*: DC 27 Fortitude; *Onset*: 1 minute; *Maximum Duration*: 6 minutes; *Stage 1*: 8d6 poison damage (1 minute); *Stage 2*: 10d6 poison damage (1 minute); *Stage 3*: 13d6 poison damage (1 minute)"
+  },
+  {
+    "code": "nightmare_vapor",
+    "name": "Nightmare vapor",
+    "level": 16,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INHALED",
+      "POISON"
+    ],
+    "price": {
+      "gp": 1400
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Purportedly sourced from any number of outlandish locales, nightmare vapor is most often created by boiling the sweat collected from humanoids caught in the throes of terrible nightmares. *Saving Throw*: DC 36 Fortitude; *Onset*: 1 round; *Maximum Duration*: 6 rounds; *Stage 1*: confused (1 round); *Stage 2*: confused and flat-footed (1 round); *Stage 3*: confused, flat- footed, and stupefied 2 (1 round)"
+  },
+  {
+    "code": "purple_worm_venom",
+    "name": "Purple worm venom",
+    "level": 13,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INJURY",
+      "POISON"
+    ],
+    "price": {
+      "gp": 500
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "three-actions",
+    "description": "Venom from enormous purple worms leaves a victim weakened. *Saving Throw*: DC 32 Fortitude; *Maximum Duration*: 6 rounds; *Stage 1*: 5d6 poison damage and enfeebled 2 (1 round); *Stage 2*: 6d6 poison damage and enfeebled 2 (1 round); *Stage 3*: 8d6 poison and enfeebled 2 (1 round)"
+  },
+  {
+    "code": "shadow_essence",
+    "name": "Shadow essence",
+    "level": 10,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INJURY",
+      "NEGATIVE",
+      "POISON"
+    ],
+    "price": {
+      "gp": 160
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "three-actions",
+    "description": "Distilled from the Plane of Shadow, this oily substance imposes tenebrous effects. The enfeebled condition from shadow essence lasts for 24 hours. *Saving Throw*: DC 29 Fortitude; *Maximum Duration*: 6 rounds; *Stage 1*: 3d6 negative damage and 2d6 poison damage (1 round); *Stage 2*: 3d6 negative damage, 2d6 poison damage, and enfeebled 1 (1 round); *Stage 3*: 3d6 negative damage, 2d6 poison damage, and enfeebled 2 (1 round)"
+  },
+  {
+    "code": "slumber_wine",
+    "name": "Slumber wine",
+    "level": 12,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INGESTED",
+      "POISON",
+      "SLEEP"
+    ],
+    "price": {
+      "gp": 325
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Slumber wine sees its greatest use in games of intrigue, where an absence can be more devastating than injury. Characters unconscious from slumber wine can't wake up by any means while the poison lasts, don't need to eat or drink while unconscious in this way, and appear to be recently dead unless an examiner succeeds at a DC 40 Medicine check. *Saving Throw*: DC 32 Fortitude; *Onset*: 1 hour; *Maximum Duration*: 7 days; *Stage 1*: unconscious (1 day); *Stage 2*: unconscious (2 days); *Stage 3*: unconscious (3 days)."
+  },
+  {
+    "code": "spider_root",
+    "name": "Spider root",
+    "level": 9,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "CONTACT",
+      "POISON"
+    ],
+    "price": {
+      "gp": 110
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "A paste made by mashing the fine, threadlike roots of a certain creeper vine, spider root renders a victim clumsy and maladroit. *Saving Throw*: DC 28 Fortitude; *Onset*: 1 minute; *Maximum Duration*: 6 minutes; *Stage 1*: 8d6 poison damage and clumsy 1 (1 minute); *Stage 2*: 9d6 poison damage and clumsy 2 (1 minute); *Stage 3*: 10d6 poison damage and clumsy 3 (1 minute)"
+  },
+  {
+    "code": "tears_of_death",
+    "name": "Tears of death",
+    "level": 20,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "CONTACT",
+      "POISON",
+      "VIRULENT"
+    ],
+    "price": {
+      "gp": 12000
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Tears of death are among the most powerful of alchemical poisons, distilled from extracts of five other deadly poisons in just the right ratios. *Saving Throw*: DC 46 Fortitude; *Onset*: 1 minute; *Maximum Duration*: 10 minutes; *Stage 1*: 18d6 poison damage and paralyzed (1 round); *Stage 2*: 25d6 poison damage and paralyzed (1 minute); *Stage 3*: 30d6 poison damage and paralyzed (1 minute)"
+  },
+  {
+    "code": "wolfsbane",
+    "name": "Wolfsbane",
+    "level": 10,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INGESTED",
+      "POISON"
+    ],
+    "price": {
+      "gp": 155
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "Wolfsbane appears in folklore for its link to werecreatures. If you are afflicted with lycanthropy and survive stage 3 of wolfsbane, you're immediately cured of the lycanthropy. *Saving Throw*: DC 30 Fortitude; *Onset*: 10 minutes; *Maximum Duration*: 6 minutes; *Stage 1*: 12d6 poison damage (1 minute); *Stage 2*: 16d6 poison damage (1 minute); *Stage 3*: 20d6 poison damage (1 minute)"
+  },
+  {
+    "code": "wyvern_poison",
+    "name": "Wyvern poison",
+    "level": 8,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "INJURY",
+      "POISON"
+    ],
+    "price": {
+      "gp": 80
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "three-actions",
+    "description": "Properly harvested and preserved, the poison from a wyvern's sting is effective and direct. *Saving Throw*: DC 26 Fortitude; *Maximum Duration*: 6 rounds; *Stage 1*: 5d6 poison damage (1 round); *Stage 2*: 6d6 poison damage (1 round); *Stage 3* 8d6 poison damage (1 round) Alchemical Tools Alchemical tools are consumable items you don't drink."
+  },
+  {
+    "code": "philosopher's stone item 20",
+    "tags": [
+      "UNCOMMON",
+      "ALCHEMICAL",
+      "CONSUMABLE"
+    ],
+    "usage": "held in 2 hands",
+    "bulk": "2",
+    "activate": "[one-action] Interact or 1 or more days",
+    "description": "An alchemist with the Craft Philosopher's Stone feat can create a philosopher's stone once per month by spending 1 batch of infused reagents during their daily preparations using the advanced alchemy class feature. This is the only way to create a philosopher's stone. At a glance, a philosopher's stone appears to be an ordinary, sooty piece of natural rock. Breaking the rock open with a Force Open action (DC 35) reveals a cavity at the stone's heart. The cavity is lined with a rare type of quicksilver that can transmute base metals into precious metals or create an elixir of rejuvenation (page 548). To use the quicksilver, you must be legendary in Crafting and have the Alchemical Crafting feat. You can then use the stone's quicksilver for one of two effects:\n- You can apply the stone's quicksilver to an infused true elixir of life using an Interact action. This turns the elixir into an infused elixir of rejuvenation instantaneously. This doesn't require any crafting time or additional materials.\n- You can spend up to a month of downtime applying the quicksilver either to iron to create silver or to lead to create gold. Treat this as a 20th-level task to Earn Income using Crafting, except that you create 500 gp worth of your chosen metal per day on a success or 750 gp worth per day on a critical success."
+  },
+  {
+    "code": "silversheen",
+    "name": "Silversheen",
+    "level": 2,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE"
+    ],
+    "price": {
+      "gp": 6
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "You can slather this silvery paste onto one melee weapon, one thrown weapon, or 10 pieces of ammunition. Silversheen spoils quickly, so once you open a vial, you must use it all at once, rather than saving it. For the next hour, the weapon or ammunition counts as silver instead of its normal precious material (such as cold iron) for any physical damage it deals."
+  },
+  {
+    "code": "smokestick",
+    "name": "Smokestick",
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE"
+    ],
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "With a sharp twist of this item, you instantly create a screen of thick, opaque smoke in a burst centered on one corner of your space. All creatures within that area are concealed, and all other creatures are concealed to them. The smoke lasts for 1 minute or until dispersed by a strong wind.",
+    "types": [
+      {
+        "type": "lesser",
+        "level": 1,
+        "price": {
+          "gp": 3
+        },
+        "description": "The radius of the burst is 5 feet."
+      },
+      {
+        "type": "greater",
+        "level": 7,
+        "price": {
+          "gp": 53
+        },
+        "description": "The radius of the burst is 20 feet."
+      }
+    ]
+  },
+  {
+    "code": "snake_oil",
+    "name": "Snake oil",
+    "level": 1,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE"
+    ],
+    "price": {
+      "gp": 2
+    },
+    "usage": "held in 2 hands",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "You can apply snake oil onto a wound or other outward symptom of an affliction or condition (such as sores from a disease or discoloration from a poison). For the next hour, the symptom disappears and the wounded or afflicted creature doesn't feel as if it still has the wound or affliction, though all effects remain. A creature can uncover the ruse by succeeding at a DC 17 Perception check, but only if it uses a Seek action to specifically examine the snake oil's effects."
+  },
+  {
+    "code": "sunrod",
+    "name": "Sunrod",
+    "level": 1,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "LIGHT"
+    ],
+    "price": {
+      "gp": 3
+    },
+    "usage": "held in 1 hand",
+    "bulk": "L",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "This 1-foot-long, gold-tipped rod glows after it's struck on a hard surface. For the next 6 hours, it sheds bright light in a 20-foot radius (and dim light to the next 40 feet)."
+  },
+  {
+    "code": "tindertwig",
+    "name": "Tindertwig",
+    "level": 1,
+    "tags": [
+      "ALCHEMICAL",
+      "CONSUMABLE",
+      "FIRE"
+    ],
+    "price": {
+      "gp": 2
+    },
+    "usage": "held in 1 hand",
+    "activate": "Interact",
+    "num_actions": "one-action",
+    "description": "An alchemical substance applied to one end of this tiny wooden stick ignites when struck against a rough surface. Creating a flame with a tindertwig is much faster than creating a flame with flint and steel. You can ignite the tindertwig and touch it to a flammable object as part of the same Interact action."
   }
 ]
