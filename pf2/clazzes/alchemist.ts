@@ -1,23 +1,16 @@
 import {
     AbilityScoreEnum,
-    ProficiencyLevelEnum,
-    SavingThrowEnum,
-    DefenseProficiencyEnum,
-    AttackProficiencyEnum,
-    SkillEnum,
-    AlchemicalItemCategoryEnum,
-    OtherAttackProficiencyEnum,
     AlchemicalBombEnum,
     AlchemicalElixirEnum,
-    AlchemicalPoisonEnum,
-    AlchemicalToolEnum
+    AttackProficiencyEnum,
+    DefenseProficiencyEnum,
+    OtherAttackProficiencyEnum,
+    ProficiencyLevelEnum,
+    SavingThrowEnum,
+    SkillEnum
 } from "../enums"
-import {
-    Clazz,
-    Character,
-    Choice
-} from "../structures"
-
+import {Character, Choice, Clazz} from "../structures"
+import {alchemicalItemsData} from "../data"
 
 
 enum AlchemistResearchFieldEnum {
@@ -100,14 +93,32 @@ class Alchemist extends Clazz {
             switch (choice) {
                 case AlchemistResearchFieldEnum.BOMBER:
                     newChoices.push(new Choice(
-                        "Choose two 1st-level alchemical bombs to add to your formula book",
-                        Array.from(Object.values(AlchemicalBombEnum)),
-                        1,
+                        "You specialize in explosions and other violent alchemical reactions. You start with the formulas for two 1st-level alchemical bombs in your formula book, in addition to your other formulas.\n" +
+                        "When throwing an alchemical bomb with the splash trait, you can deal splash damage to only your primary target instead of the usual splash area.",
+                        Array.from(alchemicalItemsData.values()).filter(item => item["tags"].indexOf("BOMB") >= 0).map(item => item["code"]),
+                        2,
                         callback
                     ));
                     break;
                 case AlchemistResearchFieldEnum.CHIRURGEON:
+                    newChoices.push(new Choice(
+                        "You concentrate on healing others with alchemy. You start with the formulas for two of the following in your formula book, in addition to your other formulas: lesser antidote, lesser antiplague, or lesser elixir of life.\n" +
+                        "As long as your proficiency rank in Medicine is trained or better, you can attempt a Crafting check instead of a Medicine check for any of Medicine's untrained and trained uses.",
+                        [AlchemicalElixirEnum.ANTIDOTE_LESSER, AlchemicalElixirEnum.ANTIPLAGUE_LESSER, AlchemicalElixirEnum.ELIXIR_OF_LIFE_MINOR],
+                        2,
+                        callback
+                    ));
+                    break;
                 case AlchemistResearchFieldEnum.MUTAGENIST:
+                    newChoices.push(new Choice(
+                        "You focus on bizarre mutagenic transformations\n" +
+                        "that sacrifice one aspect of a creature's physical\n" +
+                        "or psychological being in order to strengthen another. You start with the formulas for two 1st-level mutagens in your formula book, in addition to your other formulas. You can gain the benefit of any mutagen, even if it wasn't specifically brewed for you.\n" +
+                        "Whenever your proficiency rank for simple weapons increases, your proficiency rank for unarmed attacks increases to the same rank unless it's already better.",
+                        Array.from(alchemicalItemsData.values()).filter(item => item["tags"].indexOf("MUTAGEN") >= 0).map(item => item["code"]),
+                        2,
+                        callback
+                    ));
             }
             return newChoices;
         };

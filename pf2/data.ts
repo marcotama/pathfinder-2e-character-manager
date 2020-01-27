@@ -24,4 +24,4 @@ export class InventoryItemData {
 import alchemicalItemsJson from "./alchemical_items.json";
 import {plainToClass} from "class-transformer";
 import {Amount} from "./structures";
-let alchemicalItemsData = plainToClass(InventoryItemData, alchemicalItemsJson);
+export let alchemicalItemsData = plainToClass(InventoryItemData, alchemicalItemsJson);

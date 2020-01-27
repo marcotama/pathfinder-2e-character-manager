@@ -453,12 +453,12 @@ export class Character extends Hero {
 }
 
 export class Choice {
-    description: string;
-    options: Array<string>;
+    description: String;
+    options: Array<String>;
     numChoices: number;
     callback: (...args: any[]) => any;
 
-    constructor(description: string, options: Array<string>, numChoices: number, callback: (...args: any[]) => any) {
+    constructor(description: String, options: Array<String>, numChoices: number, callback: (...args: any[]) => any) {
         this.description = description;
         this.options = options;
         this.numChoices = numChoices;
