@@ -219,6 +219,7 @@ export enum ItemBulkEnum {
     SMALL = 'small',
     MEDIUM = 'medium',
     LARGE = 'large',
+    TWO = "2"
 }
 
 export type AttackProficiencyEnum = MeleeWeaponGroupEnum | RangedWeaponGroupEnum | OtherAttackProficiencyEnum;
@@ -471,7 +472,8 @@ export enum AlchemicalToolEnum {
 }
 
 export enum ItemActivationEnum {
-    STRIKE = "strike"
+    STRIKE = "strike",
+    INTERACT = "interact"
 }
 
 export type AlchemicalItemEnum = AlchemicalBombEnum | AlchemicalElixirEnum | AlchemicalPoisonEnum | AlchemicalToolEnum;
