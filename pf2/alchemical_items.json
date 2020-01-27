@@ -1,1156 +1,270 @@
-{
-  "acid_flask_item_1": {
-    "code": "acid_flask_item_1",
-    "name": "Acid Flask Item 1",
-    "price": [
-      3,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "description": "Flasks filled with corrosive acid deal 1d4 persistent acid damage and 1 acid splash damage."
-  },
-  "alchemist_s_fire_item_1": {
-    "code": "alchemist_s_fire_item_1",
-    "name": "Alchemist's Fire Item 1",
-    "price": [
-      3,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "description": "Alchemist's fire is combination of several volatile liquids that ignite when exposed to air, typically stored in a sealed flask. Alchemist's fire deals 1d8 fire damage, 1 persistent fire damage, and 1 fire splash damage.\nThe target can end this persistent damage by spending an Interact action or by becoming submerged in water or otherwise entering an area deprived of air. A creature adjacent to the target can also end the persistent damage by spending an Interact action."
-  },
-  "antidote_item_1": {
-    "code": "antidote_item_1",
-    "name": "Antidote Item 1+",
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "description": "Antidotes come in three different types: standard, greater, and true. Upon drinking a standard antidote, you gain a +2 item bonus to Fortitude saving throws against poisons and venoms for 6 hours. A greater antidote grants a +4 item bonus to Fortitude saves against poisons and venoms for 6 hours. A true antidote grants a +4 item bonus to Fortitude saving throws against poisons and venoms for 6 hours, and when you consume a true antidote, you can immediately attempt a saving throw against one poison or venom of 10th level or lower afflicting you; if you succeed, the poison or venom is neutralized.",
+[
+  {
+    "code": "acid_flask",
+    "name": "Acid Flask",
     "types": [
       {
-        "type": "standard",
+        "code": "acid_flask_lesser",
+        "name": "Acid Flask, Lesser",
+        "type": "lesser",
         "level": 1,
-        "price": [
-          2,
-          "gp"
-        ]
+        "price": {"gp": 3},
+        "description": "It deals 1d6 persistent acid damage and 1 acid splash damage."
       },
       {
-        "type": "greater",
-        "level": 5,
-        "price": [
-          15,
-          "gp"
-        ]
-      },
-      {
-        "type": "true",
-        "level": 10,
-        "price": [
-          110,
-          "gp"
-        ]
-      }
-    ]
-  },
-  "antiplague_item_1": {
-    "code": "antiplague_item_1",
-    "name": "Antiplague Item 1+",
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "description": "Antiplague comes in three different types: standard, greater, and true. Upon drinking a standard antiplague, you gain a +2 item bonus to Fortitude saving throws against diseases for 24 hours; this applies to your daily save against a disease's progression. A greater antiplague grants a +4 item bonus to Fortitude saves against diseases for 24 hours. A true antiplague grants a +4 item bonus to Fortitude saving throws against diseases for 24 hours, and when you consume a true antiplague, you can immediately attempt a saving throw against one disease of 10th level or lower afflicting you; if you succeed, you are cured of the disease.",
-    "types": [
-      {
-        "type": "standard",
-        "level": 1,
-        "price": [
-          2,
-          "gp"
-        ]
-      },
-      {
-        "type": "greater",
-        "level": 5,
-        "price": [
-          15,
-          "gp"
-        ]
-      },
-      {
-        "type": "true",
-        "level": 10,
-        "price": [
-          110,
-          "gp"
-        ]
-      }
-    ]
-  },
-  "arsenic_item_1": {
-    "code": "arsenic_item_1",
-    "name": "Arsenic Item 1",
-    "price": [
-      2,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "description": "You can't reduce your sick condition while affected by arsenic.",
-    "saving_throw": "Fortitude DC 15",
-    "onset": "10 minutes; Maximum Duration 5 minutes; Stage 1 1 poison damage and sick 1 (1 minute); Stage 2 1d4 poison damage and sick 2 (1 minute); Stage 3 2d4 poison damage and sick 3 (1 minute)"
-  },
-  "belladonna_item_2": {
-    "code": "belladonna_item_2",
-    "name": "Belladonna Item 2",
-    "price": [
-      4,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 16",
-    "onset": "10 minutes; Maximum Duration 30 minutes; Stage 1 dazzled (10 minutes); Stage 2 1d4 poison damage and sick 1 (10 minutes); Stage 3 1d4 poison damage, sick 1, and confused for 1 minute (1 minute)"
-  },
-  "bestial_mutagen_item_9": {
-    "code": "bestial_mutagen_item_9",
-    "name": "Bestial Mutagen Item 9",
-    "price": [
-      90,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 10 minutes after the onset of this mutagen, your features transform into something bestial and you take on muscle mass, but your lumbering form is clumsy.",
-    "benefit": "You gain a +3 item bonus to Athletics checks and unarmed attack rolls. Your damage dealt by unarmed attacks increases to four damage dice, unless it would otherwise have more damage dice.",
-    "drawback": "You take a \u20131 item penalty to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and AC."
-  },
-  "bestial_mutagen_greater_item_13": {
-    "code": "bestial_mutagen_greater_item_13",
-    "name": "Bestial Mutagen, Greater Item 13",
-    "price": [
-      400,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 1 hour after the onset of this mutagen, your features transform into something bestial and you take on muscle mass, but your lumbering form is clumsy.",
-    "benefit": "You gain a +4 item bonus to Athletics checks and unarmed attack rolls. Your damage dealt by unarmed attacks increases to five damage dice, unless it would otherwise have more damage dice.",
-    "drawback": "You take a \u20131 item penalty to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and AC."
-  },
-  "bestial_mutagen_lesser_item_5": {
-    "code": "bestial_mutagen_lesser_item_5",
-    "name": "Bestial Mutagen, Lesser Item 5",
-    "price": [
-      20,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 minute after the onset of this mutagen, your features transform into something bestial and you take on muscle mass, but your lumbering form is clumsy.",
-    "benefit": "You gain a +2 item bonus to Athletics checks and unarmed attack rolls. Your damage dealt by unarmed attacks increases to three damage dice, unless it would otherwise have more damage dice.",
-    "drawback": "You take a \u20131 item penalty to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and AC."
-  },
-  "bestial_mutagen_true_item_17": {
-    "code": "bestial_mutagen_true_item_17",
-    "name": "Bestial Mutagen, True Item 17",
-    "price": "2,000 gp",
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 hour after the onset of this mutagen, your features transform into something bestial and you take on muscle mass, but your lumbering form is clumsy.",
-    "benefit": "You gain a +5 item bonus to Athletics checks and unarmed attack rolls. Your damage dealt by unarmed attacks increases to six damage dice, unless it would otherwise have more damage dice.",
-    "drawback": "You take a \u20131 item penalty to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and AC."
-  },
-  "black_adder_venom_item_2": {
-    "code": "black_adder_venom_item_2",
-    "name": "Black Adder Venom Item 2",
-    "price": [
-      5,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 15; Maximum Duration 3 rounds; Stage 1 1d6 poison damage (1 round); Stage 2 1d8 poison damage (1 round); Stage 3 1d12 poison damage (1 round)"
-  },
-  "black_lotus_extract_item_19": {
-    "code": "black_lotus_extract_item_19",
-    "name": "Black Lotus Extract Item 19",
-    "price": [
-      5000,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 38",
-    "onset": "1 minute; Maximum Duration 6 rounds; Stage 1 12d6 poison damage and drained 1 (1 round); Stage 2 14d6 poison damage and drained 1 (1 round); Stage 3 16d6 poison damage and drained 2 (1 round)"
-  },
-  "blightburn_resin_item_11": {
-    "code": "blightburn_resin_item_11",
-    "name": "Blightburn Resin Item 11",
-    "price": [
-      160,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 26",
-    "onset": "1 minute; Maximum Duration 6 rounds; Stage 1 7d6 poison damage (1 round); Stage 2 8d6 poison damage (1 round); Stage 3 12d6 poison damage (1 round)"
-  },
-  "bomber_s_eye_elixir_item_3": {
-    "code": "bomber_s_eye_elixir_item_3",
-    "name": "Bomber's Eye Elixir Item 3",
-    "price": [
-      8,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "For the next minute, when you throw alchemical bombs, you ignore the effects of screening."
-  },
-  "bottled_lightning_item_1": {
-    "code": "bottled_lightning_item_1",
-    "name": "Bottled Lightning Item 1",
-    "price": [
-      3,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand; <b>Bulk</b> L Bottled lightning is packed with volatile reagents that create a blast of electricity when they are exposed to air. Bottled lightning deals 1d6 electricity damage and 1 electricity splash damage and causes the target to be flat-footed to all creatures until the start of your next turn."
-  },
-  "bravo_s_brew_item_3": {
-    "code": "bravo_s_brew_item_3",
-    "name": "Bravo's Brew Item 3",
-    "price": [
-      7,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "This flask of foaming beer grants courage. For the next hour after drinking this elixir, you gain a +1 item bonus to Will saves and a +3 item bonus to Will saves against fear."
-  },
-  "brimstone_fumes_item_16": {
-    "code": "brimstone_fumes_item_16",
-    "name": "Brimstone Fumes Item 16",
-    "price": [
-      1,
-      200,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 33",
-    "onset": "1 round; Maximum Duration 6 rounds; Stage 1 6d6 poison damage (1 round); Stage 2 7d6 poison damage and enfeebled 1 (1 round); Stage 3 8d6 poison damage and enfeebled 3 (1 round)"
-  },
-  "bullheaded_mutagen_item_9": {
-    "code": "bullheaded_mutagen_item_9",
-    "name": "Bullheaded Mutagen Item 9",
-    "price": [
-      90,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 10 minutes after the onset of this mutagen, you gain more control of your mind and can steel your will against mental assaults, but you seem standoffish and off-putting.",
-    "benefit": "You gain a +3 item bonus to Will saves, Perception checks, Medicine checks, Nature checks, Religion checks, and Survival checks. This bonus increases to +4 against mental effects.",
-    "drawback": "You take a \u20132 item penalty to Deception, Diplomacy, Intimidation, and Performance checks, and you lose 2 RP."
-  },
-  "bullheaded_mutagen_greater_item_13": {
-    "code": "bullheaded_mutagen_greater_item_13",
-    "name": "Bullheaded Mutagen, Greater Item 13",
-    "price": [
-      400,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 1 hour after the onset of this mutagen, you gain more control of your mind and can steel your will against mental assaults, but your arrogance makes you seem standoffish and off-putting.",
-    "benefit": "You gain a +4 item bonus to Will saves, Perception checks, Medicine checks, Nature checks, Religion checks, and Survival checks. This bonus increases to +5 against mental effects.",
-    "drawback": "You take a \u20132 item penalty to Deception, Diplomacy, Intimidation, and Performance checks, and you lose 2 RP."
-  },
-  "bullheaded_mutagen_lesser_item_5": {
-    "code": "bullheaded_mutagen_lesser_item_5",
-    "name": "Bullheaded Mutagen, Lesser Item 5",
-    "price": [
-      20,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 minute after the onset of this mutagen, you gain more control of your mind and can steel your will against mental assaults, but your arrogance makes you seem standoffish and off-putting.",
-    "benefit": "You gain a +2 item bonus to Will saves, Perception checks, Medicine checks, Nature checks, Religion checks, and Survival checks. This bonus increases to +3 against mental effects.",
-    "drawback": "You take a \u20131 item penalty to Deception, Diplomacy, Intimidation, and Performance checks, and you lose 1 RP."
-  },
-  "bullheaded_mutagen_true_item_17": {
-    "code": "bullheaded_mutagen_true_item_17",
-    "name": "Bullheaded Mutagen, True Item 17",
-    "price": [
-      2000,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 hour after the onset of this mutagen, you gain more control of your mind and can steel your will against mental assaults, but your arrogance makes you seem standoffish and off-putting.",
-    "benefit": "You gain a +5 item bonus to Will saves, Perception checks, Medicine checks, Nature checks, Religion checks, and Survival checks and resistance 15 against mental damage.",
-    "drawback": "You take a \u20134 item penalty to Deception, Diplomacy, Intimidation, and Performance checks, and you lose 4 RP."
-  },
-  "cat_s_eye_elixir_item_3": {
-    "code": "cat_s_eye_elixir_item_3",
-    "name": "Cat's Eye Elixir Item 3",
-    "price": [
-      7,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation For the next minute, you treat sensed creatures within 30 feet as if they were concealed, and concealed creatures within 30 feet as if they were seen."
-  },
-  "cheetah_s_elixir_item_1": {
-    "code": "cheetah_s_elixir_item_1",
-    "name": "Cheetah's Elixir Item 1",
-    "price": [
-      2,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "For the next minute, you are accelerated 5."
-  },
-  "cytillesh_oil_item_3": {
-    "code": "cytillesh_oil_item_3",
-    "name": "Cytillesh Oil Item 3",
-    "price": [
-      8,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 16; Maximum Duration 4 rounds; Stage 1 1d8 poison damage (1 round); Stage 2 1d10 poison damage (1 round); Stage 3 2d8 poison damage (1 round)"
-  },
-  "cognitive_mutagen_item_9": {
-    "code": "cognitive_mutagen_item_9",
-    "name": "Cognitive Mutagen Item 9",
-    "price": [
-      90,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 10 minutes after the onset of this mutagen, your mind becomes clear and cognition flows freely, but physical matters seem ephemeral.",
-    "benefit": "You gain a +3 item bonus to Arcana, Crafting, Lore, Occultism, and Society checks and all checks to Recall Knowledge, regardless of the subject matter. You treat a critical failure on a Recall Knowledge check as a failure instead.",
-    "drawback": "You take a \u20132 item penalty to melee attack rolls and Athletics checks, you can carry 2 less Bulk than normal before becoming encumbered, and the maximum Bulk you can carry is 4 less."
-  },
-  "cognitive_mutagen_greater_item_13": {
-    "code": "cognitive_mutagen_greater_item_13",
-    "name": "Cognitive Mutagen, Greater Item 13",
-    "price": [
-      400,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 1 minute after the onset of this mutagen, your mind becomes clear and cognition flows freely, but physical matters seem ephemeral.",
-    "benefit": "You gain a +4 item bonus to Arcana, Crafting, Lore, Occultism, and Society checks and all checks to Recall Knowledge. You treat a critical failure on a Recall Knowledge check as a failure instead.",
-    "drawback": "You take a \u20133 item penalty to melee attack rolls and Athletics checks, you can carry 3 less Bulk than normal before becoming encumbered, and the maximum Bulk you can carry is 6 less."
-  },
-  "cognitive_mutagen_lesser_item_5": {
-    "code": "cognitive_mutagen_lesser_item_5",
-    "name": "Cognitive Mutagen, Lesser Item 5",
-    "price": [
-      20,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 minute after the onset of this mutagen, your mind becomes clear and cognition flows freely, but physical matters seem ephemeral.",
-    "benefit": "You gain a +2 item bonus to Arcana, Crafting, Lore, Occultism, and Society checks and all checks to Recall Knowledge. You treat a critical failure on a Recall Knowledge check as a failure instead.",
-    "drawback": "You take a \u20131 item penalty to melee attack rolls and Athletics checks, you can carry 1 less Bulk than normal before becoming encumbered,and the maximum Bulk you can carry is 2 less."
-  },
-  "cognitive_mutagen_true_item_17": {
-    "code": "cognitive_mutagen_true_item_17",
-    "name": "Cognitive Mutagen, True Item 17",
-    "price": [
-      2000,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 hour after the onset of this mutagen, your mind becomes clear and cognition flows freely, but physical matters seem ephemeral.",
-    "benefit": "You gain a +5 item bonus to Arcana, Crafting, Lore, Occultism, and Society checks and all checks to Recall Knowledge. You treat a critical failure on a Recall Knowledge check as a failure instead.",
-    "drawback": "You take a \u20134 item penalty to melee attack rolls and Athletics checks, you can carry 4 less Bulk than normal before becoming encumbered, and the maximum Bulk you can carry is 8 less."
-  },
-  "comprehension_elixir_item_2": {
-    "code": "comprehension_elixir_item_2",
-    "name": "Comprehension Elixir Item 2",
-    "price": [
-      4,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation For the next minute after drinking this elixir, you can understand the words that you are reading so long as they are written in a common language. This elixir doesn't automatically allow you to understand codes or extremely esoteric passages."
-  },
-  "darkvision_elixir_item_1": {
-    "code": "darkvision_elixir_item_1",
-    "name": "Darkvision Elixir Item 1+",
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "Upon your drinking of this elixir, your sight becomes sharper in darkness. This elixir has three types: standard, greater, and true. Upon drinking the standard elixir, you gain darkvision for 10 minutes. The greater version grants you darkvision for 1 hour, and the true elixir grants darkvision for 8 hours.",
-    "types": [
-      {
-        "type": "standard",
-        "level": 1,
-        "price": [
-          2,
-          "gp"
-        ]
-      },
-      {
-        "type": "greater",
+        "code": "acid_flask_moderate",
+        "name": "Acid Flask, Moderate",
+        "type": "moderate",
         "level": 3,
-        "price": [
-          6,
-          "gp"
-        ]
+        "price": {"gp": 10},
+        "description": "You gain a +1 item bonus to attack rolls. The bomb deals 2d6 persistent acid damage and 2 acid splash damage."
       },
       {
-        "type": "true",
-        "level": 6,
-        "price": [
-          24,
-          "gp"
-        ]
+        "code": "acid_flask_greater",
+        "name": "Acid Flask, Greater",
+        "type": "greater",
+        "level": 11,
+        "price": {"gp": 250},
+        "description": "You gain a +2 item bonus to attack rolls. The bomb deals 3d6 persistent acid damage and 3 acid splash damage."
+      },
+      {
+        "code": "acid_flask_major",
+        "name": "Acid Flask, Major",
+        "type": "major",
+        "level": 17,
+        "price": {"gp": 2500},
+        "description": "You gain a +3 item bonus to attack rolls. The bomb deals 4d6 persistent acid damage and 4 acid splash damage."
       }
-    ]
-  },
-  "deathcap_powder_item_13": {
-    "code": "deathcap_powder_item_13",
-    "name": "Deathcap Powder Item 13",
-    "price": [
-      360,
-      "gp"
     ],
-    "method_of_use": "held, 2 hands",
+    "usage": ["held", "1 hand"],
+    "activate": "strike",
     "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 30",
-    "onset": "10 minutes; Maximum Duration 6 minutes; Stage 1 10d6 poison damage (1 minute); Stage 2 13d6 poison damage and sick 2 (1 minute); Stage 3 16d6 poison damage and sick 3 (1 minute)"
+    "tags": ["acid", "alchemical", "bomb", "consumable", "splash"],
+    "description": "This flask filled with corrosive acid deals 1 acid damage, the listed persistent acid damage, and the listed acid splash damage. Many types grant an item bonus to attack rolls."
   },
-  "dragon_bile_item_15": {
-    "code": "dragon_bile_item_15",
-    "name": "Dragon Bile Item 15",
-    "price": [
-      720,
-      "gp"
+
+
+  {
+    "code": "bottled_lightning",
+    "name": "Alchemist's fire",
+    "types": [
+      {
+        "code": "alchemist_s_fire_lesser",
+        "name": "Alchemist's fire, Lesser",
+        "type": "lesser",
+        "level": 1,
+        "price": {"gp": 3},
+        "description": "The bomb deals 1d8 fire damage, 1 persistent fire damage, and 1 fire splash damage."
+      },
+      {
+        "code": "alchemist_s_fire_moderate",
+        "name": "Alchemist's fire, Moderate",
+        "type": "moderate",
+        "level": 3,
+        "price": {"gp": 10},
+        "description": "You gain a +1 item bonus to attack rolls. The bomb deals 2d8 fire damage, 2 persistent fire damage, and 2 fire splash damage."
+      },
+      {
+        "code": "alchemist_s_fire_greater",
+        "name": "Alchemist's fire, Greater",
+        "type": "greater",
+        "level": 11,
+        "price": {"gp": 250},
+        "description": "You gain a +2 item bonus to attack rolls. The bomb deals 3d8 fire damage, 3 persistent fire damage, and 3 fire splash damage."
+      },
+      {
+        "code": "alchemist_s_fire_major",
+        "name": "Alchemist's fire, Major",
+        "type": "major",
+        "level": 17,
+        "price": {"gp": 2500},
+        "description": "You gain a +3 item bonus to attack rolls. The bomb deals 4d8 fire damage, 4 persistent fire damage, and 4 fire splash damage."
+      }
     ],
-    "method_of_use": "held, 2 hands",
+    "usage": ["held", "1 hand"],
+    "activate": "strike",
     "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 32",
-    "onset": "1 minute; Maximum Duration 6 rounds; Stage 1 4d6 poison damage and sick 2 (1 round); Stage 2 5d6 poison damage and sick 3 (1 round); Stage 3 6d6 poison damage and sick 4 (1 round)"
+    "tags": ["alchemical", "bomb", "consumable", "fire", "splash"],
+    "description": "Alchemist’s fire is a combination of volatile liquids that ignite when exposed to air. Alchemist’s fire deals the listed fire damage, persistent fire damage, and splash damage. Many types grant an item bonus to attack rolls."
   },
-  "eagle-eye_elixir_item_1": {
-    "code": "eagle-eye_elixir_item_1",
-    "name": "Eagle-Eye Elixir Item 1",
-    "price": [
-      2,
-      "gp"
+
+
+  {
+    "code": "bottled_lightning",
+    "name": "Bottled Lightning",
+    "types": [
+      {
+        "code": "bottled_lightning_lesser",
+        "name": "Bottled Lightning, Lesser",
+        "type": "lesser",
+        "level": 1,
+        "price": {"gp": 3},
+        "description": "It deals 1d6 electricity damage and 1 electricity splash damage."
+      },
+      {
+        "code": "bottled_lightning_moderate",
+        "name": "Bottled Lightning, Moderate",
+        "type": "moderate",
+        "level": 3,
+        "price": {"gp": 10},
+        "description": "You gain a +1 item bonus to attack rolls. The bomb deals 2d6 electricity damage and 2 electricity splash damage."
+      },
+      {
+        "code": "bottled_lightning_greater",
+        "name": "Bottled Lightning, Greater",
+        "type": "greater",
+        "level": 11,
+        "price": {"gp": 250},
+        "description": "You gain a +2 item bonus to attack rolls. The bomb deals 3d6 electricity damage and 3 electricity splash damage."
+      },
+      {
+        "code": "bottled_lightning_major",
+        "name": "Bottled Lightning, Major",
+        "type": "major",
+        "level": 17,
+        "price": {"gp": 2500},
+        "description": "You gain a +3 item bonus to attack rolls. The bomb deals 4d6 electricity damage and 4 electricity splash damage."
+      }
     ],
-    "method_of_use": "held, 1 hand",
+    "usage": ["held", "1 hand"],
+    "activate": "strike",
     "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "For the next hour after drinking this elixir, you gain a +1 item bonus to Perception checks. This item bonus increases to +2 for Perception checks to find secret doors and traps."
+    "tags": ["alchemical", "bomb", "consumable", "electricity", "splash"],
+    "description": "Bottled lightning is packed with volatile reagents that create a blast of electricity when they are exposed to air. Bottled lightning deals the listed electricity damage and electricity splash damage. On a hit, the target becomes flat-footed until the start of your next turn. Many types grant an item bonus to attack rolls."
   },
-  "elixir_of_life_item_8": {
-    "code": "elixir_of_life_item_8",
-    "name": "Elixir of Life Item 8",
-    "price": [
-      60,
-      "gp"
+
+
+  {
+    "code": "frost_vial",
+    "name": "Frost Vial",
+    "types": [
+      {
+        "code": "frost_vial_lesser",
+        "name": "Frost Vial, Lesser",
+        "type": "lesser",
+        "level": 1,
+        "price": {"gp": 3},
+        "description": "The bomb deals 1d6 cold damage and 1 cold splash damage, and the target takes a –5-foot penalty."
+      },
+      {
+        "code": "frost_vial_moderate",
+        "name": "Frost Vial, Moderate",
+        "type": "moderate",
+        "level": 3,
+        "price": {"gp": 10},
+        "description": "You gain a +1 item bonus to attack rolls, the bomb deals 2d6 cold damage and 2 cold splash damage, and the target takes a –10-foot penalty."
+      },
+      {
+        "code": "frost_vial_greater",
+        "name": "Frost Vial, Greater",
+        "type": "greater",
+        "level": 11,
+        "price": {"gp": 250},
+        "description": "You gain a +2 item bonus to attack rolls, the bomb deals 3d6 cold damage and 3 cold splash damage, and the target takes a –10-foot penalty."
+      },
+      {
+        "code": "frost_vial_major",
+        "name": "Frost Vial, Major",
+        "type": "major",
+        "level": 17,
+        "price": {"gp": 2500},
+        "description": "You gain a +3 item bonus to attack rolls, the bomb deals 4d6 cold damage and 4 cold splash damage, and the target takes a –15-foot penalty."
+      }
     ],
-    "method_of_use": "held, 1 hand",
+    "usage": ["held", "1 hand"],
+    "activate": "strike",
     "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "Upon drinking this elixir, you regain 7d6 Hit Points and can attempt a new save against any one toxin of 8th level or lower currently afflicting you. If you succeed, the toxin is neutralized."
+    "tags": ["alchemical", "bomb", "cold", "consumable", "splash"],
+    "description": "The liquid reagents in this vial rapidly absorb heat when exposed to air. A frost vial deals the listed cold damage and cold splash damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls."
   },
-  "elixir_of_life_greater_item_12": {
-    "code": "elixir_of_life_greater_item_12",
-    "name": "Elixir of Life, Greater Item 12",
-    "price": [
-      250,
-      "gp"
+
+
+  {
+    "code": "tanglefoot_bag",
+    "name": "Tanglefoot Bag",
+    "types": [
+      {
+        "code": "tanglefoot_bag_lesser",
+        "name": "Tanglefoot Bag, Lesser",
+        "type": "lesser",
+        "level": 1,
+        "price": {"gp": 3},
+        "description": "The target takes a –10-foot penalty, and the Escape DC is 17."
+      },
+      {
+        "code": "tanglefoot_bag_moderate",
+        "name": "Tanglefoot Bag, Moderate",
+        "type": "moderate",
+        "level": 3,
+        "price": {"gp": 10},
+        "description": "You gain a +1 item bonus to attack rolls, the target takes a –15-foot penalty, and the Escape DC is 19."
+      },
+      {
+        "code": "tanglefoot_bag_greater",
+        "name": "Tanglefoot Bag, Greater",
+        "type": "greater",
+        "level": 11,
+        "price": {"gp": 250},
+        "description": "You gain a +2 item bonus to attack rolls, the target takes a –15-foot penalty, and the Escape DC is 28."
+      },
+      {
+        "code": "tanglefoot_bag_major",
+        "name": "Tanglefoot Bag, Major",
+        "type": "major",
+        "level": 17,
+        "price": {"gp": 2500},
+        "description": "You gain a +3 item bonus to attack rolls, the target takes a –20-foot penalty, and the Escape DC is 37."
+      }
     ],
-    "method_of_use": "held, 1 hand",
+    "usage": ["held", "1 hand"],
+    "activate": "strike",
     "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "Upon drinking this elixir, you regain 10d6 Hit Points and can end a toxin afflicting you as long as it is not higher than 12th level."
+    "tags": ["alchemical", "bomb", "consumable"],
+    "description": "A tanglefoot bag is filled with sticky substances. When you hit a creature with a tanglefoot bag, that creature takes a status penalty to its Speeds for 1 minute. Many types of tanglefoot bag also grant an item bonus on attack rolls.\nOn a critical hit, a creature in contact with a solid surface becomes stuck to the surface and immobilized for 1 round, and a creature flying via wings has its wings tangled, causing it to fall safely to the ground and become unable to Fly again for 1 round. Tanglefoot bags are not effective when used on a creature that is in water.\nThe target can end any effects by Escaping or spending a total of 3 Interact actions to carefully remove the sticky substances. These Interact actions don’t have to be consecutive, and other creatures can provide the actions as well."
   },
-  "elixir_of_life_lesser_item_4": {
-    "code": "elixir_of_life_lesser_item_4",
-    "name": "Elixir of Life, Lesser Item 4",
-    "price": [
-      12,
-      "gp"
+
+
+  {
+    "code": "thunderstone",
+    "name": "Thunderstone",
+    "types": [
+      {
+        "code": "thunderstone_lesser",
+        "name": "Thunderstone, Lesser",
+        "type": "lesser",
+        "level": 1,
+        "price": {"gp": 3},
+        "description": "The target takes a –10-foot penalty, and the Escape DC is 17."
+      },
+      {
+        "code": "thunderstone_moderate",
+        "name": "Thunderstone, Moderate",
+        "type": "moderate",
+        "level": 3,
+        "price": {"gp": 10},
+        "description": "You gain a +1 item bonus to attack rolls, the target takes a –15-foot penalty, and the Escape DC is 19."
+      },
+      {
+        "code": "thunderstone_greater",
+        "name": "Thunderstone, Greater",
+        "type": "greater",
+        "level": 11,
+        "price": {"gp": 250},
+        "description": "You gain a +2 item bonus to attack rolls, the target takes a –15-foot penalty, and the Escape DC is 28."
+      },
+      {
+        "code": "thunderstone_major",
+        "name": "Thunderstone, Major",
+        "type": "major",
+        "level": 17,
+        "price": {"gp": 2500},
+        "description": "You gain a +3 item bonus to attack rolls, the target takes a –20-foot penalty, and the Escape DC is 37."
+      }
     ],
-    "method_of_use": "held, 1 hand",
+    "usage": ["held", "1 hand"],
+    "activate": "strike",
     "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "Upon drinking this elixir, you regain 3d6 Hit Points. If you are at maximum Hit Points when you drink this elixir, you instead gain a +2 item bonus to Fortitude saving throws against toxins for 1 hour."
-  },
-  "elixir_of_life_minor_item_1": {
-    "code": "elixir_of_life_minor_item_1",
-    "name": "Elixir of Life, Minor Item 1",
-    "price": [
-      3,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "Upon drinking this elixir, you regain 1d6 Hit Points. If you are at maximum Hit Points when you drink this elixir, you instead gain a +1 item bonus to Fortitude saving throws for 1 hour against toxins, including diseases, poisons, and venoms."
-  },
-  "elixir_of_life_true_item_16": {
-    "code": "elixir_of_life_true_item_16",
-    "name": "Elixir of Life, True Item 16",
-    "price": [
-      1,
-      200,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "Upon drinking this elixir, you regain 14d6 Hit Points, and you end all toxins currently afflicting you as long as those toxins are not higher than 16th level."
-  },
-  "elixir_of_rejuvenation_item_20": {
-    "code": "elixir_of_rejuvenation_item_20",
-    "name": "Elixir of Rejuvenation Item 20",
-    "price": "\u2014",
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "When you drink this elixir, you're restored to your maximum Hit Points and all toxins of 20th level or lower afflicting you are removed, but you lose all remaining RP.\nYou can instead administer this elixir to a creature that has been dead for a week or less; in this case, the Operate Activation does not require the expenditure of a Resonance Point. When you do, that creature is instantly brought back to life with 1 HP and 0 RP.\nEither way, the target is treated as if it had failed a check to overspend RP.",
-    "craft_requirements": "philosopher's stone; true elixir of life; you must be legendary in Crafting and have the Alchemical Crafting feat"
-  },
-  "giant_centipede_venom_item_1": {
-    "code": "giant_centipede_venom_item_1",
-    "name": "Giant Centipede Venom Item 1",
-    "price": [
-      3,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 14; Maximum Duration 6 rounds; Stage 1 1d4 poison damage (1 round); Stage 2 1d6 poison damage and flat-footed (1 round); Stage 3 1d8 poison damage, flat-footed, and sluggish 1 (1 round)"
-  },
-  "giant_scorpion_venom_item_6": {
-    "code": "giant_scorpion_venom_item_6",
-    "name": "Giant Scorpion Venom Item 6",
-    "price": [
-      30,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 19; Maximum Duration 6 rounds; Stage 1 1d8 poison damage and enfeebled 1 (1 round); Stage 2 2d8 poison damage and enfeebled 1 (1 round); Stage 3 2d8 poison damage and enfeebled 2 (1 round)"
-  },
-  "giant_wasp_venom_item_7": {
-    "code": "giant_wasp_venom_item_7",
-    "name": "Giant Wasp Venom Item 7",
-    "price": [
-      45,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 20; Maximum Duration 6 rounds; Stage 1 1d8 poison damage and sluggish 1 (1 round); Stage 2 1d12 poison damage and sluggish 2 (1 round); Stage 3 2d8 poison and sluggish 2 (1 round)"
-  },
-  "graveroot_item_3": {
-    "code": "graveroot_item_3",
-    "name": "Graveroot Item 3",
-    "price": [
-      8,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 16; Maximum Duration 4 rounds; Stage 1 1d8 poison damage (1 round); Stage 2 1d10 poison damage and stupefied 1 (1 round); Stage 3 1d12 poison damage and stupefied 2 (1 round)"
-  },
-  "hemlock_item_17": {
-    "code": "hemlock_item_17",
-    "name": "Hemlock Item 17",
-    "price": [
-      1,
-      800,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 35",
-    "onset": "30 minutes; Maximum Duration 60 minutes; Stage 1 13d6 poison damage and enfeebled 2 (10 minutes); Stage 2 16d6 poison damage and enfeebled 3 (10 minutes); Stage 3 20d6 poison damage and enfeebled 4 (10 minutes)."
-  },
-  "hunting_spider_venom_item_5": {
-    "code": "hunting_spider_venom_item_5",
-    "name": "Hunting Spider Venom Item 5",
-    "price": [
-      20,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 18; Maximum Duration 6 rounds; Stage 1 1d8 poison damage and flat-footed (1 round); Stage 2 1d8 poison damage, flat-footed, and sluggish 1 (1 round); Stage 3 1d10 poison damage, flat-footed, and sluggish 2 (1 round)"
-  },
-  "infiltrator_s_elixir_item_2": {
-    "code": "infiltrator_s_elixir_item_2",
-    "name": "Infiltrator's Elixir Item 2",
-    "price": [
-      4,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute After the onset of this elixir, you take the shape of a humanoid creature of your size (or another creature of your type, if you aren't a humanoid, at the GM's discretion), but different enough so you might be unrecognizable. The creator of the elixir decides the sex, eye color, skin tone, and hair color that you transform into when crafting the elixir, but it cannot change your form into a specific person. After the form takes hold, you retain it for the next 10 minutes.",
-    "description": "Drinking this elixir counts as setting up a disguise for the Impersonate action of Deception. You gain a +4 item bonus to your Deception DC to avoid others seeing through your disguise."
-  },
-  "insanity_mist_item_15": {
-    "code": "insanity_mist_item_15",
-    "name": "Insanity Mist Item 15",
-    "price": [
-      800,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 31",
-    "onset": "1 round; Maximum Duration 6 rounds; Stage 1 stupefied 2 (1 round); Stage 2 confused and stupefied 3 (1 round); Stage 3 confused and stupefied 4 (1 round)"
-  },
-  "juggernaut_mutagen_item_9": {
-    "code": "juggernaut_mutagen_item_9",
-    "name": "Juggernaut Mutagen Item 9",
-    "price": [
-      90,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 10 minutes after the onset of this mutagen, your body becomes thick and sturdy and you exhibit a healthy glow, though you tend to be ponderous and unobservant.",
-    "benefit": "You gain a +3 item bonus to Fortitude saves and 20 temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the full 20 temporary Hit Points.",
-    "drawback": "You take a \u20132 item penalty to Will saves, Perception checks, Medicine checks, Nature checks, Religion checks, and Survival checks."
-  },
-  "juggernaut_mutagen_greater_item_13": {
-    "code": "juggernaut_mutagen_greater_item_13",
-    "name": "Juggernaut Mutagen, Greater Item 13",
-    "price": [
-      400,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 1 hour after the onset of this mutagen, your body becomes thick and sturdy and you exhibit a healthy glow, though you tend to be ponderous and unobservant.",
-    "benefit": "You gain a +4 item bonus to Fortitude saves and 40 temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the full 40 temporary Hit Points.",
-    "drawback": "You take a \u20132 item penalty to Will saves, Perception checks, Medicine checks, Nature checks, Religion checks, and Survival checks."
-  },
-  "juggernaut_mutagen_true_item_17": {
-    "code": "juggernaut_mutagen_true_item_17",
-    "name": "Juggernaut Mutagen, True Item 17",
-    "price": [
-      2000,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 hour after the onset of this mutagen, your body becomes thick and sturdy and you exhibit a healthy glow, though you tend to be ponderous and unobservant.",
-    "benefit": "You gain a +5 item bonus to Fortitude saves and 50 temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the full 50 temporary Hit Points.",
-    "drawback": "You take a \u20133 item penalty to Will saves, Perception checks, Medicine checks, Nature checks, Religion checks, and Survival checks."
-  },
-  "juggernaut_mutagen_lesser_item_5": {
-    "code": "juggernaut_mutagen_lesser_item_5",
-    "name": "Juggernaut Mutagen, Lesser Item 5",
-    "price": [
-      20,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 minute after the onset of this mutagen, your body becomes thick and sturdy and you exhibit a healthy glow, though you tend to be ponderous and unobservant.",
-    "benefit": "You gain a +2 item bonus to Fortitude saves and 10 temporary Hit Points.",
-    "drawback": "You take a \u20131 item penalty to Will saves, Perception checks, Medicine checks, Nature checks, Religion checks, and Survival checks."
-  },
-  "king_s_sleep_item_18": {
-    "code": "king_s_sleep_item_18",
-    "name": "King's Sleep Item 18",
-    "price": [
-      3000,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost King's sleep is an insidious long-term poison that might seem like a disease or even a death from natural causes if used on a venerable target. The drained condition from king's sleep stacks with each failed save and can't be removed until the target is cured of the poison.",
-    "saving_throw": "Fortitude DC 36",
-    "onset": "1 day; Stage 1 drained 1 (1 day); Stage 2 drained 1 (1 day); Stage 3 drained 2 (1 day)"
-  },
-  "leaper_s_elixir_item_1": {
-    "code": "leaper_s_elixir_item_1",
-    "name": "Leaper's Elixir Item 1",
-    "price": [
-      2,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "description": "For 1 minute after drinking this elixir, you can attempt High Jumps and Long Jumps with a single Leap action, rather than as a two-action activity requiring a Stride and a Leap."
-  },
-  "lich_dust_item_9": {
-    "code": "lich_dust_item_9",
-    "name": "Lich Dust Item 9",
-    "price": [
-      80,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 23",
-    "onset": "10 minutes; Maximum Duration 6 minutes; Stage 1 fatigued (1 minute); Stage 2 4d6 poison damage and fatigued (1 minute); Stage 3 4d6 poison damage, fatigued, and paralyzed (1 minute)"
-  },
-  "liquid_ice_item_1": {
-    "code": "liquid_ice_item_1",
-    "name": "Liquid Ice Item 1",
-    "price": [
-      3,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "description": "The liquid reagents in this vial create a freezing effect when exposed to air. Liquid ice deals 1d4 cold damage, deals 1 cold splash damage, and causes the target to be hampered 10 until the end of its next turn."
-  },
-  "malyass_root_paste_item_7": {
-    "code": "malyass_root_paste_item_7",
-    "name": "Malyass Root Paste Item 7",
-    "price": [
-      40,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 21",
-    "onset": "1 minute; Maximum Duration 6 minutes; Stage 1 hampered 10 and sluggish 1 (1 minute); Stage 2 hampered 20 and sluggish 2 (1 minute); Stage 3 flat-footed, hampered 30, and sluggish 3 (1 minute)"
-  },
-  "mistform_elixir_item_3": {
-    "code": "mistform_elixir_item_3",
-    "name": "Mistform Elixir Item 3",
-    "price": [
-      8,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation Upon drinking this elixir, your form appears blurry, making you concealed for 1 minute."
-  },
-  "nettleweed_residue_item_8": {
-    "code": "nettleweed_residue_item_8",
-    "name": "Nettleweed Residue Item 8",
-    "price": [
-      55,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 22",
-    "onset": "1 minute; Maximum Duration 6 minutes; Stage 1 6d6 poison damage (1 minute); Stage 2 8d6 poison damage (1 minute); Stage 3 10d6 poison damage (1 minute)"
-  },
-  "nightmare_vapor_item_16": {
-    "code": "nightmare_vapor_item_16",
-    "name": "Nightmare Vapor Item 16",
-    "price": [
-      1,
-      200,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 33",
-    "onset": "1 round; Maximum Duration 6 rounds; Stage 1 confused (1 round); Stage 2 confused and flat-footed (1 round); Stage 3 confused, flat-footed, and stupefied 2 (1 round)"
-  },
-  "philosopher_s_stone_item_20": {
-    "code": "philosopher_s_stone_item_20",
-    "name": "Philosopher's Stone Item 20",
-    "price": "\u2014",
-    "method_of_use": "held, 2 hands",
-    "bulk": "2",
-    "activation": "Operate Activation or 1 or more days; see below",
-    "description": "An alchemist with the Craft Philosopher's Stone feat can create a philosopher's stone once per month using the advanced alchemy class feature. This is the only way to create a philosopher's stone.\nAt a glance, a philosopher's stone appears to be an ordinary, sooty piece of natural rock. Breaking the rock open with a Break Open action (DC 25) reveals a cavity at the stone's heart.\nThe cavity is lined with a rare type of quicksilver that can transmute base metals into precious metals or create an elixir of rejuvenation.,\nTo use the stone's quicksilver, you must be Legendary in Crafting and you must have the Alchemical Crafting feat. You can then apply the stone's quicksilver for one of two effects:\n* You can apply the stone's quicksilver to an infused true elixir of life using an Operate Activation action to create an infused elixir of rejuvenation. This is instantaneous and does not require any crafting time or additional materials.\n* You can spend up to a month of downtime applying the quicksilver either to iron to create silver or to lead to create gold. Treat this as a 20th-level task for Crafting as a trade, except you don't need any setup, you create 5,000 sp or 500 gp per day on a success, and you create 7,500 sp or 750 gp per day on a critical success."
-  },
-  "purple_worm_venom_item_13": {
-    "code": "purple_worm_venom_item_13",
-    "name": "Purple Worm Venom Item 13",
-    "price": [
-      400,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 29; Maximum Duration 6 rounds; Stage 1 3d6 poison damage and enfeebled 2 (1 round); Stage 2 4d6 poison damage and enfeebled 2 (1 round); Stage 3 6d6 poison and enfeebled 2 (1 round)"
-  },
-  "quicksilver_mutagen_item_9": {
-    "code": "quicksilver_mutagen_item_9",
-    "name": "Quicksilver Mutagen Item 9",
-    "price": [
-      90,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 10 minutes after the onset of this mutagen, your features become thin and angular and you become swifter and nimbler, but your body also becomes fragile.",
-    "benefit": "You gain a +3 item bonus to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and ranged attack rolls, and you become accelerated 15.",
-    "drawback": "You take a \u20132 item penalty to Fortitude saves and take 20 damage. You can't recover Hit Points lost in this way by any means while the mutagen lasts."
-  },
-  "quicksilver_mutagen_greater_item_13": {
-    "code": "quicksilver_mutagen_greater_item_13",
-    "name": "Quicksilver Mutagen, Greater Item 13",
-    "price": [
-      400,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 1 hour after the onset of this mutagen, your features become thin and angular and you become swifter and nimbler, but your body also becomes fragile.",
-    "benefit": "You gain a +4 item bonus to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and ranged attack rolls, and you become accelerated 20.",
-    "drawback": "You take a \u20132 item penalty to Fortitude saves and take 40 damage. You can't recover Hit Points lost in this way by any means while the mutagen lasts."
-  },
-  "quicksilver_mutagen_lesser_item_5": {
-    "code": "quicksilver_mutagen_lesser_item_5",
-    "name": "Quicksilver Mutagen, Lesser Item 5",
-    "price": [
-      20,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 minute after the onset of this mutagen, your features become thin and angular and you become swifter and nimbler, but your body also becomes fragile.",
-    "benefit": "You gain a +2 item bonus to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and ranged attack rolls, and you become accelerated 10.",
-    "drawback": "You take a \u20131 item penalty to Fortitude saves and take 10 damage. You can't recover Hit Points lost in this way by any means while the mutagen lasts."
-  },
-  "quicksilver_mutagen_true_item_17": {
-    "code": "quicksilver_mutagen_true_item_17",
-    "name": "Quicksilver Mutagen, True Item 17",
-    "price": [
-      2000,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 hour after the onset of this mutagen, your features become thin and angular and you become swifter and nimbler, but your body also becomes fragile.",
-    "benefit": "You gain a +5 item bonus to Acrobatics checks, Stealth checks, Thievery checks, Reflex saves, and ranged attack rolls, and you become accelerated 25.",
-    "drawback": "You take a \u20133 item penalty to Fortitude saves and take 50 damage. You can't recover Hit Points lost in this way by any means while the mutagen lasts."
-  },
-  "salamander_elixir_item_2": {
-    "code": "salamander_elixir_item_2",
-    "name": "Salamander Elixir Item 2",
-    "price": [
-      4,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute",
-    "description": "For 24 hours after the onset of this elixir, you are protected from the effects of severe heat."
-  },
-  "sea_touch_elixir_item_4": {
-    "code": "sea_touch_elixir_item_4",
-    "name": "Sea Touch Elixir Item 4",
-    "price": [
-      10,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute After the onset of this elixir, the spaces between your fingers and toes become webbed, granting you a swim Speed of 20 feet for the next 10 minutes."
-  },
-  "shadow_essence_item_10": {
-    "code": "shadow_essence_item_10",
-    "name": "Shadow Essence Item 10",
-    "price": [
-      125,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "description": "The enfeebled condition from shadow essence lasts for 24 hours.",
-    "saving_throw": "Fortitude DC 24; Maximum Duration 6 rounds; Stage 1 2d6 negative damage and 2d6 poison damage (1 round); Stage 2 2d6 negative damage, 2d6 poison damage, and enfeebled 1 (1 round); Stage 3 2d6 negative damage, 2d6 poison damage, and enfeebled 2 (1 round)"
-  },
-  "silversheen_item_1": {
-    "code": "silversheen_item_1",
-    "name": "Silversheen Item 1",
-    "price": [
-      2,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "description": "You can slather this silvery paste onto a melee or thrown weapon or a bundle of ammunition. For the next hour, any physical damage the weapon or ammunition deals is silver.\nApplying silversheen to a weapon or ammunition temporarily replaces any damage type from its special materials (such as cold iron). One vial coats one melee weapon, one thrown weapon, or 10 pieces of ammunition."
-  },
-  "silvertongue_mutagen_item_9": {
-    "code": "silvertongue_mutagen_item_9",
-    "name": "Silvertongue Mutagen Item 9",
-    "price": [
-      90,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 10 minutes after the onset of this mutagen, your features become fair and your voice becomes musical and commanding, though facts and figures become hazy for you and your reason takes a back seat to your emotions.",
-    "benefit": "You gain a +3 item bonus to Deception, Diplomacy, Intimidation, and Performance checks, and you treat all critical failures with those skills as failures.",
-    "drawback": "You take a \u20132 item penalty to Arcana, Crafting, Lore, Occultism, and Society checks, as well as all skill checks in which you are trained or expert other than your signature skills. You treat all failures on checks made to Recall Knowledge as critical failures."
-  },
-  "silvertongue_mutagen_greater_item_13": {
-    "code": "silvertongue_mutagen_greater_item_13",
-    "name": "Silvertongue Mutagen, Greater Item 13",
-    "price": [
-      400,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute For 1 hour after the onset of this mutagen, your features become fair and your voice musical and commanding, though facts and figures become hazy and your reason takes a backseat to your emotions.",
-    "benefit": "You gain a +4 item bonus to Deception, Diplomacy, Intimidation, and Performance checks, and you treat all critical failures with those skills as failures.",
-    "drawback": "You take a \u20133 item penalty to Arcana, Crafting, Lore, Occultism, and Society checks, as well as all skill checks in which you are trained or expert other than your signature skills. You treat all failures on checks made to Recall Knowledge as critical failures."
-  },
-  "silvertongue_mutagen_lesser_item_5": {
-    "code": "silvertongue_mutagen_lesser_item_5",
-    "name": "Silvertongue Mutagen, Lesser Item 5",
-    "price": [
-      20,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 minute after the onset of this mutagen, your features become fair and your voice musical and commanding, though facts and figures become hazy and your reason takes a backseat to your emotions.",
-    "benefit": "You gain a +2 item bonus to Deception, Diplomacy, Intimidation, and Performance checks, and you treat all critical failures with those skills as failures.",
-    "drawback": "You take a \u20131 item penalty to Arcana, Crafting, Lore, Occultism, and Society checks, as well as all skill checks in which you are trained or expert other than your signature skills. You treat all failures on checks made to Recall Knowledge as critical failures."
-  },
-  "silvertongue_mutagen_true_item_17": {
-    "code": "silvertongue_mutagen_true_item_17",
-    "name": "Silvertongue Mutagen, True Item 17",
-    "price": [
-      2000,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "end of your next turn For 1 hour after the onset of this mutagen, your features become fair and your voice musical and commanding, though facts and figures become hazy and your reason takes a backseat to your emotions.",
-    "benefit": "You gain a +5 item bonus to Deception, Diplomacy, Intimidation, and Performance checks, and you treat all critical failures with those skills as failures.",
-    "drawback": "You take a \u20134 item penalty to Arcana, Crafting, Lore, Occultism, and Society checks, all checks made to Recall Knowledge, as well as all skill checks in which you are trained or expert other than your signature skills. You treat all failures on checks made to Recall Knowledge as critical failures."
-  },
-  "sleep_poison_item_2": {
-    "code": "sleep_poison_item_2",
-    "name": "Sleep Poison Item 2",
-    "price": [
-      5,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 13; Maximum Duration 4 hours; Stage 1 slowed 1 (1 round); Stage 2 asleep with no Perception check to wake up (1 round) Stage 3 asleep with no Perception check to wake up (1d4 hours)"
-  },
-  "slumber_wine_item_12": {
-    "code": "slumber_wine_item_12",
-    "name": "Slumber Wine Item 12",
-    "price": [
-      250,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost Characters asleep from slumber wine can't wake up by any means while the poison lasts, don't need to eat or drink while asleep in this way, and appear to be recently dead unless an examiner succeeds at a DC 33 Medicine check.",
-    "saving_throw": "Fortitude DC 26",
-    "onset": "1 hour; Maximum Duration 7 days; Stage 1 asleep (1 day); Stage 2 asleep (2 days); Stage 3 asleep (3 days)."
-  },
-  "smokestick_item_1": {
-    "code": "smokestick_item_1",
-    "name": "Smokestick Item 1",
-    "price": [
-      2,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "description": "With a sharp twist of this item, you instantly create a screen of thick, opaque smoke in a 5-foot-radius burst centered on one corner of your space. All creatures within that area are concealed. The smoke lasts for 1 minute or until dispersed by a strong wind."
-  },
-  "spider_root_item_9": {
-    "code": "spider_root_item_9",
-    "name": "Spider Root Item 9",
-    "price": [
-      80,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 23",
-    "onset": "1 minute; Maximum Duration 6 minutes; Stage 1 5d6 poison damage and sluggish 1 (1 minute); Stage 2 6d6 poison damage and sluggish 2 (1 minute); Stage 3 7d6 poison damage and sluggish 3 (1 minute)"
-  },
-  "stone_fist_elixir_item_2": {
-    "code": "stone_fist_elixir_item_2",
-    "name": "Stone Fist Elixir Item 2",
-    "price": [
-      5,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute After the onset of this elixir, your fists become as hard as stone. For 1 hour, your fists deal 1d6 bludgeoning damage."
-  },
-  "sunrod_item_1": {
-    "code": "sunrod_item_1",
-    "name": "Sunrod Item 1",
-    "price": [
-      2,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "description": "This 1-foot-long, gold-tipped rod glows after it's struck on a hard surface. It sheds normal light in a 20-foot radius for 6 hours."
-  },
-  "tanglefoot_bag_item_1": {
-    "code": "tanglefoot_bag_item_1",
-    "name": "Tanglefoot Bag Item 1",
-    "price": [
-      3,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "description": "A tanglefoot bag is filled with sticky substances.\nWhen you hit a creature with a tanglefoot bag, that creature becomes entangled for 1 minute. Tanglefoot bags are not effective when used on a creature that is in water. The target or a creature adjacent to the target can end the entangled condition by spending 3 Interact actions. These actions need not be consecutive."
-  },
-  "tears_of_death_item_20": {
-    "code": "tears_of_death_item_20",
-    "name": "Tears of Death Item 20",
-    "price": [
-      9000,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 40",
-    "onset": "1 minute; Maximum Duration 10 minutes; Stage 1 15d6 poison damage and paralyzed (1 round); Stage 2 20d6 poison damage and paralyzed (1 minute); Stage 3 25d6 poison damage and paralyzed (1 minute)"
-  },
-  "thunderstone_item_1": {
-    "code": "thunderstone_item_1",
-    "name": "Thunderstone Item 1",
-    "price": [
-      3,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "description": "When this stone hits a hard surface or creature, it explodes with a deafening bang. A thunderstone deals 1d4 sonic damage and 1 sonic splash damage, and each creature within 10 feet of the space in which the stone exploded must succeed at a DC 15 Fortitude saving throw or be deafened until the end of its next turn."
-  },
-  "tindertwig_item_1": {
-    "code": "tindertwig_item_1",
-    "name": "Tindertwig Item 1",
-    "price": [
-      2,
-      "sp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "\u2014",
-    "activation": "Operate Activation, no cost",
-    "description": "An alchemical substance on one end of this tiny wooden stick ignites when struck against a rough surface. Creating a flame with a tindertwig is much faster than creating a flame with a flint and steel; as part of the activate action, you can touch the tindertwig to a flammable object to set it on fire."
-  },
-  "winter_wolf_elixir_item_2": {
-    "code": "winter_wolf_elixir_item_2",
-    "name": "Winter Wolf Elixir Item 2",
-    "price": [
-      4,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation",
-    "onset": "1 minute",
-    "description": "For 24 hours after the onset of this elixir, you become protected from the effects of severe cold."
-  },
-  "wolfsbane_item_10": {
-    "code": "wolfsbane_item_10",
-    "name": "Wolfsbane Item 10",
-    "price": [
-      110,
-      "gp"
-    ],
-    "method_of_use": "held, 1 hand",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 25",
-    "onset": "10 minutes; Maximum Duration 6 minutes; Stage 1 9d6 poison damage (1 minute); Stage 2 12d6 poison damage (1 minute); Stage 3 15d6 poison damage (1 minute) Additional Effect If you survive the damage from stage 3 of wolfsbane and you are afflicted with lycanthropy, you're immediately cured."
-  },
-  "wyvern_poison_item_8": {
-    "code": "wyvern_poison_item_8",
-    "name": "Wyvern Poison Item 8",
-    "price": [
-      60,
-      "gp"
-    ],
-    "method_of_use": "held, 2 hands",
-    "bulk": "L",
-    "activation": "Operate Activation, no cost",
-    "saving_throw": "Fortitude DC 21; Maximum Duration 6 rounds; Stage 1 4d6 poison damage (1 round); Stage 2 5d6 poison damage (1 round); Stage 3 6d6 poison damage (1 round)"
+    "tags": ["alchemical", "bomb", "consumable"],
+    "description": "When this stone hits a creature or a hard surface, it explodes with a deafening bang. A thunderstone deals the listed sonic damage and sonic splash damage, and each creature within 10 feet of the space in which the stone exploded must succeed at a Fortitude saving throw with the listed DC or be deafened until the end of its next turn. Many types of thunderstone grant an item bonus to attack rolls."
   }
-}
+]

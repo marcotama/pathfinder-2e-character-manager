@@ -62,7 +62,8 @@ class Alchemist extends Clazz {
     public getChoices = (level: number, character: Character) => {
         if (level == 1)
             return [
-                Alchemist.getTrainedSkillsChoice(character)
+                Alchemist.getTrainedSkillsChoice(character),
+                Alchemist.getResearchFieldChoice(character),
             ];
     };
 
@@ -96,13 +97,17 @@ class Alchemist extends Clazz {
             }
             let choice = choices[0];
             let newChoices = [];
-            if (choice == AlchemistResearchFieldEnum.BOMBER) {
-                newChoices.push(new Choice(
-                    "Choose two 1st-level alchemical bombs to add to your formula book",
-                    Array.from(Object.values(AlchemicalBombEnum)),
-                    1,
-                    callback
-                ));
+            switch (choice) {
+                case AlchemistResearchFieldEnum.BOMBER:
+                    newChoices.push(new Choice(
+                        "Choose two 1st-level alchemical bombs to add to your formula book",
+                        Array.from(Object.values(AlchemicalBombEnum)),
+                        1,
+                        callback
+                    ));
+                    break;
+                case AlchemistResearchFieldEnum.CHIRURGEON:
+                case AlchemistResearchFieldEnum.MUTAGENIST:
             }
             return newChoices;
         };

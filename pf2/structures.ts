@@ -11,7 +11,7 @@ import {
     Die,
     getCurrencyValue,
     getProficiencyModifier,
-    InventoryItem,
+    InventoryItemEnum,
     ItemCategory,
     MeleeWeaponGroupEnum,
     OtherAttackProficiencyEnum,
@@ -24,19 +24,24 @@ import {
 } from "./enums";
 
 
-class Amount {
-    readonly valueInCp: number;
+export class Amount {
+    subAmounts: Map<Currency, number>;
 
-    constructor(amount: Array<[number, Currency]>) {
-        this.valueInCp = 0;
-        for (let entry of amount) {
-            let [am, curr] = entry;
-            this.valueInCp += am * getCurrencyValue(curr);
-        }
+    constructor(subAmounts: Map<Currency, number>) {
+        this.subAmounts = subAmounts;
     }
 
+    public getValueInCp = () => {
+        let valueInCp = 0;
+        for (let entry of this.subAmounts) {
+            let [curr, am] = entry;
+            valueInCp += am * getCurrencyValue(curr);
+        }
+        return valueInCp;
+    };
+
     public getNormalised = () => {
-        let v = this.valueInCp;
+        let v = this.getValueInCp();
         let amount = [];
         for (let curr of [Currency.CP, Currency.SP, Currency.GP, Currency.PP]) {
             let am = v; // curr.value
@@ -283,7 +288,7 @@ export class Character extends Hero {
     conditions: Array<DamageType>;
     attackProficiencies: Map<AttackProficiencyEnum, Proficiency>;
     defenseProficiencies: Map<DefenseProficiencyEnum, Proficiency>;
-    inventory: Map<InventoryItem, [string, string] | null>; // why each item is present (identifier, description)
+    inventory: Map<InventoryItemEnum, [string, string] | null>; // why each item is present (identifier, description)
 
     constructor(code: string, name: string) {
         super(code, name);

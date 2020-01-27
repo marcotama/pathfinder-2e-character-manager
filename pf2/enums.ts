@@ -215,6 +215,12 @@ export enum OtherAttackProficiencyEnum {
     ALCHEMICAL_BOMBS = 'alchemical_bombs',
 }
 
+export enum ItemBulkEnum {
+    SMALL = 'small',
+    MEDIUM = 'medium',
+    LARGE = 'large',
+}
+
 export type AttackProficiencyEnum = MeleeWeaponGroupEnum | RangedWeaponGroupEnum | OtherAttackProficiencyEnum;
 
 export enum AbilityScoreEnum {
@@ -462,55 +468,14 @@ export enum AlchemicalToolEnum {
 
     // Level 20
     PHILOSOPHER_S_STONE = "philosopher_s_stone",
-
 }
 
-export enum AlchemicalItemEnumzzz {
-    ARSENIC_ITEM_1 = "arsenic_item_1",
-    BELLADONNA_ITEM_2 = "belladonna_item_2",
-    BLACK_ADDER_VENOM_ITEM_2 = "black_adder_venom_item_2",
-    BLACK_LOTUS_EXTRACT_ITEM_19 = "black_lotus_extract_item_19",
-    BLIGHTBURN_RESIN_ITEM_11 = "blightburn_resin_item_11",
-    BRIMSTONE_FUMES_ITEM_16 = "brimstone_fumes_item_16",
-    BULLHEADED_MUTAGEN_ITEM_9 = "bullheaded_mutagen_item_9",
-    BULLHEADED_MUTAGEN_GREATER_ITEM_13 = "bullheaded_mutagen_greater_item_13",
-    BULLHEADED_MUTAGEN_LESSER_ITEM_5 = "bullheaded_mutagen_lesser_item_5",
-    BULLHEADED_MUTAGEN_TRUE_ITEM_17 = "bullheaded_mutagen_true_item_17",
-    CYTILLESH_OIL_ITEM_3 = "cytillesh_oil_item_3",
-    DEATHCAP_POWDER_ITEM_13 = "deathcap_powder_item_13",
-    DRAGON_BILE_ITEM_15 = "dragon_bile_item_15",
-    ELIXIR_OF_REJUVENATION_ITEM_20 = "elixir_of_rejuvenation_item_20",
-    GIANT_CENTIPEDE_VENOM_ITEM_1 = "giant_centipede_venom_item_1",
-    GIANT_SCORPION_VENOM_ITEM_6 = "giant_scorpion_venom_item_6",
-    GIANT_WASP_VENOM_ITEM_7 = "giant_wasp_venom_item_7",
-    GRAVEROOT_ITEM_3 = "graveroot_item_3",
-    HEMLOCK_ITEM_17 = "hemlock_item_17",
-    HUNTING_SPIDER_VENOM_ITEM_5 = "hunting_spider_venom_item_5",
-    INSANITY_MIST_ITEM_15 = "insanity_mist_item_15",
-    KING_S_SLEEP_ITEM_18 = "king_s_sleep_item_18",
-    LICH_DUST_ITEM_9 = "lich_dust_item_9",
-    LIQUID_ICE_ITEM_1 = "liquid_ice_item_1",
-    MALYASS_ROOT_PASTE_ITEM_7 = "malyass_root_paste_item_7",
-    NETTLEWEED_RESIDUE_ITEM_8 = "nettleweed_residue_item_8",
-    NIGHTMARE_VAPOR_ITEM_16 = "nightmare_vapor_item_16",
-    PHILOSOPHER_S_STONE_ITEM_20 = "philosopher_s_stone_item_20",
-    PURPLE_WORM_VENOM_ITEM_13 = "purple_worm_venom_item_13",
-    SEA_TOUCH_ELIXIR_ITEM_4 = "sea_touch_elixir_item_4",
-    SHADOW_ESSENCE_ITEM_10 = "shadow_essence_item_10",
-    SILVERSHEEN_ITEM_1 = "silversheen_item_1",
-    SLEEP_POISON_ITEM_2 = "sleep_poison_item_2",
-    SLUMBER_WINE_ITEM_12 = "slumber_wine_item_12",
-    SMOKESTICK_ITEM_1 = "smokestick_item_1",
-    SPIDER_ROOT_ITEM_9 = "spider_root_item_9",
-    SUNROD_ITEM_1 = "sunrod_item_1",
-    TANGLEFOOT_BAG_ITEM_1 = "tanglefoot_bag_item_1",
-    TEARS_OF_DEATH_ITEM_20 = "tears_of_death_item_20",
-    THUNDERSTONE_ITEM_1 = "thunderstone_item_1",
-    TINDERTWIG_ITEM_1 = "tindertwig_item_1",
-    WOLFSBANE_ITEM_10 = "wolfsbane_item_10",
-    WYVERN_POISON_ITEM_8 = "wyvern_poison_item_8",
+export enum ItemActivationEnum {
+    STRIKE = "strike"
 }
 
-export type AlchemicalItemCategory = AlchemicalBombEnum | AlchemicalElixirEnum | AlchemicalPoisonEnum | AlchemicalToolEnum;
+export type AlchemicalItemEnum = AlchemicalBombEnum | AlchemicalElixirEnum | AlchemicalPoisonEnum | AlchemicalToolEnum;
 export type InventoryItemCategory = AlchemicalItemCategoryEnum; // TODO add all other items
-export type InventoryItem = AlchemicalItemCategory; // TODO add all other items
+export type InventoryItemEnum = AlchemicalItemEnum; // TODO add all other items
+
+

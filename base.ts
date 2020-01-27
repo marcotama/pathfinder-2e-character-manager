@@ -1,12 +1,12 @@
 /**
  * The simplest type of user choice, where a value is chosen for a certain property.
  */
-export class Field {
+export class Field<T> {
     code: string;
     name: string;
-    value: any;
+    value: T;
 
-    constructor(code: string, name: string, value: any) {
+    constructor(code: string, name: string, value: T) {
         this.code = code;
         this.name = name;
         this.value = value;
@@ -20,7 +20,7 @@ export class Field {
 export class Component {
     code: string;
     name: string;
-    fields: Map<string, Field>;
+    fields: Map<string, Field<any>>;
 
     constructor(code: string, name: string) {
         this.code = code;
@@ -65,7 +65,7 @@ export class Hero {
     code: string;
     name: string;
     components: Map<string, Component>;
-    fields: Map<string, Field>;
+    fields: Map<string, Field<any>>;
     things: Map<string, Thing>;
     entities: Map<string, Entity>;
 
