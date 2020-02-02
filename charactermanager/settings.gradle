@@ -1,0 +1,2 @@
+rootProject.name = 'character-manager'
+include ':backend'

@@ -1,0 +1,47 @@
+apply plugin: 'com.github.johnrengelman.shadow'
+
+sourceSets {
+    main.java.srcDirs += 'src/main/java'
+    test.java.srcDirs += 'src/test/java'
+}
+
+def ourMainClass = 'ai.ragu.charactermanager.app.CharacterManagerCLIApp'
+
+mainClassName = ourMainClass
+
+shadowJar {}
+
+jar {
+    manifest {
+        attributes "Main-Class": ourMainClass
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+dependencies {
+    compile LIBRARY_COMMONS_IO // We use IOUtils
+    compile LIBRARY_LOGBACK_CLASSIC // A backend for logging (unneeded if we do not need debug-level logging)
+
+    // To serialise JSON to Java objects
+    compile LIBRARY_JACKSON_CORE
+    compile LIBRARY_JACKSON_DATABIND
+    compile LIBRARY_ANNOTATIONS
+    compile LIBRARY_JACKSON_MODULE_JSONSCHEMA
+
+    // Lombok to reduce boilerplate
+    compileOnly LIBRARY_LOMBOK
+    annotationProcessor LIBRARY_LOMBOK
+
+    // MapStruct for dto to domain mapping
+    implementation LIBRARY_MAPSTRUCT
+    annotationProcessor LIBRARY_MAPSTRUCT_PROCESSOR
+
+    compile LIBRARY_JACKSON_MODULE_JSON // To read json
+    compile LIBRARY_PICOCLI // To manage the command line interface
+    annotationProcessor LIBRARY_PICOCLI_CODEGEN
+    testCompile LIBRARY_JUNIT
+    testCompile LIBRARY_JUNIT_JUPITER_API
+}

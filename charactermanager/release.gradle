@@ -1,0 +1,318 @@
+import org.gradle.internal.logging.text.StyledTextOutput.Style
+import org.gradle.internal.logging.text.StyledTextOutputFactory
+
+import javax.inject.Inject
+
+// Set the 'nextVersion' property before applying the semver-git plugin
+// so it knows how the version number should be incremented.
+def requestedTasks = project.getGradle().startParameter.getTaskNames()
+if (requestedTasks.contains("releaseMajorVersion")) {
+    ext.nextVersion = "major"
+} else if (requestedTasks.contains("releasePatchVersion")) {
+    ext.nextVersion = "patch"
+} else {
+    // Default snapshots to the next minor version (x.y++.0-snapshot-<additionalInfo>)
+    ext.nextVersion = "minor"
+}
+
+// We can also set the following properties to customise the version format/behaviour.
+// NOTE: It is important to set these *before* applying the plugin.
+//
+// ext.nextVersion = "major", "minor" (default), "patch" or e.g. "3.0.0-rc2"
+ext.snapshotSuffix = "snapshot-<sha><dirty>"
+
+// ext.dirtyMarker = "-dirty" (default) replaces <dirty> in snapshotSuffix
+// ext.gitDescribeArgs = '--match *[0-9].[0-9]*.[0-9]*' (default) or other arguments for git describe.
+// Apply Gradle plugins.
+apply plugin: "com.cinnober.gradle.semver-git"  // Calculates the 'version' property from Git tags.
+apply plugin: "org.ajoberstar.grgit"            // Git wrapper for Gradle.
+
+// Determine which tasks have been called.
+def isSlackTask = requestedTasks.contains("sendSlackNotification")
+def isReleaseBuild = requestedTasks.contains("releaseMajorVersion") ||
+        requestedTasks.contains("releaseMinorVersion") ||
+        requestedTasks.contains("releasePatchVersion") ||
+        !version.toString().contains("snapshot")
+
+if (isReleaseBuild || isSlackTask) {
+    // If we're releasing, we want to strip "snapshot" from the version number and parse the release notes.
+    if (isReleaseBuild) {
+        version = version.toString().replaceFirst("-snapshot.*", "")
+        ext.releaseNotes = {
+            def readingCurrentVersion = false
+            def currentVersionNotes = ""
+            def releaseNotesFile = new File("RELEASE_NOTES.md")
+            if (releaseNotesFile.exists()) {
+                for (line in releaseNotesFile) {
+                    if (line.contains("### ${version}")) {
+                        readingCurrentVersion = true
+                        continue
+                    } else if (line.matches(~/(?m)^###\s+?([0-9]+)\.([0-9]+)\.([0-9]+)(-([a-zA-Z0-9.-]+))?$/)) {
+                        readingCurrentVersion = false
+                    }
+
+                    if (readingCurrentVersion) {
+                        currentVersionNotes += line + "\n"
+                    }
+                }
+            }
+            return currentVersionNotes.trim()
+        }()
+    } else {
+        // For non-tagged releases, our release notes should just be the last commit message.
+        ext.releaseNotes = grgit.head().getFullMessage()
+    }
+} else {
+    // For regular builds, we don't care about release notes.
+    ext.releaseNotes = "Snapshot build"
+}
+
+services.get(StyledTextOutputFactory).create("versionOutput")
+        .style(Style.Description).text("Derived version: ")
+        .style(Style.Identifier).println(version)
+
+createOrUpdateEnvFile(rootProject)
+
+// Ensure version is available throughout all subprojects.
+subprojects {
+    version = rootProject.version
+}
+
+/**
+ * Prints the version number.
+ */
+task printVersion {
+    doLast {
+        println(version)
+    }
+}
+
+/**
+ * Creates a .env file containing VERSION=<version number> so that docker-compose knows
+ * where to look for build artifacts.
+ */
+def createOrUpdateEnvFile(subproject) {
+    def version = "VERSION=${version}"
+    def envFile = new File("${subproject.projectDir}/.env")
+
+    if (envFile.exists()) {
+        if (envFile.text.contains("VERSION=")) {
+            // File exists and has a version string
+            def pattern = ~/VERSION=.+/
+            def match = envFile.text.find(pattern)
+
+            if (match != version) {
+                services.get(StyledTextOutputFactory).create("envOutput")
+                        .style(Style.Description).text("Updating version from ")
+                        .style(Style.Identifier).text(match)
+                        .style(Style.Description).text(" to ")
+                        .style(Style.Identifier).text(version)
+                        .style(Style.Description).text(" in ")
+                        .style(Style.Identifier).println(envFile.path)
+
+                envFile.text = envFile.text.replaceAll(pattern, version)
+            }
+        } else {
+            // File exists but has no version string
+            services.get(StyledTextOutputFactory).create("envOutput")
+                    .style(Style.Description).text("Adding ")
+                    .style(Style.Identifier).text(version)
+                    .style(Style.Description).text(" to ")
+                    .style(Style.Identifier).println(envFile.path)
+
+            envFile.text += version
+        }
+    } else {
+        // File doesn't exist
+        services.get(StyledTextOutputFactory).create("envOutput")
+                .style(Style.Description).text("Creating new file ")
+                .style(Style.Identifier).text(envFile.path)
+                .style(Style.Description).text(" with contents ")
+                .style(Style.Identifier).println(version)
+        envFile.text = version
+    }
+}
+
+/**
+ * Ensures that the work tree is clean and up to date.
+ */
+task enforceCleanUpdatedMasterBranch {
+    doLast {
+        // Ensure current branch is 'master'.
+        if (grgit.branch.current().name != "master") {
+            throw new GradleException("Must be on master branch")
+        }
+        // Ensure there are no uncommitted files.
+        if (!grgit.status().isClean()) {
+            throw new GradleException("Repo state is dirty; remove or stash any uncommitted files")
+        }
+
+        // Ensure there are no commits between HEAD and upstream/master.
+        def upstreamCommitDisparityCount = grgit.log(includes: ["HEAD"], excludes:["upstream/master"]).size()
+        if (upstreamCommitDisparityCount > 0) {
+            throw new GradleException("Current branch differs from upstream/master by ${upstreamCommitDisparityCount} commits; please resolve")
+        }
+    }
+}
+
+/**
+ * Ensures that release notes have been written for the version to be released.
+ */
+task enforceReleaseNotes {
+    doLast {
+        // Ensure RELEASE_NOTES.md exists.
+        def releaseNotesFile = new File("RELEASE_NOTES.md")
+        if (!releaseNotesFile.exists()) {
+            throw new GradleException("RELEASE_NOTES.md not found. This file must be present in order to release new versions.")
+        }
+
+        // Ensure the release notes file contains a heading for the version to be released.
+        if (!releaseNotesFile.getText("UTF-8").contains("### ${version}")) {
+            throw new GradleException("No entry in RELEASE_NOTES.md for version ${version}")
+        }
+    }
+}
+
+/**
+ * Sends a message to a Slack channel via SLACK_WEBHOOK_URL (environment variable)
+ * containing details of a new release.
+ */
+task sendSlackNotification {
+    doLast {
+        // Don't fail if webhook not available; just move onto the next task (if any).
+        def webhookUrl = System.getenv("SLACK_WEBHOOK_URL")
+        if (!webhookUrl) {
+            println("SLACK_WEBHOOK_URL not set; skipping task")
+            throw new StopExecutionException()
+        }
+
+        // Reformat release notes Markdown to render nicely in Slack, which
+        // only supports a subset of the syntax (no headings or lists).
+        def releaseNotes = project.ext.releaseNotes
+        // Plus/minus/asterisk at beginning of line --> level 1 bullet point
+                .replaceAll(~/(?m)^[\*\-\+]\s/, "•\t")
+        // Start of line + whitespace + plus/minus/asterisk --> level 2 bullet point
+                .replaceAll(~/(?m)^\s+[\*\-\+]\s/, "\t◦\t")
+        // Heading --> bold text
+                .replaceAll(~/#+\s+(.+)/) { match, heading -> "*${heading}*" }
+
+        // Get tag information.
+        def tag = grgit.tag.list().find { tag -> tag.getName() == version }
+        def commit = grgit.head()
+        def releasedBy = tag != null ? tag.tagger.name : commit.getAuthor().getName()
+
+        // Render CircleCI build info URL - use workflow ID if present, otherwise just link to build history.
+        def buildInfoUrl = System.getenv("CIRCLE_WORKFLOW_ID") != null ?
+                "https://circleci.com/workflow-run/${System.getenv("CIRCLE_WORKFLOW_ID")}" :
+                "https://circleci.com/gh/dstil/${project.name}"
+
+        // Render other message components.
+        def announcement = "${project.name} ${version} was released" + (env != null ? " to ${env}!" : "!")
+        def details = {
+            if (tag != null) {
+                "_Released by ${releasedBy}_\n\n*Release notes:*\n\n${releaseNotes}\n\n"
+            } else {
+                "_Released by ${releasedBy}_\n\n${commit.getShortMessage()} (<https://github.com/dstil/${rootProject.name}/commit/${commit.getId()}|${commit.getAbbreviatedId()}>) by ${commit.getAuthor().getName()})\n\n"
+            }
+        }()
+
+        // Build message.
+        def message = [
+                attachments: [
+                        [
+                                fallback  : announcement,
+                                color     : "#36a64f",
+                                title     : announcement,
+                                title_link: "https://github.com/dstil/${project.name}/releases/tag/${version}",
+                                text      : details,
+                                actions   : [
+                                        [
+                                                name: "buildInfoLink",
+                                                text: "Build Info",
+                                                type: "button",
+                                                url : buildInfoUrl
+                                        ],
+                                        [
+                                                name: "gitRepoLink",
+                                                text: "Repository",
+                                                type: "button",
+                                                url : "https://github.com/dstil/${project.name}"
+                                        ],
+                                ],
+                                mrkdwn_in : ["text"]
+                        ]
+                ]
+        ]
+
+        exec {
+            commandLine "curl", "-XPOST",
+                    "-H", "Content-type: application/json",
+                    "-d", JsonOutput.toJson(message),
+                    webhookUrl
+        }
+    }
+}
+
+/**
+ * Base class for 'release' tasks. Tags the repository with the appropriate
+ * version number and pushes the tag to upstream.
+ */
+class ReleaseTask extends DefaultTask {
+    String tagName
+    String releaseType
+    String releaseNotes
+
+    @Inject
+    ReleaseTask(String tagName, String releaseType, String releaseNotes) {
+        this.tagName = tagName
+        this.releaseType = releaseType
+        this.releaseNotes = releaseNotes
+
+        dependsOn "enforceCleanUpdatedMasterBranch", "enforceReleaseNotes"
+        setGroup "Publishing"
+        setDescription "Increment the ${releaseType} version and push a tag upstream."
+    }
+
+    @TaskAction
+    def release() {
+        println("Creating tag ${tagName} and pushing to upstream/master")
+        println("Release notes: \n\n${releaseNotes}")
+
+        // Create annotated Git tag for the new version.
+        project.exec {
+            commandLine "git", "tag",
+                    "--cleanup=whitespace",   // Disables interpreting hash (#) characters as comments in the tag message.
+                    "-a", tagName,
+                    "-m", "${tagName}\n${project.ext.releaseNotes}"
+        }
+
+        // Push the tag to upstream.
+        project.exec {
+            commandLine "git", "push", "upstream", tagName
+        }
+    }
+}
+
+/**
+ * Pushes a new tag with the major version number incremented.
+ */
+task releaseMajorVersion(
+        type: ReleaseTask,
+        constructorArgs: [version, "major", ext.releaseNotes]
+) {}
+
+/**
+ * Pushes a new tag with the minor version number incremented.
+ */
+task releaseMinorVersion(
+        type: ReleaseTask,
+        constructorArgs: [version, "minor", ext.releaseNotes]
+) {}
+
+/**
+ * Pushes a new tag with the patch version number incremented.
+ */
+task releasePatchVersion(
+        type: ReleaseTask,
+        constructorArgs: [version, "patch", ext.releaseNotes]
+) {}

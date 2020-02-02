@@ -1,0 +1,32 @@
+buildscript {
+    apply from: "dependencies.gradle"
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:${VERSION_SHADOW}"
+
+        // Used by release.gradle.
+        classpath "com.cinnober.gradle:semver-git:2.4.0"
+        classpath "org.ajoberstar:grgit:2.2.1"
+    }
+}
+
+subprojects {
+
+    apply plugin: 'application'
+    apply plugin: 'java'
+    group = 'ai.ragu.charactermanager'
+    sourceCompatibility = VERSION_JAVA
+
+    repositories {
+        mavenLocal()
+        maven { url = 'https://repo.maven.apache.org/maven2' }
+
+        // jboss freemarker required by optaplanner
+        maven { url = 'https://repository.jboss.org/nexus/content/groups/public/' }
+    }
+}
+apply from: "release.gradle"

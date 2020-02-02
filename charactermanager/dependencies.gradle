@@ -1,0 +1,46 @@
+/**
+ * dependencies.gradle
+ *
+ * This file centralises the library and version management for
+ * the entire multi-module Gradle project.
+ *
+ * To aid readability, constants defined herein should be kept in
+ * alphabetical order within their respective sections.
+ *
+ */
+
+ext {
+    // ===[ Versions ]========================================================
+
+    // Version numbers that need to be specified in multiple locations
+    // across the project (e.g. in both a buildscript classpath and
+    // dependencyManagement block).
+
+    // It is generally not necessary to specify *all* version numbers here;
+    // mainly just major components that have their own dependency management.
+    // For individual libraries or small sets thereof, just specify them
+    // alongside the package identifier in the Libraries section.
+
+    VERSION_JAVA                          = 11
+    VERSION_SHADOW                        = '5.1.0'
+
+    // ===[ Libraries ]=======================================================
+
+    // Package identifiers and versions for libraries used throughout
+    // the project.
+
+    LIBRARY_ANNOTATIONS                                  = 'com.fasterxml.jackson.core:jackson-annotations:2.9.8'
+    LIBRARY_COMMONS_IO                                   = 'org.apache.commons:commons-io:1.3.2'
+    LIBRARY_JACKSON_CORE                                 = 'com.fasterxml.jackson.core:jackson-core:2.9.8'
+    LIBRARY_JACKSON_DATABIND                             = 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+    LIBRARY_JACKSON_MODULE_JSON                          = 'org.json:json:20171018'
+    LIBRARY_JACKSON_MODULE_JSONSCHEMA                    = 'com.fasterxml.jackson.module:jackson-module-jsonSchema:2.10.0.pr3'
+    LIBRARY_JUNIT_JUPITER_API                            = 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+    LIBRARY_JUNIT                                        = 'junit:junit:4.12'
+    LIBRARY_LOGBACK_CLASSIC                              = 'ch.qos.logback:logback-classic:1.2.3'
+    LIBRARY_LOMBOK                                       = 'org.projectlombok:lombok:1.18.10'
+    LIBRARY_MAPSTRUCT                                    = 'org.mapstruct:mapstruct:1.3.1.Final'
+    LIBRARY_MAPSTRUCT_PROCESSOR                          = 'org.mapstruct:mapstruct-processor:1.3.1.Final'
+    LIBRARY_PICOCLI                                      = 'info.picocli:picocli:4.0.2'
+    LIBRARY_PICOCLI_CODEGEN                              = 'info.picocli:picocli-codegen:4.0.2'
+}
