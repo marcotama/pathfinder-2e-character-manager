@@ -22,6 +22,8 @@ jar {
 }
 
 dependencies {
+    compile LIBRARY_FINDBUGS // @Nullable & similar
+    compile LIBRARY_COMMONS_LANG3 // We use time.DurationFormatUtils
     compile LIBRARY_COMMONS_IO // We use IOUtils
     compile LIBRARY_LOGBACK_CLASSIC // A backend for logging (unneeded if we do not need debug-level logging)
 
@@ -39,6 +41,7 @@ dependencies {
     implementation LIBRARY_MAPSTRUCT
     annotationProcessor LIBRARY_MAPSTRUCT_PROCESSOR
 
+    compile LIBRARY_JAVATUPLES
     compile LIBRARY_JACKSON_MODULE_JSON // To read json
     compile LIBRARY_PICOCLI // To manage the command line interface
     annotationProcessor LIBRARY_PICOCLI_CODEGEN

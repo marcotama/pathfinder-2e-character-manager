@@ -24,9 +24,5 @@ subprojects {
     repositories {
         mavenLocal()
         maven { url = 'https://repo.maven.apache.org/maven2' }
-
-        // jboss freemarker required by optaplanner
-        maven { url = 'https://repository.jboss.org/nexus/content/groups/public/' }
     }
 }
-apply from: "release.gradle"
