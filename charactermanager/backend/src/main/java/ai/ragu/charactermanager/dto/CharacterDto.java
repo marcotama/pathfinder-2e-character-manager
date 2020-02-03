@@ -27,12 +27,12 @@ public class CharacterDto {
     @JsonPropertyDescription("A unique identifier for this character")
     @ToString.Include
     @EqualsAndHashCode.Include
-    // @Nonnull
+    @Nonnull
     private String code;
 
     @JsonProperty("name")
     @JsonPropertyDescription("The name of this character")
-    // @Nonnull
+    @Nonnull
     private String name;
 
     @JsonProperty("level")
@@ -185,5 +185,5 @@ public class CharacterDto {
 
     @JsonProperty("inventory")
     @JsonPropertyDescription("The inventory of this character")
-    Map<InventoryItemEnum, Optional<String>> inventory = new HashMap<>(); // items annotated by the granter
+    Map<InventoryItemEnum, String> inventory = new HashMap<>(); // items annotated by the granter
 }
