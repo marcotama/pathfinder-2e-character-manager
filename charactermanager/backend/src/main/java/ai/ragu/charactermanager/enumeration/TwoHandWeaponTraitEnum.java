@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum TwoHandWeaponTraitEnum implements WeaponTraitEnum {
-    TWO_HAND_D8(String.format("two_hand_%s", DieEnum.D8)),
-    TWO_HAND_D10(String.format("two_hand_%s", DieEnum.D10)),
-    TWO_HAND_D12(String.format("two_hand_%s", DieEnum.D12));
+    TWO_HAND_D8(String.format("twoHand_%s", DieEnum.D8)),
+    TWO_HAND_D10(String.format("twoHand_%s", DieEnum.D10)),
+    TWO_HAND_D12(String.format("twoHand_%s", DieEnum.D12));
 
     private final String value;
     private final static Map<String, TwoHandWeaponTraitEnum> CONSTANTS = new HashMap<>();

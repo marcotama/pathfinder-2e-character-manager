@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum DefenseProficiencyEnum {
-    UNARMORED_DEFENSE("unarmored_defense"),
-    LIGHT_ARMOR("light_armor"),
-    MEDIUM_ARMOR("medium_armor"),
-    HEAVY_ARMOR("heavy_armor");
+    UNARMORED_DEFENSE("unarmoredDefense"),
+    LIGHT_ARMOR("lightArmor"),
+    MEDIUM_ARMOR("mediumArmor"),
+    HEAVY_ARMOR("heavyArmor");
 
     private final String value;
     private final static Map<String, DefenseProficiencyEnum> CONSTANTS = new HashMap<>();

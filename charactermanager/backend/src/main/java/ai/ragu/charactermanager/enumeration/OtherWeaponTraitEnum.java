@@ -9,7 +9,7 @@ import java.util.Map;
 public enum OtherWeaponTraitEnum implements WeaponTraitEnum {
     AGILE("agile"),
     FINESSE("finesse"),
-    FREE_HAND("free_hand"),
+    FREE_HAND("freeHand"),
     SHOVE("shove"),
     REACH("reach"),
     TRIP("trip"),
@@ -18,7 +18,7 @@ public enum OtherWeaponTraitEnum implements WeaponTraitEnum {
     FORCEFUL("forceful"),
     BACKSWING("backswing"),
     NONLETHAL("nonlethal"),
-    ATTACHED_TO_SHIELD("attached_to_shield"),
+    ATTACHED_TO_SHIELD("attachedToShield"),
     BACKSTABBER("backstabber"),
     TWIN("twin");
 

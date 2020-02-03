@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum OtherAttackWeaponTypeEnum implements AttackProficiencyEnum {
-    UNARMED_ATTACKS("unarmed_attacks"),
-    SIMPLE_WEAPONS("simple_weapons"),
-    MARTIAL_WEAPONS("martial_weapons"),
-    ALCHEMICAL_BOMBS("alchemical_bombs");
+    UNARMED_ATTACKS("unarmedAttacks"),
+    SIMPLE_WEAPONS("simpleWeapons"),
+    MARTIAL_WEAPONS("martialWeapons"),
+    ALCHEMICAL_BOMBS("alchemicalBombs");
 
     private final String value;
     private final static Map<String, OtherAttackWeaponTypeEnum> CONSTANTS = new HashMap<>();
