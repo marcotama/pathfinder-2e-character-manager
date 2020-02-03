@@ -13,11 +13,11 @@ public class AbilityScoreSheetEntry {
 
     @JsonProperty("score")
     @JsonPropertyDescription("The score of the ability")
-    @Nonnull
+    // @Nonnull
     Integer score;
 
-    @JsonProperty("abilityScores")
+    @JsonProperty("modifier")
     @JsonPropertyDescription("The modifier given by the ability score")
-    @Nonnull
+    // @Nonnull
     Integer modifier;
 }

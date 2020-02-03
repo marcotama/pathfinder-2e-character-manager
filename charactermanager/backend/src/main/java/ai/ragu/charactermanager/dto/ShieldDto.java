@@ -26,51 +26,51 @@ public class ShieldDto implements Equipment {
     @JsonPropertyDescription("A unique identifier for this shield")
     @ToString.Include
     @EqualsAndHashCode.Include
-    @Nonnull
+    // @Nonnull
     private String code;
 
     @JsonProperty("name")
     @JsonPropertyDescription("The name for this shield")
-    @Nonnull
+    // @Nonnull
     private String name;
 
     @JsonProperty("category")
     @JsonPropertyDescription("The category of this shield")
-    @Nonnull
+    // @Nonnull
     private ItemCategoryEnum category;
 
     @JsonProperty("price")
     @JsonPropertyDescription("The price of this shield")
-    @Nonnull
+    // @Nonnull
     private AmountDto price;
 
     @JsonProperty("acBonus")
     @JsonPropertyDescription("The AC bonus of this shield")
-    @Nonnull
+    // @Nonnull
     private Integer acBonus;
 
     @JsonProperty("speedPenalty")
     @JsonPropertyDescription("The speed penalty of this shield")
-    @Nonnull
+    // @Nonnull
     private Integer speedPenalty;
 
     @JsonProperty("bulk")
     @JsonPropertyDescription("The bulk of this shield")
-    @Nonnull
+    // @Nonnull
     private ItemBulkEnum bulk;
 
     @JsonProperty("hardness")
     @JsonPropertyDescription("The hardness of this shield")
-    @Nonnull
+    // @Nonnull
     private Integer hardness;
 
     @JsonProperty("hitPoints")
     @JsonPropertyDescription("The hit points of this shield")
-    @Nonnull
+    // @Nonnull
     private Integer hitPoints;
 
     @JsonProperty("brokenThreshold")
     @JsonPropertyDescription("The broken threshold of this shield")
-    @Nonnull
+    // @Nonnull
     private Integer brokenThreshold;
 }

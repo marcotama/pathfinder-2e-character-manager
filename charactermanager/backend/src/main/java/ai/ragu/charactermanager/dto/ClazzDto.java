@@ -26,12 +26,12 @@ public class ClazzDto {
     @JsonPropertyDescription("A unique identifier for this character")
     @ToString.Include
     @EqualsAndHashCode.Include
-    @Nonnull
+    // @Nonnull
     private String code;
 
     @JsonProperty("name")
     @JsonPropertyDescription("The name of this character")
-    @Nonnull
+    // @Nonnull
     private String name;
     @JsonProperty("keyAbilityScore")
     @JsonPropertyDescription("The key ability score of this class")

@@ -30,6 +30,7 @@ import java.nio.file.Path;
         CharacterManagerCLIApp.Compile.class,
         CharacterManagerCLIApp.DtoSchema.class,
         CharacterManagerCLIApp.SheetSchema.class,
+        CharacterManagerCLIApp.Create.class,
 })
 public class CharacterManagerCLIApp {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -99,12 +100,25 @@ public class CharacterManagerCLIApp {
         @Mixin
         OutputDir outputDir;
 
+        @Mixin
+        Help help;
+    }
+
+    @Command(
+            name = "create",
+            description = "Create a new character and store it in the DTO JSON format"
+    )
+    static class Create {
+        @Mixin
+        OutputDir outputDir;
+
         @Option(
-                names = {"--debug"},
-                paramLabel = "GENERATE_DEBUG_FILES",
-                description = "A flag to indicate that intermediate debug files should be written"
+                names = {"--characterName"},
+                paramLabel = "CHARACTER_NAME",
+                description = "The name of the new character",
+                required = true
         )
-        private boolean debug;
+        private String characterName;
 
         @Mixin
         Help help;
@@ -159,13 +173,18 @@ public class CharacterManagerCLIApp {
         } else if (subCommand.commandSpec().userObject().getClass().equals(DtoSchema.class)) {
             DtoSchema dtoSchema = (DtoSchema) subCommand.commandSpec().userObject();
             createOutputDirectory(dtoSchema.outputDir.path);
-            String schemaFilename = Path.of(dtoSchema.outputDir.path.toString(), "dto-schema.json").toString();
-            generateSchema(CharacterSheet.class, schemaFilename);
+            Path outputFilePath = Path.of(dtoSchema.outputDir.path.toString(), "dto-schema.json");
+            generateSchema(CharacterSheet.class, outputFilePath);
         }  else if (subCommand.commandSpec().userObject().getClass().equals(SheetSchema.class)) {
             SheetSchema sheetSchema = (SheetSchema) subCommand.commandSpec().userObject();
             createOutputDirectory(sheetSchema.outputDir.path);
-            String schemaFilename = Path.of(sheetSchema.outputDir.path.toString(), "sheet-schema.json").toString();
-            generateSchema(CharacterSheet.class, schemaFilename);
+            Path outputFilePath = Path.of(sheetSchema.outputDir.path.toString(), "sheet-schema.json");
+            generateSchema(CharacterSheet.class, outputFilePath);
+        }  else if (subCommand.commandSpec().userObject().getClass().equals(Create.class)) {
+            Create create = (Create) subCommand.commandSpec().userObject();
+            createOutputDirectory(create.outputDir.path);
+            Path outputFilePath = Path.of(create.outputDir.path.toString(), String.format("%s.json", create.characterName));
+            createNewCharacter(create.characterName, outputFilePath);
         }
     }
 
@@ -187,6 +206,28 @@ public class CharacterManagerCLIApp {
             CharacterSheet characterSheet = CharacterMapper.INSTANCE.map(characterDto);
             try (FileWriter file = new FileWriter(outputFilePath.toFile())) {
                 ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, characterSheet);
+                logger.info(String.format("Character sheet JSON file generated: %s", outputFilePath.toFile()));
+            }
+        } catch (IOException exception) {
+            logger.error(exception.getLocalizedMessage());
+        }
+    }
+
+    /**
+     * Creates a blank new character with the given name.
+     *
+     * @param characterName the name of the new character
+     * @param outputFilePath the full path to the character sheet JSON file to write
+     */
+    private static void createNewCharacter(String characterName, Path outputFilePath) {
+        logger.info("Compiling the character into sheet JSON format...");
+        CharacterDto characterDto = new CharacterDto();
+        characterDto.setCode(characterName.toUpperCase());
+        characterDto.setName(characterName);
+        try {
+            try (FileWriter file = new FileWriter(outputFilePath.toFile())) {
+                ObjectMapper objectMapper = new ObjectMapper();
                 objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, characterDto);
                 logger.info(String.format("Character sheet JSON file generated: %s", outputFilePath.toFile()));
             }
@@ -201,7 +242,7 @@ public class CharacterManagerCLIApp {
      * @param cls the class of which the schema should be generated
      * @param outputFilePath the full path to the JSON schema file to write
      */
-    private static void generateSchema(Class cls, String schemaFilename) {
+    private static void generateSchema(Class cls, Path outputFilePath) {
         ObjectMapper mapper = new ObjectMapper();
         JsonSchemaGenerator generator = new JsonSchemaGenerator(mapper);
         JsonSchema jsonSchema = null;
@@ -211,11 +252,11 @@ public class CharacterManagerCLIApp {
             logger.error(e.getLocalizedMessage());
         }
 
-        try (FileWriter file = new FileWriter(schemaFilename)) {
+        try (FileWriter file = new FileWriter(outputFilePath.toString())) {
             logger.info("Generating sheet schema...");
             String obj = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonSchema);
             file.write(obj);
-            logger.info(String.format("Schema generated in: %s", schemaFilename));
+            logger.info(String.format("Schema generated in: %s", outputFilePath));
         } catch (IOException exception) {
             logger.error(exception.getLocalizedMessage());
         }

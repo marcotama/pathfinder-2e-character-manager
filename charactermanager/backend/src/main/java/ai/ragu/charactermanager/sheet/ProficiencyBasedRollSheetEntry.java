@@ -15,36 +15,36 @@ public class ProficiencyBasedRollSheetEntry {
 
     @JsonProperty("refAbilityScore")
     @JsonPropertyDescription("The ability score that influences this entry")
-    @Nonnull
+    // @Nonnull
     AbilityScoreEnum refAbilityScore;
 
     @JsonProperty("refAbilityScoreModifier")
     @JsonPropertyDescription("The modifier given by the ability score")
-    @Nonnull
+    // @Nonnull
     Integer refAbilityScoreModifier;
 
     @JsonProperty("proficiencyLevel")
     @JsonPropertyDescription("The proficiency level for this entry")
-    @Nonnull
+    // @Nonnull
     ProficiencyLevelEnum proficiencyLevel;
 
     @JsonProperty("proficiencyModifier")
     @JsonPropertyDescription("The modifier given by the proficiency level")
-    @Nonnull
+    // @Nonnull
     Integer proficiencyModifier;
 
     @JsonProperty("itemModifier")
     @JsonPropertyDescription("The modifier given by items (null except for skills)")
-    @Nonnull
+    // @Nonnull
     Integer itemModifier;
 
     @JsonProperty("armorModifier")
     @JsonPropertyDescription("The modifier given by armor (null except for some skills)")
-    @Nonnull
+    // @Nonnull
     Integer armorModifier;
 
     @JsonProperty("totalModifier")
     @JsonPropertyDescription("The total modifier")
-    @Nonnull
+    // @Nonnull
     Integer score;
 }

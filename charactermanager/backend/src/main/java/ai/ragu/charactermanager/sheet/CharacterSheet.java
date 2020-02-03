@@ -13,19 +13,29 @@ import java.util.Map;
 @AllArgsConstructor
 public class CharacterSheet {
 
+    @JsonProperty("code")
+    @JsonPropertyDescription("A unique identifier for this character")
+    // @Nonnull
+    String code;
+
+    @JsonProperty("name")
+    @JsonPropertyDescription("The name of this character")
+    @Nonnull
+    String name;
+
     @JsonProperty("abilityScores")
     @JsonPropertyDescription("The ability scores of this character")
-    @Nonnull
+    // @Nonnull
     Map<AbilityScoreEnum, AbilityScoreSheetEntry> abilityScores;
 
     @JsonProperty("skills")
     @JsonPropertyDescription("The skills of this character")
-    @Nonnull
+    // @Nonnull
     Map<SkillEnum, ProficiencyBasedRollSheetEntry> skills;
 
     @JsonProperty("savingThrows")
     @JsonPropertyDescription("The saving throws of this character")
-    @Nonnull
+    // @Nonnull
     Map<SavingThrowEnum, ProficiencyBasedRollSheetEntry> savingThrows;
 
     @JsonProperty("perception")

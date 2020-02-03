@@ -19,16 +19,16 @@ public class ProficiencyModifierDto {
 
     @JsonProperty("granter")
     @JsonPropertyDescription("The identifier of the rule that grants this modifier")
-    @Nonnull
+    // @Nonnull
     String granter;
 
     @JsonProperty("proficiencyLevel")
     @JsonPropertyDescription("The proficiency level set by this modifier")
-    @Nonnull
+    // @Nonnull
     ProficiencyLevelEnum proficiencyLevel;
 
     @JsonProperty("priority")
     @JsonPropertyDescription("The level set by this modifier")
-    @Nonnull
+    // @Nonnull
     Integer priority;
 }

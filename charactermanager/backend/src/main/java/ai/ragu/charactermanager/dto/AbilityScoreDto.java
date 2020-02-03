@@ -20,7 +20,7 @@ public class AbilityScoreDto {
 
     @JsonProperty("modifiers")
     @JsonPropertyDescription("The modifiers of this ability score")
-    @Nonnull
+    // @Nonnull
     List<AbilityScoreModifierDto> modifiers = new ArrayList<>();
 
 

@@ -75,6 +75,8 @@ public class CharacterMapper {
                 ));
 
         return new CharacterSheet(
+                characterDto.getCode(),
+                characterDto.getName(),
                 abilityScores,
                 skills,
                 savingThrows,

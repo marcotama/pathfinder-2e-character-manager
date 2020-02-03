@@ -15,7 +15,7 @@ public class ProficiencyDto {
 
     @JsonProperty("modifiers")
     @JsonPropertyDescription("The modifiers of this ability score")
-    @Nonnull
+    // @Nonnull
     List<ProficiencyModifierDto> modifiers;
 
     public ProficiencyDto() {

@@ -16,11 +16,11 @@ public class AbilityScoreModifierDto {
 
     @JsonProperty("granter")
     @JsonPropertyDescription("The identifier of the rule that grants this modifier")
-    @Nonnull
+    // @Nonnull
     String granter;
 
     @JsonProperty("delta")
     @JsonPropertyDescription("The delta set by this modifier")
-    @Nonnull
+    // @Nonnull
     Integer delta;
 }

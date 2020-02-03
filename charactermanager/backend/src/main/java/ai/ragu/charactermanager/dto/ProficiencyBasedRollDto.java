@@ -17,7 +17,7 @@ public class ProficiencyBasedRollDto {
 
     @JsonProperty("proficiency")
     @JsonPropertyDescription("The proficiency of this roll")
-    @Nonnull
+    // @Nonnull
     private ProficiencyDto proficiency = new ProficiencyDto();
 
     @JsonProperty("refAbilityScore")
@@ -30,20 +30,34 @@ public class ProficiencyBasedRollDto {
         this.refAbilityScore = refAbilityScore;
     }
 
-    public int getItemModifier() {
+    public int calcItemModifier() {
         return 0; // TODO
     }
 
-    public AbilityScoreEnum getRefAbilityScore(CharacterDto character) {
-        return this.refAbilityScore == null ? character.getClazz().getKeyAbilityScore() : this.refAbilityScore;
+    public AbilityScoreEnum calcRefAbilityScore(CharacterDto character) {
+        if (this.refAbilityScore != null) {
+            return this.refAbilityScore;
+        } else {
+            ClazzDto clazzDto = character.getClazz();
+            if (clazzDto != null) {
+                return clazzDto.getKeyAbilityScore();
+            } else {
+                return null;
+            }
+        }
     }
 
-    public int getAttributeModifier(CharacterDto character) {
-        AbilityScoreEnum refAbilityScore = getRefAbilityScore(character);
-        return character.getAbilityScores().get(refAbilityScore).calcModifier();
+    public int calcAttributeModifier(CharacterDto character) {
+        AbilityScoreEnum refAbilityScore = calcRefAbilityScore(character);
+        AbilityScoreDto abilityScoreDto = character.getAbilityScores().get(refAbilityScore);
+        if (abilityScoreDto != null) {
+            return abilityScoreDto.calcModifier();
+        } else {
+            return 0;
+        }
     }
 
-    public int getArmorModifier(CharacterDto character) {
+    public int calcArmorModifier(CharacterDto character) {
         if (character.getArmor() == null) {
             return 0;
         } else {
@@ -59,11 +73,11 @@ public class ProficiencyBasedRollDto {
         }
     }
 
-    public int getValue(CharacterDto character) {
+    public int calcValue(CharacterDto character) {
         return character.getLevel() +
                 this.proficiency.calcProficiency().getModifier() +
-                this.getAttributeModifier(character) +
-                this.getItemModifier() +
-                this.getArmorModifier(character);
+                this.calcAttributeModifier(character) +
+                this.calcItemModifier() +
+                this.calcArmorModifier(character);
     }
 }
