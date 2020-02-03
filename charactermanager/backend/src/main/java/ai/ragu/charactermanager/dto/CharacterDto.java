@@ -9,7 +9,10 @@ import lombok.*;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -186,4 +189,25 @@ public class CharacterDto {
     @JsonProperty("inventory")
     @JsonPropertyDescription("The inventory of this character")
     Map<InventoryItemEnum, String> inventory = new HashMap<>(); // items annotated by the granter
+
+    public void clearItemsGrantedBy(String identifier) {
+        List<InventoryItemEnum> toRemove = new ArrayList<>();
+        for (Map.Entry<InventoryItemEnum, String> entry : this.inventory.entrySet()) {
+            InventoryItemEnum key = entry.getKey();
+            String grantedBy = entry.getValue();
+            if (grantedBy.equals(identifier)) {
+                toRemove.add(key);
+            }
+        }
+        for (InventoryItemEnum itemEnum : toRemove) {
+            this.inventory.remove(itemEnum);
+        }
+    }
+
+    public void clearSkillsModifiersGrantedBy(String identifier) {
+        for (Map.Entry<SkillEnum, ProficiencyBasedRollDto> entry : this.skills.entrySet()) {
+            ProficiencyBasedRollDto skill = entry.getValue();
+            skill.getProficiency().modifiers.removeIf(proficiencyModifierDto -> proficiencyModifierDto.granter.equals(identifier));
+        }
+    };
 }
