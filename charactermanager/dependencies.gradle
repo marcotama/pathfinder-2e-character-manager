@@ -45,5 +45,5 @@ ext {
     LIBRARY_MAPSTRUCT                                    = 'org.mapstruct:mapstruct:1.3.1.Final'
     LIBRARY_MAPSTRUCT_PROCESSOR                          = 'org.mapstruct:mapstruct-processor:1.3.1.Final'
     LIBRARY_PICOCLI                                      = 'info.picocli:picocli:4.1.4'
-    LIBRARY_PICOCLI_CODEGEN                              = 'info.picocli:picocli-codegen:4.0.2'
+    LIBRARY_PICOCLI_CODEGEN                              = 'info.picocli:picocli-codegen:4.1.4'
 }
