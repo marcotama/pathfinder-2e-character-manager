@@ -55,6 +55,8 @@ public class Alchemist extends ClazzDto {
     }
 
     public Alchemist() {
+        super("alchemist", "Alchemist");
+        this.baseHitPointsIncrease = 8;
         this.keyAbilityScore = AbilityScoreEnum.INT;
         this.perception = ProficiencyLevelEnum.TRAINED;
         this.savingThrows = Map.ofEntries(
@@ -74,10 +76,6 @@ public class Alchemist extends ClazzDto {
                 Map.entry(DefenseProficiencyEnum.LIGHT_ARMOR, ProficiencyLevelEnum.TRAINED),
                 Map.entry(DefenseProficiencyEnum.UNARMORED_DEFENSE, ProficiencyLevelEnum.TRAINED)
         );
-    }
-
-    public int calcHitPointsIncrease(CharacterDto character) {
-        return 8 + character.getAbilityScores().get(AbilityScoreEnum.CON).calcModifier();
     }
 
     @Override

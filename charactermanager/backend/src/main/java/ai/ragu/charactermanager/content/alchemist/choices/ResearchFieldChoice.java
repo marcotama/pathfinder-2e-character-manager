@@ -1,7 +1,6 @@
 package ai.ragu.charactermanager.content.alchemist.choices;
 
 import ai.ragu.charactermanager.content.alchemist.Alchemist;
-import ai.ragu.charactermanager.content.enumeration.AlchemicalElixirEnum;
 import ai.ragu.charactermanager.dto.CharacterDto;
 import ai.ragu.charactermanager.dto.Choice;
 import ai.ragu.charactermanager.dto.ItemDto;
@@ -60,9 +59,9 @@ public class ResearchFieldChoice extends Choice {
                         "lesser antiplague, or lesser elixir of life.\n" +
                         "As long as your proficiency rank in Medicine is trained or better, you can attempt a " +
                         "Crafting check instead of a Medicine check for any of Medicine's untrained and trained uses.";
-                choices.add(AlchemicalElixirEnum.ANTIDOTE_LESSER.toString());
-                choices.add(AlchemicalElixirEnum.ANTIPLAGUE_LESSER.toString());
-                choices.add(AlchemicalElixirEnum.ELIXIR_OF_LIFE_MINOR.toString());
+                choices.add(InventoryItemEnum.fromValue("ANTIDOTE_LESSER").getCode());
+                choices.add(InventoryItemEnum.fromValue("ANTIPLAGUE_LESSER").getCode());
+                choices.add(InventoryItemEnum.fromValue("ELIXIR_OF_LIFE_MINOR").getCode());
                 numAnswers = 2;
                 break;
             case MUTAGENIST:
@@ -78,7 +77,6 @@ public class ResearchFieldChoice extends Choice {
                         .map(ItemDto::toString)
                         .collect(Collectors.toList())
                 );
-                choices.addAll(Arrays.stream(AlchemicalElixirEnum.values()).map(AlchemicalElixirEnum::toString).collect(Collectors.toList()));
                 numAnswers = 2;
                 break;
             default:

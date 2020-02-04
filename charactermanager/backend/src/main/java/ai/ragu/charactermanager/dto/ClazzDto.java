@@ -5,9 +5,11 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +19,6 @@ import java.util.Map;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "code")
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -27,13 +28,12 @@ public abstract class ClazzDto {
     @JsonPropertyDescription("A unique identifier for this character")
     @ToString.Include
     @EqualsAndHashCode.Include
-    // @Nonnull
     protected String code;
 
     @JsonProperty("name")
     @JsonPropertyDescription("The name of this character")
-    // @Nonnull
     protected String name;
+
     @JsonProperty("keyAbilityScore")
     @JsonPropertyDescription("The key ability score of this class")
     protected AbilityScoreEnum keyAbilityScore;
@@ -61,6 +61,11 @@ public abstract class ClazzDto {
     @JsonProperty("baseHitPointsIncrease")
     @JsonPropertyDescription("The base hit points increase of this class")
     protected Integer baseHitPointsIncrease;
+
+    public ClazzDto(String code, String name) {
+        this.code = code;
+        this.name = name;
+    }
 
     public int calcHitPointsIncrease(CharacterDto character) {
         return this.baseHitPointsIncrease + character.abilityScores.get(AbilityScoreEnum.CON).calcModifier();
