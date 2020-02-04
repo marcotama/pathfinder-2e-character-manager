@@ -1,7 +1,9 @@
 package ai.ragu.charactermanager.app;
 
 
+import ai.ragu.charactermanager.content.alchemist.Alchemist;
 import ai.ragu.charactermanager.dto.CharacterDto;
+import ai.ragu.charactermanager.dto.Choice;
 import ai.ragu.charactermanager.mapper.CharacterMapper;
 import ai.ragu.charactermanager.sheet.CharacterSheet;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -24,6 +26,7 @@ import java.io.InputStream;
 import java.lang.invoke.MethodHandles;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 @SuppressWarnings("ALL")
 @Command(name = "characterManager", subcommands = {
@@ -225,6 +228,10 @@ public class CharacterManagerCLIApp {
         CharacterDto characterDto = new CharacterDto();
         characterDto.setCode(characterName.toUpperCase());
         characterDto.setName(characterName);
+        characterDto.setClazz(new Alchemist());
+        Choice researchFieldChoice = characterDto.getClazz().getChoices(1).get(1);
+        researchFieldChoice.setAnswers(List.of(Alchemist.AlchemistResearchFieldEnum.BOMBER.toString()));
+        System.out.println(researchFieldChoice.callback(characterDto).get(0).getOptions());
         try {
             try (FileWriter file = new FileWriter(outputFilePath.toFile())) {
                 ObjectMapper objectMapper = new ObjectMapper();

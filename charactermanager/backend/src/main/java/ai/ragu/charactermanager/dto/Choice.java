@@ -30,10 +30,14 @@ public abstract class Choice {
     @JsonPropertyDescription("The options for this choice")
     protected List<String> options;
 
-    @JsonProperty("numChoices")
-    @JsonPropertyDescription("A description for this choice")
-    protected int numChoices;
+    @JsonProperty("answers")
+    @JsonPropertyDescription("The answer/s selected")
+    protected List<String> answers;
 
-    public abstract List<Choice> callback(CharacterDto characterDto, List<Object> choices);
+    @JsonProperty("numAnswers")
+    @JsonPropertyDescription("The number of answers allowed for this choice")
+    public abstract int getNumAnswers(CharacterDto characterDto);
+
+    public abstract List<Choice> callback(CharacterDto characterDto);
 
 }

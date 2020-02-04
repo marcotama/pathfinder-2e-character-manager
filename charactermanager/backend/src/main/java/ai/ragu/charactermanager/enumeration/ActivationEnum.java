@@ -6,22 +6,23 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum ItemBulkEnum implements WeaponTraitEnum {
-    SMALL("S"),
-    MEDIUM("M"),
-    LARGE("L"),
-    TWO("2");
+public enum ActivationEnum {
+    INTERACT("interact"),
+    STRIKE("strike"),
+    ONE_ACTION("oneAction"),
+    ONE_OR_MORE_DAYS("oneOrMoreDays"),
+    BULWARK("bulwark");
 
     private final String value;
-    private final static Map<String, ItemBulkEnum> CONSTANTS = new HashMap<>();
+    private final static Map<String, ActivationEnum> CONSTANTS = new HashMap<>();
 
     static {
-        for (ItemBulkEnum c: values()) {
+        for (ActivationEnum c: values()) {
             CONSTANTS.put(c.value, c);
         }
     }
 
-    ItemBulkEnum(String value) {
+    ActivationEnum(String value) {
         this.value = value;
     }
 
@@ -36,8 +37,8 @@ public enum ItemBulkEnum implements WeaponTraitEnum {
     }
 
     @JsonCreator
-    public static ItemBulkEnum fromValue(String value) {
-        ItemBulkEnum constant = CONSTANTS.get(value);
+    public static ActivationEnum fromValue(String value) {
+        ActivationEnum constant = CONSTANTS.get(value);
         if (constant == null) {
             throw new IllegalArgumentException(value);
         } else {

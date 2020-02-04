@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 import java.util.Map;
 
 
@@ -20,7 +21,7 @@ import java.util.Map;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "code")
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ClazzDto {
+public abstract class ClazzDto {
 
     @JsonProperty("code")
     @JsonPropertyDescription("A unique identifier for this character")
@@ -64,5 +65,7 @@ public class ClazzDto {
     public int calcHitPointsIncrease(CharacterDto character) {
         return this.baseHitPointsIncrease + character.abilityScores.get(AbilityScoreEnum.CON).calcModifier();
     }
+
+    public abstract List<Choice> getChoices(int level);
 
 }
