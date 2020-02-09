@@ -1,7 +1,9 @@
 package ai.ragu.charactermanager.app;
 
 
-import ai.ragu.charactermanager.content.alchemist.Alchemist;
+import ai.ragu.charactermanager.content.ancestries.AncestryHuman;
+import ai.ragu.charactermanager.content.classes.alchemist.AlchemistResearchFieldEnum;
+import ai.ragu.charactermanager.content.classes.alchemist.ClazzAlchemist;
 import ai.ragu.charactermanager.dto.CharacterDto;
 import ai.ragu.charactermanager.dto.Choice;
 import ai.ragu.charactermanager.mapper.CharacterMapper;
@@ -27,6 +29,7 @@ import java.lang.invoke.MethodHandles;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.UUID;
 
 @SuppressWarnings("ALL")
 @Command(name = "characterManager", subcommands = {
@@ -226,11 +229,12 @@ public class CharacterManagerCLIApp {
     private static void createNewCharacter(String characterName, Path outputFilePath) {
         logger.info("Compiling the character into sheet JSON format...");
         CharacterDto characterDto = new CharacterDto();
-        characterDto.setCode(characterName.toUpperCase());
+        characterDto.setId(UUID.randomUUID());
         characterDto.setName(characterName);
-        characterDto.setClazz(new Alchemist());
+        characterDto.setAncestry(new AncestryHuman());
+        characterDto.setClazz(new ClazzAlchemist());
         Choice researchFieldChoice = characterDto.getClazz().getChoices(1).get(1);
-        researchFieldChoice.setAnswers(List.of(Alchemist.AlchemistResearchFieldEnum.BOMBER.toString()));
+        researchFieldChoice.setAnswers(List.of(AlchemistResearchFieldEnum.BOMBER.toString()));
         System.out.println(researchFieldChoice.callback(characterDto).get(0).getOptions());
         try {
             try (FileWriter file = new FileWriter(outputFilePath.toFile())) {

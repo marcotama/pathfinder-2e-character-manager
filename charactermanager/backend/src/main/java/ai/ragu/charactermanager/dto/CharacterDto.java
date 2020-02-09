@@ -9,29 +9,23 @@ import lombok.*;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
-/**
- * An armor
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "code")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class CharacterDto {
 
-    @JsonProperty("code")
+    @JsonProperty("id")
     @JsonPropertyDescription("A unique identifier for this character")
     @ToString.Include
     @EqualsAndHashCode.Include
     @Nonnull
-    private String code;
+    private UUID id;
 
     @JsonProperty("name")
     @JsonPropertyDescription("The name of this character")
@@ -40,12 +34,17 @@ public class CharacterDto {
 
     @JsonProperty("level")
     @JsonPropertyDescription("The level of this character")
-    // @Nonnull
+    @Nonnull
     private Integer level = 1;
+
+    @JsonProperty("ancestry")
+    @JsonPropertyDescription("The ancestry of this character")
+    @Nullable
+    private AncestryDto ancestry;
 
     @JsonProperty("clazz")
     @JsonPropertyDescription("The class of this character")
-    // @Nonnull
+    @Nullable
     private ClazzDto clazz;
 
     @JsonProperty("armor")
@@ -55,17 +54,17 @@ public class CharacterDto {
 
     @JsonProperty("shields")
     @JsonPropertyDescription("The shields of this character")
-    // @Nonnull
+    @Nonnull
     private List<ShieldDto> shields = new ArrayList<>();
 
     @JsonProperty("weapons")
     @JsonPropertyDescription("The weapons of this character")
-    // @Nonnull
+    @Nonnull
     private List<Weapon> weapons = new ArrayList<>();
 
     @JsonProperty("abilityScores")
     @JsonPropertyDescription("The ability scores of this character")
-    // @Nonnull
+    @Nonnull
     Map<AbilityScoreEnum, AbilityScoreDto> abilityScores = Map.ofEntries(
             Map.entry(AbilityScoreEnum.STR, new AbilityScoreDto()),
             Map.entry(AbilityScoreEnum.DEX, new AbilityScoreDto()),
@@ -77,7 +76,7 @@ public class CharacterDto {
 
     @JsonProperty("skills")
     @JsonPropertyDescription("The skills of this character")
-    // @Nonnull
+    @Nonnull
     Map<SkillEnum, ProficiencyBasedRollDto> skills = Map.ofEntries(
             Map.entry(SkillEnum.ACROBATICS, new ProficiencyBasedRollDto(AbilityScoreEnum.DEX)),
             Map.entry(SkillEnum.ARCANA, new ProficiencyBasedRollDto(AbilityScoreEnum.INT)),
@@ -99,7 +98,7 @@ public class CharacterDto {
 
     @JsonProperty("savingThrows")
     @JsonPropertyDescription("The saving throws of this character")
-    // @Nonnull
+    @Nonnull
     Map<SavingThrowEnum, ProficiencyBasedRollDto> savingThrows = Map.ofEntries(
             Map.entry(SavingThrowEnum.FORTITUDE, new ProficiencyBasedRollDto(AbilityScoreEnum.CON)),
             Map.entry(SavingThrowEnum.REFLEX, new ProficiencyBasedRollDto(AbilityScoreEnum.DEX)),

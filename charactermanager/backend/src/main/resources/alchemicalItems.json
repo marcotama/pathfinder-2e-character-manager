@@ -530,7 +530,7 @@
   {
     "code": "cheetah's elixir item 1+",
     "traits": [
-      "],ALCHEMICAL",
+      "ALCHEMICAL",
       "CONSUMABLE",
       "ELIXIR"
     ],
@@ -821,7 +821,7 @@
   {
     "code": "infiltrator's elixir item 2",
     "traits": [
-      "],ALCHEMICAL",
+      "ALCHEMICAL",
       "CONSUMABLE",
       "ELIXIR",
       "POLYMORPH"

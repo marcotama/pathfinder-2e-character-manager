@@ -17,7 +17,7 @@ import java.util.List;
 public abstract class Choice {
 
     @JsonProperty("code")
-    @JsonPropertyDescription("A unique identifier for this armor")
+    @JsonPropertyDescription("A unique identifier for this choice")
     @ToString.Include
     @EqualsAndHashCode.Include
     protected String code;

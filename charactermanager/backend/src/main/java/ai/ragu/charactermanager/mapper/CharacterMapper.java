@@ -9,7 +9,6 @@ import ai.ragu.charactermanager.sheet.ProficiencyBasedRollSheetEntry;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -75,7 +74,7 @@ public class CharacterMapper {
                 ));
 
         return new CharacterSheet(
-                characterDto.getCode(),
+                characterDto.getId().toString(),
                 characterDto.getName(),
                 abilityScores,
                 skills,

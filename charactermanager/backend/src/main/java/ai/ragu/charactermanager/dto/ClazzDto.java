@@ -10,13 +10,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.Map;
 
-
-/**
- * An armor
- */
 @Data
 @AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "code")
@@ -61,6 +58,14 @@ public abstract class ClazzDto {
     @JsonProperty("baseHitPointsIncrease")
     @JsonPropertyDescription("The base hit points increase of this class")
     protected Integer baseHitPointsIncrease;
+
+    @JsonProperty("src")
+    @JsonPropertyDescription("The source of this class")
+    @Nonnull protected SourceEnum src;
+
+    @JsonProperty("url")
+    @JsonPropertyDescription("The url where to find more details about this class")
+    @Nonnull protected String url;
 
     public ClazzDto(String code, String name) {
         this.code = code;

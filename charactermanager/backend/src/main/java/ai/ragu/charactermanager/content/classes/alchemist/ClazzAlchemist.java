@@ -1,61 +1,18 @@
-package ai.ragu.charactermanager.content.alchemist;
+package ai.ragu.charactermanager.content.classes.alchemist;
 
-import ai.ragu.charactermanager.content.alchemist.choices.ResearchFieldChoice;
-import ai.ragu.charactermanager.content.alchemist.choices.TrainedSkillChoice;
-import ai.ragu.charactermanager.dto.CharacterDto;
+import ai.ragu.charactermanager.content.classes.alchemist.choices.ResearchFieldChoice;
+import ai.ragu.charactermanager.content.classes.alchemist.choices.TrainedSkillChoice;
 import ai.ragu.charactermanager.dto.Choice;
 import ai.ragu.charactermanager.dto.ClazzDto;
 import ai.ragu.charactermanager.enumeration.*;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Alchemist extends ClazzDto {
+public class ClazzAlchemist extends ClazzDto {
 
-    public enum AlchemistResearchFieldEnum {
-        BOMBER("bomber"),
-        CHIRURGEON("chirurgeon"),
-        MUTAGENIST("mutagenist");
-
-        private final String value;
-        private final static Map<String, AlchemistResearchFieldEnum> CONSTANTS = new HashMap<>();
-
-        static {
-            for (AlchemistResearchFieldEnum c: values()) {
-                CONSTANTS.put(c.value, c);
-            }
-        }
-
-        AlchemistResearchFieldEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        public String toString() {
-            return this.value;
-        }
-
-        @JsonValue
-        public String value() {
-            return this.value;
-        }
-
-        @JsonCreator
-        public static AlchemistResearchFieldEnum fromValue(String value) {
-            AlchemistResearchFieldEnum constant = CONSTANTS.get(value);
-            if (constant == null) {
-                throw new IllegalArgumentException(value);
-            } else {
-                return constant;
-            }
-        }
-    }
-
-    public Alchemist() {
-        super("alchemist", "Alchemist");
+    public ClazzAlchemist() {
+        super("Class:Alchemist", "Alchemist");
         this.baseHitPointsIncrease = 8;
         this.keyAbilityScore = AbilityScoreEnum.INT;
         this.perception = ProficiencyLevelEnum.TRAINED;
@@ -76,6 +33,8 @@ public class Alchemist extends ClazzDto {
                 Map.entry(DefenseProficiencyEnum.LIGHT_ARMOR, ProficiencyLevelEnum.TRAINED),
                 Map.entry(DefenseProficiencyEnum.UNARMORED_DEFENSE, ProficiencyLevelEnum.TRAINED)
         );
+        this.src = SourceEnum.CORE_RULEBOOK;
+        this.url = "https://glasstopgames.com/pathfinder2/class/alchemist.html";
     }
 
     @Override

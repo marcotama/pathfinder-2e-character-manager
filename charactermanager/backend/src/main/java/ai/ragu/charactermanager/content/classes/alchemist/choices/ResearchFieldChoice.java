@@ -1,6 +1,6 @@
-package ai.ragu.charactermanager.content.alchemist.choices;
+package ai.ragu.charactermanager.content.classes.alchemist.choices;
 
-import ai.ragu.charactermanager.content.alchemist.Alchemist;
+import ai.ragu.charactermanager.content.classes.alchemist.AlchemistResearchFieldEnum;
 import ai.ragu.charactermanager.dto.CharacterDto;
 import ai.ragu.charactermanager.dto.Choice;
 import ai.ragu.charactermanager.dto.ItemDto;
@@ -35,7 +35,7 @@ public class ResearchFieldChoice extends Choice {
             throw new IllegalArgumentException("Found multiple choices for the research field");
         }
         String answerStr = answers.stream().findFirst().orElseThrow();
-        Alchemist.AlchemistResearchFieldEnum alchemistResearchField = Alchemist.AlchemistResearchFieldEnum.fromValue(answerStr);
+        AlchemistResearchFieldEnum alchemistResearchField = AlchemistResearchFieldEnum.fromValue(answerStr);
         String description;
         List<String> choices = new ArrayList<>();
         int numAnswers;
