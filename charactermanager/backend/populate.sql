@@ -17,6 +17,7 @@ DROP TABLE IF EXISTS "ancestry";
 DROP TABLE IF EXISTS "special_trait";
 DROP TABLE IF EXISTS "special";
 DROP TABLE IF EXISTS "language";
+DROP TABLE IF EXISTS "language_category";
 DROP TABLE IF EXISTS "creature_size";
 DROP TABLE IF EXISTS "rules_source";
 DROP TABLE IF EXISTS "ability_score";
@@ -71,29 +72,49 @@ INSERT INTO "creature_size" ("id", "name", "space", "reach_tall", "reach_long") 
 ('GARGANTUAN', 'Gargantuan', '20 feet or more', '20 feet', '15 feet');
 
 
-CREATE TABLE IF NOT EXISTS "language" (
+CREATE TABLE IF NOT EXISTS "language_category" (
     "id" VARCHAR, /* Uppercase */
     "name" VARCHAR NOT NULL,
     PRIMARY KEY ("id")
 );
-INSERT INTO "language" ("id", "name") VALUES
-('AQUAN', 'Aquan'),
-('BOGGARD', 'Boggard'),
+INSERT INTO "language_category" ("id", "name") VALUES
 ('COMMON', 'Common'),
-('CELESTIAL', 'Celestial'),
-('DWARVEN', 'Dwarven'),
-('DRACONIC', 'Draconic'),
-('ELVEN', 'Elven'),
-('GNOMISH', 'Gnomish'),
-('GNOLL', 'Gnoll'),
-('GOBLIN', 'Goblin'),
-('HALFLING', 'Halfling'),
-('IRUXI', 'Iruxi'),
-('JOTUN', 'Jotun'),
-('ORCISH', 'Orcish'),
-('SYLVAN', 'Sylvan'),
-('TERRAN', 'Terran'),
-('UNDERCOMMON', 'Undercommon');
+('UNCOMMON', 'Uncommon'),
+('SECRET', 'Secret');
+
+CREATE TABLE IF NOT EXISTS "language" (
+    "id" VARCHAR, /* Uppercase */
+    "name" VARCHAR NOT NULL,
+    "spoken_by" VARCHAR NOT NULL,
+    "category_id" VARCHAR NOT NULL,
+    FOREIGN KEY ("category_id") REFERENCES "language_category"("id"),
+    PRIMARY KEY ("id")
+);
+INSERT INTO "language" ("id", "name", "spoken_by", "category_id") VALUES
+('COMMON', 'Common', 'Humans, dwarves, elves, halflings, and other common ancestries', 'COMMON'),
+('DRACONIC', 'Draconic', 'Dragons, reptilian humanoids', 'COMMON'),
+('DWARVEN', 'Dwarven', 'Dwarves', 'COMMON'),
+('ELVEN', 'Elven', 'Elves, half-elves', 'COMMON'),
+('GNOMISH', 'Gnomish', 'Gnomes', 'COMMON'),
+('GOBLIN', 'Goblin', 'Goblins, hobgoblins, bugbears', 'COMMON'),
+('HALFLING', 'Halfling', 'Halflings', 'COMMON'),
+('JOTUN', 'Jotun', 'Giants, ogres, trolls, ettins, cyclopes', 'COMMON'),
+('ORCISH', 'Orcish', 'Orcs, half-orcs', 'COMMON'),
+('SYLVAN', 'Sylvan', 'Fey, centaurs, plant creatures', 'COMMON'),
+('UNDERCOMMON', 'Undercommon', 'Drow, duergars, xulgaths', 'COMMON'),
+('ABYSSAL', 'Abyssal', 'Demons', 'UNCOMMON'),
+('AKLO', 'Aklo', 'Deros, evil fey, otherworldly monsters', 'UNCOMMON'),
+('AQUAN', 'Aquan', 'Aquatic creatures, water elemental creatures', 'UNCOMMON'),
+('AURAN', 'Auran', 'Air elemental creatures, flying creatures', 'UNCOMMON'),
+('CELESTIAL', 'Celestial', 'Angels', 'UNCOMMON'),
+('GNOLL', 'Gnoll', 'Gnolls', 'UNCOMMON'),
+('IGNAN', 'Ignan', 'Fire elemental creatures', 'UNCOMMON'),
+('INFERNAL', 'Infernal', 'Devils', 'UNCOMMON'),
+('NECRIL', 'Necril', 'Ghouls, intelligent undead', 'UNCOMMON'),
+('SHADOWTONGUE', 'Shadowtongue', 'Nidalese, Shadow Plane creatures', 'UNCOMMON'),
+('TERRAN', 'Terran', 'Earth elemental creatures', 'UNCOMMON'),
+('DRUIDIC', 'Druidic', 'Druids', 'SECRET'),
+('IRUXI', 'Iruxi', 'Lizardfolks', 'COMMON');
 
 
 CREATE TABLE IF NOT EXISTS "special" (
