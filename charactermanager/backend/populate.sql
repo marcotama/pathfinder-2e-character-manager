@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS "skill_action_trait";
+DROP TABLE IF EXISTS "skill_action_key_skill";
+DROP TABLE IF EXISTS "skill_action";
 DROP TABLE IF EXISTS "spells_domain";
 DROP TABLE IF EXISTS "spells_bloodline";
 DROP TABLE IF EXISTS "spell_list_item";
@@ -10534,3 +10537,772 @@ INSERT INTO "spells_domain" ("id","name","spell_id","advanced_spell_id") VALUES
 ('WATER','Water','TIDAL_SURGE','DOWNPOUR'),
 ('WEALTH','Wealth','APPEARANCE_OF_WEALTH','PRECIOUS_METALS'),
 ('ZEAL','Zeal','WEAPON_SURGE','ZEAL_FOR_BATTLE');
+
+
+CREATE TABLE IF NOT EXISTS "skill_action" (
+	"id" VARCHAR,
+	"name" VARCHAR,
+	"trained" BOOLEAN,
+	"actions" VARCHAR,
+	"description" VARCHAR,
+	"src" VARCHAR,
+	"url" VARCHAR,
+    FOREIGN KEY ("src") REFERENCES "rules_source"("id"),
+    PRIMARY KEY ("id")
+);
+INSERT INTO "skill_action" ("id","name","trained","actions","description","src","url") VALUES
+('BALANCE', 'Balance', FALSE, '1', '<b>Requirements</b> You are in a square that contains a narrow surface, uneven ground, or another similar feature.You move across a narrow surface or uneven ground, attempting an Acrobatics check against its Balance DC. You are flat-footed while on a narrow surface or uneven ground.
+<br>
+<br>
+<b>Critical Success</b> You move up to your Speed.
+<br>
+<b>Success</b> You move up to your Speed, treating it as difficult terrain (every 5 feet costs 10 feet of movement).
+<br>
+<b>Failure</b> You must remain stationary to keep your balance (wasting the action) or you fall. If you fall, your turn ends.
+<br>
+<b>Critical Failure</b> You fall and your turn ends.
+<h3 class="title">Sample Balance Tasks</h3>
+<b>Untrained</b> tangled roots, uneven cobblestones
+<br>
+<b>Trained</b> wooden beam
+<br>
+<b>Expert</b> deep, loose gravel
+<br>
+<b>Master</b> tightrope, smooth sheet of ice
+<br>
+<b>Legendary</b> razor''s edge, chunks of floor falling in midair', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=1'),
+('MANEUVER_IN_FLIGHT', 'Maneuver in Flight', TRUE, '1', '<b>Requirements</b> You have a fly Speed.You try a difficult maneuver while flying. Attempt an Acrobatics check. The GM determines what maneuvers are possible, but they rarely allow you to move farther than your fly Speed.
+<br>
+<br>
+<b>Success</b> You succeed at the maneuver.
+<br>
+<b>Failure</b> Your maneuver fails. The GM chooses if you simply can''t move or if some other detrimental effect happens. The outcome should be appropriate for the maneuver you attempted (for instance, being blown off course if you were trying to fly against a strong wind).
+<br>
+<b>Critical Failure</b> As failure, but the consequence is more dire.
+<h3 class="title">Sample Maneuver in Flight Tasks</h3>
+<b>Trained</b> steep ascent or descent
+<br>
+<b>Expert</b> fly against the wind, hover midair
+<br>
+<b>Master</b> reverse direction
+<br>
+<b>Legendary</b> fly through gale force winds', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=1'),
+('SQUEEZE', 'Squeeze', TRUE, NULL, 'You contort yourself to squeeze through a space so small you can barely fit through. This action is for exceptionally small spaces; many tight spaces are difficult terrain (page 475) that you can move through more quickly and without a check.
+<br>
+<br>
+<b>Critical Success</b> You squeeze through the tight space in 1&nbsp;minute per 10 feet of squeezing.
+<br>
+<b>Success</b> You squeeze through in 1 minute per 5 feet.
+<br>
+<b>Critical Failure</b> You become stuck in the tight space. While you''re stuck, you can spend 1 minute attempting another Acrobatics check at the same DC. Any result on that check other than a critical failure causes you to become unstuck.
+<h3 class="title">Sample Squeeze Tasks</h3>
+<b>Trained</b> space barely fitting your shoulders
+<br>
+<b>Master</b> space barely fitting your head', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=1'),
+('TUMBLE_THROUGH', 'Tumble Through', FALSE, '1', 'You Stride up to your Speed. During this movement, you can try to move through the space of one enemy. Attempt an Acrobatics check against the enemy''s Reflex DC as soon as you try to enter its space. You can Tumble Through using Climb, Fly, Swim, or another action instead of Stride in the appropriate environment.
+<br>
+<br>
+<b>Success</b> You move through the enemy''s space, treating the squares in its space as difficult terrain (every 5 feet costs 10 feet of movement). If you don''t have enough Speed to move all the way through its space, you get the same effect as a failure.
+<br>
+<b>Failure</b> Your movement ends, and you trigger reactions as if you had moved out of the square you started in.
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=1'),
+('BORROW_AN_ARCANE_SPELL', 'Borrow an Arcane Spell', TRUE, NULL, 'If you''re an arcane spellcaster who prepares from a spellbook, you can attempt to prepare a spell from someone else''s spellbook. The GM sets the DC for the check based on the spell''s level and rarity; it''s typically a bit easier than Learning the Spell.
+<br>
+<br>
+<b>Success</b> You prepare the borrowed spell as part of your normal spell preparation.
+<br>
+<b>Failure</b> You fail to prepare the spell, but the spell slot remains available for you to prepare a different spell. You can''t try to prepare this spell until the next time you prepare spells.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=2'),
+('CLIMB', 'Climb', FALSE, NULL, '<b>Requirements</b> You have both hands free.You move up, down, or across an incline. Unless it''s particularly easy, you must attempt an Athletics check. The GM determines the DC based on the nature of the incline and environmental circumstances. You''re flat-footed unless you have a climb Speed.
+<br>
+<br>
+<b>Critical Success</b> You move up, across, or safely down the incline for 5 feet plus 5 feet per 20 feet of your land Speed (a total of 10 feet for most PCs).
+<br>
+<b>Success</b> You move up, across, or safely down the incline for 5 feet per 20 feet of your land Speed (a total of 5 feet for most PCs, minimum 5 feet if your Speed is below 20 feet).
+<br>
+<b>Critical Failure</b> You fall. If you began the climb on stable ground, you fall and land prone.
+<h3 class="title">Sample Climb Tasks</h3>
+<b>Untrained</b> ladder, steep slope, low-branched tree
+<br>
+<b>Trained</b> rigging, rope, typical tree
+<br>
+<b>Expert</b> wall with small handholds and footholds
+<br>
+<b>Master</b> ceiling with handholds and footholds, rock wall
+<br>
+<b>Legendary</b> smooth surface', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=3'),
+('DISARM', 'Disarm', TRUE, '1', '<b>Requirements</b> You have at least one hand free. The target can''t be more than one size larger than you.You try to knock something out of an opponent''s grasp. Attempt an Athletics check against the opponent''s Reflex DC.
+<br>
+<br>
+<b>Critical Success</b> You knock the item out of the opponent''s grasp. It falls to the ground in the opponent''s space.
+<br>
+<b>Success</b> You weaken your opponent''s grasp on the item. Until the start of that creature''s turn, attempts to Disarm the opponent of that item gain a +2 circumstance bonus, and the target takes a -2 circumstance penalty to attacks with the item or other checks requiring a firm grasp on the item.
+<br>
+<b>Critical Failure</b> You lose your balance and become flat-footed until the start of your next turn.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=3'),
+('FORCE_OPEN', 'Force Open', FALSE, '1', 'Using your body, a lever, or some other tool, you attempt to forcefully open a door, window, container or heavy gate. With a high enough result, you can even smash through walls. Without a crowbar, prying something open takes a -2 item penalty to the Athletics check to Force Open.
+<br>
+<br>
+<b>Critical Success</b> You open the door, window, container, or gate and can avoid damaging it in the process.
+<br>
+<b>Success</b> You break the door, window, container, or gate open, and the door, window, container, or gate gains the broken condition. If it''s especially sturdy, the GM might have it take damage but not be broken.
+<br>
+<b>Critical Failure</b> Your attempt jams the door, window, container, or gate shut, imposing a -2 circumstance penalty on future attempts to Force it Open.
+<h3 class="title">Sample Force Open Tasks</h3>
+<b>Untrained</b> fabric, flimsy glass
+<br>
+<b>Trained</b> ice, sturdy glass
+<br>
+<b>Expert</b> flimsy wooden door, wooden portcullis
+<br>
+<b>Master</b> sturdy wooden door, iron portcullis, metal bar
+<br>
+<b>Legendary</b> stone or iron door', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=3'),
+('GRAPPLE', 'Grapple', FALSE, '1', '<b>Requirements</b> You have at least one free hand. Your target cannot be more than one size larger than you.You attempt to grab an opponent with your free hand. Attempt an Athletics check against their Fortitude DC. You can also Grapple to keep your hold on a creature you already grabbed.
+<br>
+<br>
+<b>Critical Success</b> Your opponent is restrained until the end of your next turn unless you move or your opponent Escapes (page 470).
+<br>
+<b>Success</b> Your opponent is grabbed until the end of your next turn unless you move or your opponent Escapes.
+<br>
+<b>Failure</b> You fail to grab your opponent. If you already had the opponent grabbed or restrained using a Grapple, those conditions on that creature end.
+<br>
+<b>Critical Failure</b> If you already had the opponent grabbed or restrained, it breaks free. Your target can either grab you, as if it succeeded at using the Grapple action against you, or force you to fall and land prone.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=3'),
+('HIGH_JUMP', 'High Jump', FALSE, '2', 'You Stride, then make a vertical Leap and attempt a DC 30 Athletics check to increase the height of your jump. If you didn''t Stride at least 10 feet, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.
+<br>
+<br>
+<b>Critical Success</b> Increase the maximum vertical distance to 8 feet, or increase the maximum vertical distance to 5 feet and maximum horizontal distance to 10 feet.
+<br>
+<b>Success</b> Increase the maximum vertical distance to 5 feet.
+<br>
+<b>Failure</b> You Leap normally.
+<br>
+<b>Critical Failure</b> You don''t Leap at all, and instead you fall prone in your space.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=3'),
+('LONG_JUMP', 'Long Jump', FALSE, '2', 'You Stride, then make a horizontal Leap and attempt an Athletics check to increase the length of your jump. The DC of the Athletics check is equal to the total distance in feet you''re attempting to move during your Leap (so you''d need to succeed at a DC 20 check to Leap 20 feet). You can''t Leap farther than your Speed.
+<br>
+<br> If you didn''t Stride at least 10 feet, or if you attempt to jump in a different direction than your Stride, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.
+<br>
+<br>
+<b>Success</b> Increase the maximum horizontal distance you Leap to the desired distance.
+<br>
+<b>Failure</b> You Leap normally.
+<br>
+<b>Critical Failure</b> You Leap normally, but then fall and land prone.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=3'),
+('SHOVE', 'Shove', FALSE, '1', '<b>Requirements</b> You have at least one hand free. The target can''t be more than one size larger than you.You push an opponent away from you. Attempt an Athletics check against your opponent''s Fortitude DC.
+<br>
+<br>
+<b>Critical Success</b> You push your opponent up to 10 feet away from you. You can Stride after it, but you must move the same distance and in the same direction.
+<br>
+<b>Success</b> You push your opponent back 5 feet. You can Stride after it, but you must move the same distance and in the same direction.
+<br>
+<b>Critical Failure</b> You lose your balance, fall, and land prone.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=3'),
+('SWIM', 'Swim', FALSE, '1', 'You propel yourself through water. In most calm water, you succeed at the action without needing to attempt a check. If you must breathe air and you''re submerged in water, you must hold your breath each round. If you fail to hold your breath, you begin to drown (as described on page 478). If the water you are swimming in is turbulent or otherwise dangerous, you might have to attempt an Athletics check to Swim.
+<br>
+<br> If you end your turn in water and haven''t succeeded at a Swim action that turn, you sink 10 feet or get moved by the current, as determined by the GM. However, if your last action on your turn was to enter the water, you don''t sink or move with the current that turn.
+<br>
+<br>
+<b>Critical Success</b> You move through the water 10 feet, plus 5 feet per 20 feet of your land Speed (a total of 15 feet for most PCs).
+<br>
+<b>Success</b> You move through the water 5 feet, plus 5 feet per 20 feet of your land Speed (a total of 10 feet for most PCs).
+<br>
+<b>Critical Failure</b> You make no progress, and if you''re holding your breath, you lose 1 round of air.
+<h3 class="title">Sample Swim Tasks</h3>
+<b>Untrained</b> lake or other still water
+<br>
+<b>Trained</b> flowing water, like a river
+<br>
+<b>Expert</b> swiftly flowing river
+<br>
+<b>Master</b> stormy sea
+<br>
+<b>Legendary</b> maelstrom, waterfall', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=3'),
+('TRIP', 'Trip', FALSE, '1', '<b>Requirements</b> You have at least one hand free. Your target can''t be more than one size larger than you.You try to knock an opponent to the ground. Attempt an Athletics check against the target''s Reflex DC.
+<br>
+<br>
+<b>Critical Success</b> The target falls and lands prone and takes 1d6 bludgeoning damage.
+<br>
+<b>Success</b> The target falls and lands prone.
+<br>
+<b>Critical Failure</b> You lose your balance and fall and land prone.
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=3'),
+('CRAFT', 'Craft', TRUE, NULL, 'You can make an item from raw materials. You need the Alchemical Crafting skill feat to create alchemical items, the Magical Crafting skill feat to create magic items, and the Snare Crafting feat to create snares.
+<br>
+<br> To Craft an item, you must meet the following requirements:
+<ul>
+ <li>The item is your level or lower. An item that doesn''t list a level is level 0. If the item is 9th level or higher, you must be a master in Crafting, and if it''s 16th or higher, you must be legendary. </li>
+ <li>You have the formula for the item; see Getting Formulas below for more information. </li>
+ <li>You have an appropriate set of tools and, in many cases, a workshop. For example, you need access to a smithy to forge a metal shield. </li>
+ <li>You must supply raw materials worth at least half the item''s Price. You always expend at least that amount of raw materials when you Craft successfully. If you''re in a settlement, you can usually spend currency to get the amount of raw materials you need, except in the case of rarer precious materials.</li>
+</ul> You must spend 4 days at work, at which point you attempt a Crafting check. The GM determines the DC to Craft the item based on its level, rarity, and other circumstances.
+<br>
+<br>If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item''s Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using Table 4-2: Income Earned (page 236), based on your proficiency rank in Crafting and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of Crafting appears in the sidebar.
+<br>
+<br>
+<b>Critical Success</b> Your attempt is successful. Each additional day spent Crafting reduces the materials needed to complete the item by an amount based on your level + 1 and your proficiency rank in Crafting.
+<br>
+<b>Success</b> Your attempt is successful. Each additional day spent Crafting reduces the materials needed to complete the item by an amount based on your level and your proficiency rank.
+<br>
+<b>Failure</b> You fail to complete the item. You can salvage the raw materials you supplied for their full value. If you want to try again, you must start over.
+<br>
+<b>Critical Failure</b> You fail to complete the item. You ruin 10% of the raw materials you supplied, but you can salvage the rest. If you want to try again, you must start over.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=4'),
+('IDENTIFY_ALCHEMY', 'Identify Alchemy', TRUE, NULL, '<b>Requirements</b> You have alchemist''s tools (page 287). You can identify the nature of an alchemical item with 10 minutes of testing using alchemist''s tools. If your attempt is interrupted in any way, you must start over.
+<br>
+<br>
+<b>Success</b> You identify the item and the means of activating it.
+<br>
+<b>Failure</b> You fail to identify the item but can try again.
+<br>
+<b>Critical Failure</b> You misidentify the item as another item of the GM''s choice.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=4'),
+('REPAIR', 'Repair', FALSE, NULL, '<b>Requirements</b> You have a repair kit (page 291).You spend 10 minutes attempting to fix a damaged item, placing the item on a stable surface and using the repair&nbsp;kit with both&nbsp;hands. The GM sets the DC, but it''s usually about the same DC to Repair a given item as it is to Craft it in the first place. You can''t Repair a destroyed item.
+<br>
+<br>
+<b>Critical Success</b> You restore 10 Hit Points to the item, plus an additional 10 Hit Points per proficiency rank you have in Crafting (a total of 20 HP if you''re trained, 30 HP if you''re an expert, 40 HP if you''re a master, or 50 HP if you''re legendary).
+<br>
+<b>Success</b> You restore 5 Hit Points to the item, plus an additional 5 per proficiency rank you have in Crafting (for a total of 10 HP if you are trained, 15 HP if you''re an expert, 20 HP if you''re a master, or 25 HP if you''re legendary).
+<br>
+<b>Critical Failure</b> You deal 2d6 damage to the item. Apply the item''s Hardness to this damage.
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=4'),
+('CREATE_A_DIVERSION', 'Create a Diversion', FALSE, '1', 'With a gesture, a trick, or some distracting words, you can create a diversion that draws creatures'' attention&nbsp;elsewhere. If you use a gesture or trick, this action gains the manipulate trait. If you use distracting words, it gains the auditory and linguistic traits.
+<br>
+<br>Attempt a single Deception check and compare it to the Perception DCs of the creatures whose attention you''re trying to divert. Whether or not you succeed, creatures you attempt to divert gain a +4 circumstance bonus to their Perception DCs against your attempts to Create a Diversion for 1 minute.
+<br>
+<br>
+<b>Success</b> You become hidden to each creature whose Perception DC is less than or equal to your result. (The hidden condition allows you to Sneak away, as described on page 252.) This lasts until the end of your turn or until you do anything except Step or use the Hide or the Sneak action of the Stealth skill (pages 251 and 252). If you Strike a creature, the creature remains flat?footed against that attack, and you then become observed. If you do anything else, you become observed just before you act unless the GM determines otherwise.
+<br>
+<b>Failure</b> You don''t divert the attention of any creatures whose Perception DC exceeds your result, and those creatures are aware you were trying to trick them.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=5'),
+('FEINT', 'Feint', FALSE, '1', '<b>Requirements</b> You are within melee reach of the opponent you attempt to Feint.With a misleading flourish, you leave an opponent unprepared for your real attack. Attempt a Deception check against that opponent''s Perception DC.
+<br>
+<br>
+<b>Critical Success</b> You throw your enemy''s defenses against you entirely off. The target is flat-footed against melee attacks that you attempt against it until the end of your next turn.
+<br>
+<b>Success</b> Your foe is fooled, but only momentarily. The target is flat-footed against the next melee attack that you attempt against it before the end of your current turn.
+<br>
+<b>Critical Failure</b> Your feint backfires. You are flat-footed against melee attacks the target attempts against you until the end of your next turn.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=5'),
+('IMPERSONATE', 'Impersonate', FALSE, NULL, 'You create a disguise to pass yourself off as someone or something you are not. Assembling a convincing disguise takes 10 minutes and requires a disguise kit (found on page 290), but a simpler, quicker disguise might do the job if you''re not trying to imitate a specific individual, at the GM''s discretion.
+<br>
+<br> In most cases, creatures have a chance to detect your deception only if they use the Seek action to attempt Perception checks against your Deception DC. If you attempt to directly interact with someone while disguised, the GM rolls a secret Deception check for you against that creature''s Perception DC instead. If you''re disguised as a specific individual, the GM might give creatures you interact with a circumstance bonus based on how well they know the person you''re imitating, or the GM might roll a secret Deception check even if you aren''t directly interacting with others.
+<br>
+<br>
+<b>Success</b> You trick the creature into thinking you''re the person you''re disguised as. You might have to attempt a new check if your behavior changes.
+<br>
+<b>Failure</b> The creature can tell you''re not who you claim to be.
+<br>
+<b>Critical Failure</b> The creature can tell you''re not who you claim to be, and it recognizes you if it would know you without a disguise.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=5'),
+('LIE', 'Lie', FALSE, NULL, 'You try to fool someone with an untruth. Doing so takes at least 1 round, or longer if the lie is elaborate. You roll a single Deception check and compare it against the Perception DC of every creature you are trying to fool. The GM might give them a circumstance bonus based on the situation and the nature of the lie you are trying to tell. Elaborate or highly unbelievable lies are much harder to get a creature to believe than simpler and more believable lies, and some lies are so big that it''s impossible to get anyone to believe them.
+<br>
+<br> At the GM''s discretion, if a creature initially believes your lie, it might attempt a Perception check later to Sense Motive against your Deception DC to realize it''s a lie. This usually happens if the creature discovers enough evidence to counter your statements.
+<br>
+<br>
+<b>Success</b> The target believes your lie.
+<br>
+<b>Failure</b> The target doesn''t believe your lie and gains a +4 circumstance bonus against your attempts to Lie for the duration of your conversation. The target is also more likely to be suspicious of you in the future.
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=5'),
+('GATHER_INFORMATION', 'Gather Information', FALSE, NULL, 'You canvass local markets, taverns, and gathering places in an attempt to learn about a specific individual or topic. The GM determines the DC of the check and the amount of time it takes (typically 2 hours, but sometimes more), along with any benefit you might be able to gain by spending coin on bribes, drinks, or gifts.
+<br>
+<br>
+<b>Success</b> You collect information about the individual or topic. The GM determines the specifics.
+<br>
+<b>Critical Failure</b> You collect incorrect information about the individual or topic.
+<h3 class="title">Sample Gather Information Tasks</h3>
+<b>Untrained</b> talk of the town
+<br>
+<b>Trained</b> common rumor
+<br>
+<b>Expert</b> obscure rumor, poorly guarded secret
+<br>
+<b>Master</b> well-guarded or esoteric information
+<br>
+<b>Legendary</b> information known only to an incredibly select few, or only to extraordinary beings', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=6'),
+('MAKE_AN_IMPRESSION', 'Make an Impression', FALSE, NULL, 'With at least 1 minute of conversation, during which you engage in charismatic overtures, flattery, and other acts of goodwill, you seek to make a good impression on someone to make them temporarily agreeable. At the end of the conversation, attempt a Diplomacy check against the Will DC of one target, modified by any circumstances the GM sees fit. Good impressions (or bad impressions, on a critical failure) last for only the current social interaction unless the GM decides otherwise.
+<br>
+<br>
+<b>Critical Success</b> The target''s attitude toward you improves by two steps.
+<br>
+<b>Success</b> The target''s attitude toward you improves by one step.
+<br>
+<b>Critical Failure</b> The target''s attitude toward you decreases by one step.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=6'),
+('REQUEST', 'Request', FALSE, '1', 'You can make a request of a creature that''s friendly or helpful to you. You must couch the request in terms that the target would accept given their current attitude toward you. The GM sets the DC based on the difficulty of the request. Some requests are unsavory or impossible, and even a helpful NPC would never agree to them.
+<br>
+<br>
+<b>Critical Success</b> The target agrees to your request without qualifications.
+<br>
+<b>Success</b> The target agrees to your request, but they might demand added provisions or alterations to the request.
+<br>
+<b>Failure</b> The target refuses the request, though they might propose an alternative that is less extreme.
+<br>
+<b>Critical Failure</b> Not only does the target refuse the request, but their attitude toward you decreases by one step due to the temerity of the request.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=6'),
+('COERCE', 'Coerce', FALSE, NULL, 'With threats either veiled or overt, you attempt to bully a creature into doing what you want. You must spend at least 1 minute of conversation with a creature you can see and that can either see or sense&nbsp;you. At the end of the conversation, attempt an Intimidation check against the target''s Will DC, modified by any circumstances the GM determines. The attitudes referenced in the effects below are summarized in the Changing Attitudes sidebar on page 246 and described in full in the Conditions Appendix, starting on page 618.
+<br>
+<br>
+<b>Critical Success</b> The target gives you the information you seek or agrees to follow your directives so long as they aren''t likely to harm the target in any way. The target continues to comply for an amount of time determined by the GM but not exceeding 1 day, at which point the target becomes unfriendly (if they weren''t already unfriendly or hostile). However, the target is too scared of you to retaliate - at least in the short term.
+<br>
+<b>Success</b> As critical success, but once the target becomes unfriendly, they might decide to act against you - for example, by reporting you to the authorities or assisting your enemies.
+<br>
+<b>Failure</b> The target doesn''t do what you say, and if they were not already unfriendly or hostile, they become unfriendly.
+<br>
+<b>Critical Failure</b> The target refuses to comply, becomes hostile if they weren''t already, and can''t be Coerced by you for at least 1 week.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=7'),
+('DEMORALIZE', 'Demoralize', FALSE, '1', 'With a sudden shout, a well-timed taunt, or a cutting put-down, you can shake an enemy''s resolve. Choose a creature within 30 feet of you who you''re aware of. Attempt an Intimidation check against that target''s Will DC. If the target does not understand the language you are speaking, you''re not speaking a language, or they can''t hear you, you take a -4 circumstance penalty to the check. Regardless of your result, the target is temporarily immune to your attempts to Demoralize it for 10 minutes.
+<br>
+<br>
+<b>Critical Success</b> The target becomes frightened 2.
+<br>
+<b>Success</b> The target becomes frightened 1.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=7'),
+('ADMINISTER_FIRST_AID', 'Administer First Aid', FALSE, '2', '<b>Requirements</b> You have healer''s tools (page 290).You perform first aid on an adjacent creature that is dying or bleeding. If a creature is both dying and bleeding, choose which ailment you''re trying to treat before you roll. You can Administer First Aid again to attempt to remedy the other effect. <br><br>
+<b>Stabilize</b> Attempt a Medicine check on a creature that has 0 Hit Points and the dying condition. The DC is equal to 5 + that creature''s recovery roll DC (typically 15 + its dying value). <br>
+ <b>Stop Bleeding</b> Attempt a Medicine check on a creature that is taking persistent bleed damage (page 452), giving them a chance to make another flat check to remove the persistent damage. The DC is usually the DC of the effect that caused the bleed.<br>
+<br>
+<br>
+<b>Success</b> If you''re trying to stabilize, the creature loses the dying condition (but remains unconscious). If you''re trying to stop bleeding, the creature attempts a flat check to end the bleeding.
+<br>
+<b>Critical Failure</b> If you were trying to stabilize, the creature''s dying value increases by 1. If you were trying to stop bleeding, it immediately takes an amount of damage equal to its persistent bleed damage.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=9'),
+('TREAT_DISEASE', 'Treat Disease', TRUE, NULL, '<b>Requirements</b> You have healer''s tools (page 290).You spend at least 8 hours caring for a diseased creature. Attempt a Medicine check against the disease''s DC. After you attempt to Treat a Disease for a creature, you can''t try again until after that creature''s next save against the disease.
+<br>
+<br>
+<b>Critical Success</b> You grant the creature a +4 circumstance bonus to its next saving throw against the disease.
+<br>
+<b>Success</b> You grant the creature a +2 circumstance bonus to its next saving throw against the disease.
+<br>
+<b>Critical Failure</b> Your efforts cause the creature to take a -2 circumstance penalty to its next save against the disease.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=9'),
+('TREAT_POISON', 'Treat Poison', TRUE, '1', '<b>Requirements</b> You have healer''s tools (page 290).You treat a patient to prevent the spread of poison. Attempt a Medicine check against the poison''s DC. After you attempt to Treat a Poison for a creature, you can''t try again until after the next time that creature attempts a save against the poison.
+<br>
+<br>
+<b>Critical Success</b> You grant the creature a +4 circumstance bonus to its next saving throw against the poison.
+<br>
+<b>Success</b> You grant the creature a +2 circumstance bonus to its next saving throw against the poison.
+<br>
+<b>Critical Failure</b> Your efforts cause the creature to take a -2 circumstance penalty to its next save against the poison.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=9'),
+('TREAT_WOUNDS', 'Treat Wounds', TRUE, NULL, '<b>Requirements</b> You have healer''s tools (page 290).You spend 10 minutes treating one injured living creature (targeting yourself, if you so choose). The target is then temporarily immune to Treat Wounds actions for 1 hour, but this interval overlaps with the time you spent treating (so a patient can be treated once per hour, not once per 70 minutes).
+<br>
+<br> The Medicine check DC is usually 15, though the GM might adjust it based on the circumstances, such as treating a patient outside in a storm, or treating magically cursed wounds. If you''re an expert in Medicine, you can instead attempt a DC 20 check to increase the Hit Points regained by 10; if you''re a master of Medicine, you can instead attempt a DC 30 check to increase the Hit Points regained by 30; and if you''re legendary, you can instead attempt a DC 40 check to increase the Hit Points regained by 50. The damage dealt on a critical failure remains the same.
+<br>
+<br> If you succeed at your check, you can continue treating the target to grant additional healing. If you treat them for a total of 1 hour, double the Hit Points they regain from Treat Wounds.
+<br>
+<br> The result of your Medicine check determines how many Hit Points the target regains.
+<br>
+<br>
+<b>Critical Success</b> The target regains 4d8 Hit Points, and its wounded condition is removed.
+<br>
+<b>Success</b> The target regains 2d8 Hit Points, and its wounded condition is removed.
+<br>
+<b>Critical Failure</b> The target takes 1d8 damage.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=9'),
+('COMMAND_AN_ANIMAL', 'Command an Animal', FALSE, '1', 'You issue an order to an animal. Attempt a Nature check against the animal''s Will DC. The GM might adjust the DC if the animal has a good attitude toward you, you suggest a course of action it was predisposed toward, or you offer it a treat.
+<br>
+<br> You automatically fail if the animal is hostile or unfriendly to you. If the animal is helpful to you, increase your degree of success by one step. You might be able to Command an Animal more easily with a feat like Ride (page 266).
+<br>
+<br> Most animals know the Leap, Seek, Stand, Stride, and Strike basic actions. If an animal knows an activity, such as a horse''s Gallop, you can Command the Animal to perform the activity, but you must spend as many actions on Command an Animal as the activity''s number of actions. You can also spend multiple actions to Command the Animal to perform that number of basic actions on its next turn; for instance, you could spend 3 actions to Command an Animal to Stride three times or to Stride twice and then Strike.
+<br>
+<br>
+<b>Success</b> The animal does as you command on its next turn.
+<br>
+<b>Failure</b> The animal is hesitant or resistant, and it does nothing.
+<br>
+<b>Critical Failure</b> The animal misbehaves or misunderstands, and it takes some other action determined by the GM.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=10'),
+('PERFORM', 'Perform', FALSE, '1', 'When making a brief performance - one song, a quick dance, or a few jokes - you use the Perform action. This action is most useful when you want to prove your capability or impress someone quickly. Performing rarely has an impact on its own, but it might influence the DCs of subsequent Diplomacy checks against the observers - or even change their attitudes - if the GM sees fit.
+<br>
+<br>
+<b>Critical Success</b> Your performance impresses the observers, and they''re likely to share stories of your ability.
+<br>
+<b>Success</b> You prove yourself, and observers appreciate the quality of your performance.
+<br>
+<b>Failure</b> Your performance falls flat.
+<br>
+<b>Critical Failure</b> You demonstrate only incompetence.
+<h3 class="title">Sample Perform Tasks</h3>
+<b>Untrained</b> audience of commoners
+<br>
+<b>Trained</b> audience of artisans
+<br>
+<b>Expert</b> audience of merchants or minor nobles
+<br>
+<b>Master</b> audience of high nobility or minor royalty
+<br>
+<b>Legendary</b> audience of major royalty or otherworldly beings', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=12'),
+('CREATE_FORGERY', 'Create Forgery', TRUE, NULL, 'You create a forged document, usually over the course of a day or a week. You&nbsp;must have the proper writing material to create a forgery. When you Create a Forgery, the GM rolls a secret DC 20 Society check. If you succeed, the forgery is of good enough quality that passive observers can''t notice the fake. Only those who carefully examine the document and attempt a Perception or Society check against your Society DC can do&nbsp;so.
+<br>
+<br> If the document''s handwriting doesn''t need to be specific to a person, you need only to have seen a similar document before, and you gain up to a +4 circumstance bonus to your check, as well as to your DC (the GM determines the bonus). To forge a specific person''s handwriting, you need a sample of that person''s handwriting.
+<br>
+<br> If your check result was below 20, the forgery has some obvious signs of being a fake, so the GM compares your result to each passive observer''s Perception DC or Society DC, whichever is higher, using the success or failure results below. Once the GM rolls your check for a document, that same result is used against all passive observers'' DCs no matter how many creatures passively observe that document.
+<br>
+<br> An observer who was fooled on a passive glance can still choose to closely scrutinize the documents on the lookout for a forgery, using different techniques and analysis methods beyond the surface elements you successfully forged with your original check. In that case, the observer can attempt a Perception or Society check against your Society DC (if they succeed, they know your document is a forgery).
+<br>
+<br>
+<b>Success</b> The observer does not detect the forgery.
+<br>
+<b>Failure</b> The observer knows your document is a forgery.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=14'),
+('CONCEAL_AN_OBJECT', 'Conceal an Object', FALSE, '1', 'You hide a small object on your person (such as a weapon of light Bulk). When you try to sneak a concealed object past someone who might notice it, the GM rolls your Stealth check and compares it to this passive observer''s Perception DC. Once the GM rolls your check for a concealed object, that same result is used no matter how many passive observers you try to sneak it past. If a creature is specifically searching you for an item, it can attempt a Perception check against your Stealth DC (finding the object on success).
+<br>
+<br> You can also conceal an object somewhere other than your person, such as among undergrowth or in a secret compartment within a piece of furniture. In this case, characters Seeking in an area compare their Perception check results to your Stealth DC to determine whether they find the object.
+<br>
+<br>
+<b>Success</b> The object remains undetected.
+<br>
+<b>Failure</b> The searcher finds the object.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=15'),
+('HIDE', 'Hide', FALSE, '1', 'You huddle behind cover or greater cover or deeper into concealment to become hidden, rather than observed. The GM rolls your Stealth check in secret and compares the result to the Perception DC of each creature you''re observed by but that you have cover or greater cover against or are concealed from. You gain the circumstance bonus from cover or greater cover to your check.
+<br>
+<br>
+<b>Success</b> If the creature could see you, you''re now hidden from it instead of observed. If you were hidden from or undetected by the creature, you retain that condition.
+<br>
+<br> If you successfully become hidden to a creature but then cease to have cover or greater cover against it or be concealed from it, you become observed again. You cease being hidden if you do anything except Hide, Sneak, or Step. If you attempt to Strike a creature, the creature remains flat-footed against that attack, and you then become observed. If you do anything else, you become observed just before you act unless the GM determines otherwise. The GM might allow you to perform a particularly unobtrusive action without being noticed, possibly requiring another Stealth check.
+<br>
+<br> If a creature uses Seek to make you observed by it, you must successfully Hide to become hidden from it again.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=15'),
+('SNEAK', 'Sneak', FALSE, '1', 'You can attempt to move to another place while becoming or staying undetected. Stride up to half your Speed. (You can use Sneak while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type; you must move at half that Speed.)
+<br>
+<br> If you''re undetected by a creature and it''s impossible for that creature to observe you (for a typical creature, this includes when you''re invisible, the observer is blinded, or you''re in darkness and the creature can''t see in darkness), for any critical failure you roll on a check to Sneak, you get a failure instead. You also continue to be undetected if you lose cover or greater cover against or are no longer concealed from such a creature.
+<br>
+<br> At the end of your movement, the GM rolls your Stealth check in secret and compares the result to the Perception DC of each creature you were hidden from or undetected by at the start of your movement. If you have cover or greater cover from the creature throughout your Stride, you gain the +2 circumstance bonus from cover (or +4 from greater cover) to your Stealth check. Because you''re moving, the bonus increase from Taking Cover doesn''t apply. You don''t get to roll against a creature if, at the end of your movement, you neither are concealed from it nor have cover or greater cover against it. You automatically become observed by such a creature.
+<br>
+<br>
+<b>Success</b> You''re undetected by the creature during your movement and remain undetected by the creature at the end of it.
+<br>
+<br> You become observed as soon as you do anything other than Hide, Sneak, or Step. If you attempt to Strike a creature, the creature remains flat-footed against that attack, and you then become observed. If you do anything else, you become observed just before you act unless the GM determines otherwise. The GM might allow you to perform a particularly unobtrusive action without being noticed, possibly requiring another Stealth check. If you speak or make a deliberate loud noise, you become hidden instead of undetected.
+<br>
+<br> If a creature uses Seek and you become hidden to it as a result, you must Sneak if you want to become undetected by that creature again.
+<br>
+<b>Failure</b> A telltale sound or other sign gives your position away, though you still remain unseen. You''re hidden from the creature throughout your movement and remain so.
+<br>
+<b>Critical Failure</b> You''re spotted! You''re observed by the creature throughout your movement and remain so. If you''re invisible and were hidden from the creature, instead of being observed you''re hidden throughout your movement and remain so.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=15'),
+('COVER_TRACKS', 'Cover Tracks', TRUE, NULL, 'You cover your tracks, moving up to half your travel Speed, using the rules on page 479). You don''t need to attempt a Survival check to cover your tracks, but anyone tracking you must succeed at a Survival check against your Survival DC if it is higher than the normal DC to Track.
+<br>
+<br> In some cases, you might Cover Tracks in an encounter. In this case, Cover Tracks is a single action and doesn''t have the exploration trait.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=16'),
+('SENSE_DIRECTION', 'Sense Direction', FALSE, NULL, 'Using the stars, the position of the sun, traits of the geography or flora, or the behavior of fauna, you can stay oriented in the wild. Typically, you attempt a Survival check only once per day, but some environments or changes might necessitate rolling more often. The GM determines the DC and how long this activity takes (usually just a minute or so). More unusual locales or those you''re unfamiliar with might require you to have a minimum proficiency rank to Sense Direction. Without a compass, you take a -2 item penalty to checks to Sense Direction.
+<br>
+<br>
+<b>Critical Success</b> You get an excellent sense of where you are. If you are in an environment with cardinal directions, you know them exactly.
+<br>
+<b>Success</b> You gain enough orientation to avoid becoming hopelessly lost. If you are in an environment with cardinal directions, you have a sense of those directions.
+<h3 class="title">Sample Sense Direction Tasks</h3>
+<b>Untrained</b> determine a cardinal direction using the sun
+<br>
+<b>Trained</b> find an overgrown path in a forest
+<br>
+<b>Expert</b> navigate a hedge maze
+<br>
+<b>Master</b> navigate a byzantine labyrinth or relatively featureless desert
+<br>
+<b>Legendary</b> navigate an ever-changing dream realm
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=16'),
+('TRACK', 'Track', TRUE, NULL, 'You follow tracks, moving at up to half your travel Speed, using the rules on page 479). After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn''t have the exploration trait, but you might need to roll more often because you''re in a tense situation. The GM determines how often you must attempt this check.
+<br>
+<br> You attempt your Survival check when you start Tracking, once every hour you continue tracking, and any time something significant changes in the trail. The GM determines the DCs for such checks, depending on the freshness of the trail, the weather, and the type of ground.
+<br>
+<br>
+<b>Success</b> You find the trail or continue to follow the one you''re already following.
+<br>
+<b>Failure</b> You lose the trail but can try again after a 1-hour delay.
+<br>
+<b>Critical Failure</b> You lose the trail and can''t try again for 24 hours.
+<h3 class="title">Sample Track Tasks</h3>
+<b>Untrained</b> the path of a large army following a road
+<br>
+<b>Trained</b> relatively fresh tracks of a rampaging bear through the plains
+<br>
+<b>Expert</b> a nimble panther''s tracks through a jungle, tracks after the rain
+<br>
+<b>Master</b> tracks after a winter snow, tracks of a mouse or smaller creature, tracks left on surfaces that can''t hold prints like bare rock
+<br>
+<b>Legendary</b> old tracks through a windy desert''s sands, tracks after a major blizzard or hurricane', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=16'),
+('DISABLE_A_DEVICE', 'Disable a Device', TRUE, '2', '<b>Requirements</b> Some devices require you to use thieves'' tools (page 291) when disabling them.This action allows you to disarm a trap or another complex device. Often, a device requires numerous successes before becoming disabled, depending on its construction and complexity. Thieves'' tools are helpful and sometimes even required to Disable a Device, as determined by the GM, and sometimes a device requires a higher proficiency rank in Thievery to disable it.
+<br>
+<br> Your Thievery check result determines how much progress you make.
+<br>
+<br>
+<b>Critical Success</b> You disable the device, or you achieve two successes toward disabling a complex device. You leave no trace of your tampering, and you can rearm the device later, if that type of device can be rearmed.
+<br>
+<b>Success</b> You disable the device, or you achieve one success toward disabling a complex device.
+<br>
+<b>Critical Failure</b> You trigger the device.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=17'),
+('PALM_AN_OBJECT', 'Palm an Object', FALSE, '1', 'Palming a small, unattended object without being noticed requires you to roll a single Thievery check against the Perception DCs of all creatures who are currently observing you. You take the object whether or not you successfully conceal that you did so. You can typically only Palm Objects of negligible Bulk, though the GM might determine otherwise depending on the situation.
+<br>
+<br>
+<b>Success</b> The creature does not notice you Palming the Object.
+<br>
+<b>Failure</b> The creature notices you Palming the Object, and the GM determines the creature''s response.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=17'),
+('PICK_A_LOCK', 'Pick a Lock', TRUE, '2', '<b>Requirements</b> You have thieves'' tools (page 291).Opening a lock without a key is very similar to Disabling a Device, but the DC of the check is determined by the complexity and construction of the lock you are attempting to pick (locks and their DCs are found on page 290). Locks of higher qualities might require multiple successes to unlock, since otherwise even an unskilled burglar could easily crack the lock by attempting the check until they rolled a natural 20. If you lack the proper tools, the GM might let you used improvised picks, which are treated as shoddy tools, depending on the specifics of the lock.
+<br>
+<br>
+<b>Critical Success</b> You unlock the lock, or you achieve two successes toward opening a complex lock. You leave no trace of your tampering.
+<br>
+<b>Success</b> You open the lock, or you achieve one success toward opening a complex lock.
+<br>
+<b>Critical Failure</b> You break your tools. Fixing them requires using Crafting to Repair them or else swapping in replacement picks (costing 3 sp, or 3 gp for infiltrator thieves'' tools).', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=17'),
+('STEAL', 'Steal', FALSE, '1', 'You try to take a small object from another creature without being noticed. Typically, you can Steal only an object of negligible Bulk, and you automatically fail if the creature who has the object is in combat or on guard.
+<br>
+<br> Attempt a Thievery check to determine if you successfully Steal the object. The DC to Steal is usually the Perception DC of the creature wearing the object. This assumes the object is worn but not closely guarded (like a loosely carried pouch filled with coins, or an object within such a pouch). If the object is in a pocket or similarly protected, you take a -5 penalty to your Thievery check. The GM might increase the DC of your check if the nature of the object makes it harder to steal (such as a very small item in a large pack, or a sheet of parchment mixed in with other documents).
+<br>
+<br> You might also need to compare your Thievery check result against the Perception DCs of observers other than the person wearing the object. The GM may increase the Perception DCs of these observers if they''re distracted.
+<br>
+<br>
+<b>Success</b> You steal the item without the bearer noticing, or an observer doesn''t see you take or attempt to take the item.
+<br>
+<b>Failure</b> The item''s bearer notices your attempt before you can take the object, or an observer sees you take or attempt to take the item. The GM determines the response of any creature that notices your theft.
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?ID=17'),
+('EARN_INCOME', 'Earn Income', TRUE, NULL, 'You use one of your skills to make money during downtime. The GM assigns a task level representing the most lucrative job available. You can search for lower-level tasks, with the GM determining whether you find any. Sometimes you can attempt to find better work than the initial offerings, though this takes time and requires using the Diplomacy skill to Gather Information, doing some research, or socializing.
+<br>
+<br> When you take on a job, the GM secretly sets the DC of your skill check. After your first day of work, you roll to determine your earnings. You gain an amount of income based on your result, the task''s level, and your proficiency rank (as listed on Table 4-2: Income Earned).
+<br>
+<br> You can continue working at the task on subsequent days without needing to roll again. For each day you spend after the first, you earn the same amount as the first day, up until the task''s completion. The GM determines how long you can work at the task. Most tasks last a week or two, though some can take months or even years.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?General=true'),
+('CRAFTING_GOODS_FOR_THE_MARKET', 'Crafting Goods for the Market (Crafting)', TRUE, NULL, 'Using Crafting, you can work at producing common items for the market. It''s usually easy to find work making basic items whose level is 1 or 2 below your settlement''s level (see Earn Income on page 504). Higher-level tasks represent special commissions, which might require you to Craft a specific item using the Craft downtime activity and sell it to a buyer at full price. These opportunities don''t occur as often and might have special requirements - or serious consequences if you disappoint a prominent client.
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?General=true'),
+('PRACTICING_A_TRADE', 'Practicing a Trade (Lore)', TRUE, NULL, 'You apply the practical benefits of one of your Lore specialties during downtime by practicing your trade. This is most effective for Lore specialties such as business, law, or sailing, where there''s high demand for workers. The GM might increase the DC or determine only low-level tasks are available if you''re attempting to use an obscure Lore skill to Earn Income. You might also need specialized tools to accept a job, like mining tools to work in a mine or a merchant''s scale to buy and sell valuables in a market.
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?General=true'),
+('STAGING_A_PERFORMANCE', 'Staging a Performance (Performance)', TRUE, NULL, 'You perform for an audience to make money. The available audiences determine the level of your task, since more discerning audiences are harder to impress but provide a bigger payout. The GM determines the task level based on the audiences available. Performing for a typical audience of commoners on the street is a level 0 task, but a performance for a group of artisans with more refined tastes might be a 2nd- or 3rd-level task, and ones for merchants, nobility, and royalty are increasingly higher level. Your degree of success determines whether you moved your audience and whether you were rewarded with applause or rotten fruit.
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?General=true'),
+('SUBSIST', 'Subsist', FALSE, NULL, 'You try to provide food and shelter for yourself, and possibly others as well, with a standard of living described on page 294. The GM determines the DC based on the nature of the place where you''re trying to Subsist. You might need a minimum proficiency rank to Subsist in particularly strange environments. Unlike most downtime activities, you can Subsist after 8 hours or less of exploration, but if you do, you take a -5 penalty.
+<br>
+<br>
+<b>Critical Success</b> You either provide a subsistence living for yourself and one additional creature, or you improve your own food and shelter, granting yourself a comfortable living.
+<br>
+<b>Success</b> You find enough food and shelter with basic protection from the elements to provide you a subsistence living.
+<br>
+<b>Failure</b> You''re exposed to the elements and don''t get enough food, becoming fatigued until you attain sufficient food and shelter.
+<br>
+<b>Critical Failure</b> You attract trouble, eat something you shouldn''t, or otherwise worsen your situation. You take a -2 circumstance penalty to checks to Subsist for 1 week. You don''t find any food at all; if you don''t have any stored up, you''re in danger of starving or dying of thirst if you continue failing.
+<h3 class="title">Sample Subsist Tasks</h3>
+<b>Untrained</b> lush forest with calm weather or large city with plentiful resources
+<br>
+<b>Trained</b> typical hillside or village
+<br>
+<b>Expert</b> typical mountains or insular hamlet
+<br>
+<b>Master</b> typical desert or city under siege
+<br>
+<b>Legendary</b> barren wasteland or city of undead
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?General=true'),
+('IDENTIFY_MAGIC', 'Identify Magic', TRUE, NULL, 'Once you discover that an item, location, or ongoing effect is magical, you can spend 10 minutes to try to identify the particulars of its magic. If your attempt is interrupted, you must start over. The GM sets the DC for your check. Cursed or esoteric subjects usually have higher DCs or might even be impossible to identify using this activity alone. Heightening a spell doesn''t increase the DC to identify it.
+<br>
+<br>
+<b>Critical Success</b> You learn all the attributes of the magic, including its name (for an effect), what it does, any means of activating it (for an item or location), and whether it is cursed.
+<br>
+<b>Success</b> For an item or location, you get a sense of what it does and learn any means of activating it. For an ongoing effect (such as a spell with a duration), you learn the effect''s name and what it does. You can''t try again in hopes of getting a critical success.
+<br>
+<b>Failure</b> You fail to identify the magic and can''t try again for 1 day.
+<br>
+<b>Critical Failure</b> You misidentify the magic as something else of the GM''s choice.
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?General=true'),
+('LEARN_A_SPELL', 'Learn a Spell', TRUE, NULL, '<b>Requirements</b> You have a spellcasting class feature, and the spell you want to learn is on your magical tradition''s spell list.You can gain access to a new spell of your tradition from someone who knows that spell or from magical writing like a spellbook or scroll. If you can cast spells of multiple traditions, you can Learn a Spell of any of those traditions, but you must use the corresponding skill to do so. For example, if you were a cleric with the bard multiclass archetype, you couldn''t use Religion to add an occult spell to your bardic spell repertoire.
+<br>
+<br>To learn the spell, you must do the following:
+<ul>
+ <li>Spend 1 hour per level of the spell, during which you must remain in conversation with a person who knows the spell or have the magical writing in your possession. </li>
+ <li>Have materials with the Price indicated in Table 4-3. </li>
+ <li>Attempt a skill check for the skill corresponding to your tradition (DC determined by the GM, often close to the DC on Table 4-3). Uncommon or rare spells have higher DCs; full guidelines for the GM appear on page&nbsp;503.</li>
+</ul> If you have a spellbook, Learning a Spell lets you add the spell to your spellbook; if you prepare spells from a list, it''s added to your list; if you have a spell repertoire, you can select it when you add or swap spells.
+<br>
+<br>
+<b>Critical Success</b> You expend half the materials and learn the spell.
+<br>
+<b>Success</b> You expend the materials and learn the spell.
+<br>
+<b>Failure</b> You fail to learn the spell but can try again after you gain a level. The materials aren''t expended.
+<br>
+<b>Critical Failure</b> As failure, plus you expend half the materials.
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?General=true'),
+('RECALL_KNOWLEDGE', 'Recall Knowledge', FALSE, '1', 'To remember useful information on a topic, you can attempt to Recall Knowledge. You might know basic information about something without needing to attempt a check, but Recall Knowledge requires you to stop and think for a moment so you can recollect more specific facts and apply&nbsp;them. You might even need to spend time investigating first. For instance, to use Medicine to learn the cause of death, you might need to conduct a forensic examination before attempting to Recall Knowledge.
+<br>
+<br>The following skills can be used to Recall Knowledge, getting information about the listed topics. In some cases, you can get the GM''s permission to use a different but related skill, usually against a higher DC than normal. Some topics might appear on multiple lists, but the skills could give different information. For example, Arcana might tell you about the magical defenses of a golem, whereas Crafting could tell you about its sturdy resistance to physical attacks.
+<ul>
+ <li><b>Arcana</b>: Arcane theories, magical traditions, creatures of arcane significance, and arcane planes. </li>
+ <li><b>Crafting</b>: Alchemical reactions and creatures, item value, engineering, unusual materials, and constructs. </li>
+ <li><b>Lore</b>: The subject of the Lore skill''s subcategory. </li>
+ <li><b>Medicine</b>: Diseases, poisons, wounds, and forensics. </li>
+ <li><b>Nature</b>: The environment, flora, geography, weather, creatures of natural origin, and natural planes. </li>
+ <li><b>Occultism</b>: Ancient mysteries, obscure philosophy, creatures of occult significance, and esoteric planes. </li>
+ <li><b>Religion</b>: Divine agents, divine planes, theology, obscure myths, and creatures of religious significance. </li>
+ <li><b>Society</b>: Local history, key personalities, legal institutions, societal structure, and humanoid culture.</li>
+</ul>The GM might allow checks to Recall Knowledge using other skills. For example, you might assess the skill of an acrobat using Acrobatics. If you''re using a physical skill (like in this example), the GM will most likely have you use a mental ability score - typically Intelligence - instead of the skill''s normal physical ability score.
+<br>
+<br>
+<b>Critical Success</b> You recall the knowledge accurately and gain additional information or context.
+<br>
+<b>Success</b> You recall the knowledge accurately or gain a useful clue about your current situation.
+<br>
+<b>Critical Failure</b> You recall incorrect information or gain an erroneous or misleading clue.
+<h3 class="title">Sample Recall Knowledge Tasks</h3>These examples use Society or Religion.
+<br>
+<b>Untrained</b> name of a ruler, key noble, or major deity
+<br>
+<b>Trained</b> line of succession for a major noble family, core doctrines of a major deity
+<br>
+<b>Expert</b> genealogy of a minor noble, teachings of an ancient priest
+<br>
+<b>Master</b> hierarchy of a genie noble court, major extraplanar temples of a deity
+<br>
+<b>Legendary</b> existence of a long-lost noble heir, secret doctrines of a religion
+<br>', 'CORE', 'https://2e.aonprd.com/Skills.aspx?General=true'),
+('DECIPHER_WRITING', 'Decipher Writing', TRUE, NULL, 'You attempt to decipher complicated writing or literature on an obscure topic. This usually takes 1 minute per page of text, but might take longer (typically an hour per page for decrypting ciphers or the like). The text must be in a language you can read, though the GM might allow you to attempt to decipher text written in an unfamiliar language using Society instead.<br><br>The DC is determined by the GM based on the state or complexity of the document. The GM might have you roll one check for a short text or a check for each section of a larger text.<br><br>Critical Success You understand the true meaning of the text.<br>Success You understand the true meaning of the text. If it was a coded document, you know the general meaning but might not have a word-for-word translation.<br>Failure You can''t understand the text and take a -2 circumstance penalty to further checks to decipher it.<br>Critical Failure You believe you understand the text on that page, but you have in fact misconstrued its message.', 'CORE', 'https://2e.aonprd.com/Skills.aspx?General=true');
+
+
+CREATE TABLE IF NOT EXISTS "skill_action_key_skill" (
+    "skill_action_id" VARCHAR,
+    "key_skill_id" VARCHAR,
+    FOREIGN KEY ("skill_action_id") REFERENCES "skill_action"("id"),
+    FOREIGN KEY ("key_skill_id") REFERENCES "skill"("id"),
+    PRIMARY KEY ("skill_action_id","key_skill_id")
+);
+INSERT INTO "skill_action_key_skill" ("skill_action_id", "key_skill_id") VALUES
+('BALANCE', 'ACROBATICS'),
+('MANEUVER_IN_FLIGHT', 'ACROBATICS'),
+('SQUEEZE', 'ACROBATICS'),
+('TUMBLE_THROUGH', 'ACROBATICS'),
+('BORROW_AN_ARCANE_SPELL', 'ARCANA'),
+('CLIMB', 'ATHLETICS'),
+('DISARM', 'ATHLETICS'),
+('FORCE_OPEN', 'ATHLETICS'),
+('GRAPPLE', 'ATHLETICS'),
+('HIGH_JUMP', 'ATHLETICS'),
+('LONG_JUMP', 'ATHLETICS'),
+('SHOVE', 'ATHLETICS'),
+('SWIM', 'ATHLETICS'),
+('TRIP', 'ATHLETICS'),
+('CRAFT', 'CRAFTING'),
+('IDENTIFY_ALCHEMY', 'CRAFTING'),
+('REPAIR', 'CRAFTING'),
+('CREATE_A_DIVERSION', 'DECEPTION'),
+('FEINT', 'DECEPTION'),
+('IMPERSONATE', 'DECEPTION'),
+('LIE', 'DECEPTION'),
+('GATHER_INFORMATION', 'DIPLOMACY'),
+('MAKE_AN_IMPRESSION', 'DIPLOMACY'),
+('REQUEST', 'DIPLOMACY'),
+('COERCE', 'INTIMIDATION'),
+('DEMORALIZE', 'INTIMIDATION'),
+('ADMINISTER_FIRST_AID', 'MEDICINE'),
+('TREAT_DISEASE', 'MEDICINE'),
+('TREAT_POISON', 'MEDICINE'),
+('TREAT_WOUNDS', 'MEDICINE'),
+('COMMAND_AN_ANIMAL', 'NATURE'),
+('PERFORM', 'PERFORMANCE'),
+('CREATE_FORGERY', 'SOCIETY'),
+('CONCEAL_AN_OBJECT', 'STEALTH'),
+('HIDE', 'STEALTH'),
+('SNEAK', 'STEALTH'),
+('COVER_TRACKS', 'SURVIVAL'),
+('SENSE_DIRECTION', 'SURVIVAL'),
+('TRACK', 'SURVIVAL'),
+('DISABLE_A_DEVICE', 'THIEVERY'),
+('PALM_AN_OBJECT', 'THIEVERY'),
+('PICK_A_LOCK', 'THIEVERY'),
+('STEAL', 'THIEVERY'),
+('EARN_INCOME', 'CRAFTING'),
+('CRAFTING_GOODS_FOR_THE_MARKET', 'CRAFTING'),
+('PRACTICING_A_TRADE', 'LORE'),
+('STAGING_A_PERFORMANCE', 'PERFORMANCE'),
+('SUBSIST', 'SOCIETY'),
+('SUBSIST', 'SURVIVAL'),
+('IDENTIFY_MAGIC', 'ARCANA'),
+('IDENTIFY_MAGIC', 'OCCULTISM'),
+('IDENTIFY_MAGIC', 'RELIGION'),
+('IDENTIFY_MAGIC', 'NATURE'),
+('LEARN_A_SPELL', 'ARCANA'),
+('LEARN_A_SPELL', 'OCCULTISM'),
+('LEARN_A_SPELL', 'RELIGION'),
+('LEARN_A_SPELL', 'NATURE'),
+('RECALL_KNOWLEDGE', 'ARCANA'),
+('RECALL_KNOWLEDGE', 'CRAFTING'),
+('RECALL_KNOWLEDGE', 'LORE'),
+('RECALL_KNOWLEDGE', 'OCCULTISM'),
+('RECALL_KNOWLEDGE', 'RELIGION'),
+('RECALL_KNOWLEDGE', 'NATURE'),
+('RECALL_KNOWLEDGE', 'SOCIETY'),
+('DECIPHER_WRITING', 'ARCANA'),
+('DECIPHER_WRITING', 'OCCULTISM'),
+('DECIPHER_WRITING', 'RELIGION'),
+('DECIPHER_WRITING', 'SOCIETY');
+
+
+CREATE TABLE IF NOT EXISTS "skill_action_trait" (
+    "skill_action_id" VARCHAR,
+    "trait" VARCHAR,
+    FOREIGN KEY ("skill_action_id") REFERENCES "skill_action"("id"),
+    PRIMARY KEY ("skill_action_id","trait")
+);
+INSERT INTO "skill_action_trait" ("skill_action_id", "trait") VALUES
+('BALANCE', 'Move'),
+('MANEUVER_IN_FLIGHT', 'Move'),
+('SQUEEZE', 'Exploration'),
+('SQUEEZE', 'Move'),
+('TUMBLE_THROUGH', 'Move'),
+('BORROW_AN_ARCANE_SPELL', 'Concentrate'),
+('BORROW_AN_ARCANE_SPELL', 'Exploration'),
+('CLIMB', 'Move'),
+('DISARM', 'Attack'),
+('FORCE_OPEN', 'Attack'),
+('GRAPPLE', 'Attack'),
+('SHOVE', 'Attack'),
+('SWIM', 'Move'),
+('TRIP', 'Attack'),
+('CRAFT', 'Downtime'),
+('CRAFT', 'Manipulate'),
+('IDENTIFY_ALCHEMY', 'Concentrate'),
+('IDENTIFY_ALCHEMY', 'Exploration'),
+('IDENTIFY_ALCHEMY', 'Secret'),
+('REPAIR', 'Exploration'),
+('REPAIR', 'Manipulate'),
+('CREATE_A_DIVERSION', 'Mental'),
+('FEINT', 'Mental'),
+('IMPERSONATE', 'Concentrate'),
+('IMPERSONATE', 'Exploration'),
+('IMPERSONATE', 'Manipulate'),
+('IMPERSONATE', 'Secret'),
+('LIE', 'Auditory'),
+('LIE', 'Concentrate'),
+('LIE', 'Linguistic'),
+('LIE', 'Mental'),
+('LIE', 'Secret'),
+('GATHER_INFORMATION', 'Secret'),
+('MAKE_AN_IMPRESSION', 'Auditory'),
+('MAKE_AN_IMPRESSION', 'Concentrate'),
+('MAKE_AN_IMPRESSION', 'Exploration'),
+('MAKE_AN_IMPRESSION', 'Linguistic'),
+('MAKE_AN_IMPRESSION', 'Mental'),
+('REQUEST', 'Auditory'),
+('REQUEST', 'Concentrate'),
+('REQUEST', 'Linguistic'),
+('REQUEST', 'Mental'),
+('COERCE', 'Auditory'),
+('COERCE', 'Concentrate'),
+('COERCE', 'Emotion'),
+('COERCE', 'Exploration'),
+('COERCE', 'Linguistic'),
+('COERCE', 'Mental'),
+('DEMORALIZE', 'Auditory'),
+('DEMORALIZE', 'Concentrate'),
+('DEMORALIZE', 'Emotion'),
+('DEMORALIZE', 'Mental'),
+('ADMINISTER_FIRST_AID', 'Manipulate'),
+('TREAT_DISEASE', 'Downtime'),
+('TREAT_DISEASE', 'Manipulate'),
+('TREAT_POISON', 'Manipulate'),
+('TREAT_WOUNDS', 'Exploration'),
+('TREAT_WOUNDS', 'Healing'),
+('TREAT_WOUNDS', 'Manipulate'),
+('COMMAND_AN_ANIMAL', 'Auditory'),
+('COMMAND_AN_ANIMAL', 'Concentrate'),
+('PERFORM', 'Concentrate'),
+('CREATE_FORGERY', 'Downtime'),
+('CREATE_FORGERY', 'Secret'),
+('CONCEAL_AN_OBJECT', 'Manipulate'),
+('CONCEAL_AN_OBJECT', 'Secret'),
+('HIDE', 'Secret'),
+('SNEAK', 'Move'),
+('SNEAK', 'Secret'),
+('COVER_TRACKS', 'Concentrate'),
+('COVER_TRACKS', 'Exploration'),
+('COVER_TRACKS', 'Move'),
+('SENSE_DIRECTION', 'Exploration'),
+('SENSE_DIRECTION', 'Secret'),
+('TRACK', 'Concentrate'),
+('TRACK', 'Exploration'),
+('TRACK', 'Move'),
+('DISABLE_A_DEVICE', 'Manipulate'),
+('PALM_AN_OBJECT', 'Manipulate'),
+('PICK_A_LOCK', 'Manipulate'),
+('STEAL', 'Manipulate'),
+('EARN_INCOME', 'Downtime'),
+('SUBSIST', 'Downtime'),
+('IDENTIFY_MAGIC', 'Concentrate'),
+('LEARN_A_SPELL', 'Concentrate'),
+('LEARN_A_SPELL', 'Exploration'),
+('RECALL_KNOWLEDGE', 'Concentrate'),
+('RECALL_KNOWLEDGE', 'Secret'),
+('DECIPHER_WRITING', 'Concentrate'),
+('DECIPHER_WRITING', 'Exploration'),
+('DECIPHER_WRITING', 'Secret');
