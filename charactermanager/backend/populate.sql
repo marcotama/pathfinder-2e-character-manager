@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS "armor";
 DROP TABLE IF EXISTS "wearable_item_trait";
 DROP TABLE IF EXISTS "wearable_item";
 DROP TABLE IF EXISTS "skill_action_trait";
@@ -12043,3 +12044,55 @@ INSERT INTO "wearable_item_trait" ("wearable_item_id", "trait") VALUES
 ('DRAGONSCALE_AMULET', 'ENCHANTMENT'),
 ('DRAGONSCALE_AMULET', 'INVESTED'),
 ('DRAGONSCALE_AMULET', 'MAGICAL');
+
+
+CREATE TABLE IF NOT EXISTS "armor" (
+    "id" VARCHAR,
+    "name" VARCHAR,
+    "level" VARCHAR,
+    "price" VARCHAR,
+    "proficiency" VARCHAR,
+    "ac_bonus" VARCHAR,
+    "dex_cap" VARCHAR,
+    "check_penalty" VARCHAR,
+    "speed_penalty" VARCHAR,
+    "strength" VARCHAR,
+    "bulk" VARCHAR,
+    "armor_group" VARCHAR,
+    "armor_traits" VARCHAR,
+    "traits" VARCHAR,
+    "description" VARCHAR,
+    "src" VARCHAR,
+    "url" VARCHAR,
+    PRIMARY KEY("name")
+);
+
+
+INSERT INTO "armor" ("id", "name","level","price","proficiency","ac_bonus","dex_cap","check_penalty","speed_penalty","strength","bulk","armor_group","armor_traits","traits","description","src","url") VALUES
+('UNARMORED', 'Unarmored',NULL,'0','3','0',NULL,'0',NULL,'0','0',NULL,NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=1'),
+('EXPLORER_S_CLOTHING', 'Explorer''s Clothing',NULL,'0.1','3','0','5','0',NULL,'0','L',NULL,'Comfort',NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=2'),
+('PADDED_ARMOR', 'Padded Armor',NULL,'0.2','0','1','3','0',NULL,'10','L',NULL,'Comfort',NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=3'),
+('LEATHER', 'Leather',NULL,'2','0','1','4','1',NULL,'10','1',NULL,NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=4'),
+('STUDDED_LEATHER', 'Studded Leather',NULL,'3','0','2','3','1',NULL,'12','1',NULL,NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=5'),
+('CHAIN_SHIRT', 'Chain Shirt',NULL,'5','0','2','3','1',NULL,'12','1',NULL,'Flexible, Noisy',NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=6'),
+('HIDE', 'Hide',NULL,'2','1','3','2','2','5','14','2','Leather',NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=7'),
+('SCALE_MAIL', 'Scale Mail',NULL,'4','1','3','2','2','5','14','2','Composite',NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=8'),
+('CHAIN_MAIL', 'Chain Mail',NULL,'6','1','4','1','2','5','16','2','Chain','Flexible, Noisy',NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=9'),
+('BREASTPLATE', 'Breastplate',NULL,'8','1','4','1','2','5','16','2','Plate',NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=10'),
+('SPLINT_MAIL', 'Splint Mail','1','13','2','5','1','3','10','16','3','Composite',NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=11'),
+('HALF_PLATE', 'Half Plate','1','18','2','5','1','3','10','16','3','Plate',NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=12'),
+('FULL_PLATE', 'Full Plate','2','30','2','6','0','3','10','18','4','Plate','Bulwark',NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=13'),
+('MAGE_ARMOR', 'Mage Armor',NULL,NULL,'3','1','5','0',NULL,'0','0',NULL,NULL,NULL,'You ward yourself with shimmering magical energy, gaining a +1 item bonus to AC and a maximum Dexterity modifier of +5. While wearing mage armor, you use your unarmored proficiency to calculate your AC.<br>Heightened (4th) You gain a +1 item bonus to saving throws.<br>Heightened (6th) The item bonus to AC increases to +2, and you gain a +1 item bonus to saving throws.<br>Heightened (8th) The item bonus to AC increases to +2, and you gain a +2 item bonus to saving throws.<br>Heightened (10th) The item bonus to AC increases to +3, and you gain a +3 item bonus to saving throws.',NULL,'https://2e.aonprd.com/Spells.aspx?ID=176'),
+('MAGE_ARMOR_HEIGHTENED_4TH', 'Mage Armor (Heightened 4th)',NULL,NULL,'3','1','5','0',NULL,'0','0',NULL,NULL,NULL,'You ward yourself with shimmering magical energy, gaining a +1 item bonus to AC and a maximum Dexterity modifier of +5. While wearing mage armor, you use your unarmored proficiency to calculate your AC.<br>Heightened (4th) You gain a +1 item bonus to saving throws.<br>Heightened (6th) The item bonus to AC increases to +2, and you gain a +1 item bonus to saving throws.<br>Heightened (8th) The item bonus to AC increases to +2, and you gain a +2 item bonus to saving throws.<br>Heightened (10th) The item bonus to AC increases to +3, and you gain a +3 item bonus to saving throws.',NULL,'https://2e.aonprd.com/Spells.aspx?ID=176'),
+('MAGE_ARMOR_HEIGHTENED_6TH', 'Mage Armor (Heightened 6th)',NULL,NULL,'3','2','5','0',NULL,'0','0',NULL,NULL,NULL,'You ward yourself with shimmering magical energy, gaining a +1 item bonus to AC and a maximum Dexterity modifier of +5. While wearing mage armor, you use your unarmored proficiency to calculate your AC.<br>Heightened (4th) You gain a +1 item bonus to saving throws.<br>Heightened (6th) The item bonus to AC increases to +2, and you gain a +1 item bonus to saving throws.<br>Heightened (8th) The item bonus to AC increases to +2, and you gain a +2 item bonus to saving throws.<br>Heightened (10th) The item bonus to AC increases to +3, and you gain a +3 item bonus to saving throws.',NULL,'https://2e.aonprd.com/Spells.aspx?ID=176'),
+('MAGE_ARMOR_HEIGHTENED_8TH', 'Mage Armor (Heightened 8th)',NULL,NULL,'3','2','5','0',NULL,'0','0',NULL,NULL,NULL,'You ward yourself with shimmering magical energy, gaining a +1 item bonus to AC and a maximum Dexterity modifier of +5. While wearing mage armor, you use your unarmored proficiency to calculate your AC.<br>Heightened (4th) You gain a +1 item bonus to saving throws.<br>Heightened (6th) The item bonus to AC increases to +2, and you gain a +1 item bonus to saving throws.<br>Heightened (8th) The item bonus to AC increases to +2, and you gain a +2 item bonus to saving throws.<br>Heightened (10th) The item bonus to AC increases to +3, and you gain a +3 item bonus to saving throws.',NULL,'https://2e.aonprd.com/Spells.aspx?ID=176'),
+('MAGE_ARMOR_HEIGHTENED_10TH', 'Mage Armor (Heightened 10th)',NULL,NULL,'3','3','5','0',NULL,'0','0',NULL,NULL,NULL,'You ward yourself with shimmering magical energy, gaining a +1 item bonus to AC and a maximum Dexterity modifier of +5. While wearing mage armor, you use your unarmored proficiency to calculate your AC.<br>Heightened (4th) You gain a +1 item bonus to saving throws.<br>Heightened (6th) The item bonus to AC increases to +2, and you gain a +1 item bonus to saving throws.<br>Heightened (8th) The item bonus to AC increases to +2, and you gain a +2 item bonus to saving throws.<br>Heightened (10th) The item bonus to AC increases to +3, and you gain a +3 item bonus to saving throws.',NULL,'https://2e.aonprd.com/Spells.aspx?ID=176'),
+('BRACERS_OF_ARMOR_I', 'Bracers of Armor I','8','450.0','3','1','5','0',NULL,'0','L',NULL,'worn bracers','Abjuration, Invested, Magical','These stiff leather armguards grant you a +1 item bonus to AC and saving throws, and a maximum Dexterity modifier of +5. You can affix talismans to <i>bracers of armor</i> as though they were light armor.<br><br><b>Bracers of Armor I_Item 8</b><br><b>Level</b> 8; <b>Price</b> 450 gp<br><b>Bulk</b> L<br><br><b>Bracers of Armor II_Item 14</b><br><b>Level</b> 14; <b>Price</b> 4,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +2.<br><br><b>Bracers of Armor III_Item 20</b><br><b>Level</b> 20; <b>Price</b> 60,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +3.',NULL,'https://2e.aonprd.com/Equipment.aspx?ID=416'),
+('BRACERS_OF_ARMOR_II', 'Bracers of Armor II','14','4000.0','3','2','5','0',NULL,'0','L',NULL,'worn bracers','Abjuration, Invested, Magical','These stiff leather armguards grant you a +1 item bonus to AC and saving throws, and a maximum Dexterity modifier of +5. You can affix talismans to <i>bracers of armor</i> as though they were light armor.<br><br><b>Bracers of Armor I_Item 8</b><br><b>Level</b> 8; <b>Price</b> 450 gp<br><b>Bulk</b> L<br><br><b>Bracers of Armor II_Item 14</b><br><b>Level</b> 14; <b>Price</b> 4,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +2.<br><br><b>Bracers of Armor III_Item 20</b><br><b>Level</b> 20; <b>Price</b> 60,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +3.',NULL,'https://2e.aonprd.com/Equipment.aspx?ID=416'),
+('BRACERS_OF_ARMOR_III', 'Bracers of Armor III','20','60000.0','3','3','5','0',NULL,'0','L',NULL,'worn bracers','Abjuration, Invested, Magical','These stiff leather armguards grant you a +1 item bonus to AC and saving throws, and a maximum Dexterity modifier of +5. You can affix talismans to <i>bracers of armor</i> as though they were light armor.<br><br><b>Bracers of Armor I_Item 8</b><br><b>Level</b> 8; <b>Price</b> 450 gp<br><b>Bulk</b> L<br><br><b>Bracers of Armor II_Item 14</b><br><b>Level</b> 14; <b>Price</b> 4,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +2.<br><br><b>Bracers of Armor III_Item 20</b><br><b>Level</b> 20; <b>Price</b> 60,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +3.',NULL,'https://2e.aonprd.com/Equipment.aspx?ID=416'),
+('HELLKNIGHT_PLATE', 'Hellknight Plate','2','35','2','6','0','3','10','18','4',NULL,NULL,NULL,'Hellknight plate is instantly recognizable to any who know of the Hellknights. Hellknights go to extreme measures to punish non- Hellknights who get their hands on Hellknight plate, and the reward is not usually worth the risk, since for non-Hellknights, the armor is functionally similar to full plate.','Lost Omens Character Guide','https://2e.aonprd.com/Armor.aspx?ID=14'),
+('BARDING, LIGHT', 'Barding, Light',NULL,'10','4','1','5','1','5','16','2',NULL,NULL,NULL,'Special armor for small and medium animals.','CRB','https://2e.aonprd.com/Rules.aspx?ID=255'),
+('BARDING, LIGHT (LARGE)', 'Barding, Light (Large)',NULL,'20','4','1','5','1','5','16','4',NULL,NULL,NULL,'Special armor for large animals.','CRB','https://2e.aonprd.com/Rules.aspx?ID=255'),
+('BARDING, HEAVY', 'Barding, Heavy',NULL,'25','4','3','3','3','10','20','4',NULL,NULL,NULL,'Special armor for small and medium animals.','CRB','https://2e.aonprd.com/Rules.aspx?ID=255'),
+('BARDING, HEAVY (LARGE)', 'Barding, Heavy (Large)',NULL,'50','4','3','3','3','10','20','8',NULL,NULL,NULL,'Special armor for large animals.','CRB','https://2e.aonprd.com/Rules.aspx?ID=255');
+
