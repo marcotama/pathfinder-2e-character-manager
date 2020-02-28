@@ -70,7 +70,7 @@ INSERT INTO "rules_source" ("id", "name", "url") VALUES
 ('ADVENTURE_PATH_149_AGAINST_THE_SCARLET_TRIAD', 'Pathfinder Adventure Path #149: Against the Scarlet Triad (Age of Ashes 5 of 6)', 'https://paizo.com/products/btq02065'),
 ('ADVENTURE_PATH_150_BROKEN_PROMISES', 'Pathfinder Adventure Path #150: Broken Promises (Age of Ashes 6 of 6)', 'https://paizo.com/products/btq021cb'),
 ('AGE_OF_ASHES_PLAYER_GUIDE', 'Pathfinder Adventure Path: Age of Ashes Player''s Guide', 'https://paizo.com/products/btq01zth'),
-('SOCIETY_SCENARIO_1', 'Pathfinder Society Scenario #1-03: Escaping the Grave', 'https://paizo.com/products/btq01znd'),
+('SOCIETY_SCENARIO_1_ESCAPING_THE_GRAVE', 'Pathfinder Society Scenario #1-03: Escaping the Grave', 'https://paizo.com/products/btq01znd'),
 ('SOCIETY_QUEST_2_UNFORGIVING_FIRE', 'Pathfinder Society Quest #2: Unforgiving Fire', 'https://paizo.com/products/btq0217m'),
 ('THE_FALL_OF_PLAGUESTONE','Pathfinder Adventure: The Fall of Plaguestone', 'https://paizo.com/products/btq01zoh'),
 ('LOST_OMENS_WORLD_GUIDE', 'Pathfinder Lost Omens: World Guide', 'https://paizo.com/products/btq01zoj'),
@@ -727,7 +727,7 @@ INSERT INTO "ancestry_language" ("ancestry_id", "language_id") VALUES
 
 
 CREATE TABLE IF NOT EXISTS "feat" (
-    "id" VARCHAR,
+    "id" VARCHAR, /* Uppercase */
     "category" VARCHAR,
     "name" VARCHAR NOT NULL,
     "level"	SMALLINT,
@@ -4739,7 +4739,7 @@ INSERT INTO "feat_special_requirement" ("feat_id", "special_id") VALUES
 
 
 CREATE TABLE IF NOT EXISTS "item" (
-    "id" VARCHAR,
+    "id" VARCHAR, /* Uppercase */
     "category" VARCHAR,
     "name" VARCHAR,
 	"level"	SMALLINT,
@@ -4838,7 +4838,7 @@ INSERT INTO "item" ("id","category","name","level","actions","price","hands","bu
  </tbody>
 </table><br><br><b>Activate</b>  Interact<br><br><b>Dragon''s Breath Potion (Young) Item 7</b><br><b>Level</b> 7; <b>Price</b> 70 gp<br><br><b>Dragon''s Breath Potion (Adult) Item 12</b><br><b>Level</b> 12; <b>Price</b> 400 gp<br>The damage is 6d6 and the save DC is 29.<br><br><b>Dragon''s Breath Potion (Wyrm) Item 17</b><br><b>Level</b> 17; <b>Price</b> 3,000 gp<br>The damage is 10d6 and the save DC is 37.', NULL, 'https://2e.aonprd.com/Equipment.aspx?ID=185'),
 ('OIL_OF_MENDING_CONSUMABLES', 'consumables', 'Oil of Mending', '3', NULL, '9', NULL, 'L', NULL, 'held in 2 hands', NULL, NULL, NULL, NULL, NULL, 'A vial of <i>oil of mending</i> appears to have countless translucent threads swirling within. Applying this oil to an item casts a 2nd-level <i>mending</i> spell to repair the item.<br><br><b>Activate</b>  Interact', NULL, 'https://2e.aonprd.com/Equipment.aspx?ID=178'),
-('ALIGNED_OIL_CONSUMABLES', 'consumables', 'Aligned Oil', '9', NULL, '140', NULL, 'L', NULL, 'held in 2 hands', NULL, NULL, NULL, NULL, NULL, 'This oil fills a weapon with cosmic power of an alignment. Each <i>aligned oil</i> is crafted to one alignment: chaos, evil, good, or law (such as a <i>good-aligned oil</i>). A weapon anointed with this oil gains the effects of the property rune matching its alignment: 
+('ALIGNED_OIL_CONSUMABLES', 'consumables', 'Aligned Oil', '9', NULL, '140', NULL, 'L', NULL, 'held in 2 hands', NULL, NULL, NULL, NULL, NULL, 'This oil fills a weapon with cosmic power of an alignment. Each <i>aligned oil</i> is crafted to one alignment: chaos, evil, good, or law (such as a <i>good-aligned oil</i>). A weapon anointed with this oil gains the effects of the property rune matching its alignment:
 <treasure%291%%>
  <i>anarchic</i> (chaos), 
  <treasure%292%%>
@@ -5232,7 +5232,7 @@ damage. It damages only fiends, undead, and creatures that have a weakness to go
  <li><b>5th</b> <i>humanoid transformation </li>
  <li><b>6th</b> <i>baleful polymorph, <i>dragon form, <i>flesh to stone</li>
 </ul>', NULL, 'https://2e.aonprd.com/Equipment.aspx?ID=363'),
-('STAFF_OF_HEALING_STAVES', 'staves', 'Staff of Healing', '4', NULL, '90', NULL, '1', NULL, 'held in 1 hand', NULL, NULL, NULL, NULL, NULL, 'Made of smooth, white wood, this staff is capped at each end with a golden cross adorned with a multitude of ruby cabochons. A staff of healing grants an item bonus to the Hit Points you restore anytime you cast the <i>heal</i> spell using your own spell slots or using charges from the staff.<br><br><b>Activate</b> Cast a Spell; <b>Effect</b> You expend a number of charges from the staff to cast a spell from its list.<br><br><b>Craft Requirements</b> Supply one casting of all listed levels of all listed spells.<br><br><b>Staff of Healing Item 4</b><br><b>Level</b> 4; <b>Price</b> 90 gp<br><b>Bulk</b> 1<br>The item bonus granted to <i>heal spells is +1. 
+('STAFF_OF_HEALING_STAVES', 'staves', 'Staff of Healing', '4', NULL, '90', NULL, '1', NULL, 'held in 1 hand', NULL, NULL, NULL, NULL, NULL, 'Made of smooth, white wood, this staff is capped at each end with a golden cross adorned with a multitude of ruby cabochons. A staff of healing grants an item bonus to the Hit Points you restore anytime you cast the <i>heal</i> spell using your own spell slots or using charges from the staff.<br><br><b>Activate</b> Cast a Spell; <b>Effect</b> You expend a number of charges from the staff to cast a spell from its list.<br><br><b>Craft Requirements</b> Supply one casting of all listed levels of all listed spells.<br><br><b>Staff of Healing Item 4</b><br><b>Level</b> 4; <b>Price</b> 90 gp<br><b>Bulk</b> 1<br>The item bonus granted to <i>heal spells is +1.
 <ul>
  <li><b>Cantrip</b> <i>stabilize </li>
  <li><b>1st</b> <i>heal</li>
@@ -5262,7 +5262,7 @@ damage. It damages only fiends, undead, and creatures that have a weakness to go
  <li><b>4th</b> <i>fire shield, <i>fireball, <i>wall of fire </li>
  <li><b>5th</b> <i>fireball, <i>wall of fire</li>
 </ul>', NULL, 'https://2e.aonprd.com/Equipment.aspx?ID=356'),
-('STAFF_OF_HEALING_GREATER_STAVES', 'staves', 'Staff of Healing (Greater)', '8', NULL, '470', NULL, '1', NULL, 'held in 1 hand', NULL, NULL, NULL, NULL, NULL, 'Made of smooth, white wood, this staff is capped at each end with a golden cross adorned with a multitude of ruby cabochons. A staff of healing grants an item bonus to the Hit Points you restore anytime you cast the <i>heal</i> spell using your own spell slots or using charges from the staff.<br><br><b>Activate</b> Cast a Spell; <b>Effect</b> You expend a number of charges from the staff to cast a spell from its list.<br><br><b>Craft Requirements</b> Supply one casting of all listed levels of all listed spells.<br><br><b>Staff of Healing Item 4</b><br><b>Level</b> 4; <b>Price</b> 90 gp<br><b>Bulk</b> 1<br>The item bonus granted to <i>heal spells is +1. 
+('STAFF_OF_HEALING_GREATER_STAVES', 'staves', 'Staff of Healing (Greater)', '8', NULL, '470', NULL, '1', NULL, 'held in 1 hand', NULL, NULL, NULL, NULL, NULL, 'Made of smooth, white wood, this staff is capped at each end with a golden cross adorned with a multitude of ruby cabochons. A staff of healing grants an item bonus to the Hit Points you restore anytime you cast the <i>heal</i> spell using your own spell slots or using charges from the staff.<br><br><b>Activate</b> Cast a Spell; <b>Effect</b> You expend a number of charges from the staff to cast a spell from its list.<br><br><b>Craft Requirements</b> Supply one casting of all listed levels of all listed spells.<br><br><b>Staff of Healing Item 4</b><br><b>Level</b> 4; <b>Price</b> 90 gp<br><b>Bulk</b> 1<br>The item bonus granted to <i>heal spells is +1.
 <ul>
  <li><b>Cantrip</b> <i>stabilize </li>
  <li><b>1st</b> <i>heal</li>
@@ -5573,7 +5573,7 @@ damage. It damages only fiends, undead, and creatures that have a weakness to go
  <li><b>4th</b> <i>modify memory, <i>telepathy </li>
  <li><b>5th</b> <i>phantom pain, <i>synaptic pulse, <i>synesthesia</li>
 </ul>', NULL, 'https://2e.aonprd.com/Equipment.aspx?ID=350'),
-('STAFF_OF_HEALING_MAJOR_STAVES', 'staves', 'Staff of Healing (Major)', '12', NULL, '1800', NULL, '1', NULL, 'held in 1 hand', NULL, NULL, NULL, NULL, NULL, 'Made of smooth, white wood, this staff is capped at each end with a golden cross adorned with a multitude of ruby cabochons. A staff of healing grants an item bonus to the Hit Points you restore anytime you cast the <i>heal</i> spell using your own spell slots or using charges from the staff.<br><br><b>Activate</b> Cast a Spell; <b>Effect</b> You expend a number of charges from the staff to cast a spell from its list.<br><br><b>Craft Requirements</b> Supply one casting of all listed levels of all listed spells.<br><br><b>Staff of Healing Item 4</b><br><b>Level</b> 4; <b>Price</b> 90 gp<br><b>Bulk</b> 1<br>The item bonus granted to <i>heal spells is +1. 
+('STAFF_OF_HEALING_MAJOR_STAVES', 'staves', 'Staff of Healing (Major)', '12', NULL, '1800', NULL, '1', NULL, 'held in 1 hand', NULL, NULL, NULL, NULL, NULL, 'Made of smooth, white wood, this staff is capped at each end with a golden cross adorned with a multitude of ruby cabochons. A staff of healing grants an item bonus to the Hit Points you restore anytime you cast the <i>heal</i> spell using your own spell slots or using charges from the staff.<br><br><b>Activate</b> Cast a Spell; <b>Effect</b> You expend a number of charges from the staff to cast a spell from its list.<br><br><b>Craft Requirements</b> Supply one casting of all listed levels of all listed spells.<br><br><b>Staff of Healing Item 4</b><br><b>Level</b> 4; <b>Price</b> 90 gp<br><b>Bulk</b> 1<br>The item bonus granted to <i>heal spells is +1.
 <ul>
  <li><b>Cantrip</b> <i>stabilize </li>
  <li><b>1st</b> <i>heal</li>
@@ -5689,7 +5689,7 @@ damage. It damages only fiends, undead, and creatures that have a weakness to go
  <li><b>5th</b> &lt;%SPELLS%cloudkill%%&gt;<i>cloudkill, <i>gentle repose </li>
  <li><b>6th</b> <i>grim tendrils, <i>vampiric exsanguination</li>
 </ul>', NULL, 'https://2e.aonprd.com/Equipment.aspx?ID=360'),
-('STAFF_OF_HEALING_TRUE_STAVES', 'staves', 'Staff of Healing (True)', '16', NULL, '9200', NULL, '1', NULL, 'held in 1 hand', NULL, NULL, NULL, NULL, NULL, 'Made of smooth, white wood, this staff is capped at each end with a golden cross adorned with a multitude of ruby cabochons. A staff of healing grants an item bonus to the Hit Points you restore anytime you cast the <i>heal</i> spell using your own spell slots or using charges from the staff.<br><br><b>Activate</b> Cast a Spell; <b>Effect</b> You expend a number of charges from the staff to cast a spell from its list.<br><br><b>Craft Requirements</b> Supply one casting of all listed levels of all listed spells.<br><br><b>Staff of Healing Item 4</b><br><b>Level</b> 4; <b>Price</b> 90 gp<br><b>Bulk</b> 1<br>The item bonus granted to <i>heal spells is +1. 
+('STAFF_OF_HEALING_TRUE_STAVES', 'staves', 'Staff of Healing (True)', '16', NULL, '9200', NULL, '1', NULL, 'held in 1 hand', NULL, NULL, NULL, NULL, NULL, 'Made of smooth, white wood, this staff is capped at each end with a golden cross adorned with a multitude of ruby cabochons. A staff of healing grants an item bonus to the Hit Points you restore anytime you cast the <i>heal</i> spell using your own spell slots or using charges from the staff.<br><br><b>Activate</b> Cast a Spell; <b>Effect</b> You expend a number of charges from the staff to cast a spell from its list.<br><br><b>Craft Requirements</b> Supply one casting of all listed levels of all listed spells.<br><br><b>Staff of Healing Item 4</b><br><b>Level</b> 4; <b>Price</b> 90 gp<br><b>Bulk</b> 1<br>The item bonus granted to <i>heal spells is +1.
 <ul>
  <li><b>Cantrip</b> <i>stabilize </li>
  <li><b>1st</b> <i>heal</li>
@@ -5751,7 +5751,7 @@ damage. It damages only fiends, undead, and creatures that have a weakness to go
 ('BLEEDING_SPINES_SNARE_SNARES', 'snares', 'Bleeding Spines Snare', '12', NULL, '320', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'When a creature enters the square, spines covered in numerous jagged thorns protrude out to stab it, dealing 8d8 piercing damage and 2d8 persistent bleed damage. The creature must attempt a DC 31 basic Reflex saving throw. After the initial trigger, the spines retract and protrude again repeatedly for 1 minute, forcing any creature that enters the space or ends its turn in the space to attempt a Reflex save against the spines’&nbsp;damage.', 'CORE', 'https://2e.aonprd.com/Equipment.aspx?ID=330'),
 ('ALARM_SNARE_SNARES', 'snares', 'Alarm Snare', '1', NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'You create an alarm snare by rigging one or more noisy objects to a trip wire or pressure plate. When you create an alarm snare, you designate a range between 100 to 500 feet at which it can be heard. When a Small or larger creature enters the square, the snare makes a noise loud enough that it can be heard by all creatures in the range you designated.', 'CORE', 'https://2e.aonprd.com/Equipment.aspx?ID=328'),
 ('WARNING_SNARE_SNARES', 'snares', 'Warning Snare', '4', NULL, '15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Using materials specific to the area, you connect a sound‑making component to a trip wire or a pressure plate. This snare is like an alarm snare, but its subtle sound blends into ambient noise. You can detect this sound as long as you’re within 1,000 feet of the snare and aren’t prevented from hearing it. Other creatures in that area who are searching might notice the sound if their Perception check result meets or exceeds your Craft DC.', 'CORE', 'https://2e.aonprd.com/Equipment.aspx?ID=348'),
-('BOMB_SNARE_SNARES', 'snares', 'Bomb Snare', '8', NULL, '75', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'You create a snare that catalyzes three 3rd-level moderate 
+('BOMB_SNARE_SNARES', 'snares', 'Bomb Snare', '8', NULL, '75', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'You create a snare that catalyzes three 3rd-level moderate
 <treasure.categories%alchemical bombs of the same type to explode when a creature enters snare’s square. the target and all creatures in adjacent squares must attempt dc 26 reflex save, as snare deals damage equal three times direct hit from one component (for example, 6d6 electricity <a style="text-decoration:underline" href="Equipment.aspx?ID=76">
  bottled lightning) with no splash damage or other effects. 
  <br>
@@ -6160,7 +6160,7 @@ Activate Single Action Interact; Frequency once per day; Effect You can speak an
 ('BLACK_ADDER_VENOM_ALCHEMICAL', 'alchemical', 'Black Adder Venom', '2', NULL, '6', NULL, 'L', NULL, 'held in 2 hands', NULL, NULL, NULL, NULL, NULL, 'Adder venom is a simple but effective way to enhance a weapon.<br><br><b>Saving Throw</b> DC 18 Fortitude; <b>Maximum Duration</b> 3 rounds; <b>Stage 1</b> 1d8 poison damage (1 round); Stage&nbsp;2 1d10 poison damage (1 round); <b>Stage 3</b> 2d6 poison damage (1&nbsp;round)<br><br><b>Activate</b> 2 Actions Interact', NULL, 'https://2e.aonprd.com/Equipment.aspx?ID=106'),
 ('SMOKESTICK_GREATER_ALCHEMICAL', 'alchemical', 'Smokestick (Greater)', '7', NULL, '53', NULL, 'L', NULL, 'held in 2 hands', NULL, NULL, NULL, NULL, NULL, 'With a sharp twist of this item, you instantly create a screen of thick, opaque smoke in a burst centered on one corner of your space. All creatures within that area are concealed, and all other creatures are concealed to them. The smoke lasts for 1 minute or until dispersed by a strong wind.<br><br><b>Activate</b>  Interact<br><br><b>Smokestick (Lesser) Item 1</b><br><b>Level</b> 1; <b>Price</b> 3 gp<br>The radius of the burst is 5 feet.<br><br><b>Smokestick (Greater) Item 7</b><br><b>Level</b> 7; <b>Price</b> 53 gp<br>The radius of the burst is 20 feet.', NULL, 'https://2e.aonprd.com/Equipment.aspx?ID=135'),
 ('SNAKE_OIL_ALCHEMICAL', 'alchemical', 'Snake Oil', '1', NULL, '2', NULL, 'L', NULL, 'held in 2 hands', NULL, NULL, NULL, NULL, NULL, 'You can apply snake oil onto a wound or other outward symptom of an affliction or condition (such as sores from a disease or discoloration from a poison). For the next hour, the symptom disappears and the wounded or afflicted creature doesn’t feel as if it still has the wound or affliction, though all effects remain. A creature can uncover the ruse by succeeding at a DC 17 Perception check, but only if it uses a Seek action to specifically examine the snake oil’s effects.<br><br><b>Activate</b>  Interact', NULL, 'https://2e.aonprd.com/Equipment.aspx?ID=136'),
-('PHILOSOPHER_S_STONE_ALCHEMICAL', 'alchemical', 'Philosopher''s Stone', '20', NULL, '0', NULL, '2', NULL, 'held in 2 hands', NULL, NULL, NULL, NULL, NULL, 'An alchemist with the Craft Philosopher’s Stone feat can create a philosopher’s stone once per month by spending 1 batch of infused reagents during their daily preparations using the advanced alchemy class feature. This is the only way to create a philosopher’s stone.<br><br> At a glance, a philosopher’s stone appears to be an ordinary, sooty piece of natural rock. Breaking the rock open with a Force Open action (DC 35) reveals a cavity at the stone’s heart. The cavity is lined with a rare type of quicksilver that can transmute base metals into precious metals or create an elixir of rejuvenation. <br><br> To use the quicksilver, you must be legendary in Crafting and have the Alchemical Crafting feat. You can then use the stone’s quicksilver for one of two effects: 
+('PHILOSOPHER_S_STONE_ALCHEMICAL', 'alchemical', 'Philosopher''s Stone', '20', NULL, '0', NULL, '2', NULL, 'held in 2 hands', NULL, NULL, NULL, NULL, NULL, 'An alchemist with the Craft Philosopher’s Stone feat can create a philosopher’s stone once per month by spending 1 batch of infused reagents during their daily preparations using the advanced alchemy class feature. This is the only way to create a philosopher’s stone.<br><br> At a glance, a philosopher’s stone appears to be an ordinary, sooty piece of natural rock. Breaking the rock open with a Force Open action (DC 35) reveals a cavity at the stone’s heart. The cavity is lined with a rare type of quicksilver that can transmute base metals into precious metals or create an elixir of rejuvenation. <br><br> To use the quicksilver, you must be legendary in Crafting and have the Alchemical Crafting feat. You can then use the stone’s quicksilver for one of two effects:
 <ul>
  <li>You can apply the stone’s quicksilver to an infused true elixir of life using an Interact action. This turns the elixir into an infused elixir of rejuvenation instantaneously. This doesn’t require any crafting time or additional materials.</li> 
  <li>You can spend up to a month of downtime applying the quicksilver either to iron to create silver or to lead to create gold. Treat this as a 20th-level task to Earn Income using Crafting, except that you create 500 gp worth of your chosen metal per day on a success or 750 gp worth per day on a critical success.</li>
@@ -6496,7 +6496,7 @@ INSERT INTO "item_trait" ("item_id","trait") VALUES
 
 
 CREATE TABLE IF NOT EXISTS "class" (
-    "id" VARCHAR,
+    "id" VARCHAR, /* Uppercase */
 	"name" VARCHAR,
 	"description" VARCHAR,
 	"src" VARCHAR,
@@ -6616,7 +6616,7 @@ INSERT INTO "class" ("id", "name", "description", "src", "url") VALUES
 
 
 CREATE TABLE IF NOT EXISTS "background" (
-    "id" VARCHAR,
+    "id" VARCHAR, /* Uppercase */
     "name" VARCHAR,
     "boost_ref_1" VARCHAR,
     "boost_ref_2" VARCHAR,
@@ -6925,7 +6925,7 @@ INSERT INTO "background" ("id","name","boost_ref_1","boost_ref_2","free_feat_id"
 
 
 CREATE TABLE IF NOT EXISTS "spell" (
-    "id" VARCHAR,
+    "id" VARCHAR, /* Uppercase */
     "name" VARCHAR,
     "type" VARCHAR,
     "level"	INTEGER,
@@ -9616,7 +9616,7 @@ INSERT INTO "spell_trait" ("spell_id","trait") VALUES
 
 
 CREATE TABLE IF NOT EXISTS "spell_list" (
-    "id" VARCHAR,
+    "id" VARCHAR, /* Uppercase */
 	"name" VARCHAR,
     PRIMARY KEY ("id")
 );
@@ -10430,7 +10430,7 @@ INSERT INTO "spell_list_item" ("spell_list_id", "spell_id", "level") VALUES
 
 
 CREATE TABLE IF NOT EXISTS "spells_bloodline" (
-    "id" VARCHAR,
+    "id" VARCHAR, /* Uppercase */
     "name" VARCHAR,
     "spell_list_id" VARCHAR,
     "skill1_id" VARCHAR,
@@ -10485,7 +10485,7 @@ INSERT INTO "spells_bloodline" ("id","name","spell_list_id","skill1_id","skill2_
 
 
 CREATE TABLE IF NOT EXISTS "spells_domain" (
-    "id" VARCHAR,
+    "id" VARCHAR, /* Uppercase */
     "name" VARCHAR,
 	"spell_id" VARCHAR,
 	"advanced_spell_id" VARCHAR,
@@ -10534,7 +10534,7 @@ INSERT INTO "spells_domain" ("id","name","spell_id","advanced_spell_id") VALUES
 
 
 CREATE TABLE IF NOT EXISTS "skill_action" (
-	"id" VARCHAR,
+	"id" VARCHAR, /* Uppercase */
 	"name" VARCHAR,
 	"trained" BOOLEAN,
 	"actions" VARCHAR,
@@ -11303,7 +11303,7 @@ INSERT INTO "skill_action_trait" ("skill_action_id", "trait") VALUES
 
 
 CREATE TABLE IF NOT EXISTS "wearable_item" (
-    "id" VARCHAR,
+    "id" VARCHAR, /* Uppercase */
     "name" VARCHAR,
     "level" VARCHAR,
     "actions" VARCHAR,
@@ -11473,7 +11473,7 @@ INSERT INTO "wearable_item" ("id", "name","level","actions","price","hands","bul
 ('RING_OF_ENERGY_RESISTANCE_GREATER_SONIC', 'Ring of Energy Resistance (Greater) - Sonic', '10', NULL, '975.0', NULL, NULL, NULL, 'worn', NULL, NULL, NULL, NULL, NULL, 'This ring grants you resistance 5 against one type of energy damage: acid, cold, electricity, fire, or sonic. Each ring is crafted to protect against a particular type of energy damage, and its design usually embodies the type of energy it protects the wearer from in some way. For instance, a <i>ring of fire resistance</i> might be capped with a ruby, whereas a <i>ring of cold resistance</i> features a sapphire instead.<br><br><b>Ring of Energy Resistance Item 6</b><br><b>Level</b> 6; <b>Price</b> 245 gp<br><br><b>Ring of Energy Resistance (Greater) Item 10</b><br><b>Level</b> 10; <b>Price</b> 975 gp<br>The ring grants resistance 10.<br><br><b>Ring of Energy Resistance (Major) Item 6</b><br><b>Level</b> 6; <b>Price</b> 4,400 gp<br>The ring grants resistance 15.', NULL, 'https://2e.aonprd.com/Equipment.aspx?ID=455'),
 ('RING_OF_ENERGY_RESISTANCE_MAJOR_SONIC', 'Ring of Energy Resistance (Major) - Sonic', '14', NULL, '4400.0', NULL, NULL, NULL, 'worn', NULL, NULL, NULL, NULL, NULL, 'This ring grants you resistance 5 against one type of energy damage: acid, cold, electricity, fire, or sonic. Each ring is crafted to protect against a particular type of energy damage, and its design usually embodies the type of energy it protects the wearer from in some way. For instance, a <i>ring of fire resistance</i> might be capped with a ruby, whereas a <i>ring of cold resistance</i> features a sapphire instead.<br><br><b>Ring of Energy Resistance Item 6</b><br><b>Level</b> 6; <b>Price</b> 245 gp<br><br><b>Ring of Energy Resistance (Greater) Item 10</b><br><b>Level</b> 10; <b>Price</b> 975 gp<br>The ring grants resistance 10.<br><br><b>Ring of Energy Resistance (Major) Item 6</b><br><b>Level</b> 6; <b>Price</b> 4,400 gp<br>The ring grants resistance 15.', NULL, 'https://2e.aonprd.com/Equipment.aspx?ID=455'),
 ('ARCHAIC_WAYFINDER', 'Archaic Wayfinder', '2', NULL, '30', NULL, NULL, NULL, 'worn', NULL, NULL, NULL, NULL, NULL, 'An archaic wayfinder functions as a compass and acts as a repository for one cantrip cast into it. To fill an archaic wayfinder, a spellcaster casts the chosen cantrip into the empty device, providing any necessary cost; the spell cannot be one that is normally cast as a free action or reaction. Activating an archaic wayfinder is the same as the casting for the relevant spell. Once it has been activated, it becomes empty again. An archaic wayfinder can hold an aeon stone and activate its resonant power. An archaic wayfinder counts against the limit of one wayfinder with a slotted resonant aeon stone.', 'LOST_OMENS_WORLD_GUIDE', 'https://2e.aonprd.com/Equipment.aspx?ID=470'),
-('WAYFINDER_OF_RESCUE', 'Wayfinder of Rescue', '4', NULL, '80', NULL, NULL, NULL, 'worn', NULL, NULL, NULL, NULL, NULL, 'As a standard wayfinder, but once per day you can activate it to cast heal on a creature other than yourself, using either the one-action or two-action version of heal as a 1st-level spell.', 'SOCIETY_SCENARIO_1', 'https://2e.aonprd.com/Equipment.aspx?ID=470'),
+('WAYFINDER_OF_RESCUE', 'Wayfinder of Rescue', '4', NULL, '80', NULL, NULL, NULL, 'worn', NULL, NULL, NULL, NULL, NULL, 'As a standard wayfinder, but once per day you can activate it to cast heal on a creature other than yourself, using either the one-action or two-action version of heal as a 1st-level spell.', 'SOCIETY_SCENARIO_1_ESCAPING_THE_GRAVE', 'https://2e.aonprd.com/Equipment.aspx?ID=470'),
 ('SIGNIFIER_MASK', 'Signifier Mask', '1', NULL, '0', NULL, NULL, NULL, 'worn', NULL, NULL, NULL, NULL, NULL, 'This item is only available to Hellknight Signifiers.<br><br>Upon initiation, you receive a signifer mask, often devoid of eyeholes or other decorative features. The mask doesn’t obscure your vision, though it makes it impossible for others to see your eyes. While wearing your signifer’s mask, you gain +1 circumstance bonus to Deception checks to Lie, Intimidation checks, and Deception DCs against Sense Motive.', 'LOST_OMENS_CHARACTER_GUIDE', 'https://2e.aonprd.com/Archetypes.aspx?ID=26'),
 ('BI_RESONANT_WAYFINDER', 'Bi-Resonant Wayfinder', '6', NULL, '200', NULL, NULL, NULL, 'worn', NULL, NULL, NULL, NULL, NULL, 'A bi-resonant wayfinder is inlaid with intricate platinum wires in a complex array of conduits for magical energy. These conduits control the resonant interference of aeon stones. A bi-resonant wayfinder works just like a regular wayfinder except it has two aeon stone slots, and the aeon stones in both slots grant their resonant powers without interfering with each other. The bi-resonant wayfinder and the two aeon stones count as two items toward your investiture limit.', 'LOST_OMENS_CHARACTER_GUIDE', 'https://2e.aonprd.com/Equipment.aspx?ID=470'),
 ('PATHFINDER_S_POUCH', 'Pathfinder''s Pouch', '6', '1', '200', NULL, 'L', NULL, 'worn belt pouch', NULL, '1', 'Interact; <b>Effect</b> You switch the pouch to allow access to its extradimensional space instead of its normal space, or vice versa. This lasts until you next activate it. Items in the other space are inaccessible and hard to find until you switch the pouch back.', NULL, NULL, 'This unobtrusive belt pouch is constantly under the effects of a 3rd-level <i>magic aura</i> spell to appear non-magical. The pouch’s normal space holds as much as an ordinary belt pouch, but it also has a small extradimensional space that holds up to 1 Bulk of items. A creature actively inspecting the pouch in its ordinary state discovers the existence of the extradimensional space only on a critical success to Search the pouch (see the Concealing an Item action of the Stealth skill), though when the extradimensional space is active, it’s obvious to anyone examining the pouch that it is more than it seems.', 'LOST_OMENS_CHARACTER_GUIDE', 'https://2e.aonprd.com/Equipment.aspx?ID=524'),
@@ -12048,7 +12048,7 @@ INSERT INTO "wearable_item_trait" ("wearable_item_id", "trait") VALUES
 
 
 CREATE TABLE IF NOT EXISTS "armor" (
-    "id" VARCHAR,
+    "id" VARCHAR, /* Uppercase */
     "name" VARCHAR,
     "level" VARCHAR,
     "price" VARCHAR,
@@ -12065,22 +12065,23 @@ CREATE TABLE IF NOT EXISTS "armor" (
     "description" VARCHAR,
     "src" VARCHAR,
     "url" VARCHAR,
+    FOREIGN KEY ("src") REFERENCES "rules_source"("id"),
     PRIMARY KEY("name")
 );
 INSERT INTO "armor" ("id", "name","level","price","proficiency","ac_bonus","dex_cap","check_penalty","speed_penalty","strength","bulk","armor_group","armor_traits","traits","description","src","url") VALUES
-('UNARMORED', 'Unarmored',NULL,'0','3','0',NULL,'0',NULL,'0','0',NULL,NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=1'),
-('EXPLORER_S_CLOTHING', 'Explorer''s Clothing',NULL,'0.1','3','0','5','0',NULL,'0','L',NULL,'Comfort',NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=2'),
-('PADDED_ARMOR', 'Padded Armor',NULL,'0.2','0','1','3','0',NULL,'10','L',NULL,'Comfort',NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=3'),
-('LEATHER', 'Leather',NULL,'2','0','1','4','1',NULL,'10','1',NULL,NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=4'),
-('STUDDED_LEATHER', 'Studded Leather',NULL,'3','0','2','3','1',NULL,'12','1',NULL,NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=5'),
-('CHAIN_SHIRT', 'Chain Shirt',NULL,'5','0','2','3','1',NULL,'12','1',NULL,'Flexible, Noisy',NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=6'),
-('HIDE', 'Hide',NULL,'2','1','3','2','2','5','14','2','Leather',NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=7'),
-('SCALE_MAIL', 'Scale Mail',NULL,'4','1','3','2','2','5','14','2','Composite',NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=8'),
-('CHAIN_MAIL', 'Chain Mail',NULL,'6','1','4','1','2','5','16','2','Chain','Flexible, Noisy',NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=9'),
-('BREASTPLATE', 'Breastplate',NULL,'8','1','4','1','2','5','16','2','Plate',NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=10'),
-('SPLINT_MAIL', 'Splint Mail','1','13','2','5','1','3','10','16','3','Composite',NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=11'),
-('HALF_PLATE', 'Half Plate','1','18','2','5','1','3','10','16','3','Plate',NULL,NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=12'),
-('FULL_PLATE', 'Full Plate','2','30','2','6','0','3','10','18','4','Plate','Bulwark',NULL,NULL,'CRB','https://2e.aonprd.com/Armor.aspx?ID=13'),
+('UNARMORED', 'Unarmored',NULL,'0','3','0',NULL,'0',NULL,'0','0',NULL,NULL,NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=1'),
+('EXPLORER_S_CLOTHING', 'Explorer''s Clothing',NULL,'0.1','3','0','5','0',NULL,'0','L',NULL,'Comfort',NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=2'),
+('PADDED_ARMOR', 'Padded Armor',NULL,'0.2','0','1','3','0',NULL,'10','L',NULL,'Comfort',NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=3'),
+('LEATHER', 'Leather',NULL,'2','0','1','4','1',NULL,'10','1',NULL,NULL,NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=4'),
+('STUDDED_LEATHER', 'Studded Leather',NULL,'3','0','2','3','1',NULL,'12','1',NULL,NULL,NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=5'),
+('CHAIN_SHIRT', 'Chain Shirt',NULL,'5','0','2','3','1',NULL,'12','1',NULL,'Flexible, Noisy',NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=6'),
+('HIDE', 'Hide',NULL,'2','1','3','2','2','5','14','2','Leather',NULL,NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=7'),
+('SCALE_MAIL', 'Scale Mail',NULL,'4','1','3','2','2','5','14','2','Composite',NULL,NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=8'),
+('CHAIN_MAIL', 'Chain Mail',NULL,'6','1','4','1','2','5','16','2','Chain','Flexible, Noisy',NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=9'),
+('BREASTPLATE', 'Breastplate',NULL,'8','1','4','1','2','5','16','2','Plate',NULL,NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=10'),
+('SPLINT_MAIL', 'Splint Mail','1','13','2','5','1','3','10','16','3','Composite',NULL,NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=11'),
+('HALF_PLATE', 'Half Plate','1','18','2','5','1','3','10','16','3','Plate',NULL,NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=12'),
+('FULL_PLATE', 'Full Plate','2','30','2','6','0','3','10','18','4','Plate','Bulwark',NULL,NULL,'CORE','https://2e.aonprd.com/Armor.aspx?ID=13'),
 ('MAGE_ARMOR', 'Mage Armor',NULL,NULL,'3','1','5','0',NULL,'0','0',NULL,NULL,NULL,'You ward yourself with shimmering magical energy, gaining a +1 item bonus to AC and a maximum Dexterity modifier of +5. While wearing mage armor, you use your unarmored proficiency to calculate your AC.<br>Heightened (4th) You gain a +1 item bonus to saving throws.<br>Heightened (6th) The item bonus to AC increases to +2, and you gain a +1 item bonus to saving throws.<br>Heightened (8th) The item bonus to AC increases to +2, and you gain a +2 item bonus to saving throws.<br>Heightened (10th) The item bonus to AC increases to +3, and you gain a +3 item bonus to saving throws.',NULL,'https://2e.aonprd.com/Spells.aspx?ID=176'),
 ('MAGE_ARMOR_HEIGHTENED_4TH', 'Mage Armor (Heightened 4th)',NULL,NULL,'3','1','5','0',NULL,'0','0',NULL,NULL,NULL,'You ward yourself with shimmering magical energy, gaining a +1 item bonus to AC and a maximum Dexterity modifier of +5. While wearing mage armor, you use your unarmored proficiency to calculate your AC.<br>Heightened (4th) You gain a +1 item bonus to saving throws.<br>Heightened (6th) The item bonus to AC increases to +2, and you gain a +1 item bonus to saving throws.<br>Heightened (8th) The item bonus to AC increases to +2, and you gain a +2 item bonus to saving throws.<br>Heightened (10th) The item bonus to AC increases to +3, and you gain a +3 item bonus to saving throws.',NULL,'https://2e.aonprd.com/Spells.aspx?ID=176'),
 ('MAGE_ARMOR_HEIGHTENED_6TH', 'Mage Armor (Heightened 6th)',NULL,NULL,'3','2','5','0',NULL,'0','0',NULL,NULL,NULL,'You ward yourself with shimmering magical energy, gaining a +1 item bonus to AC and a maximum Dexterity modifier of +5. While wearing mage armor, you use your unarmored proficiency to calculate your AC.<br>Heightened (4th) You gain a +1 item bonus to saving throws.<br>Heightened (6th) The item bonus to AC increases to +2, and you gain a +1 item bonus to saving throws.<br>Heightened (8th) The item bonus to AC increases to +2, and you gain a +2 item bonus to saving throws.<br>Heightened (10th) The item bonus to AC increases to +3, and you gain a +3 item bonus to saving throws.',NULL,'https://2e.aonprd.com/Spells.aspx?ID=176'),
@@ -12089,15 +12090,15 @@ INSERT INTO "armor" ("id", "name","level","price","proficiency","ac_bonus","dex_
 ('BRACERS_OF_ARMOR_I', 'Bracers of Armor I','8','450.0','3','1','5','0',NULL,'0','L',NULL,'worn bracers','Abjuration, Invested, Magical','These stiff leather armguards grant you a +1 item bonus to AC and saving throws, and a maximum Dexterity modifier of +5. You can affix talismans to <i>bracers of armor</i> as though they were light armor.<br><br><b>Bracers of Armor I_Item 8</b><br><b>Level</b> 8; <b>Price</b> 450 gp<br><b>Bulk</b> L<br><br><b>Bracers of Armor II_Item 14</b><br><b>Level</b> 14; <b>Price</b> 4,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +2.<br><br><b>Bracers of Armor III_Item 20</b><br><b>Level</b> 20; <b>Price</b> 60,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +3.',NULL,'https://2e.aonprd.com/Equipment.aspx?ID=416'),
 ('BRACERS_OF_ARMOR_II', 'Bracers of Armor II','14','4000.0','3','2','5','0',NULL,'0','L',NULL,'worn bracers','Abjuration, Invested, Magical','These stiff leather armguards grant you a +1 item bonus to AC and saving throws, and a maximum Dexterity modifier of +5. You can affix talismans to <i>bracers of armor</i> as though they were light armor.<br><br><b>Bracers of Armor I_Item 8</b><br><b>Level</b> 8; <b>Price</b> 450 gp<br><b>Bulk</b> L<br><br><b>Bracers of Armor II_Item 14</b><br><b>Level</b> 14; <b>Price</b> 4,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +2.<br><br><b>Bracers of Armor III_Item 20</b><br><b>Level</b> 20; <b>Price</b> 60,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +3.',NULL,'https://2e.aonprd.com/Equipment.aspx?ID=416'),
 ('BRACERS_OF_ARMOR_III', 'Bracers of Armor III','20','60000.0','3','3','5','0',NULL,'0','L',NULL,'worn bracers','Abjuration, Invested, Magical','These stiff leather armguards grant you a +1 item bonus to AC and saving throws, and a maximum Dexterity modifier of +5. You can affix talismans to <i>bracers of armor</i> as though they were light armor.<br><br><b>Bracers of Armor I_Item 8</b><br><b>Level</b> 8; <b>Price</b> 450 gp<br><b>Bulk</b> L<br><br><b>Bracers of Armor II_Item 14</b><br><b>Level</b> 14; <b>Price</b> 4,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +2.<br><br><b>Bracers of Armor III_Item 20</b><br><b>Level</b> 20; <b>Price</b> 60,000 gp<br><b>Bulk</b> L<br>The item bonus to AC and saves is +3.',NULL,'https://2e.aonprd.com/Equipment.aspx?ID=416'),
-('HELLKNIGHT_PLATE', 'Hellknight Plate','2','35','2','6','0','3','10','18','4',NULL,NULL,NULL,'Hellknight plate is instantly recognizable to any who know of the Hellknights. Hellknights go to extreme measures to punish non- Hellknights who get their hands on Hellknight plate, and the reward is not usually worth the risk, since for non-Hellknights, the armor is functionally similar to full plate.','Lost Omens Character Guide','https://2e.aonprd.com/Armor.aspx?ID=14'),
-('BARDING, LIGHT', 'Barding, Light',NULL,'10','4','1','5','1','5','16','2',NULL,NULL,NULL,'Special armor for small and medium animals.','CRB','https://2e.aonprd.com/Rules.aspx?ID=255'),
-('BARDING, LIGHT (LARGE)', 'Barding, Light (Large)',NULL,'20','4','1','5','1','5','16','4',NULL,NULL,NULL,'Special armor for large animals.','CRB','https://2e.aonprd.com/Rules.aspx?ID=255'),
-('BARDING, HEAVY', 'Barding, Heavy',NULL,'25','4','3','3','3','10','20','4',NULL,NULL,NULL,'Special armor for small and medium animals.','CRB','https://2e.aonprd.com/Rules.aspx?ID=255'),
-('BARDING, HEAVY (LARGE)', 'Barding, Heavy (Large)',NULL,'50','4','3','3','3','10','20','8',NULL,NULL,NULL,'Special armor for large animals.','CRB','https://2e.aonprd.com/Rules.aspx?ID=255');
+('HELLKNIGHT_PLATE', 'Hellknight Plate','2','35','2','6','0','3','10','18','4',NULL,NULL,NULL,'Hellknight plate is instantly recognizable to any who know of the Hellknights. Hellknights go to extreme measures to punish non- Hellknights who get their hands on Hellknight plate, and the reward is not usually worth the risk, since for non-Hellknights, the armor is functionally similar to full plate.','LOST_OMENS_CHARACTER_GUIDE','https://2e.aonprd.com/Armor.aspx?ID=14'),
+('BARDING, LIGHT', 'Barding, Light',NULL,'10','4','1','5','1','5','16','2',NULL,NULL,NULL,'Special armor for small and medium animals.','CORE','https://2e.aonprd.com/Rules.aspx?ID=255'),
+('BARDING, LIGHT (LARGE)', 'Barding, Light (Large)',NULL,'20','4','1','5','1','5','16','4',NULL,NULL,NULL,'Special armor for large animals.','CORE','https://2e.aonprd.com/Rules.aspx?ID=255'),
+('BARDING, HEAVY', 'Barding, Heavy',NULL,'25','4','3','3','3','10','20','4',NULL,NULL,NULL,'Special armor for small and medium animals.','CORE','https://2e.aonprd.com/Rules.aspx?ID=255'),
+('BARDING, HEAVY (LARGE)', 'Barding, Heavy (Large)',NULL,'50','4','3','3','3','10','20','8',NULL,NULL,NULL,'Special armor for large animals.','CORE','https://2e.aonprd.com/Rules.aspx?ID=255');
 
 
 CREATE TABLE IF NOT EXISTS "condition" (
-    "id" VARCHAR,
+    "id" VARCHAR, /* Uppercase */
     "name" VARCHAR,
 	"value" VARCHAR,
 	"description" VARCHAR,
