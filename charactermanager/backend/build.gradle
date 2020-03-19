@@ -22,6 +22,7 @@ jar {
 }
 
 dependencies {
+    compile LIBRARY_HIBERNATE
     compile LIBRARY_FINDBUGS // @Nullable & similar
     compile LIBRARY_COMMONS_LANG3 // We use time.DurationFormatUtils
     compile LIBRARY_COMMONS_IO // We use IOUtils
@@ -35,7 +36,7 @@ dependencies {
 
     // Lombok to reduce boilerplate
     compileOnly LIBRARY_LOMBOK
-    annotationProcessor LIBRARY_LOMBOK
+    compile LIBRARY_IMMUTABLES
 
     // MapStruct for dto to domain mapping
     implementation LIBRARY_MAPSTRUCT
