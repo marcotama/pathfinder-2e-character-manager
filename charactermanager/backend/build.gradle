@@ -22,6 +22,10 @@ jar {
 }
 
 dependencies {
+    compile LIBRARY_SPRING
+    compile LIBRARY_DATA_JPA
+    compile LIBRARY_WEB
+    compile LIBRARY_H2
     compile LIBRARY_HIBERNATE
     compile LIBRARY_FINDBUGS // @Nullable & similar
     compile LIBRARY_COMMONS_LANG3 // We use time.DurationFormatUtils
@@ -48,4 +52,5 @@ dependencies {
     annotationProcessor LIBRARY_PICOCLI_CODEGEN
     testCompile LIBRARY_JUNIT
     testCompile LIBRARY_JUNIT_JUPITER_API
+    implementation LIBRARY_KOTLIN
 }
