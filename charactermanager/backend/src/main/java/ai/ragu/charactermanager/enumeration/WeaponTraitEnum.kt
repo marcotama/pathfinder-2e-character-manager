@@ -1,0 +1,3 @@
+package ai.ragu.charactermanager.enumeration
+
+interface WeaponTraitEnum
