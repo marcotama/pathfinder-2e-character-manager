@@ -9,6 +9,7 @@ import javax.persistence.Table
 @Entity
 @Table(name = "alchemist_research_field")
 class AlchemistResearchField : AbstractJpaPersistable<Long>() {
+
     @Id
     @Column
     lateinit var id: String

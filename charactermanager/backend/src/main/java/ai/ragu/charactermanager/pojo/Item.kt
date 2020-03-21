@@ -8,7 +8,7 @@ import javax.persistence.*
 class Item : AbstractJpaPersistable<Long>() {
 
     @Id
-    @Column(nullable = false)
+    @Column
     lateinit var id: String
 
     @Column

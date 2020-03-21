@@ -8,39 +8,39 @@ import javax.persistence.*
 class Ancestry : AbstractJpaPersistable<Long>() {
 
     @Id
-    @Column(nullable = false)
+    @Column
     lateinit var id: String
 
-    @Column(nullable = false)
+    @Column
     lateinit var name: String
 
-    @Column(nullable = false)
+    @Column
     lateinit var description: String
 
-    @Column(nullable = false)
+    @Column
     var baseHitPoints: Long = 0
 
-    @Column(nullable = false)
+    @Column
     var numFreeAbilityBoosts: Long = 0
 
-    @Column(nullable = false)
+    @Column
     var ancestryFeatLevels: Long = 0
 
-    @Column(nullable = false)
+    @Column
     var numFreeLanguages: Long = 0
 
-    @Column(nullable = false)
+    @Column
     var speed: Long = 0
 
-    @Column(nullable = false)
+    @Column
     lateinit var size: String
 
-    @Column(nullable = false)
+    @Column
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "src")
     lateinit var src: RulesSource
 
-    @Column(nullable = false)
+    @Column
     lateinit var url: String
 
     @ManyToMany(

@@ -8,13 +8,13 @@ import javax.persistence.*
 class Language : AbstractJpaPersistable<Long>() {
 
     @Id
-    @Column(nullable = false)
+    @Column
     lateinit var id: String
 
-    @Column(nullable = false)
+    @Column
     lateinit var name: String
 
-    @Column(nullable = false)
+    @Column
     lateinit var spokenBy: String
 
     @ManyToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)

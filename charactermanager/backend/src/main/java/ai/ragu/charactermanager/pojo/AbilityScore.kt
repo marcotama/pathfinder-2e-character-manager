@@ -11,12 +11,12 @@ import javax.persistence.Table
 class AbilityScore : AbstractJpaPersistable<Long>() {
 
     @Id
-    @Column(nullable = false)
+    @Column
     lateinit var id: String
 
-    @Column(nullable = false)
+    @Column
     lateinit var name: String
 
-    @Column(nullable = true)
+    @Column
     lateinit var description: String
 }
