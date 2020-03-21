@@ -32,10 +32,10 @@ class FeatEntity {
     @Column(name = "url", nullable = true, length = -1)
     lateinit var url: String
 
-    override fun equals(o: Any?): Boolean {
-        if (this === o) return true
-        if (o == null || javaClass != o.javaClass) return false
-        val that = o as FeatEntity
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || javaClass != other.javaClass) return false
+        val that = other as FeatEntity
         return id == that.id &&
                 category == that.category &&
                 name == that.name &&
