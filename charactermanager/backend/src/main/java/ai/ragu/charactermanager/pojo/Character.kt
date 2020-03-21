@@ -1,4 +1,4 @@
-package ai.ragu.charactermanager.dto
+package ai.ragu.charactermanager.pojo
 
 import ai.ragu.charactermanager.enumeration.*
 import com.fasterxml.jackson.annotation.JsonIdentityInfo
@@ -10,7 +10,7 @@ import lombok.ToString
 import java.util.*
 
 @JsonIdentityInfo(generator = PropertyGenerator::class, property = "id")
-class CharacterDto {
+class Character {
     @JsonPropertyDescription("A unique identifier for this character")
     @ToString.Include
     @EqualsAndHashCode.Include
@@ -23,7 +23,7 @@ class CharacterDto {
     var level: Long = 0
 
     @JsonPropertyDescription("The ancestry of this character")
-    lateinit var ancestry: AncestryDto
+    lateinit var ancestry: Ancestry
 
     @JsonPropertyDescription("The class of this character")
     lateinit var clazz: ClazzDto
@@ -32,10 +32,10 @@ class CharacterDto {
     lateinit var armor: ArmorDto
 
     @JsonPropertyDescription("The shields of this character")
-    var shields: List<ShieldDto> = ArrayList()
+    lateinit var shields: List<ShieldDto> = ArrayList()
 
     @JsonPropertyDescription("The weapons of this character")
-    var weapons: List<Weapon> = ArrayList()
+    lateinit var weapons: List<Weapon> = ArrayList()
 
     @JsonPropertyDescription("The ability scores of this character")
     var abilityScores = mapOf(

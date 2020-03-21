@@ -15,10 +15,11 @@ class AmountDto(subAmounts: Map<CurrencyEnum, Int>) {
     @JsonPropertyDescription("A unique representation for this amount")
     @ToString.Include
     @EqualsAndHashCode.Include
-    private val code: String
+    var code: String
+
     @JsonProperty("subAmounts")
     @JsonPropertyDescription("The amounts in each currency")
-    private val subAmounts: Map<CurrencyEnum, Int>
+    var subAmounts: Map<CurrencyEnum, Int>
 
     override fun toString(): String {
         return code.replace("\\+".toRegex(), " + ")
@@ -35,9 +36,9 @@ class AmountDto(subAmounts: Map<CurrencyEnum, Int>) {
 
         private fun calcNormalisedSubAmounts(valueInCP: Int): Map<CurrencyEnum, Int> {
             var v = valueInCP
-            val amounts: MutableMap<CurrencyEnum, Int> = HashMap()
+            var amounts: MutableMap<CurrencyEnum, Int> = HashMap()
             for (currency in CurrencyEnum.Companion.getSortedValues()) {
-                val units = v // curr.value
+                var units = v // curr.value
                 if (units > 0) {
                     amounts[currency] = units
                 }
@@ -48,8 +49,8 @@ class AmountDto(subAmounts: Map<CurrencyEnum, Int>) {
     }
 
     init {
-        val valueInCp = calcValueInCP(subAmounts)
-        val normalisedSubAmounts = calcNormalisedSubAmounts(valueInCp)
+        var valueInCp = calcValueInCP(subAmounts)
+        var normalisedSubAmounts = calcNormalisedSubAmounts(valueInCp)
         this.subAmounts = Collections.unmodifiableMap(normalisedSubAmounts)
         code = normalisedSubAmounts.entries.stream()
                 .map { entry: Map.Entry<CurrencyEnum, Int> -> String.format("%d %s", entry.value, entry.key) }

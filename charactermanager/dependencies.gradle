@@ -53,4 +53,5 @@ ext {
     LIBRARY_PICOCLI_CODEGEN = 'info.picocli:picocli-codegen:4.1.4'
     LIBRARY_HIBERNATE = 'org.hibernate:hibernate-gradle-plugin:5.4.12.Final'
     LIBRARY_IMMUTABLES = 'org.immutables:value:2.8.3'
+    LIBRARY_POSTGRES = 'postgresql:postgresql:9.1-901-1.jdbc4'
 }

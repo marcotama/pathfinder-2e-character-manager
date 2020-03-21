@@ -22,35 +22,45 @@ class RangedWeaponDto {
     @JsonPropertyDescription("A unique identifier for this weapon")
     @ToString.Include
     @EqualsAndHashCode.Include // @Nonnull
-    private val code: String? = null
+    var code: String? = null
+
     @JsonProperty("name")
     @JsonPropertyDescription("The name for this weapon") // @Nonnull
-    private val name: String? = null
+    var name: String? = null
+
     @JsonProperty("category")
     @JsonPropertyDescription("The category of this weapon") // @Nonnull
-    private val category: ItemCategoryEnum? = null
+    var category: ItemCategoryEnum? = null
+
     @JsonProperty("price")
     @JsonPropertyDescription("The price of this weapon") // @Nonnull
-    private val price: AmountDto? = null
+    var price: AmountDto? = null
+
     @JsonProperty("damage")
     @JsonPropertyDescription("The damage of this weapon") // @Nonnull
-    private val damage: Map<DieEnum, Pair<DamageTypeEnum, Int>>? = null
+    var damage: Map<DieEnum, Pair<DamageTypeEnum, Int>>? = null
+
     @JsonProperty("bulk")
     @JsonPropertyDescription("The bulk of this weapon") // @Nonnull
-    private val bulk = 0
+    var bulk = 0
+
     @JsonProperty("hands")
     @JsonPropertyDescription("The hands required to use this weapon") // @Nonnull
-    private val hands = 0
+    var hands = 0
+
     @JsonProperty("traits")
     @JsonPropertyDescription("The traits of this weapon") // @Nonnull
-    private val traits: List<WeaponTraitEnum>? = null
+    var traits: List<WeaponTraitEnum>? = null
+
     @JsonProperty("range")
     @JsonPropertyDescription("The range of this weapon") // @Nonnull
-    private val range = 0
+    var range = 0
+
     @JsonProperty("reload")
     @JsonPropertyDescription("The reload rate of this weapon (number of actions for reload)") // @Nonnull
-    private val reload = 0
+    var reload = 0
+
     @JsonProperty("type")
     @JsonPropertyDescription("The type of this weapon") // @Nonnull
-    private val type: RangedWeaponTypeEnum? = null
+    var type: RangedWeaponTypeEnum? = null
 }

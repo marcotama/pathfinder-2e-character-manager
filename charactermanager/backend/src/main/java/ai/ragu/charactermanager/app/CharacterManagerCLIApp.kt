@@ -25,17 +25,17 @@ import java.util.*
 
 @CommandLine.Command(name = "characterManager", subcommands = [Compile::class, DtoSchema::class, SheetSchema::class, Create::class])
 class CharacterManagerCLIApp {
-    private class InputFile {
+    internal class InputFile {
         @CommandLine.Option(names = ["-i", "--inputFile"], paramLabel = "INPUT_FILE", description = ["The input file"], required = true)
         val path: Path? = null
     }
 
-    private class OutputDir {
+    internal class OutputDir {
         @CommandLine.Option(names = ["-o", "--output"], paramLabel = "OUTPUT_DIR", description = ["The output directory"], required = true)
         val path: Path? = null
     }
 
-    private class Help {
+    internal class Help {
         @CommandLine.Option(names = ["-h", "--help"], usageHelp = true, description = ["Show this help message and exit."])
         private val helpRequested = false
     }
@@ -44,6 +44,7 @@ class CharacterManagerCLIApp {
     internal class DtoSchema {
         @Mixin
         var outputDir: OutputDir? = null
+
         @Mixin
         var help: Help? = null
     }
@@ -52,6 +53,7 @@ class CharacterManagerCLIApp {
     internal class SheetSchema {
         @Mixin
         var outputDir: OutputDir? = null
+
         @Mixin
         var help: Help? = null
     }
@@ -60,8 +62,10 @@ class CharacterManagerCLIApp {
     internal class Compile {
         @Mixin
         var inputFile: InputFile? = null
+
         @Mixin
         var outputDir: OutputDir? = null
+
         @Mixin
         var help: Help? = null
     }
@@ -70,8 +74,10 @@ class CharacterManagerCLIApp {
     internal class Create {
         @Mixin
         var outputDir: OutputDir? = null
+
         @CommandLine.Option(names = ["--characterName"], paramLabel = "CHARACTER_NAME", description = ["The name of the new character"], required = true)
         val characterName: String? = null
+
         @Mixin
         var help: Help? = null
     }
@@ -84,6 +90,7 @@ class CharacterManagerCLIApp {
         private val app = CharacterManagerCLIApp()
         const val DEFAULT_TIME_LIMIT_MINUTES = 10
         private const val DATE_TIME_PATTERN = "yyyy-MM-dd-HH-mm-ss"
+
         /**
          * The entry point. The method parses command line arguments and executes the appropriate actions.
          *
@@ -118,28 +125,33 @@ class CharacterManagerCLIApp {
                 }
             }
             val subCommand = parseResult.subcommand()
-            if (subCommand.commandSpec().userObject().javaClass == Compile::class.java) {
-                val compile = subCommand.commandSpec().userObject() as Compile
-                createOutputDirectory(compile.outputDir!!.path)
-                val inputFilePath = compile.inputFile!!.path
-                val noExtName = FilenameUtils.removeExtension(compile.inputFile!!.path!!.toFile().name)
-                val outputFilePath = Path.of(compile.outputDir!!.path.toString(), "$noExtName.sheet.json")
-                compileCharacter(inputFilePath, outputFilePath)
-            } else if (subCommand.commandSpec().userObject().javaClass == DtoSchema::class.java) {
-                val dtoSchema = subCommand.commandSpec().userObject() as DtoSchema
-                createOutputDirectory(dtoSchema.outputDir!!.path)
-                val outputFilePath = Path.of(dtoSchema.outputDir!!.path.toString(), "dto-schema.json")
-                generateSchema(CharacterSheet::class.java, outputFilePath)
-            } else if (subCommand.commandSpec().userObject().javaClass == SheetSchema::class.java) {
-                val sheetSchema = subCommand.commandSpec().userObject() as SheetSchema
-                createOutputDirectory(sheetSchema.outputDir!!.path)
-                val outputFilePath = Path.of(sheetSchema.outputDir!!.path.toString(), "sheet-schema.json")
-                generateSchema(CharacterSheet::class.java, outputFilePath)
-            } else if (subCommand.commandSpec().userObject().javaClass == Create::class.java) {
-                val create = subCommand.commandSpec().userObject() as Create
-                createOutputDirectory(create.outputDir!!.path)
-                val outputFilePath = Path.of(create.outputDir!!.path.toString(), String.format("%s.json", create.characterName))
-                createNewCharacter(create.characterName, outputFilePath)
+            when (subCommand.commandSpec().userObject().javaClass) {
+                Compile::class.java -> {
+                    val compile = subCommand.commandSpec().userObject() as Compile
+                    createOutputDirectory(compile.outputDir!!.path!!)
+                    val inputFilePath = compile.inputFile!!.path
+                    val noExtName = FilenameUtils.removeExtension(compile.inputFile!!.path!!.toFile().name)
+                    val outputFilePath = Path.of(compile.outputDir!!.path.toString(), "$noExtName.sheet.json")
+                    compileCharacter(inputFilePath, outputFilePath)
+                }
+                DtoSchema::class.java -> {
+                    val dtoSchema = subCommand.commandSpec().userObject() as DtoSchema
+                    createOutputDirectory(dtoSchema.outputDir!!.path!!)
+                    val outputFilePath = Path.of(dtoSchema.outputDir!!.path.toString(), "dto-schema.json")
+                    generateSchema(CharacterSheet::class.java, outputFilePath)
+                }
+                SheetSchema::class.java -> {
+                    val sheetSchema = subCommand.commandSpec().userObject() as SheetSchema
+                    createOutputDirectory(sheetSchema.outputDir!!.path!!)
+                    val outputFilePath = Path.of(sheetSchema.outputDir!!.path.toString(), "sheet-schema.json")
+                    generateSchema(CharacterSheet::class.java, outputFilePath)
+                }
+                Create::class.java -> {
+                    val create = subCommand.commandSpec().userObject() as Create
+                    createOutputDirectory(create.outputDir!!.path!!)
+                    val outputFilePath = Path.of(create.outputDir!!.path.toString(), String.format("%s.json", create.characterName))
+                    createNewCharacter(create.characterName, outputFilePath)
+                }
             }
         }
 
@@ -223,7 +235,7 @@ class CharacterManagerCLIApp {
             }
         }
 
-        private fun createOutputDirectory(targetPath: Path?) {
+        private fun createOutputDirectory(targetPath: Path) {
             if (!Files.exists(targetPath)) {
                 try {
                     Files.createDirectories(targetPath)

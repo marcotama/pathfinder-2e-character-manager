@@ -13,10 +13,11 @@ import lombok.NoArgsConstructor
 class ProficiencyBasedRollDto(@Nonnull refAbilityScore: AbilityScoreEnum?) {
     @JsonProperty("proficiency")
     @JsonPropertyDescription("The proficiency of this roll") // @Nonnull
-    private var proficiency = ProficiencyDto()
+    var proficiency = ProficiencyDto()
+
     @JsonProperty("refAbilityScore")
     @JsonPropertyDescription("The ability score used in this roll - if null, the reference ability score of the character is used")
-    private val refAbilityScore: AbilityScoreEnum? = null
+    var refAbilityScore: AbilityScoreEnum? = null
 
     fun calcItemModifier(): Int {
         return 0 // TODO
@@ -26,14 +27,14 @@ class ProficiencyBasedRollDto(@Nonnull refAbilityScore: AbilityScoreEnum?) {
         return if (refAbilityScore != null) {
             refAbilityScore
         } else {
-            val clazzDto = character.clazz
+            var clazzDto = character.clazz
             clazzDto?.getKeyAbilityScore()
         }
     }
 
     fun calcAttributeModifier(character: CharacterDto): Int {
-        val refAbilityScore = calcRefAbilityScore(character)
-        val abilityScoreDto = character.getAbilityScores()[refAbilityScore]
+        var refAbilityScore = calcRefAbilityScore(character)
+        var abilityScoreDto = character.getAbilityScores()[refAbilityScore]
         return abilityScoreDto?.calcModifier() ?: 0
     }
 

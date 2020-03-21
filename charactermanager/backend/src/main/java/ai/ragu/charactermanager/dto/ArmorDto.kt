@@ -23,38 +23,49 @@ class ArmorDto : Equipment {
     @JsonPropertyDescription("A unique identifier for this armor")
     @ToString.Include
     @EqualsAndHashCode.Include
-    private val code: String? = null
+    var code: String? = null
+
     @JsonProperty("name")
     @JsonPropertyDescription("The name for this armor")
-    private val name: String? = null
+    var name: String? = null
+
     @JsonProperty("category")
     @JsonPropertyDescription("The category of this armor")
-    private val category: ItemCategoryEnum? = null
+    var category: ItemCategoryEnum? = null
+
     @JsonProperty("price")
     @JsonPropertyDescription("The price of this armor")
-    private val price: AmountDto? = null
+    var price: AmountDto? = null
+
     @JsonProperty("acBonus")
     @JsonPropertyDescription("The AC bonus of this armor")
-    private val acBonus = 0
+    var acBonus = 0
+
     @JsonProperty("dexCap")
     @JsonPropertyDescription("The DEX cap of this armor")
-    private val dexCap = 0
+    var dexCap = 0
+
     @JsonProperty("checkPenalty")
     @JsonPropertyDescription("The check penalty of this armor")
-    private val checkPenalty = 0
+    var checkPenalty = 0
+
     @JsonProperty("speedPenalty")
     @JsonPropertyDescription("The speed penalty of this armor")
-    private val speedPenalty = 0
+    var speedPenalty = 0
+
     @JsonProperty("strength")
     @JsonPropertyDescription("The STR requirement of this armor")
-    private val strength = 0
+    var strength = 0
+
     @JsonProperty("bulk")
     @JsonPropertyDescription("The bulk of this armor")
-    private val bulk = 0
+    var bulk = 0
+
     @JsonProperty("type")
     @JsonPropertyDescription("The type of this armor")
-    private val type: ArmorTypeEnum? = null
+    var type: ArmorTypeEnum? = null
+
     @JsonProperty("traits")
     @JsonPropertyDescription("The traits of this armor")
-    private val traits: List<ArmorTraitEnum>? = null
+    var traits: List<ArmorTraitEnum>? = null
 }

@@ -22,32 +22,41 @@ class ShieldDto : Equipment {
     @JsonPropertyDescription("A unique identifier for this shield")
     @ToString.Include
     @EqualsAndHashCode.Include // @Nonnull
-    private val code: String? = null
+    var code: String? = null
+
     @JsonProperty("name")
     @JsonPropertyDescription("The name for this shield") // @Nonnull
-    private val name: String? = null
+    var name: String? = null
+
     @JsonProperty("category")
     @JsonPropertyDescription("The category of this shield") // @Nonnull
-    private val category: ItemCategoryEnum? = null
+    var category: ItemCategoryEnum? = null
+
     @JsonProperty("price")
     @JsonPropertyDescription("The price of this shield") // @Nonnull
-    private val price: AmountDto? = null
+    var price: AmountDto? = null
+
     @JsonProperty("acBonus")
     @JsonPropertyDescription("The AC bonus of this shield") // @Nonnull
-    private val acBonus: Int? = null
+    var acBonus: Int? = null
+
     @JsonProperty("speedPenalty")
     @JsonPropertyDescription("The speed penalty of this shield") // @Nonnull
-    private val speedPenalty: Int? = null
+    var speedPenalty: Int? = null
+
     @JsonProperty("bulk")
     @JsonPropertyDescription("The bulk of this shield") // @Nonnull
-    private val bulk: ItemBulkEnum? = null
+    var bulk: ItemBulkEnum? = null
+
     @JsonProperty("hardness")
     @JsonPropertyDescription("The hardness of this shield") // @Nonnull
-    private val hardness: Int? = null
+    var hardness: Int? = null
+
     @JsonProperty("hitPoints")
     @JsonPropertyDescription("The hit points of this shield") // @Nonnull
-    private val hitPoints: Int? = null
+    var hitPoints: Int? = null
+
     @JsonProperty("brokenThreshold")
     @JsonPropertyDescription("The broken threshold of this shield") // @Nonnull
-    private val brokenThreshold: Int? = null
+    var brokenThreshold: Int? = null
 }

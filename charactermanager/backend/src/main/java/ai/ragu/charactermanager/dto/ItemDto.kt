@@ -23,38 +23,49 @@ class ItemDto : Equipment {
     @JsonPropertyDescription("A unique identifier for this item")
     @ToString.Include
     @EqualsAndHashCode.Include
-    private val code: String? = null
+    var code: String? = null
+
     @JsonProperty("name")
     @JsonPropertyDescription("The name for this item")
-    private val name: String? = null
+    var name: String? = null
+
     @JsonProperty("description")
     @JsonPropertyDescription("The description for this item")
-    private val description: String? = null
+    var description: String? = null
+
     @JsonProperty("traits")
     @JsonPropertyDescription("The traits associated to this item")
-    private val traits: List<String>? = null
+    var traits: List<String>? = null
+
     @JsonProperty("usage")
     @JsonPropertyDescription("The usage of this item")
-    private val usage: String? = null
+    var usage: String? = null
+
     @JsonProperty("numActions")
     @JsonPropertyDescription("The number of actions required to use this item")
-    private val numActions: String? = null
+    var numActions: String? = null
+
     @JsonProperty("types")
     @JsonPropertyDescription("The types of this item")
-    private val types: List<ItemTypeDto>? = null
+    var types: List<ItemTypeDto>? = null
+
     @JsonProperty("activation")
     @JsonPropertyDescription("The activation modes of this item")
-    private val activation: List<ActivationEnum>? = null
+    var activation: List<ActivationEnum>? = null
+
     @JsonProperty("bulk")
     @JsonPropertyDescription("The bulk of this item")
-    private val bulk: ItemBulkEnum? = null
+    var bulk: ItemBulkEnum? = null
+
     @JsonProperty("price")
     @JsonPropertyDescription("The price of this item")
-    private val price: Map<CurrencyEnum, Int>? = null
+    var price: Map<CurrencyEnum, Int>? = null
+
     @JsonProperty("level")
     @JsonPropertyDescription("The level for this item")
-    private val level = 0
+    var level = 0
+
     @JsonProperty("craftRequirements")
     @JsonPropertyDescription("The craft requirements of this item type")
-    private val craftRequirements: String? = null
+    var craftRequirements: String? = null
 }

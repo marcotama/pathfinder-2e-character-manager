@@ -5,7 +5,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "class")
-class Class : AbstractJpaPersistable<Long>() {
+class Clazz : AbstractJpaPersistable<Long>() {
 
     @Id
     @Column

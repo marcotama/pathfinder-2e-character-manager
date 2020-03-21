@@ -17,7 +17,7 @@ class ProficiencyDto {
         return if (modifiers.isEmpty()) {
             ProficiencyLevelEnum.UNTRAINED
         } else {
-            val maxPriority = modifiers.stream()
+            var maxPriority = modifiers.stream()
                     .mapToInt { obj: ProficiencyModifierDto -> obj.getPriority() }
                     .max()
                     .orElseThrow()

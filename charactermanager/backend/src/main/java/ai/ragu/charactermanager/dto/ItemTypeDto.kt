@@ -21,17 +21,21 @@ class ItemTypeDto : Equipment {
     @JsonPropertyDescription("A unique identifier for this item type")
     @ToString.Include
     @EqualsAndHashCode.Include
-    private val code: String? = null
+    var code: String? = null
+
     @JsonProperty("type")
     @JsonPropertyDescription("The name of this item type")
-    private val type: String? = null
+    var type: String? = null
+
     @JsonProperty("description")
     @JsonPropertyDescription("The description of this item type")
-    private val description: String? = null
+    var description: String? = null
+
     @JsonProperty("level")
     @JsonPropertyDescription("The level for this item type")
-    private val level = 0
+    var level = 0
+
     @JsonProperty("price")
     @JsonPropertyDescription("The price of this item type")
-    private val price: Map<CurrencyEnum, Int>? = null
+    var price: Map<CurrencyEnum, Int>? = null
 }
