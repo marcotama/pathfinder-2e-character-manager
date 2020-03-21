@@ -1,0 +1,11 @@
+```bash
+brew install postgresql
+brew services start postgresql
+psql postgres
+CREATE ROLE <your-name>;
+ALTER USER <your-name> PASSWORD '<your-password>';
+ALTER ROLE marco WITH LOGIN;
+CREATE DATABASE <your-database>
+\q
+psql -U <your-name> -d '<your-database>' -a -f backend/populate.sql
+```
