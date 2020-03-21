@@ -2,40 +2,28 @@ package ai.ragu.charactermanager.sheet
 
 import ai.ragu.charactermanager.enumeration.AbilityScoreEnum
 import ai.ragu.charactermanager.enumeration.ProficiencyLevelEnum
-import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyDescription
-import lombok.AllArgsConstructor
-import lombok.Data
 
-@Data
-@AllArgsConstructor
 class ProficiencyBasedRollSheetEntry {
-    @JsonProperty("refAbilityScore")
+
     @JsonPropertyDescription("The ability score that influences this entry")
-    var refAbilityScore: // @Nonnull
-            AbilityScoreEnum? = null
-    @JsonProperty("refAbilityScoreModifier")
+    lateinit var refAbilityScore: AbilityScoreEnum
+
     @JsonPropertyDescription("The modifier given by the ability score")
-    var refAbilityScoreModifier: // @Nonnull
-            Int? = null
-    @JsonProperty("proficiencyLevel")
+    var refAbilityScoreModifier: Int = 0
+
     @JsonPropertyDescription("The proficiency level for this entry")
-    var proficiencyLevel: // @Nonnull
-            ProficiencyLevelEnum? = null
-    @JsonProperty("proficiencyModifier")
+    lateinit var proficiencyLevel: ProficiencyLevelEnum
+
     @JsonPropertyDescription("The modifier given by the proficiency level")
-    var proficiencyModifier: // @Nonnull
-            Int? = null
-    @JsonProperty("itemModifier")
+    var proficiencyModifier: Int = 0
+
     @JsonPropertyDescription("The modifier given by items (null except for skills)")
-    var itemModifier: // @Nonnull
-            Int? = null
-    @JsonProperty("armorModifier")
+    var itemModifier: Int = 0
+
     @JsonPropertyDescription("The modifier given by armor (null except for some skills)")
-    var armorModifier: // @Nonnull
-            Int? = null
-    @JsonProperty("totalModifier")
+    var armorModifier: Int = 0
+
     @JsonPropertyDescription("The total modifier")
-    var score: // @Nonnull
-            Int? = null
+    var score: Int = 0
 }

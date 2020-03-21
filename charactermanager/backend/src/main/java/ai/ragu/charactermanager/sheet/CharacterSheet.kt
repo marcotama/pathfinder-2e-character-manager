@@ -1,50 +1,40 @@
 package ai.ragu.charactermanager.sheet
 
 import ai.ragu.charactermanager.enumeration.*
-import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyDescription
-import lombok.AllArgsConstructor
-import lombok.Data
 
-@Data
-@AllArgsConstructor
 class CharacterSheet {
-    @JsonProperty("code")
+
     @JsonPropertyDescription("A unique identifier for this character")
-    var code: // @Nonnull
-            String? = null
-    @JsonProperty("name")
+    lateinit var code: String
+
     @JsonPropertyDescription("The name of this character")
-    @Nonnull
-    var name: String? = null
-    @JsonProperty("abilityScores")
+    lateinit var name: String
+
     @JsonPropertyDescription("The ability scores of this character")
-    var abilityScores: // @Nonnull
-            Map<AbilityScoreEnum, AbilityScoreSheetEntry>? = null
-    @JsonProperty("skills")
+    lateinit var abilityScores: Map<AbilityScoreEnum, AbilityScoreSheetEntry>
+
     @JsonPropertyDescription("The skills of this character")
-    var skills: // @Nonnull
-            Map<SkillEnum, ProficiencyBasedRollSheetEntry>? = null
-    @JsonProperty("savingThrows")
+    lateinit var skills: Map<SkillEnum, ProficiencyBasedRollSheetEntry>
+
     @JsonPropertyDescription("The saving throws of this character")
-    var savingThrows: // @Nonnull
-            Map<SavingThrowEnum, ProficiencyBasedRollSheetEntry>? = null
-    @JsonProperty("perception")
+    lateinit var savingThrows: Map<SavingThrowEnum, ProficiencyBasedRollSheetEntry>
+
     @JsonPropertyDescription("The perception of this character")
-    var perception: ProficiencyBasedRollSheetEntry? = null
-    @JsonProperty("classDC")
+    lateinit var perception: ProficiencyBasedRollSheetEntry
+
     @JsonPropertyDescription("The class DC of this character")
-    var classDC: ProficiencyBasedRollSheetEntry? = null
-    @JsonProperty("spellAttackRoll")
+    lateinit var classDC: ProficiencyBasedRollSheetEntry
+
     @JsonPropertyDescription("The spell attack roll of this character")
-    var spellAttackRoll: ProficiencyBasedRollSheetEntry? = null
-    @JsonProperty("spellDC")
+    lateinit var spellAttackRoll: ProficiencyBasedRollSheetEntry
+
     @JsonPropertyDescription("The spell DC of this character")
-    var spellDC: ProficiencyBasedRollSheetEntry? = null
-    @JsonProperty("attackProficiencies")
+    lateinit var spellDC: ProficiencyBasedRollSheetEntry
+
     @JsonPropertyDescription("The attack proficiencies of this character")
-    var attackProficiencies: Map<AttackProficiencyEnum, ProficiencyLevelEnum>? = null
-    @JsonProperty("defenseProficiencies")
+    lateinit var attackProficiencies: Map<AttackProficiencyEnum, ProficiencyLevelEnum>
+
     @JsonPropertyDescription("The defense proficiencies of this character")
-    var defenseProficiencies: Map<DefenseProficiencyEnum, ProficiencyLevelEnum>? = null
+    lateinit var defenseProficiencies: Map<DefenseProficiencyEnum, ProficiencyLevelEnum>
 }
