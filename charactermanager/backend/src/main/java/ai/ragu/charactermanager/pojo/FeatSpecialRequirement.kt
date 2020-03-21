@@ -1,9 +1,19 @@
 package ai.ragu.charactermanager.pojo
 
-class FeatSpecialRequirement {
-    private val id: Long = 0
-    private val featId: String? = null
-    private val featCategory: String? = null
-    private val requiredSpecialId: String? = null
-    private val requiredSpecialCategory: String? = null
+import AbstractJpaPersistable
+import javax.persistence.*
+
+@Entity
+@Table(name = "feat_special_requirement")
+class FeatSpecialRequirement : AbstractJpaPersistable<Long>() {
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "feat_id")
+    lateinit var feat: Feat
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "special_id")
+    lateinit var special: Special
 }

@@ -35,7 +35,9 @@ class Ancestry : AbstractJpaPersistable<Long>() {
     lateinit var size: String
 
     @Column(nullable = false)
-    lateinit var src: String
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "src")
+    lateinit var src: RulesSource
 
     @Column(nullable = false)
     lateinit var url: String

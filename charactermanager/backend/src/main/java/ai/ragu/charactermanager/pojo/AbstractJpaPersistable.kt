@@ -9,7 +9,6 @@ abstract class AbstractJpaPersistable<T : Serializable> {
 
     companion object {
 
-        @Column
         private val serialVersionUID = -5554308939380869754L
     }
 

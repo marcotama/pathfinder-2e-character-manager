@@ -1,6 +1,14 @@
 package ai.ragu.charactermanager.pojo
 
-class FeatFamiliarRequirement {
-    private val featId: String? = null
-    private val featCategory: String? = null
+import AbstractJpaPersistable
+import javax.persistence.*
+
+@Entity
+@Table(name = "feat_familiar_requirement")
+class FeatFamiliarRequirement : AbstractJpaPersistable<Long>() {
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "feat_id")
+    lateinit var feat: Feat
 }
