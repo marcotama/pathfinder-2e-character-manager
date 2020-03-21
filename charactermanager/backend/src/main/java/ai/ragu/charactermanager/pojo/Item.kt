@@ -1,22 +1,65 @@
 package ai.ragu.charactermanager.pojo
 
-class Item {
-    private val id: String? = null
-    private val category: String? = null
-    private val name: String? = null
-    private val level: Long = 0
-    private val actions: Long = 0
-    private val price: String? = null
-    private val hands: String? = null
-    private val bulk: String? = null
-    private val contains: String? = null
-    private val usage: String? = null
-    private val amount: String? = null
-    private val action0: String? = null
-    private val action0Desc: String? = null
-    private val action1: String? = null
-    private val action1Desc: String? = null
-    private val description: String? = null
-    private val src: String? = null
-    private val url: String? = null
+import AbstractJpaPersistable
+import javax.persistence.*
+
+@Entity
+@Table(name = "item")
+class Item : AbstractJpaPersistable<Long>() {
+    @Id
+    @Column(nullable = false)
+    lateinit var id: String
+
+    @Column
+    lateinit var category: String
+
+    @Column
+    lateinit var name: String
+
+    @Column
+    var level: Long = 0
+
+    @Column
+    var actions: Long = 0
+
+    @Column
+    lateinit var price: String
+
+    @Column
+    lateinit var hands: String
+
+    @Column
+    lateinit var bulk: String
+
+    @Column
+    lateinit var contains: String
+
+    @Column
+    lateinit var usage: String
+
+    @Column
+    lateinit var amount: String
+
+    @Column
+    lateinit var action0: String
+
+    @Column
+    lateinit var action0Desc: String
+
+    @Column
+    lateinit var action1: String
+
+    @Column
+    lateinit var action1Desc: String
+
+    @Column
+    lateinit var description: String
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "src")
+    lateinit var src: RulesSource
+
+    @Column
+    lateinit var url: String
 }

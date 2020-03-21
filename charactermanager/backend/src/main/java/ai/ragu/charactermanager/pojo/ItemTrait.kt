@@ -1,7 +1,14 @@
 package ai.ragu.charactermanager.pojo
 
-class ItemTrait {
-    private val itemId: String? = null
-    private val itemCategory: String? = null
-    private val trait: String? = null
+import AbstractJpaPersistable
+import javax.persistence.*
+
+@Entity
+@Table(name = "item_trait")
+class ItemTrait : AbstractJpaPersistable<Long>() {
+    
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "item_id")
+    lateinit var item: Item
 }
