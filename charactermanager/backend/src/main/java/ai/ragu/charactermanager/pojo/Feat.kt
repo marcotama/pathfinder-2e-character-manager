@@ -1,12 +1,35 @@
 package ai.ragu.charactermanager.pojo
 
-class Feat {
-    private val id: String? = null
-    private val category: String? = null
-    private val name: String? = null
-    private val level: Long = 0
-    private val actions: String? = null
-    private val description: String? = null
-    private val src: String? = null
-    private val url: String? = null
+import AbstractJpaPersistable
+import javax.persistence.*
+
+@Entity
+@Table(name = "feat")
+class Feat : AbstractJpaPersistable<Long>() {
+
+    @Column
+    lateinit var id: String
+
+    @Column
+    lateinit var category: String
+
+    @Column
+    lateinit var name: String
+
+    @Column
+    var level: Long = 0
+
+    @Column
+    lateinit var actions: String
+
+    @Column
+    lateinit var description: String
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "src")
+    lateinit var src: RulesSource
+
+    @Column
+    lateinit var url: String
 }

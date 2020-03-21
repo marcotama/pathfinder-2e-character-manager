@@ -1,16 +1,50 @@
 package ai.ragu.charactermanager.pojo
 
-class Background {
-    private val id: String? = null
-    private val name: String? = null
-    private val boostRef1: String? = null
-    private val boostRef2: String? = null
-    private val freeFeatId: String? = null
-    private val freeFeatCategory: String? = null
-    private val freeFeatDetail: String? = null
-    private val lore: String? = null
-    private val skill: String? = null
-    private val description: String? = null
-    private val src: String? = null
-    private val url: String? = null
+import AbstractJpaPersistable
+import javax.persistence.*
+
+@Entity
+@Table(name = "background")
+class Background : AbstractJpaPersistable<Long>() {
+
+    @Column
+    lateinit var id: String
+
+    @Column
+    lateinit var name: String
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "boost_ref_1")
+    lateinit var boostRef1: AbilityScore
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "boost_ref_2")
+    lateinit var boostRef2: AbilityScore
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "free_feat_id")
+    lateinit var freeFeatId: Feat
+
+    @Column
+    lateinit var freeFeatDetail: String
+
+    @Column
+    lateinit var lore: String
+
+    @Column
+    lateinit var skill: String
+
+    @Column
+    lateinit var description: String
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "src")
+    lateinit var src: RulesSource
+
+    @Column
+    lateinit var url: String
 }

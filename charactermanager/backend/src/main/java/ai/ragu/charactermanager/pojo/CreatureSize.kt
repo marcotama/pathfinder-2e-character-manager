@@ -1,9 +1,26 @@
 package ai.ragu.charactermanager.pojo
 
-class CreatureSize {
-    private val id: String? = null
-    private val name: String? = null
-    private val space: String? = null
-    private val reachTall: String? = null
-    private val reachLong: String? = null
+import AbstractJpaPersistable
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.Table
+
+@Entity
+@Table(name = "creature_size")
+class CreatureSize : AbstractJpaPersistable<Long>() {
+
+    @Column
+    lateinit var id: String
+
+    @Column
+    lateinit var name: String
+
+    @Column
+    lateinit var space: String
+
+    @Column
+    lateinit var reachTall: String
+
+    @Column
+    lateinit var reachLong: String
 }
