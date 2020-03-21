@@ -1,8 +1,22 @@
 package ai.ragu.charactermanager.pojo
 
-class Language {
-    private val id: String? = null
-    private val name: String? = null
-    private val spokenBy: String? = null
-    private val categoryId: String? = null
+import AbstractJpaPersistable
+import javax.persistence.*
+
+@Entity
+@Table(name = "language")
+class Language : AbstractJpaPersistable<Long>() {
+    @Id
+    @Column(nullable = false)
+    lateinit var id: String
+
+    @Column(nullable = false)
+    lateinit var name: String
+
+    @Column(nullable = false)
+    lateinit var spokenBy: String
+
+    @ManyToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id", nullable = false)
+    lateinit var category: LanguageCategory
 }

@@ -4,16 +4,18 @@ import AbstractJpaPersistable
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Id
+import javax.persistence.Table
 
 @Entity
-class AbilityScore(
-        @Id
-        @Column(nullable = false)
-        val id: String? = null,
+@Table(name = "ability_score")
+class AbilityScore : AbstractJpaPersistable<Long>() {
+    @Id
+    @Column(nullable = false)
+    lateinit var id: String
 
-        @Column(nullable = false)
-        val name: String? = null,
+    @Column(nullable = false)
+    lateinit var name: String
 
-        @Column(nullable = true)
-        val description: String? = null
-) : AbstractJpaPersistable<Long>()
+    @Column(nullable = true)
+    lateinit var description: String
+}

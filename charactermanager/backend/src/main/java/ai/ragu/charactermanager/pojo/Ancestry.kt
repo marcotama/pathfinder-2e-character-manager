@@ -1,43 +1,81 @@
 package ai.ragu.charactermanager.pojo
 
 import AbstractJpaPersistable
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
-class Ancestry(
-        @Id
-        @Column(nullable = false)
-        val id: String? = null,
+@Table(name = "ancestry")
+class Ancestry : AbstractJpaPersistable<Long>() {
+    @Id
+    @Column(nullable = false)
+    lateinit var id: String
 
-        @Column(nullable = false)
-        val name: String? = null,
+    @Column(nullable = false)
+    lateinit var name: String
 
-        @Column(nullable = false)
-        val baseHitPoints: Long = 0,
+    @Column(nullable = false)
+    lateinit var description: String
 
-        @Column(nullable = false)
-        val numFreeAbilityBoosts: Long = 0,
+    @Column(nullable = false)
+    var baseHitPoints: Long = 0
 
-        @Column(nullable = false)
-        val ancestryFeatLevels: Long = 0,
+    @Column(nullable = false)
+    var numFreeAbilityBoosts: Long = 0
 
-        @Column(nullable = false)
-        val description: String? = null,
+    @Column(nullable = false)
+    var ancestryFeatLevels: Long = 0
 
-        @Column(nullable = false)
-        val numFreeLanguages: Long = 0,
+    @Column(nullable = false)
+    var numFreeLanguages: Long = 0
 
-        @Column(nullable = false)
-        val size: String? = null,
+    @Column(nullable = false)
+    var speed: Long = 0
 
-        @Column(nullable = false)
-        val speed: Long = 0,
+    @Column(nullable = false)
+    lateinit var size: String
 
-        @Column(nullable = false)
-        val src: String? = null,
+    @Column(nullable = false)
+    lateinit var src: String
 
-        @Column(nullable = false)
-        val url: String? = null
-) : AbstractJpaPersistable<Long>()
+    @Column(nullable = false)
+    lateinit var url: String
+
+    @ManyToMany(
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "ancestry_ability_boosts",
+            joinColumns = [JoinColumn(name = "ancestry_id")],
+            inverseJoinColumns = [JoinColumn(name = "ability_score_id")]
+    )
+    lateinit var abilityBoosts: Set<AbilityScore>
+
+    @ManyToMany(
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "ancestry_ability_flaws",
+            joinColumns = [JoinColumn(name = "ancestry_id")],
+            inverseJoinColumns = [JoinColumn(name = "ability_score_id")]
+    )
+    lateinit var abilityFlaws: Set<AbilityScore>
+
+    @ManyToMany(
+            cascade = [CascadeType.ALL]
+    )
+    @JoinTable(
+            name = "ancestry_language",
+            joinColumns = [JoinColumn(name = "ancestry_id")],
+            inverseJoinColumns = [JoinColumn(name = "language_id")]
+    )
+    lateinit var languages: Set<Language>
+
+    @OneToMany(
+            mappedBy = "ancestryId",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var traits: Set<AncestryTrait>
+}

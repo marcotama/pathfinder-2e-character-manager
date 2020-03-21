@@ -1,5 +1,5 @@
-import java.io.Serializable
 import org.springframework.data.util.ProxyUtils
+import java.io.Serializable
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.MappedSuperclass
@@ -8,6 +8,8 @@ import javax.persistence.MappedSuperclass
 abstract class AbstractJpaPersistable<T : Serializable> {
 
     companion object {
+
+        @Column
         private val serialVersionUID = -5554308939380869754L
     }
 

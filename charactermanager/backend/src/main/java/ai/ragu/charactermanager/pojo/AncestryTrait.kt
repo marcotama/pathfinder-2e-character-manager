@@ -1,6 +1,15 @@
 package ai.ragu.charactermanager.pojo
 
-class AncestryTrait {
-    private val ancestryId: String? = null
-    private val traitId: String? = null
+import AbstractJpaPersistable
+import javax.persistence.*
+
+@Entity
+@Table(name = "ancestry_trait")
+class AncestryTrait : AbstractJpaPersistable<Long>() {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ancestry_id")
+    lateinit var ancestry: Ancestry
+
+    @Column
+    lateinit var trait: String
 }
