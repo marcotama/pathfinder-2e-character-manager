@@ -1,7 +1,20 @@
 package ai.ragu.charactermanager.pojo
 
-class RulesSource {
-    private val id: String? = null
-    private val name: String? = null
-    private val url: String? = null
+import AbstractJpaPersistable
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.Table
+
+@Entity
+@Table(name = "rules_source")
+class RulesSource : AbstractJpaPersistable<Long>() {
+
+    @Column
+    lateinit var id: String
+
+    @Column
+    lateinit var name: String
+
+    @Column
+    lateinit var url: String
 }
