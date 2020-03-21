@@ -7,6 +7,7 @@ import javax.persistence.*
 @Table(name = "skill")
 class Skill : AbstractJpaPersistable<Long>() {
 
+    @Id
     @Column
     lateinit var id: String
 

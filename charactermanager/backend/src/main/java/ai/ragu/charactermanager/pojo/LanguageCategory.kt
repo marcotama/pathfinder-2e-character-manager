@@ -9,6 +9,7 @@ import javax.persistence.Table
 @Entity
 @Table(name = "language_category")
 class LanguageCategory : AbstractJpaPersistable<Long>() {
+
     @Id
     @Column
     lateinit var id: String

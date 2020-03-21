@@ -7,6 +7,7 @@ import javax.persistence.*
 @Table(name = "background")
 class Background : AbstractJpaPersistable<Long>() {
 
+    @Id
     @Column
     lateinit var id: String
 
@@ -26,7 +27,7 @@ class Background : AbstractJpaPersistable<Long>() {
     @Column
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "free_feat_id")
-    lateinit var freeFeatId: Feat
+    lateinit var freeFeat: Feat
 
     @Column
     lateinit var freeFeatDetail: String

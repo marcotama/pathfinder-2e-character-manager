@@ -6,6 +6,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "ancestry")
 class Ancestry : AbstractJpaPersistable<Long>() {
+
     @Id
     @Column(nullable = false)
     lateinit var id: String

@@ -1,26 +1,110 @@
 package ai.ragu.charactermanager.pojo
 
-class SpellsBloodline {
-    private val id: String? = null
-    private val name: String? = null
-    private val spellListId: String? = null
-    private val skill1Id: String? = null
-    private val skill2Id: String? = null
-    private val grantedCantripId: String? = null
-    private val granted1StLevelSpellId: String? = null
-    private val granted2NdLevelSpellId: String? = null
-    private val granted3RdLevelSpellId: String? = null
-    private val granted4ThLevelSpellId: String? = null
-    private val granted5ThLevelSpellId: String? = null
-    private val granted6ThLevelSpellId: String? = null
-    private val granted7ThLevelSpellId: String? = null
-    private val granted8ThLevelSpellId: String? = null
-    private val granted9ThLevelSpellId: String? = null
-    private val initialSpellId: String? = null
-    private val advancedSpellId: String? = null
-    private val greaterSpellId: String? = null
-    private val bloodMagic: String? = null
-    private val description: String? = null
-    private val src: String? = null
-    private val url: String? = null
+import AbstractJpaPersistable
+import javax.persistence.*
+
+@Entity
+@Table(name = "spells_bloodline")
+class SpellsBloodline : AbstractJpaPersistable<Long>() {
+
+    @Id
+    @Column
+    lateinit var id: String
+
+    @Column
+    lateinit var name: String
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "spell_list_id")
+    lateinit var spellList: SpellList
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "skill1_id")
+    lateinit var skill1: Skill
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "skill2_id")
+    lateinit var skill2: Skill
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "granted_cantrip_id")
+    lateinit var grantedCantrip: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "granted_1st_level_spell_id")
+    lateinit var granted1StLevelSpell: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "granted_2nd_level_spell_id")
+    lateinit var granted2NdLevelSpell: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "granted_3rd_level_spell_id")
+    lateinit var granted3RdLevelSpell: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "granted_4th_level_spell_id")
+    lateinit var granted4ThLevelSpell: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "granted_5th_level_spell_id")
+    lateinit var granted5ThLevelSpell: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "granted_6th_level_spell_id")
+    lateinit var granted6ThLevelSpell: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "granted_7th_level_spell_id")
+    lateinit var granted7ThLevelSpell: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "granted_8th_level_spell_id")
+    lateinit var granted8ThLevelSpell: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "granted_9th_level_spell_id")
+    lateinit var granted9ThLevelSpell: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "initial_spell_id")
+    lateinit var initialSpell: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "advanced_spell_id")
+    lateinit var advancedSpell: Spell
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "greater_spell_id")
+    lateinit var greaterSpell: Spell
+
+    @Column
+    lateinit var bloodMagic: String
+
+    @Column
+    lateinit var description: String
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "src")
+    lateinit var src: RulesSource
+
+    @Column
+    lateinit var url: String
 }

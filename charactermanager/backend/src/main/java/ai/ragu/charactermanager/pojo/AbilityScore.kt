@@ -9,6 +9,7 @@ import javax.persistence.Table
 @Entity
 @Table(name = "ability_score")
 class AbilityScore : AbstractJpaPersistable<Long>() {
+
     @Id
     @Column(nullable = false)
     lateinit var id: String

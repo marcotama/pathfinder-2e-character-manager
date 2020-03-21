@@ -1,15 +1,56 @@
 package ai.ragu.charactermanager.pojo
 
-class Spell {
-    private val id: String? = null
-    private val name: String? = null
-    private val type: String? = null
-    private val level: Long = 0
-    private val traditions: String? = null
-    private val actions: String? = null
-    private val cast: String? = null
-    private val description: String? = null
-    private val shortDescription: String? = null
-    private val src: String? = null
-    private val url: String? = null
+import AbstractJpaPersistable
+import javax.persistence.*
+
+@Entity
+@Table(name = "spell")
+class Spell : AbstractJpaPersistable<Long>() {
+
+    @Id
+    @Column
+    lateinit var id: String
+
+    @Column
+    lateinit var name: String
+
+    @Column
+    lateinit var type: String
+
+    @Column
+    var level: Long = 0
+
+    @Column
+    lateinit var traditions: String
+
+    @Column
+    lateinit var actions: String
+
+    @Column
+    lateinit var cast: String
+
+    @Column
+    lateinit var description: String
+
+    @Column
+    lateinit var shortDescription: String
+
+    @Column
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "src")
+    lateinit var src: RulesSource
+
+    @Column
+    lateinit var url: String
+
+    @ManyToMany(
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "spell_list_item",
+            joinColumns = [JoinColumn(name = "spell_id")],
+            inverseJoinColumns = [JoinColumn(name = "spell_list_id")]
+    )
+    lateinit var spellLists: Set<SpellList>
 }
