@@ -9,7 +9,6 @@ import javax.persistence.*
 class AncestryTraitEntity {
 
     @Id
-    @Column(name = "ancestry_id", nullable = false, length = -1)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ancestry_id")
     lateinit var ancestry: AncestryEntity

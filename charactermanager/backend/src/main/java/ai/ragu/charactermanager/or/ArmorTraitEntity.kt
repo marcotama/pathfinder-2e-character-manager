@@ -1,15 +1,17 @@
 package ai.ragu.charactermanager.or
 
-import java.io.Serializable
 import java.util.*
 import javax.persistence.*
 
-class AncestryTraitEntityPK : Serializable {
+@Entity
+@Table(name = "armor_trait", schema = "public", catalog = "charactermanager")
+@IdClass(ArmorTraitEntityPK::class)
+class ArmorTraitEntity {
 
     @Id
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ancestry_id")
-    lateinit var ancestry: AncestryEntity
+    @JoinColumn(name = "armor_id")
+    lateinit var armor: ArmorEntity
 
     @Id
     @Column(name = "trait", nullable = false, length = -1)
@@ -18,12 +20,12 @@ class AncestryTraitEntityPK : Serializable {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || javaClass != other.javaClass) return false
-        val that = other as AncestryTraitEntityPK
-        return ancestry == that.ancestry &&
+        val that = other as ArmorTraitEntity
+        return armor == that.armor &&
                 trait == that.trait
     }
 
     override fun hashCode(): Int {
-        return Objects.hash(ancestry, trait)
+        return Objects.hash(armor, trait)
     }
 }

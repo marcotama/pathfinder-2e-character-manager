@@ -2,28 +2,32 @@ package ai.ragu.charactermanager.or
 
 import java.io.Serializable
 import java.util.*
-import javax.persistence.Column
+import javax.persistence.FetchType
 import javax.persistence.Id
+import javax.persistence.JoinColumn
+import javax.persistence.ManyToOne
 
 class AncestryAbilityBoostsEntityPK : Serializable {
 
     @Id
-    @Column(name = "ancestry_id", nullable = false, length = -1)
-    lateinit var ancestryId: String
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ancestry_id")
+    lateinit var ancestry: AncestryEntity
 
     @Id
-    @Column(name = "ability_score_id", nullable = false, length = -1)
-    lateinit var abilityScoreId: String
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ability_score_id")
+    lateinit var abilityScore: AbilityScoreEntity
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || javaClass != other.javaClass) return false
         val that = other as AncestryAbilityBoostsEntityPK
-        return ancestryId == that.ancestryId &&
-                abilityScoreId == that.abilityScoreId
+        return ancestry == that.ancestry &&
+                abilityScore == that.abilityScore
     }
 
     override fun hashCode(): Int {
-        return Objects.hash(ancestryId, abilityScoreId)
+        return Objects.hash(ancestry, abilityScore)
     }
 }

@@ -9,13 +9,11 @@ import javax.persistence.*
 class AncestryAbilityFlawsEntity {
 
     @Id
-    @Column(name = "ancestry_id", nullable = false, length = -1)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ancestry_id")
     lateinit var ancestry: AncestryEntity
 
     @Id
-    @Column(name = "ability_score_id", nullable = false, length = -1)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ability_score_id")
     lateinit var abilityScore: AbilityScoreEntity

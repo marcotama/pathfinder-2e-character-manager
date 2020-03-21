@@ -38,7 +38,6 @@ class AncestryEntity {
     @Column(name = "speed", nullable = false)
     var speed: Short = 0
 
-    @Column(name = "src", nullable = false, length = -1)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "src")
     lateinit var src: RulesSourceEntity

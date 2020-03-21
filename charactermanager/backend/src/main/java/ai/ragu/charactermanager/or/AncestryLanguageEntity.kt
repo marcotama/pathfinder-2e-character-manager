@@ -9,13 +9,11 @@ import javax.persistence.*
 class AncestryLanguageEntity {
 
     @Id
-    @Column(name = "ancestry_id", nullable = false, length = -1)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ancestry_id")
     lateinit var ancestry: AncestryEntity
 
     @Id
-    @Column(name = "language_id", nullable = false, length = -1)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "language_id")
     lateinit var language: LanguageEntity
