@@ -1,7 +1,5 @@
 package ai.ragu.charactermanager.or
 
-import ai.ragu.charactermanager.pojo.AbilityScore
-import ai.ragu.charactermanager.pojo.Language
 import java.util.*
 import javax.persistence.*
 
@@ -53,7 +51,7 @@ class AncestryEntity {
             joinColumns = [JoinColumn(name = "ancestry_id")],
             inverseJoinColumns = [JoinColumn(name = "ability_score_id")]
     )
-    lateinit var abilityBoosts: Set<AbilityScore>
+    lateinit var abilityBoosts: Set<AncestryAbilityBoostsEntity>
 
     @ManyToMany(
             cascade = [CascadeType.ALL],
@@ -64,7 +62,7 @@ class AncestryEntity {
             joinColumns = [JoinColumn(name = "ancestry_id")],
             inverseJoinColumns = [JoinColumn(name = "ability_score_id")]
     )
-    lateinit var abilityFlaws: Set<AbilityScore>
+    lateinit var abilityFlaws: Set<AncestryAbilityFlawsEntity>
 
     @ManyToMany(
             cascade = [CascadeType.ALL]
@@ -74,7 +72,7 @@ class AncestryEntity {
             joinColumns = [JoinColumn(name = "ancestry_id")],
             inverseJoinColumns = [JoinColumn(name = "language_id")]
     )
-    lateinit var languages: Set<Language>
+    lateinit var languages: Set<LanguageEntity>
 
     @OneToMany(
             mappedBy = "ancestry",
