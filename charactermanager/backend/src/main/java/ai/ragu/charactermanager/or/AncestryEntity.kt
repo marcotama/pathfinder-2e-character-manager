@@ -1,7 +1,6 @@
 package ai.ragu.charactermanager.or
 
 import ai.ragu.charactermanager.pojo.AbilityScore
-import ai.ragu.charactermanager.pojo.AncestryTrait
 import ai.ragu.charactermanager.pojo.Language
 import java.util.*
 import javax.persistence.*
@@ -78,11 +77,11 @@ class AncestryEntity {
     lateinit var languages: Set<Language>
 
     @OneToMany(
-            mappedBy = "ancestryId",
+            mappedBy = "ancestry",
             cascade = [CascadeType.ALL],
             fetch = FetchType.EAGER
     )
-    lateinit var traits: Set<AncestryTrait>
+    lateinit var traits: Set<AncestryTraitEntity>
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -98,13 +97,10 @@ class AncestryEntity {
                 description == that.description &&
                 size == that.size &&
                 src == that.src &&
-                abilityBoosts == that.abilityBoosts &&
-                abilityFlaws == that.abilityFlaws &&
-                languages == that.languages &&
-                traits == that.traits
+                url == that.url
     }
 
     override fun hashCode(): Int {
-        return Objects.hash(id, name, baseHitPoints, numFreeAbilityBoosts, ancestryFeatLevels, description, numFreeLanguages, size, speed, src, url, abilityBoosts, abilityFlaws, languages, traits)
+        return Objects.hash(id, name, baseHitPoints, numFreeAbilityBoosts, ancestryFeatLevels, description, numFreeLanguages, size, speed, src, url)
     }
 }

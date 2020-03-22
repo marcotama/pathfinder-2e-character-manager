@@ -60,6 +60,13 @@ class ShieldEntity {
     @Column(name = "url", nullable = true, length = -1)
     lateinit var url: String
 
+    @OneToMany(
+            mappedBy = "shield",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var traits: Set<ShieldTraitEntity>
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || javaClass != other.javaClass) return false

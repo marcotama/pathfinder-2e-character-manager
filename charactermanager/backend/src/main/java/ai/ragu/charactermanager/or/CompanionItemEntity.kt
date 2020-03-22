@@ -63,6 +63,20 @@ class CompanionItemEntity {
     @Column(name = "speed", nullable = true, length = -1)
     lateinit var speed: String
 
+    @OneToMany(
+            mappedBy = "companionItem",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var traits: Set<CompanionItemTraitEntity>
+
+    @OneToMany(
+            mappedBy = "companionItem",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var skillBonuses: Set<CompanionItemSkillBonusEntity>
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || javaClass != other.javaClass) return false

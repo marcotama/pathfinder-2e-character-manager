@@ -42,6 +42,24 @@ class SpellEntity {
     @Column(name = "url", nullable = true, length = -1)
     lateinit var url: String
 
+    @ManyToMany(
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "spell_list_item",
+            joinColumns = [JoinColumn(name = "spell_list_id")],
+            inverseJoinColumns = [JoinColumn(name = "spell_id")]
+    )
+    lateinit var spellLists: Set<SpellListEntity>
+
+    @OneToMany(
+            mappedBy = "spell",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var traits: Set<SpellTraitEntity>
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || javaClass != other.javaClass) return false

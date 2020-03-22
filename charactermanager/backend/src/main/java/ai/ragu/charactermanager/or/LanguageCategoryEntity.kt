@@ -1,10 +1,7 @@
 package ai.ragu.charactermanager.or
 
 import java.util.*
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "language_category", schema = "public", catalog = "charactermanager")
@@ -16,6 +13,13 @@ class LanguageCategoryEntity {
 
     @Column(name = "name", nullable = false, length = -1)
     lateinit var name: String
+
+    @OneToMany(
+            mappedBy = "category",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var traits: Set<LanguageEntity>
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

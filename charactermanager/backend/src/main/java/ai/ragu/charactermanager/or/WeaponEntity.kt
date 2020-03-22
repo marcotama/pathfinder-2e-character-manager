@@ -54,6 +54,13 @@ class WeaponEntity {
     @Column(name = "url", nullable = true, length = -1)
     lateinit var url: String
 
+    @OneToMany(
+            mappedBy = "weapon",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var traits: Set<WeaponTraitEntity>
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || javaClass != other.javaClass) return false

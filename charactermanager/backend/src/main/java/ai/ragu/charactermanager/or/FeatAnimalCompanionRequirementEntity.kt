@@ -11,7 +11,7 @@ import javax.persistence.Table
 class FeatAnimalCompanionRequirementEntity {
     @Column(name = "feat_id", nullable = false, length = -1)
     @Id
-    lateinit var featId: String
+    lateinit var feat: String
 
     @Column(name = "feat_category", nullable = true, length = -1)
     lateinit var featCategory: String
@@ -20,11 +20,11 @@ class FeatAnimalCompanionRequirementEntity {
         if (this === other) return true
         if (other == null || javaClass != other.javaClass) return false
         val that = other as FeatAnimalCompanionRequirementEntity
-        return featId == that.featId &&
+        return feat == that.feat &&
                 featCategory == that.featCategory
     }
 
     override fun hashCode(): Int {
-        return Objects.hash(featId, featCategory)
+        return Objects.hash(feat, featCategory)
     }
 }

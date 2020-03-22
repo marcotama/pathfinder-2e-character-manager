@@ -61,6 +61,13 @@ class WearableItemEntity {
     @Column(name = "url", nullable = true, length = -1)
     lateinit var url: String
 
+    @OneToMany(
+            mappedBy = "wearableItem",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var traits: Set<WearableItemTraitEntity>
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || javaClass != other.javaClass) return false

@@ -32,6 +32,62 @@ class FeatEntity {
     @Column(name = "url", nullable = true, length = -1)
     lateinit var url: String
 
+    @OneToMany(
+            mappedBy = "feat",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var abilityScoreRequirements: Set<FeatAbilityScoreRequirementEntity>
+
+    @OneToMany(
+            mappedBy = "feat",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var animalCompanionRequirements: Set<FeatAnimalCompanionRequirementEntity>
+
+    @OneToMany(
+            mappedBy = "feat",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var familiarRequirements: Set<FeatFamiliarRequirementEntity>
+
+    @OneToMany(
+            mappedBy = "feat",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var featRequirements: Set<FeatFeatRequirementEntity>
+
+    @OneToMany(
+            mappedBy = "feat",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var magicRequirements: Set<FeatMagicRequirementEntity>
+
+    @OneToMany(
+            mappedBy = "feat",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var skillRequirements: Set<FeatSkillRequirementEntity>
+
+    @OneToMany(
+            mappedBy = "feat",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var specialRequirements: Set<FeatSpecialRequirementEntity>
+
+    @OneToMany(
+            mappedBy = "feat",
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    lateinit var traits: Set<FeatTraitEntity>
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || javaClass != other.javaClass) return false

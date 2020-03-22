@@ -1,10 +1,7 @@
 package ai.ragu.charactermanager.or
 
 import java.util.*
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "spell_list", schema = "public", catalog = "charactermanager")
@@ -16,6 +13,17 @@ class SpellListEntity {
 
     @Column(name = "name", nullable = true, length = -1)
     lateinit var name: String
+
+    @ManyToMany(
+            cascade = [CascadeType.ALL],
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "spell_list_item",
+            joinColumns = [JoinColumn(name = "spell_list_id")],
+            inverseJoinColumns = [JoinColumn(name = "spell_id")]
+    )
+    lateinit var spells: Set<SpellEntity>
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
