@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS "character_feat" (
 );
 
 
+-- should we add level? for spontaneous spell casters
 CREATE TABLE IF NOT EXISTS "character_known_spell" (
     "character_id" INTEGER,
     "spell_id" VARCHAR,
@@ -90,6 +91,7 @@ CREATE TABLE IF NOT EXISTS "character_ability_boost" (
     "ability_score_id" VARCHAR,
     FOREIGN KEY ("character_id") REFERENCES "character"("id"),
     FOREIGN KEY ("ability_score_id") REFERENCES "ability_score"("id"),
+    UNIQUE ("character_id", "level"),
     PRIMARY KEY ("character_id", "level", "ability_score_id")
 );
 
@@ -100,6 +102,7 @@ CREATE TABLE IF NOT EXISTS "character_free_ability_boost" (
     "ability_score_id" VARCHAR,
     FOREIGN KEY ("character_id") REFERENCES "character"("id"),
     FOREIGN KEY ("ability_score_id") REFERENCES "ability_score"("id"),
+    UNIQUE ("character_id", "level"),
     PRIMARY KEY ("character_id", "level", "ability_score_id")
 );
 
@@ -110,12 +113,33 @@ CREATE TABLE IF NOT EXISTS "character_skill_increase" (
     "ability_score_id" VARCHAR,
     FOREIGN KEY ("character_id") REFERENCES "character"("id"),
     FOREIGN KEY ("ability_score_id") REFERENCES "ability_score"("id"),
+    UNIQUE ("character_id", "level"),
     PRIMARY KEY ("character_id", "level", "ability_score_id")
 );
 
 
+CREATE TABLE IF NOT EXISTS "character_signature_spell" (
+    "character_id" INTEGER,
+    "level" SMALLINT,
+    "spell_id" VARCHAR,
+    FOREIGN KEY ("character_id") REFERENCES "character"("id"),
+    FOREIGN KEY ("spell_id") REFERENCES "spell"("id"),
+    UNIQUE ("character_id", "level"),
+    PRIMARY KEY ("character_id", "level", "spell_id")
+);
 
 
+CREATE TABLE IF NOT EXISTS "character_spell_slot" (
+    "character_id" INTEGER,
+    "spell_level" SMALLINT,
+    "num_slots_available" SMALLINT,
+    FOREIGN KEY ("character_id") REFERENCES "character"("id"),
+    PRIMARY KEY ("character_id", "spell_level")
+);
+
+
+
+-- special selection -> special category -> special information
 HashMap<String, HashMap<String, String>> specialSelections = new HashMap<>();
 HashMap<String, List<String>> trainedOnlySkillChoices = new HashMap<>();
 
@@ -124,8 +148,7 @@ HashMap<String, HashMap<Integer, Integer>> bonusSpellSlots = new HashMap<>();
 HashMap<String, EquipmentContainer> equipmentContainers = new HashMap<>();
 HashMap<String, Integer> formulaBook = new HashMap<>();
 HashMap<String, PetData> petData = new HashMap<>();
-HashMap<String, HashMap<Integer, String>> signatureSpells = new HashMap<>();
-HashMap<String, HashMap<Integer, Integer>> spontaneousSpellsCast = new HashMap<>();
+
 List<String> listCustomLores = new List<>();
 List<String> listSpentSpellSlots = new List<>();
 
