@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS "spell_list";
 DROP TABLE IF EXISTS "spell_trait";
 DROP TABLE IF EXISTS "spell";
 DROP TABLE IF EXISTS "background";
-DROP TABLE IF EXISTS "class";
+DROP TABLE IF EXISTS "clazz";
 DROP TABLE IF EXISTS "item_trait";
 DROP TABLE IF EXISTS "item";
 DROP TABLE IF EXISTS "feat_special_requirement";
@@ -6528,7 +6528,7 @@ INSERT INTO "item_trait" ("item_id","trait") VALUES
 ('WEEPING_MIDNIGHT_ALCHEMICAL', 'Poison');
 
 
-CREATE TABLE IF NOT EXISTS "class" (
+CREATE TABLE IF NOT EXISTS "clazz" (
     "id" VARCHAR, /* Uppercase */
 	"name" VARCHAR,
 	"description" VARCHAR,
@@ -6537,7 +6537,7 @@ CREATE TABLE IF NOT EXISTS "class" (
     FOREIGN KEY ("src") REFERENCES "rules_source"("id"),
 	PRIMARY KEY ("id")
 );
-INSERT INTO "class" ("id", "name", "description", "src", "url") VALUES
+INSERT INTO "clazz" ("id", "name", "description", "src", "url") VALUES
 ('ALCHEMIST', 'Alchemist', '<p>There''s no sight more beautiful to you than a strange brew bubbling in a beaker, and you consume your ingenious elixirs with abandon. You''re fascinated by uncovering the secrets of science and the natural world, and you''re constantly experimenting in your lab or on the go with inventive concoctions for every eventuality. You are fearless in the face of risk, hurling explosive or toxic creations at your foes. Your unique path toward greatness is lined with alchemical brews that push your mind and body to their limits.</p>
 <p><b>Key Ability</b> Intelligence<br /><b>Hit Points</b> 8 plus Constitution Modifier</p>
 <p><b>Trained</b> Perception</p>
