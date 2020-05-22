@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.13.0.xsd">
+    <jdbc>
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:5432/charactermanager</url>
+        <user>marco</user>
+        <password></password>
+    </jdbc>
+
+    <generator>
+        <database>
+            <name>org.jooq.meta.postgres.PostgresDatabase</name>
+            <includes>.*</includes>
+            <excludes></excludes>
+
+            <!-- The schema that is used locally as a source for meta information.
+                 This could be your development schema or the production schema, etc
+                 This cannot be combined with the schemata element.
+
+                 If left empty, jOOQ will generate all available schemata. See the
+                 manual's next section to learn how to generate several schemata -->
+            <inputSchema>public</inputSchema>
+        </database>
+
+        <generate></generate>
+
+        <target>
+            <packageName>ai.ragu.charactermanager.jooq</packageName>
+            <directory>backend/src/main/java</directory>
+        </target>
+    </generator>
+</configuration>

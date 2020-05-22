@@ -1,0 +1,13 @@
+To generate, install SDK Man, then:
+
+To see what is available:
+sdk list java
+
+Install Java 8:
+sdk install 8.0.252.hs-adpt
+
+Use Java 8:
+sdk use 8.0.252.hs-adpt
+
+Then run:
+java -cp jooq-3.13.2.jar:jooq-codegen-3.13.2.jar:jooq-meta-3.13.2.jar:reactive-streams-1.0.3.jar:postgresql-42.2.12.jar org.jooq.codegen.GenerationTool jooc-codegen-setup.xml
