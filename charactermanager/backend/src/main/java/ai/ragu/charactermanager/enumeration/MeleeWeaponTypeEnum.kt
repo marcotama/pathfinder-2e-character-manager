@@ -5,10 +5,22 @@ import com.fasterxml.jackson.annotation.JsonValue
 import java.util.*
 
 enum class MeleeWeaponTypeEnum(private val value: String) : AttackProficiencyEnum {
-    SWORD("sword"), SPEAR("spear"), HAMMER("hammer"), POLEARM("polearm"), KNIFE("knife"), CLUB("club"), FLAIL("flail"), BRAWLING("brawling"), AXE("axe"), PICK("pick"), SHIELD("shield"), WHIP("whip");
+    SWORD("sword"),
+    SPEAR("spear"),
+    HAMMER("hammer"),
+    POLEARM("polearm"),
+    KNIFE("knife"),
+    CLUB("club"),
+    FLAIL("flail"),
+    BRAWLING("brawling"),
+    AXE("axe"),
+    PICK("pick"),
+    SHIELD("shield"),
+    WHIP("whip");
 
     companion object {
         private val CONSTANTS: MutableMap<String, MeleeWeaponTypeEnum> = HashMap()
+
         @JsonCreator
         fun fromValue(value: String?): MeleeWeaponTypeEnum {
             val constant = CONSTANTS[value]
@@ -17,7 +29,7 @@ enum class MeleeWeaponTypeEnum(private val value: String) : AttackProficiencyEnu
 
         init {
             for (c in values()) {
-                CONSTANTS[ai.ragu.charactermanager.enumeration.c.value] = ai.ragu.charactermanager.enumeration.c
+                CONSTANTS[c.value] = c
             }
         }
     }

@@ -23,7 +23,7 @@ enum class AbilityScoreEnum(private val value: String) : WeaponTraitEnum {
 
         init {
             for (c in values()) {
-                CONSTANTS[ai.ragu.charactermanager.enumeration.c.value] = ai.ragu.charactermanager.enumeration.c
+                CONSTANTS[c.value] = c
             }
         }
     }

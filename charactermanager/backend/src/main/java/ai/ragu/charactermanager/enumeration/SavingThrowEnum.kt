@@ -5,10 +5,13 @@ import com.fasterxml.jackson.annotation.JsonValue
 import java.util.*
 
 enum class SavingThrowEnum(private val value: String) {
-    FORTITUDE("fortitude"), REFLEX("reflex"), WILL("will");
+    FORTITUDE("fortitude"),
+    REFLEX("reflex"),
+    WILL("will");
 
     companion object {
         private val CONSTANTS: MutableMap<String, SavingThrowEnum> = HashMap()
+
         @JsonCreator
         fun fromValue(value: String?): SavingThrowEnum {
             val constant = CONSTANTS[value]
@@ -17,7 +20,7 @@ enum class SavingThrowEnum(private val value: String) {
 
         init {
             for (c in values()) {
-                CONSTANTS[ai.ragu.charactermanager.enumeration.c.value] = ai.ragu.charactermanager.enumeration.c
+                CONSTANTS[c.value] = c
             }
         }
     }

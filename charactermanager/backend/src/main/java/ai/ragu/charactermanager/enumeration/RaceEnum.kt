@@ -5,10 +5,16 @@ import com.fasterxml.jackson.annotation.JsonValue
 import java.util.*
 
 enum class RaceEnum(private val value: String) : WeaponTraitEnum {
-    DWARF("dwarf"), ELF("elf"), GNOME("gnome"), GOBLIN("goblin"), HALFLING("halfling"), HUMAN("human");
+    DWARF("dwarf"),
+    ELF("elf"),
+    GNOME("gnome"),
+    GOBLIN("goblin"),
+    HALFLING("halfling"),
+    HUMAN("human");
 
     companion object {
         private val CONSTANTS: MutableMap<String, RaceEnum> = HashMap()
+
         @JsonCreator
         fun fromValue(value: String?): RaceEnum {
             val constant = CONSTANTS[value]
@@ -17,7 +23,7 @@ enum class RaceEnum(private val value: String) : WeaponTraitEnum {
 
         init {
             for (c in values()) {
-                CONSTANTS[ai.ragu.charactermanager.enumeration.c.value] = ai.ragu.charactermanager.enumeration.c
+                CONSTANTS[c.value] = c
             }
         }
     }

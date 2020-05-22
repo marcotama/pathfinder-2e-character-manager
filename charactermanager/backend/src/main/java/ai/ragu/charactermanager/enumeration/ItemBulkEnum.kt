@@ -5,10 +5,14 @@ import com.fasterxml.jackson.annotation.JsonValue
 import java.util.*
 
 enum class ItemBulkEnum(private val value: String) : WeaponTraitEnum {
-    SMALL("S"), MEDIUM("M"), LARGE("L"), TWO("2");
+    SMALL("S"),
+    MEDIUM("M"),
+    LARGE("L"),
+    TWO("2");
 
     companion object {
         private val CONSTANTS: MutableMap<String, ItemBulkEnum> = HashMap()
+
         @JsonCreator
         fun fromValue(value: String?): ItemBulkEnum {
             val constant = CONSTANTS[value]
@@ -17,7 +21,7 @@ enum class ItemBulkEnum(private val value: String) : WeaponTraitEnum {
 
         init {
             for (c in values()) {
-                CONSTANTS[ai.ragu.charactermanager.enumeration.c.value] = ai.ragu.charactermanager.enumeration.c
+                CONSTANTS[c.value] = c
             }
         }
     }

@@ -5,10 +5,17 @@ import com.fasterxml.jackson.annotation.JsonValue
 import java.util.*
 
 enum class MagicalDamageTypeEnum(private val value: String) : DamageTypeEnum {
-    ACID("acid"), AIR("air"), COLD("cold"), EARTH("earth"), ELECTRICITY("electricity"), FIRE("fire"), WATER("water");
+    ACID("acid"),
+    AIR("air"),
+    COLD("cold"),
+    EARTH("earth"),
+    ELECTRICITY("electricity"),
+    FIRE("fire"),
+    WATER("water");
 
     companion object {
         private val CONSTANTS: MutableMap<String, MagicalDamageTypeEnum> = HashMap()
+
         @JsonCreator
         fun fromValue(value: String?): MagicalDamageTypeEnum {
             val constant = CONSTANTS[value]
@@ -17,7 +24,7 @@ enum class MagicalDamageTypeEnum(private val value: String) : DamageTypeEnum {
 
         init {
             for (c in values()) {
-                CONSTANTS[ai.ragu.charactermanager.enumeration.c.value] = ai.ragu.charactermanager.enumeration.c
+                CONSTANTS[c.value] = c
             }
         }
     }

@@ -1,80 +1,32 @@
 package ai.ragu.charactermanager.or
 
 import java.util.*
-import javax.persistence.*
+import javax.persistence.Entity
+import javax.persistence.Table
 
 @Entity
 @Table(name = "companion_item", schema = "public", catalog = "charactermanager")
 class CompanionItemEntity {
 
-    @Id
-    @Column(name = "id", nullable = false, length = -1)
     lateinit var id: String
-
-    @Column(name = "name", nullable = true, length = -1)
     lateinit var name: String
-
-    @Column(name = "level", nullable = true, length = -1)
     lateinit var level: String
-
-    @Column(name = "actions", nullable = true, length = -1)
     lateinit var actions: String
-
-    @Column(name = "price", nullable = true, length = -1)
     lateinit var price: String
-
-    @Column(name = "hands", nullable = true, length = -1)
     lateinit var hands: String
-
-    @Column(name = "bulk", nullable = true, length = -1)
     lateinit var bulk: String
-
-    @Column(name = "contains", nullable = true, length = -1)
     lateinit var contains: String
-
-    @Column(name = "usage", nullable = true, length = -1)
     lateinit var usage: String
-
-    @Column(name = "amount", nullable = true, length = -1)
     lateinit var amount: String
-
-    @Column(name = "action0", nullable = true, length = -1)
     lateinit var action0: String
-
-    @Column(name = "action0desc", nullable = true, length = -1)
     lateinit var action0Desc: String
-
-    @Column(name = "action1", nullable = true, length = -1)
     lateinit var action1: String
-
-    @Column(name = "action1desc", nullable = true, length = -1)
     lateinit var action1Desc: String
-
-    @Column(name = "description", nullable = true, length = -1)
     lateinit var description: String
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "src")
     lateinit var src: RulesSourceEntity
-
-    @Column(name = "url", nullable = true, length = -1)
     lateinit var url: String
-
-    @Column(name = "speed", nullable = true, length = -1)
     lateinit var speed: String
-
-    @OneToMany(
-            mappedBy = "companionItem",
-            cascade = [CascadeType.ALL],
-            fetch = FetchType.EAGER
-    )
     lateinit var traits: Set<CompanionItemTraitEntity>
-
-    @OneToMany(
-            mappedBy = "companionItem",
-            cascade = [CascadeType.ALL],
-            fetch = FetchType.EAGER
-    )
     lateinit var skillBonuses: Set<CompanionItemSkillBonusEntity>
 
     override fun equals(other: Any?): Boolean {

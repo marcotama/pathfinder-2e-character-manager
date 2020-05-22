@@ -5,10 +5,13 @@ import com.fasterxml.jackson.annotation.JsonValue
 import java.util.*
 
 enum class PhysicalDamageTypeEnum(private val value: String) : DamageTypeEnum {
-    BLUDGEONING("bludgeoning"), PIERCING("piercing"), SLASHING("slashing");
+    BLUDGEONING("bludgeoning"),
+    PIERCING("piercing"),
+    SLASHING("slashing");
 
     companion object {
         private val CONSTANTS: MutableMap<String, PhysicalDamageTypeEnum> = HashMap()
+
         @JsonCreator
         fun fromValue(value: String?): PhysicalDamageTypeEnum {
             val constant = CONSTANTS[value]
@@ -17,7 +20,7 @@ enum class PhysicalDamageTypeEnum(private val value: String) : DamageTypeEnum {
 
         init {
             for (c in values()) {
-                CONSTANTS[ai.ragu.charactermanager.enumeration.c.value] = ai.ragu.charactermanager.enumeration.c
+                CONSTANTS[c.value] = c
             }
         }
     }

@@ -4,19 +4,20 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonValue
 import java.util.*
 
-enum class CurrencyEnum(private val value: String) : Comparable<CurrencyEnum?> {
-    PP("pp"), GP("gp"), SP("sp"), CP("cp");
+enum class CurrencyEnum(private val value: String) {
+    CP("cp"),
+    SP("sp"),
+    GP("gp"),
+    PP("pp");
 
     companion object {
         private val CONSTANTS: MutableMap<String, CurrencyEnum> = HashMap()
+
         @JsonCreator
         fun fromValue(value: String?): CurrencyEnum {
             val constant = CONSTANTS[value]
             return constant ?: throw IllegalArgumentException(value)
         }
-
-        val sortedValues: List<CurrencyEnum>
-            get() = java.util.List.of(PP, GP, SP, CP)
 
         fun getValueInCP(currency: CurrencyEnum): Int {
             return when (currency) {
@@ -24,13 +25,12 @@ enum class CurrencyEnum(private val value: String) : Comparable<CurrencyEnum?> {
                 SP -> 10
                 GP -> 100
                 PP -> 1000
-                else -> throw IllegalArgumentException(String.format("Unknown currency: %s", currency.toString()))
             }
         }
 
         init {
             for (c in values()) {
-                CONSTANTS[ai.ragu.charactermanager.enumeration.c.value] = ai.ragu.charactermanager.enumeration.c
+                CONSTANTS[c.value] = c
             }
         }
     }

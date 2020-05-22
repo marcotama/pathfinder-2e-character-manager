@@ -9,6 +9,7 @@ enum class ThrownWeaponTraitEnum(private val value: Int) : WeaponTraitEnum {
 
     companion object {
         private val CONSTANTS: MutableMap<Int, ThrownWeaponTraitEnum> = HashMap()
+
         @JsonCreator
         fun fromValue(value: Int): ThrownWeaponTraitEnum {
             val constant = CONSTANTS[value]
@@ -17,7 +18,7 @@ enum class ThrownWeaponTraitEnum(private val value: Int) : WeaponTraitEnum {
 
         init {
             for (c in values()) {
-                CONSTANTS[ai.ragu.charactermanager.enumeration.c.value] = ai.ragu.charactermanager.enumeration.c
+                CONSTANTS[c.value] = c
             }
         }
     }

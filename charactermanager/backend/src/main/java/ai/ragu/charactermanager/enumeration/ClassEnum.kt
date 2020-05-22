@@ -5,10 +5,22 @@ import com.fasterxml.jackson.annotation.JsonValue
 import java.util.*
 
 enum class ClassEnum(private val value: String) : WeaponTraitEnum {
-    ALCHEMIST("alchemist"), BARBARIAN("barbarian"), BARD("bard"), CHAMPION("champion"), CLERIC("cleric"), DRUID("druid"), FIGHTER("fighter"), MONK("monk"), RANGER("ranger"), ROGUE("rogue"), SORCERER("sorcerer"), WIZARD("wizard");
+    ALCHEMIST("alchemist"),
+    BARBARIAN("barbarian"),
+    BARD("bard"),
+    CHAMPION("champion"),
+    CLERIC("cleric"),
+    DRUID("druid"),
+    FIGHTER("fighter"),
+    MONK("monk"),
+    RANGER("ranger"),
+    ROGUE("rogue"),
+    SORCERER("sorcerer"),
+    WIZARD("wizard");
 
     companion object {
         private val CONSTANTS: MutableMap<String, ClassEnum> = HashMap()
+
         @JsonCreator
         fun fromValue(value: String?): ClassEnum {
             val constant = CONSTANTS[value]
@@ -17,7 +29,7 @@ enum class ClassEnum(private val value: String) : WeaponTraitEnum {
 
         init {
             for (c in values()) {
-                CONSTANTS[ai.ragu.charactermanager.enumeration.c.value] = ai.ragu.charactermanager.enumeration.c
+                CONSTANTS[c.value] = c
             }
         }
     }

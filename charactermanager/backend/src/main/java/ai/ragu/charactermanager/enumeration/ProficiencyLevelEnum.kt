@@ -5,10 +5,15 @@ import com.fasterxml.jackson.annotation.JsonValue
 import java.util.*
 
 enum class ProficiencyLevelEnum(private val value: String) {
-    UNTRAINED("untrained"), TRAINED("trained"), EXPERT("expert"), MASTER("master"), LEGENDARY("legendary");
+    UNTRAINED("untrained"),
+    TRAINED("trained"),
+    EXPERT("expert"),
+    MASTER("master"),
+    LEGENDARY("legendary");
 
     companion object {
         private val CONSTANTS: MutableMap<String, ProficiencyLevelEnum> = HashMap()
+
         @JsonCreator
         fun fromValue(value: String?): ProficiencyLevelEnum {
             val constant = CONSTANTS[value]
@@ -17,7 +22,7 @@ enum class ProficiencyLevelEnum(private val value: String) {
 
         init {
             for (c in values()) {
-                CONSTANTS[ai.ragu.charactermanager.enumeration.c.value] = ai.ragu.charactermanager.enumeration.c
+                CONSTANTS[c.value] = c
             }
         }
     }
