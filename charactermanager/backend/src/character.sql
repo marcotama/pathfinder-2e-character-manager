@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS "character" (
     "shield_damage" SMALLINT,
     "num_spent_resonance" SMALLINT,
     "num_spent_spell_points" SMALLINT,
-    "damageTaken" SMALLINT,
+    "damage_taken" SMALLINT,
     "current_hp" SMALLINT,
     "num_temporary_hp" SMALLINT,
     "num_used_infused_reagents" SMALLINT,
@@ -84,31 +84,65 @@ CREATE TABLE IF NOT EXISTS "character_known_spell" (
 );
 
 
+CREATE TABLE IF NOT EXISTS "character_ability_boost" (
+    "character_id" INTEGER,
+    "level" SMALLINT,
+    "ability_score_id" VARCHAR,
+    FOREIGN KEY ("character_id") REFERENCES "character"("id"),
+    FOREIGN KEY ("ability_score_id") REFERENCES "ability_score"("id"),
+    PRIMARY KEY ("character_id", "level", "ability_score_id")
+);
 
 
+CREATE TABLE IF NOT EXISTS "character_free_ability_boost" (
+    "character_id" INTEGER,
+    "level" SMALLINT,
+    "ability_score_id" VARCHAR,
+    FOREIGN KEY ("character_id") REFERENCES "character"("id"),
+    FOREIGN KEY ("ability_score_id") REFERENCES "ability_score"("id"),
+    PRIMARY KEY ("character_id", "level", "ability_score_id")
+);
+
+
+CREATE TABLE IF NOT EXISTS "character_skill_increase" (
+    "character_id" INTEGER,
+    "level" SMALLINT,
+    "ability_score_id" VARCHAR,
+    FOREIGN KEY ("character_id") REFERENCES "character"("id"),
+    FOREIGN KEY ("ability_score_id") REFERENCES "ability_score"("id"),
+    PRIMARY KEY ("character_id", "level", "ability_score_id")
+);
+
+
+
+
+HashMap<String, HashMap<String, String>> specialSelections = new HashMap<>();
+HashMap<String, List<String>> trainedOnlySkillChoices = new HashMap<>();
+
+HashMap<Integer, HashMap<String, String>> additionalLores = new HashMap<>();
+HashMap<String, HashMap<Integer, Integer>> bonusSpellSlots = new HashMap<>();
+HashMap<String, EquipmentContainer> equipmentContainers = new HashMap<>();
+HashMap<String, Integer> formulaBook = new HashMap<>();
+HashMap<String, PetData> petData = new HashMap<>();
+HashMap<String, HashMap<Integer, String>> signatureSpells = new HashMap<>();
+HashMap<String, HashMap<Integer, Integer>> spontaneousSpellsCast = new HashMap<>();
+List<String> listCustomLores = new List<>();
+List<String> listSpentSpellSlots = new List<>();
+
+-- How many skill increases are allowed by level
+HashMap<Integer, Integer> customSkillIncreases = new HashMap<>();
+HashMap<String, Integer> activeCustomBuffs = new HashMap<>();
+HashMap<String, FeatChoice> customFeatChoices = new HashMap<>();
+
+-- Some day
 boolean allowHalfHeritages = false;
 int backgroundBoostLimitedSelection = 4;
-int getBackgroundBoostFreeSelection = 0;
+int backgroundBoostFreeSelection = 0;
 String[] dialects = new String[6];
-HashMap<String, PlayerSpell> hashMapPlayerSpells = new HashMap<>();
-HashMap<Integer, List<Integer>> hashMapAbilityBoosts = new HashMap<>();
-HashMap<String, Integer> hashMapActiveCustomBuffs = new HashMap<>();
-HashMap<Integer, HashMap<String, String>> hashMapAdditionalLores = new HashMap<>();
-HashMap<Integer, Integer> hashMapAncestryFreeBoostSelections = new HashMap<>();
-HashMap<String, HashMap<Integer, Integer>> hashMapBonusSpellSlots = new HashMap<>();
-HashMap<String, FeatChoice> hashMapCustomFeatChoices = new HashMap<>();
-HashMap<Integer, Integer> hashMapCustomSkillIncreases = new HashMap<>();
-HashMap<String, EquipmentContainer> hashMapEquipmentContainers = new HashMap<>();
-HashMap<String, Integer> hashMapFormulaBook = new HashMap<>();
-HashMap<String, PetData> hashMapPetData = new HashMap<>();
-HashMap<String, HashMap<Integer, String>> hashMapSignatureSpells = new HashMap<>();
-HashMap<Integer, List<String>> hashMapSkillIncreases = new HashMap<>();
-HashMap<String, HashMap<String, String>> hashMapSpecialSelections = new HashMap<>();
-HashMap<String, HashMap<Integer, Integer>> hashMapSpontaneousSpellsCast = new HashMap<>();
-HashMap<String, List<String>> hashMapTrainedOnlySkillChoices = new HashMap<>();
-List<String> listCustomLores = new List<>();
+
+-- Custom stuff
+HashMap<String, PlayerSpell> playerSpells = new HashMap<>();
 List<PlayerEquipment> listPlayerEquipment = new List<>();
 List<PlayerWeapon> listPlayerWeapons = new List<>();
-List<String> listSpentSpellSlots = new List<>();
 List<PlayerArmor> listStowedPlayerArmor = new List<>();
 List<PlayerShield> listStowedPlayerShields = new List<>();

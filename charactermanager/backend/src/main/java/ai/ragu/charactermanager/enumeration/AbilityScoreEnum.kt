@@ -5,10 +5,16 @@ import com.fasterxml.jackson.annotation.JsonValue
 import java.util.*
 
 enum class AbilityScoreEnum(private val value: String) : WeaponTraitEnum {
-    STR("str"), DEX("dex"), CON("con"), INT("int"), WIS("wis"), CHA("cha");
+    STR("str"),
+    DEX("dex"),
+    CON("con"),
+    INT("int"),
+    WIS("wis"),
+    CHA("cha");
 
     companion object {
         private val CONSTANTS: MutableMap<String, AbilityScoreEnum> = HashMap()
+
         @JsonCreator
         fun fromValue(value: String?): AbilityScoreEnum {
             val constant = CONSTANTS[value]
